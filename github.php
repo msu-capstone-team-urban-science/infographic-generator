@@ -1,1 +1,1 @@
-<?php `git pull ?>
+<?php `C:\cygwin\bin\bash -li /cygdrive/c/Users/Administrator/asdf.sh`;?>
