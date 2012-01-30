@@ -1,5 +1,4 @@
 <?php
-echo 'hello <br />';
-`C:\cygwin\bin\bash -li /cygdrive/c/Users/Administrator/asdf.sh`;
-echo 'goodbye';
+$output = shell_exec('C:\cygwin\bin\bash -li /cygdrive/c/Users/Administrator/asdf.sh');
+echo "<pre>$output</pre>";
 ?>
