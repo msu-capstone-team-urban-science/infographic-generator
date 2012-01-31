@@ -1,11 +1,5 @@
- <html> 
- <title>HTML with PHP</title>
- <body>
- <h1>My Example</h1>
-<?php shell_exec('git pull');?>
-
- <b>Here is some more HTML</b>
- 
- </body>
- </html>
- 
+<?php
+$output = exec("C:\\cygwin\\bin\\bash -li /cygdrive/c/Users/Administrator/asdf.sh");
+echo "<pre>$output</pre>";
+echo 'done';
+?>
