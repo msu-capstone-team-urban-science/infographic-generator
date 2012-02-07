@@ -1,6 +1,5 @@
 <?php
 echo "<html>";
-echo "<title>github.php</title>";
 echo "<body>";
 
 `cd /cygdrive/c/inetpub/wwwroot/infographic-generator/`;
