@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+        <script type="text/javascript">
+			function drawShape() {
+				var myCanvas = document.getElementById("myCanvas");
+				var ctx = myCanvas.getContext("2d");
+				// Create fill gradient
+
+	
+				// Fill the path
+				//ctx.fllStyle = gradient;
+				//ntext.fill();
+				
+				ctx.strokeRect(20, 20, 100, 100);
+				ctx.fillRect(20,20, 29.9, 100);
+				ctx.strokeRect(10,10,120,120);
+				ctx.font = "25pt Arial";
+				ctx.strokeStyle = "Green";  					
+			    ctx.strokeText("29.9%", 25, 85);  
+
+
+
+			}
+		</script>
+	</head>
+
+	<body onload="drawShape()">
+		<canvas id="myCanvas" width="300" height="300">
+			<!-- Insert fallback content here -->
+            Sorry, your browser doesn't support canvas technology
+		</canvas>
+	</body>
+</html>
