@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link href="../main.css" rel="stylesheet" type="text/css">
+        <script src="jquery.js" type="text/javascript"></script>
+        <script src="pump.js" type="text/javascript"></script>
+        <script>
+            window.onload = function(){
+                fillBackground("myCanvas");
+
+                var superdata = new Array();
+                superdata.push(["Anytown Automotive", "632"]);
+                superdata.push(["Alan Autosmart", "398"]);
+                superdata.push(["Jefferson Automotive", "334"]);
+                superdata.push(["Nestor Auto Center", "38"]);
+                superdata.push(["Diamond Automotive", "30"]);
+                superdata.push(["Anthony Motors", "23"]);
+                drawPump("myCanvas", 10, 10, 740, 500, superdata);
+
+            };
+ 
+        </script>
+    </head>
+    <body>
+        <ul class="navbar">
+            <li><a href="../index.html">Home</a>
+        </ul>
+        <div id="main">
+            <canvas id="myCanvas" width="800" height="420" /><br />
+            Bugs: sometimes a second refresh is needed to successfully load the images
+        </div>
+    </body>
+</html>
