@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Prototype02</title>
+        <script type="text/javascript">
+			// * Prototype Infographic
+			// *         by
+			// *     Lok Cheung
+			var ctx;
+			var canvas;
+			var offset=0;
+			var data = new Array(["sale1",89],["sale2",60],["sale3",75],["sale4",20],["sale5",100]);
+			function drawGraph(){
+				ctx.fillStyle ='#00F';
+				i=0;
+				for(i=0;i<data.length;i++)
+				{
+					position = Math.floor(data[i][1]/10);
+					if(offset < position){
+						offset=offset+0.05;
+						drawImg(i,offset);
+					}
+					
+				}
+			}			
+			function drawImg(index, value) {
+				img = new Image();
+				img.src = 'car.png';
+				ctx.drawImage(img, 70+value*30, 0+index*30, img.width, img.height);
+				//ctx.clearRect(0, 0, img.width, img.height);
+
+			}
+			function drawText(){
+				k=0;
+				for(k=0;k<data.length;k++)
+				{
+					 ctx.fillText(data[k][0], 0, 20+k*30);
+					 ctx.fillText(data[k][1], 100+Math.floor(data[k][1]/10)*30, 20+k*30);
+				}
+			}
+			function init() {
+			  canvas = document.getElementById("myCanvas");
+			  ctx = canvas.getContext("2d");
+			  drawImg();
+			  drawText();
+			  //call drawGraph every 20 millisecond
+			  return setInterval(drawGraph, 20);
+			}
+
+		</script>
+	</head>
+
+	<body onload="init()">
+		<h1>Sale</h1>
+		<canvas id="myCanvas" width="500" height="500">
+			<!-- Insert fallback content here -->
+            Sorry, your browser doesn't support canvas technology
+		</canvas>
+	</body>
+</html>
