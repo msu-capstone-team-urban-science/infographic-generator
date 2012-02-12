@@ -5,7 +5,7 @@
 		position: absolute;
 		top: 2em;
 		left: 1em;
-		width: 20em;
+		width: 11em;
 	}
 	ul.navbar li {
 		background: white;
@@ -20,7 +20,7 @@
 		position: absolute;
 		top: 2em;
 		left: 1em;
-		width: 20em;
+		width: 11em;
 	}
 	dl.navbar li {
 		background: white;
@@ -43,7 +43,7 @@
 		border-top: thin dotted 
 	}
 	div#main {
-		margin-left: 22em;
+		margin-left: 14em;
 		margin-right: 19%;
 		margin-top: 1px;
 		padding: 22px;
