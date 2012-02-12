@@ -4,12 +4,30 @@
 		<title>Infographic element Demo</title>
 		<link href="main.css" rel="stylesheet" type="text/css">
 	
+		<style>
+			.roundabout-holder {
+			  list-style: none;
+			  padding: 0;
+			  margin: 5em;
+			  height: 20em;
+			  width: 30em;
+			}
+			.roundabout-moveable-item {
+			  height: 310px;
+			  width: 200px;
+			  cursor: pointer;
+			  background-color: #ccc;
+			  border: 1px solid #999;
+			}
+			.roundabout-in-focus {
+			  cursor: auto;
+			}
 		</style>
 	</head>
 
 	<body>
 		
-		<ul class="navbar">
+		<dl class="navbar">
 			<li><a href="bargraph.html">Bar Graph with Image</a>
 			<li><a href="percentage.html">25%</a>
 			<li><a href="louis-prototype-1.html">Double Sided Graph</a>
@@ -20,15 +38,35 @@
 			<li><a href="Segment Sales.html">Segment Sales</a>
 			<li><a href="Dealer Retention.html">Dealer Retention</a>
 			<li><a href="pump-in-sales/pump-infographic.html">Pump in Sales</a>
-			</ul>
+		</dl>
 		
 		<div id="main">
 			<h1>Sample Infographic elements</h1>
 			<p>This page's purpose is to detail our very first look at
 			what infographic elements should look like.
-            <br/><br/><br/><br/><br/>
+            <br/><br/>
+			
+			<ul>
+				<li><a href="http://google.com"><img src="images/$$.jpg" alt="$"></a></li>
+				<li><a href="http://yahoo.com"><img src="images/Service.png" alt="Service"></a></li>
+				<li><a href="http://bing.com"><img src="images/lead.png" alt="Lead"></a></li>
+			</ul>
             <address></address>
         <footer>Team Urban Science Spring 2012</footer>
 		</div>
+		
+		<script src="javascript/jquery-1.5.min.js"></script>
+		<script src="javascript/jquery.roundabout.js"></script>
+		<script src="javascript/jquery.event.drag-2.0.js"></script>
+		<script src="javascript/jquery.event.drop-2.0.js"></script>
+		<script>
+		   $(document).ready(function() {
+			  $('ul').roundabout({
+				reflect: true,
+				enableDrag: true,
+				
+			  });
+		   });
+		</script>
 	</body>
 </html>
