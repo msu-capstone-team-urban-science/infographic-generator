@@ -1,6 +1,3 @@
-
-
-
 function fillBackground(c)
 {
     var canvas = document.getElementById(c);
@@ -9,7 +6,6 @@ function fillBackground(c)
     context.rect(0, 0, canvas.width, canvas.height);
     context.fill();
 }
-
 
 // The drawPump function has a minimum width
 function drawPump(c, x, y, w, h, d)
@@ -23,19 +19,15 @@ function drawPump(c, x, y, w, h, d)
     var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
 
-
-
-
     var imagePump = new Image();
-    var imageFiller = new Image();
 
+	 // Draw an image of an old style gasoline pump
+	imagePump.onload = function() { 
+		context.drawImage(imagePump,x,y);
+	};
+	
     imagePump.src = "pump.png";
-    imageFiller.src = "nozzle.png";
-
-
-    // Draw an image of an old style gasoline pump
-    context.drawImage(imagePump, x, y);
-
+	//imageFiller.src = "nozzle.png";    
 
     // Find largest value in dataset to determine scale
     var i = 0;
@@ -49,11 +41,9 @@ function drawPump(c, x, y, w, h, d)
         }
     }
 
-
     // Draw each dealership along with numbers, text, and gas pump graph
     for (i = 0; i < d.length; i = i + 1)
     {
-    
 
         // Write text with the dealership's name
         var startTextX = x + 20;
@@ -106,13 +96,17 @@ function drawPump(c, x, y, w, h, d)
         context.shadowOffsetX = 3;
         context.shadowOffsetY = 3;
         context.fill();
-        context.drawImage(imageFiller, barGraphX + barGraphW - 10, barGraphY - 25);
-
+		drawFiller( context,barGraphX + barGraphW - 10, barGraphY - 25)
+		//context.drawImage(imageFiller, barGraphX + barGraphW - 10, barGraphY - 25);
     }
-
-
-
-
-
 }
 
+function drawFiller(c,x,y) {
+    var context = c;
+	var imageFiller = new Image();
+	imageFiller.src = "nozzle.png";  
+	imageFiller.onload = function() { 
+		context.drawImage(imageFiller,x,y);
+	};	  
+}
+	
