@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Prototype06</title>
+        <script type="text/javascript">
+			// * Prototype Infographic
+			// *         by
+			// *     Lok Cheung
+			var ctx;
+			var canvas;
+			var data = new Array(["Jan",153],["Feb",164],["Mar",162],["Apr",166],["May",171]);
+			function drawGraph(){
+				img = new Image();
+				img.src = 'images/retail_car.png';
+				
+				i=0;
+				for(i=0;i<data.length;i++)
+				{
+					ctx.fillStyle="#FFA54F";
+					//draw rectangle in the back of the image
+					//x,y, width, height
+					fillHeight= -20*(2*(data[i][1]-120)/100);
+					if(fillHeight < -35)
+					{
+						fillHeight = -35;
+					}
+					ctx.fillRect(10+i*100, 53, 60, fillHeight);
+					
+					ctx.drawImage(img, i*100, 0, img.width, img.height);
+					ctx.fillStyle="white";
+					//draw text
+					ctx.font = "bold 11pt Calibri";
+					ctx.fillText(data[i][0], 28+i*100, 65);
+					ctx.fillText(data[i][1], 26+i*100, 17);
+				}	
+			}			
+
+			function init() {
+			  canvas = document.getElementById("myCanvas");
+			  ctx = canvas.getContext("2d");
+			  drawGraph();
+			}
+
+		</script>
+	</head>
+
+	<body onload="init()">
+		<h1>Retail Sale</h1>
+		<canvas id="myCanvas" width="500" height="500">
+			<!-- Insert fallback content here -->
+            Sorry, your browser doesn't support canvas technology
+		</canvas>
+	</body>
+</html>
