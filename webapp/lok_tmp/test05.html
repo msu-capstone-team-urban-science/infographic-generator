@@ -26,7 +26,7 @@
 			function init() {
 			  canvas = document.getElementById("myCanvas");
 			  ctx = canvas.getContext("2d");
-			  drawGraph();
+			  return setInterval(drawGraph, 20);
 			}
 
 		</script>
