@@ -21,11 +21,12 @@
 					//x,y, width, height
 					ctx.drawImage(img, i*130, 0, img.width, img.height);
 					ctx.fillStyle="green";
-					//draw text
-					ctx.font = "bold 18pt Quartz MS";
+					//draw textChalkboard
+					//ctx.font = "bold 18pt Quartz MS"; ///	windows only
+					ctx.font = "bold 18pt MarkerFelt-Thin";
 					ctx.fillText(data[i][0], 35+i*130, 78);
-					ctx.font = "bold 30pt Quartz MS";
-					ctx.fillText(data[i][1], 34+i*130, 50);
+					ctx.font = "bold 28pt MarkerFelt-Thin";
+					ctx.fillText(data[i][1], 40+i*130, 50);
 				}	
 			}			
 
