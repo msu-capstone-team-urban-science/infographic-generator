@@ -1,34 +1,42 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Prototype03</title>
+		<title>Prototype01</title>
         <script type="text/javascript">
 			// * Prototype Infographic
 			// *         by
 			// *     Lok Cheung
 			var ctx;
 			var canvas;
-			//var offset=0;
 			var data = new Array(["sale1",89],["sale2",60],["sale3",75],["sale4",20],["sale5",100]);
 			function drawGraph(){
 				ctx.fillStyle ='#00F';
 				i=0;
 				for(i=0;i<data.length;i++)
 				{
-					drawImg(i,data[i][1]%10);
+					drawImg(i,Math.floor(data[i][1]/10));
 				}
 			}			
 			function drawImg(index, value) {
 				img = new Image();
-				img.src = 'images/car.png';
-				offset = 1-(value/10);
-				ctx.drawImage(img, 0+index*70, 0, img.width*offset, img.height*offset);
+				img.src = 'car.png';
+				for(j=0;j<value;j++) {
+					ctx.drawImage(img, 30+j*30, 0+index*30, img.width, img.height);
+				}
 			}
-			
+			function drawText(){
+				k=0;
+				for(k=0;k<data.length;k++)
+				{
+					 ctx.fillText(data[k][0], 0, 20+k*30);
+					 ctx.fillText(data[k][1], 70, 20+k*30);
+				}
+			}
 			function init() {
 			  canvas = document.getElementById("myCanvas");
 			  ctx = canvas.getContext("2d");
 			  drawImg();
+			  drawText();
 			  //call drawGraph every 20 millisecond
 			  return setInterval(drawGraph, 20);
 			}

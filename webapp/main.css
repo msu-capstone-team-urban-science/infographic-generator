@@ -1,5 +1,6 @@
 	body {
-		background-color : #1A8A27;
+		background-color : #333333;
+		color: #ffffff;
 	}
 	ul.navbar {
 		position: absolute;
@@ -8,10 +9,11 @@
 		width: 11em;
 	}
 	ul.navbar li {
-		background: white;
+		/*background: white;*/
+		list-style-type: none;
 		margin: 0.5em 0;
 		padding: 0.3em;
-		border-right: 1em solid black;
+		/*border-right: 1em solid black;*/
 	}
 	ul.navbar a {
 		text-decoration: none;
@@ -23,19 +25,24 @@
 		width: 11em;
 	}
 	dl.navbar li {
-		background: white;
+		list-style-type: none;
+		/*background: white;*/
 		margin: 0.5em 0;
 		padding: 0.3em;
-		border-right: 1em solid black;
+		/*border-right: 1em solid black;*/
 	}
 	dl.navbar a {
 		text-decoration: none;
 	}
 	a:link {
-		color: blue;
+		color: #00dd00;
+		font-weight: bold;
+		font-family: Arial;
 	}
 	a:visited {
-		color: purple;
+		color: #00dd00;
+		font-weight: bold;
+		font-family: Arial;
 	}
 	address {
 		margin-top: 1em;
@@ -44,10 +51,10 @@
 	}
 	div#main {
 		margin-left: 14em;
-		margin-right: 19%;
+		width: 633px;
 		margin-top: 1px;
 		padding: 22px;
-		background-color: white;
+		background-color: #777777;
 		margin-bottom: 22px;
 	}
 	footer {
@@ -56,4 +63,13 @@
 	
 	ul .roundabout{
 		
+	}
+
+	div#mpage {
+		width: 1024px;
+		height: 768px;
+		margin-left: auto;
+		margin-right: auto;
+		/*background-color: #ffffff;*/
+
 	}

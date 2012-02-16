@@ -96,7 +96,7 @@ function drawPump(c, x, y, w, h, d)
         context.shadowOffsetX = 3;
         context.shadowOffsetY = 3;
         context.fill();
-		drawFiller( context,barGraphX + barGraphW - 10, barGraphY - 25)
+        drawFiller( context,barGraphX + barGraphW - 10, barGraphY - 25)
 		//context.drawImage(imageFiller, barGraphX + barGraphW - 10, barGraphY - 25);
     }
 }

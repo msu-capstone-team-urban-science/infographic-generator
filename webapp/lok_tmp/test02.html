@@ -17,18 +17,16 @@
 				{
 					position = Math.floor(data[i][1]/10);
 					if(offset < position){
-						offset=offset+0.05;
+						offset+=0.05;
 						drawImg(i,offset);
 					}
-					
 				}
 			}			
 			function drawImg(index, value) {
 				img = new Image();
-				img.src = 'car.png';
-				ctx.drawImage(img, 70+value*30, 0+index*30, img.width, img.height);
-				//ctx.clearRect(0, 0, img.width, img.height);
-
+				img.src = 'images/car2.jpg';
+				ctx.drawImage(img, 70+value*30, index*30, img.width, img.height);
+				ctx.clearRect(70+(value-1)*30, index*30, img.width, img.height);
 			}
 			function drawText(){
 				k=0;
