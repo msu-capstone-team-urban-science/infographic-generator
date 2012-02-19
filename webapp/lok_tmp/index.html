@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
 	<head>
 		<title>Infographic element Demo</title>
 		<link rel="stylesheet" type="text/css" href="style.css" />
@@ -55,6 +59,31 @@
 			span {
 				display: block;
 				padding-top: 3.5em;
+			}
+			////////////
+			@media all and (max-width: 768px) {
+				body {
+					/* extra styles for mobile or portrait*/
+				}
+			}
+
+			@media all and (min-width: 769px) {
+				body {
+					/* extra styles for desktop or landscape*/
+				}
+			}
+			if (!isNaN(window.orientation)) {
+				var orientation = (window.orientation == 0 || window.orientation == 180) ? "portrait" : "landscape";
+				$("body").addClass(orientation);
+			} else {
+				// Choose layout depending on viewport width
+				var orientation = ($(window).width() < 980) ? "portrait" : "landscape";
+				$("body").addClass(orientation);
+			}
+			
+			window.onorientationchange = function() {
+				var orientation = (window.orientation == 0 || window.orientation == 180) ? "portrait" : "landscape";
+				$("body").attr("class", orientation);
 			}
 		</style>
 	</head>
