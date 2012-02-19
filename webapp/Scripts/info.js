@@ -40,7 +40,7 @@ function drawGraph02(date) {
 			break;
 		}
 	}
-	var dataR = [date, uvs];
+	var dataR = [date, uvsVal];
   Used_Vehicle_Sale(ctx2, dataR);
    //call Retail_Sale every 20 millisecond
   //return setInterval(Vehicle_Sale, 20);
