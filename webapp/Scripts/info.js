@@ -355,19 +355,6 @@ function Competitive_Segment_Sale(){
 				offset=0;
 			}
 		}
-		// else
-		// {
-			// j=0;
-			// n=offset-10;
-			// for(j=0;j<data.length;j++)
-			// {
-				// n+=0.01;
-				//ctx6.clearRect(70+(n)*30, j*30, img03.width, img03.height);
-				
-			// }
-			// offset=0;
-		//}
-		
 	}
 	
 }

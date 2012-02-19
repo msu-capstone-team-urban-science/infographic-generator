@@ -92,7 +92,6 @@
     <Content Include="Scripts\jquery.event.drop-2.0.js" />
     <Content Include="Scripts\jquery.roundabout.js" />
     <Content Include="Scripts\KPILocalStorage.js" />
-    <Content Include="Scripts\LoadFromDB.js" />
     <Content Include="Styles\info_style.css" />
     <Content Include="Styles\style.css" />
     <Content Include="Web.config" />

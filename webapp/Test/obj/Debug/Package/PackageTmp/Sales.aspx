@@ -10,17 +10,17 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <head runat="server">
 
-    <link href="../Styles/info_style.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/info_style.css" rel="stylesheet" type="text/css" />
     <title>Infographic Generator</title>
-    <script type="text/javascript" src="../Scripts/info.js"></script>
+    <script type="text/javascript" src="Scripts/info.js"></script>
     <script src="scripts/jquery-1.7.1.min.js"  type="text/javascript"></script>
-    <script type="text/javascript" src="../Scripts/KPILocalStorage.js"></script>
+    <script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
 </head>
 <body onload="init();LoadJSON()">
     <div id="main">
 			<div id="part01">
 				<div id="header">
-						<img src="../images/header.jpg"></img>
+						<img src="images/header.jpg"></img>
 						<p id="category">Sales</p>
 						<p id="month">January</p>
 				</div>

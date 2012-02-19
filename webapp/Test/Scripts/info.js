@@ -94,7 +94,7 @@ function drawGraph09() {
 
 function Retail_Sale(){
 	img01 = new Image();
-	img01.src = '../images/retail_car.png';
+	img01.src = 'images/retail_car.png';
 
 	ctx.fillStyle="#EEEE00";
 	//draw rectangle in the back of the image
@@ -160,7 +160,7 @@ CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
 
 function Cost_Per_Sale(ctx){
 	img02 = new Image();
-	img02.src = '../images/cost_per_sale.png';
+	img02.src = 'images/cost_per_sale.png';
 
 	ctx.fillStyle="#green";
 	//draw rectangle in the back of the image
@@ -327,7 +327,7 @@ function Competitive_Segment_Sale(){
 	canvas = document.getElementById("Competitive_Segment_Sale");
 	ctx6 = canvas.getContext("2d");
 	img03 = new Image();
-	img03.src = '../images/car2.jpg';
+	img03.src = 'images/car2.png';
 	var data = new Array(["sale1",89],["sale2",60],["sale3",75],["sale4",20],["sale5",100]);
 	ctx6.fillStyle ='#00F';
 	
@@ -355,19 +355,6 @@ function Competitive_Segment_Sale(){
 				offset=0;
 			}
 		}
-		// else
-		// {
-			// j=0;
-			// n=offset-10;
-			// for(j=0;j<data.length;j++)
-			// {
-				// n+=0.01;
-				//ctx6.clearRect(70+(n)*30, j*30, img03.width, img03.height);
-				
-			// }
-			// offset=0;
-		//}
-		
 	}
 	
 }

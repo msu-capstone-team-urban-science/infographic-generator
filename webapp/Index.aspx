@@ -82,14 +82,14 @@
             <address></address>
 		</div>
 	</div>
-	    <script src="scripts/jquery-1.7.1.min.js"  type="text/javascript"></script>
-		<script src="Scripts/jquery.roundabout.js" type="text/javascript"></script>
-		<script src="Scripts/jquery.event.drag-2.0.js" type="text/javascript"></script>
-		<script src="Scripts/jquery.event.drop-2.0.js" ></script>
+    	<script src="scripts/jquery-1.7.1.min.js"  type="text/javascript"></script>
+		<script type="text/javascript" src="Scripts/jquery.roundabout.js"></script>
+		<script type="text/javascript" src="Scripts/jquery.event.drag-2.0.js"></script>
+		<script type="text/javascript" src="Scripts/jquery.event.drop-2.0.js"></script>
 		<script type="text/javascript">
 		    $(document).ready(function () {
 		        $('ul').roundabout({
-		           // minOpacity: 1,
+		            // minOpacity: 1,
 		            minScale: 0.6,
 		            reflect: true,
 		            enableDrag: true,

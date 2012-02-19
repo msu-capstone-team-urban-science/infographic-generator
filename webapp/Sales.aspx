@@ -1,6 +1,11 @@
 ﻿<%@ Page Language="C#" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<script runat="server">
+
+</script>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <head runat="server">
@@ -8,7 +13,7 @@
     <link href="Styles/info_style.css" rel="stylesheet" type="text/css" />
     <title>Infographic Generator</title>
     <script type="text/javascript" src="Scripts/info.js"></script>
-    <script src="Scripts/jquery-1.7.1.min.js"  type="text/javascript"></script>
+    <script src="scripts/jquery-1.7.1.min.js"  type="text/javascript"></script>
     <script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
 </head>
 <body onload="init();LoadJSON()">
