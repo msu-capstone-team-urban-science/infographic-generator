@@ -8,7 +8,7 @@ var monthname = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"
 
 function init(date) {
 	drawGraph01(date);	//Retail_Sale
-	drawGraph02();	//Used_Vehicle_Sale
+	drawGraph02(date);	//Used_Vehicle_Sale
 	drawGraph03();	//Cost_Per_Sale
 	drawGraph04();	//Pump_In_Sale
 	drawGraph05();	//Dealer_Retention01
@@ -26,10 +26,22 @@ function drawGraph01(date) {
   //return setInterval(Retail_Sale, 20);
 }
 
-function drawGraph02() {
+function drawGraph02(date) {
   canvas = document.getElementById("Used_Vehicle_Sale");
   ctx2 = canvas.getContext("2d");
-  Used_Vehicle_Sale(ctx2);
+	var uvsRet = SearchKPIByDate(date);
+	var uvsVal;
+
+	for (var i = 0; i < uvsRet.length; i++)
+	{
+		if (uvsRet[i][0] == "Used_Vehicle_Sales")
+		{
+			uvsVal = uvsRet[i][1];
+			break;
+		}
+	}
+	var dataR = [date, uvs];
+  Used_Vehicle_Sale(ctx2, dataR);
    //call Retail_Sale every 20 millisecond
   //return setInterval(Vehicle_Sale, 20);
 }
@@ -129,7 +141,7 @@ function Retail_Sale(date) {
 
 }
 
-function Used_Vehicle_Sale(ctx){
+function Used_Vehicle_Sale(ctx, d){
 	//outer rectangle
 	ctx.roundRect(10, 20, 150, 130, 5).stroke();
 	//inner rectangle
@@ -147,9 +159,9 @@ function Used_Vehicle_Sale(ctx){
 	ctx.fillRect(20,100,130, 35);
 	ctx.fillStyle="black";
 	//date
-	ctx.fillText("Jan 12", 45, 90);
+	ctx.fillText(monthname[d[0].getMonth()], 45, 90);
 	//data
-	ctx.fillText(64, 70, 130);
+	ctx.fillText(d[1], 70, 130);
 }
 /*
 	This function draw the rectangle with round corner
