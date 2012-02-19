@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="C:\inetpub\wwwroot" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="False" />
+  <publishProfile publishUrl="C:\inetpub\wwwroot" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="PublishRelease" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="JSONTest.aspx" publishTime="02/19/2012 08:30:36" />
+    <file relUrl="Scripts/jquery-1.7.1.min.js" publishTime="02/18/2012 12:59:22" />
+    <file relUrl="KPI_Handler.ashx" publishTime="02/19/2012 00:29:49" />
+    <file relUrl="Web.config" publishTime="02/19/2012 09:50:06" />
+    <file relUrl="bin/KPIBackEnd.pdb" publishTime="02/19/2012 09:50:06" />
+    <file relUrl="Scripts/KPILocalStorage.js" publishTime="02/18/2012 21:41:25" />
+    <file relUrl="bin/KPIBackEnd.dll" publishTime="02/19/2012 09:50:06" />
+  </publishProfile>
+</publishData>

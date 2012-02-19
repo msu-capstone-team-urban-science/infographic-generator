@@ -1,0 +1,16 @@
+C:\inetpub\wwwroot\Test\Test\bin\Test.dll
+C:\inetpub\wwwroot\Test\Test\bin\Test.pdb
+C:\inetpub\wwwroot\Test\Test\obj\Debug\ResolveAssemblyReference.cache
+C:\inetpub\wwwroot\Test\Test\obj\Debug\Test.Properties.Resources.resources
+C:\inetpub\wwwroot\Test\Test\obj\Debug\GenerateResource.read.1.tlog
+C:\inetpub\wwwroot\Test\Test\obj\Debug\GenerateResource.write.1.tlog
+C:\inetpub\wwwroot\Test\Test\obj\Debug\Test.dll
+C:\inetpub\wwwroot\Test\Test\obj\Debug\Test.pdb
+C:\inetpub\wwwroot\Test\obj\Debug\ResolveAssemblyReference.cache
+C:\inetpub\wwwroot\Test\obj\Debug\GenerateResource.read.1.tlog
+C:\inetpub\wwwroot\Test\obj\Debug\GenerateResource.write.1.tlog
+C:\inetpub\wwwroot\Test\bin\KPIBackEnd.dll
+C:\inetpub\wwwroot\Test\bin\KPIBackEnd.pdb
+C:\inetpub\wwwroot\Test\obj\Debug\KPIBackEnd.Properties.Resources.resources
+C:\inetpub\wwwroot\Test\obj\Debug\KPIBackEnd.dll
+C:\inetpub\wwwroot\Test\obj\Debug\KPIBackEnd.pdb

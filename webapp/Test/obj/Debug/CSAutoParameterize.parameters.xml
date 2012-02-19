@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="urbanScienceConnectionString-Web.config Connection String" description="urbanScienceConnectionString Connection String used in web.config by the application to access the database." defaultvalue="Data Source=WIN-RGEKHF6IJ8B;Initial Catalog=urbanScience;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='urbanScienceConnectionString']/@connectionString" />
+  </parameter>
+</parameters>
