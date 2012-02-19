@@ -12,40 +12,7 @@
 		</style>
 	</head>
 	<body>
-		<h1>WipeTouch</h1>
-		<small><a href="http://wipetouch.codeplex.com/" title="WipeTouch project page">http://wipetouch.codeplex.com/</a></small>
-		<p>
-			WipeTouch is a free jQuery plugin to implement wipe events on your website / web app.
-			<br />
-			It was tested with jQuery 1.4.x, 1.5.x and 1.6.1.
-			<br />
-			Settings are well explained on the source code.
-		</p>
 		<div>
-			<div>
-				<h4>Sample usage</h4>
-				<pre>
-$(document).wipetouch(
-{
-	// settings here
-	wipeLeft: function(result) { // wiped left },
-	wipeRight function(result) { // wiped right },
-	wipeUp: function(result) { // wiped up },
-	wipeDown: function(result) { // wiped down }
-});
-				</pre>
-			</div>
-			<div>
-				<h4>Basic demo</h4>
-				<p>
-					Open this page on any touch enabled device to test WipeTouch.
-				</p>
-				<div id="BasicDemo">
-					Basic demo wipe area!
-					<br />
-					<span id="basicResult">...</span>
-				</div>
-			</div>
 			<div>
 				<h4>Another demo</h4>
 				<p>
@@ -63,32 +30,17 @@ $(document).wipetouch(
 				function wipeStatus(span, dir, result)
 				{
 					$("#" + span + "Result").html("Wiped " + dir + ", speed " + result.speed + ", x " + result.x + ", y " + result.y);
+					$("anotherDemo").html("<br/><br/>KEVIN IS AWESOME<br/><br/><br/><br/><br/><br/><br/><br/>YES HE IS !!!<br/><br/><br/>");
 				}
-
-				$("#BasicDemo").wipetouch(
-				{
-					wipeLeft: function(result) { wipeStatus("basic", "LEFT", result); },
-					wipeRight: function(result) { wipeStatus("basic", "RIGHT", result); },
-					wipeUp: function(result) { wipeStatus("basic", "UP", result); },
-					wipeDown: function(result) { wipeStatus("basic", "DOWN", result); }
-				});
-
+				
 				$("#AnotherDemo").wipetouch(
 				{
 					allowDiagonal: true,
 					tapToClick: false,
 					wipeLeft: function(result) { wipeStatus("another", "LEFT", result); },
-					wipeRight: function(result) { wipeStatus("another", "RIGHT", result); },
-					wipeUp: function(result) { wipeStatus("another", "UP", result); },
-					wipeDown: function(result) { wipeStatus("another", "DOWN", result); },
-					wipeUpLeft: function(result) { wipeStatus("another", "UP LEFT", result); },
-					wipeUpRight: function(result) { wipeStatus("another", "UP RIGHT", result); },
-					wipeDownLeft: function(result) { wipeStatus("another", "DOWN LEFT", result); },
-					wipeDownRight: function(result) { wipeStatus("another", "DOWN RIGHT", result); }
+					wipeRight: function(result) { wipeStatus("another", "RIGHT", result); }
 				});
 				
-				$("#BasicDemo").wipeLeft(function() { $("#anotherResult").html("you swipped left in the thing");})
-
 				$("#AnotherDemo").click(function() { $("#anotherResult").html("You clicked the 'Another demo area'! "); })
 			</script>
 		</div>
