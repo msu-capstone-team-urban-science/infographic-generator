@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>WipeTouch Demo</title>
+		<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.1.min.js"></script>
+		<script type="text/javascript" src="jquery.wipetouch.js"></script>
+		<style type="text/css">
+			body { font-family:Tahoma, Arial, sans-serif; width:700px; }
+			pre { padding:5px; background-color:#DDDDDD; }
+			#BasicDemo { background-color:#CCCCFF; padding:10px; height:180px; text-align:center; }
+			#AnotherDemo { background-color:#FFCCCC; padding:10px; height:180px;text-align:center; }
+		</style>
+	</head>
+	<body>
+		<div>
+			<div>
+				<h4>Another demo</h4>
+				<p>
+					Here we have another demo with allowDiagonal and tapToClick.
+					There's a click event bound to the area, and if you tap it
+					WipeTouch will trigger the click.
+				</p>
+				<div id="AnotherDemo">
+					Another demo wipe area!
+					<br />
+					<span id="anotherResult">...</span>
+				</div>
+			</div>
+			<script type="text/javascript">
+				function wipeStatus(span, dir, result)
+				{
+					$("#" + span + "Result").html("Wiped " + dir + ", speed " + result.speed + ", x " + result.x + ", y " + result.y);
+				}
+				
+				function Kevin() {
+					$("#anotherResult").html("<br/><br/>KEVIN IS AWESOME<br/><br/><br/><br/><br/><br/><br/><br/>YES HE IS !!!<br/><br/><br/>");
+				}
+				
+				$("#AnotherDemo").wipetouch(
+				{
+					allowDiagonal: true,
+					tapToClick: false,
+					//wipeLeft: function(result) { wipeStatus("another", "LEFT", result); },
+					//wipeRight: function(result) { wipeStatus("another", "RIGHT", result); },
+					wipeLeft: function(result) { Kevin(); },
+					wipeRight: function(result) { Kevin(); }
+				});
+				
+				$("#AnotherDemo").click(function() { $("#anotherResult").html("You clicked the 'Another demo area'! "); })
+			</script>
+		</div>
+	</body>
+</html>
