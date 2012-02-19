@@ -30,6 +30,9 @@
 				function wipeStatus(span, dir, result)
 				{
 					$("#" + span + "Result").html("Wiped " + dir + ", speed " + result.speed + ", x " + result.x + ", y " + result.y);
+				}
+				
+				function Kevin() {
 					$("anotherDemo").html("<br/><br/>KEVIN IS AWESOME<br/><br/><br/><br/><br/><br/><br/><br/>YES HE IS !!!<br/><br/><br/>");
 				}
 				
@@ -37,8 +40,10 @@
 				{
 					allowDiagonal: true,
 					tapToClick: false,
-					wipeLeft: function(result) { wipeStatus("another", "LEFT", result); },
-					wipeRight: function(result) { wipeStatus("another", "RIGHT", result); }
+					//wipeLeft: function(result) { wipeStatus("another", "LEFT", result); },
+					//wipeRight: function(result) { wipeStatus("another", "RIGHT", result); },
+					wipeLeft: function(result) { Kevin(); },
+					wipeRight: function(result) { Kevin(); }
 				});
 				
 				$("#AnotherDemo").click(function() { $("#anotherResult").html("You clicked the 'Another demo area'! "); })
