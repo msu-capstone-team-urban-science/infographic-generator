@@ -34,7 +34,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <PackageAsSingleFile>false</PackageAsSingleFile>
+    <PackageAsSingleFile>true</PackageAsSingleFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -57,9 +57,44 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\%24%24.jpg" />
+    <Content Include="images\bg.png" />
+    <Content Include="images\car.jpg" />
+    <Content Include="images\car.png" />
+    <Content Include="images\car2.jpg" />
+    <Content Include="images\car2.png" />
+    <Content Include="images\Car_transp.png" />
+    <Content Include="images\cost_per_sale.png" />
+    <Content Include="images\header.jpg" />
+    <Content Include="images\icon_lead.png" />
+    <Content Include="images\icon_sale.png" />
+    <Content Include="images\icon_service.png" />
+    <Content Include="images\Lead.png" />
+    <Content Include="images\lightbulb.png" />
+    <Content Include="images\light_rock.jpg" />
+    <Content Include="images\main_bk.png" />
+    <Content Include="images\money_bag_green.jpg" />
+    <Content Include="images\PointingDude.png" />
+    <Content Include="images\PointingFinger.png" />
+    <Content Include="images\puzzle.jpg" />
+    <Content Include="images\puzzle.png" />
+    <Content Include="images\puzzle_large.png" />
+    <Content Include="images\retail_car.png" />
+    <Content Include="images\Service.png" />
+    <Content Include="images\splitter.png" />
+    <Content Include="Index.aspx" />
     <Content Include="JSONTest.aspx" />
+    <Content Include="Main.aspx" />
+    <Content Include="Sales.aspx" />
+    <Content Include="Scripts\info.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\jquery.event.drag-2.0.js" />
+    <Content Include="Scripts\jquery.event.drop-2.0.js" />
+    <Content Include="Scripts\jquery.roundabout.js" />
     <Content Include="Scripts\KPILocalStorage.js" />
+    <Content Include="Scripts\LoadFromDB.js" />
+    <Content Include="Styles\info_style.css" />
+    <Content Include="Styles\style.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -95,6 +130,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="images\Car_blank.pdn" />
+    <None Include="images\menu_template.PSD" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
