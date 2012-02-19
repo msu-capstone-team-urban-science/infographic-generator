@@ -327,7 +327,7 @@ function Competitive_Segment_Sale(){
 	canvas = document.getElementById("Competitive_Segment_Sale");
 	ctx6 = canvas.getContext("2d");
 	img03 = new Image();
-	img03.src = 'images/car2.jpg';
+	img03.src = 'images/car2.png';
 	var data = new Array(["sale1",89],["sale2",60],["sale3",75],["sale4",20],["sale5",100]);
 	ctx6.fillStyle ='#00F';
 	
