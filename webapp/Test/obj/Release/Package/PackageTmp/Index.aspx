@@ -13,22 +13,7 @@
 
 <head runat="server">
     <title>Infographic Generator Home Page</title>
-        <link href="../Styles/style.css" rel="stylesheet" type="text/css" />
-	    <script src="scripts/jquery-1.7.1.min.js"  type="text/javascript"></script>
-		<script type="text/javascript" src="../Scripts/jquery.roundabout.js"></script>
-		<script type="text/javascript" src="../Scripts/jquery.event.drag-2.0.js"></script>
-		<script type="text/javascript" src="../Scripts/jquery.event.drop-2.0.js"></script>
-		<script type="text/javascript">
-		    $(document).ready(function () {
-		        $('ul').roundabout({
-		           // minOpacity: 1,
-		            minScale: 0.6,
-		            reflect: true,
-		            enableDrag: true,
-		            tilt: -3
-		        });
-		    });
-		</script>
+        <link href="Styles/style.css" rel="stylesheet" type="text/css" />
 		<style type="text/css">
 			ul {
 				list-style: none;
@@ -90,13 +75,28 @@
     <div id="mpage">		
 		<div id="main">
 			<ul>
-				<li><span><a href="Sales.aspx"><img src="../images/icon_sale.png" alt="Sale"></a>Sale</span></li>
-				<li><span><a href="http://yahoo.com"><img src="../images/icon_service.png" alt="Service"></a>Service</span></li>
-				<li><span><a href="http://bing.com"><img src="../images/icon_lead.png" alt="Lead"></a>Lead</span></li>
+				<li><span><a href="Sales.aspx"><img src="images/icon_sale.png" alt="Sale"></a>Sale</span></li>
+				<li><span><a href="http://yahoo.com"><img src="images/icon_service.png" alt="Service"></a>Service</span></li>
+				<li><span><a href="http://bing.com"><img src="images/icon_lead.png" alt="Lead"></a>Lead</span></li>
 			</ul>
             <address></address>
 		</div>
 	</div>
+    	<script src="scripts/jquery-1.7.1.min.js"  type="text/javascript"></script>
+		<script type="text/javascript" src="Scripts/jquery.roundabout.js"></script>
+		<script type="text/javascript" src="Scripts/jquery.event.drag-2.0.js"></script>
+		<script type="text/javascript" src="Scripts/jquery.event.drop-2.0.js"></script>
+		<script type="text/javascript">
+		    $(document).ready(function () {
+		        $('ul').roundabout({
+		            // minOpacity: 1,
+		            minScale: 0.6,
+		            reflect: true,
+		            enableDrag: true,
+		            tilt: -3
+		        });
+		    });
+		</script>
 </body>
 </html>
 

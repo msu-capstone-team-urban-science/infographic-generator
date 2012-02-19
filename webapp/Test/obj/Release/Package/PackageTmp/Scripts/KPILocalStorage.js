@@ -37,18 +37,21 @@ function FormatDate(date) {
 
 //Send in a date from the sql database so that we can do the comparison to see if any KPI's date matches your search.
 function SearchKPIByDate(date) {
-    var retArr = new Array();
+    var returnArr = new Array();
     var locStorage = new Storage();
 
-    for(var i=0, l=locStorage.size(); i<l; i++) {
-        var value = locStorage.get(i);
-        if ( (FormatDate(value.KPI_Date).getMonth == FormatDate(date).getMonth) && (FormatDate(value.KPI_Date).getFullYear == FormatDate(date).getFullYear) ) {
-            var dataPoint = new Array(2);
-            dataPoint[0] = value.KPI_Name;
-            dataPoint[1] = value.KPI_Value;
 
-            retArr.push(dataPoint);
+    var counter = 0;
+    for(var i=0, l=locStorage.size(); i<l; i++) {
+        var value = locStorage.get(i);        
+        if (FormatDate(value.KPI_Date).getMonth() == date.getMonth()) {
+            if (FormatDate(value.KPI_Date).getFullYear() == date.getFullYear()) {
+                var dataPoint = new Array(2);
+                dataPoint[0] = value.KPI_Name;
+                dataPoint[1] = value.KPI_Value;
+                returnArr.push(dataPoint);
+            }
         }
     }
-    return retArr;
+    return returnArr;
 }

@@ -2,9 +2,12 @@
 // var ctx;
 // var offset=0;
 // var data = new Array(["sale1",89],["sale2",60],["sale3",75],["sale4",20],["sale5",100]);
-var offset=0;
-function init(){
-	drawGraph01();	//Retail_Sale
+var offset = 0;
+//TODO : Put this in some common place for all the infographics to see
+var monthname = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+
+function init(date) {
+	drawGraph01(date);	//Retail_Sale
 	drawGraph02();	//Used_Vehicle_Sale
 	drawGraph03();	//Cost_Per_Sale
 	drawGraph04();	//Pump_In_Sale
@@ -15,10 +18,10 @@ function init(){
 	drawGraph09();	//Competitive_Segment_Sale
 }
 
-function drawGraph01() {
+function drawGraph01(date) {
   canvas = document.getElementById("Retail_Sale");
   ctx = canvas.getContext("2d");
-  Retail_Sale();
+  Retail_Sale(date);
    //call Retail_Sale every 20 millisecond
   //return setInterval(Retail_Sale, 20);
 }
@@ -92,14 +95,23 @@ function drawGraph09() {
 }
 
 
-function Retail_Sale(){
+function Retail_Sale(date) {
 	img01 = new Image();
 	img01.src = 'images/retail_car.png';
+	var infoRet = SearchKPIByDate(date);
+	var retVal;
+
+	for (var i = 0; i < infoRet.length; i++) {
+	    if (infoRet[i][0] == "Retail_Sales") {
+	        retVal = infoRet[i][1];
+	    }
+	}
+
 
 	ctx.fillStyle="#EEEE00";
 	//draw rectangle in the back of the image
 	//x,y, width, height
-	fillHeight= -20*((153)/80);
+	fillHeight= (retVal)/-4;
 	if(fillHeight < -70)
 	{
 		fillHeight = -70;
@@ -112,8 +124,8 @@ function Retail_Sale(){
 	ctx.fillStyle="white";
 	//draw text
 	ctx.font = "bold 28pt Calibri";
-	ctx.fillText("Jan", 51, 135);
-	ctx.fillText(153, 47, 37);
+	ctx.fillText(monthname[date.getMonth()], 51, 135);
+	ctx.fillText(retVal, 47, 37);
 
 }
 

@@ -15,8 +15,15 @@
     <script type="text/javascript" src="Scripts/info.js"></script>
     <script src="scripts/jquery-1.7.1.min.js"  type="text/javascript"></script>
     <script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
+    <script type="text/javascript">
+        function StartupSales() {
+            LoadJSON();
+            var TodayDate = new Date;
+            init(TodayDate);   
+        }
+    </script>
 </head>
-<body onload="init();LoadJSON()">
+<body onload="StartupSales()">
     <div id="main">
 			<div id="part01">
 				<div id="header">
