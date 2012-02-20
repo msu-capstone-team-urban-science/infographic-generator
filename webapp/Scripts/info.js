@@ -70,20 +70,7 @@ function drawGraph04(date) // Need kpi names
 
     for (var i = 0; i < kpiArray.length; i++)
     {
-
-	    if (kpiArray[i][0] == "Pump_In_Sale_Nestor_Auto_Center")
-	    {
-		    kpiData.push(["Nestor Auto Center", kpiArray[i][1], "#69039d"]);
-	    }
-	    else if (kpiArray[i][0] == "Pump_In_Sale_Diamond_Automotive")
-	    {
-		    kpiData.push(["Diamond Automotive", kpiArray[i][1], "#283577"]);
-	    }
-	    else if (kpiArray[i][0] == "Pump_In_Sale_Anthony_Motors")
-	    {
-		    kpiData.push(["Anthony Motors", kpiArray[i][1], "#66a5c7"]);
-	    }
-	    else if (kpiArray[i][0] == "Pump_In_Sales_Anytown_Automotive")
+        if (kpiArray[i][0] == "Pump_In_Sales_Anytown_Automotive")
 	    {
 		    kpiData.push(["Anytown Automotive", kpiArray[i][1], "#ff9b00"]);
 	    }
@@ -95,6 +82,18 @@ function drawGraph04(date) // Need kpi names
 	    {
 		    kpiData.push(["Jefferson Automotive", kpiArray[i][1], "#b4213f"]);
 	    }
+	    else if (kpiArray[i][0] == "Pump_In_Sale_Nestor_Auto_Center")
+	    {
+		    kpiData.push(["Nestor Auto Center", kpiArray[i][1], "#69039d"]);
+	    }
+	    else if (kpiArray[i][0] == "Pump_In_Sale_Diamond_Automotive")
+	    {
+		    kpiData.push(["Diamond Automotive", kpiArray[i][1], "#283577"]);
+	    }
+	    else if (kpiArray[i][0] == "Pump_In_Sale_Anthony_Motors")
+	    {
+		    kpiData.push(["Anthony Motors", kpiArray[i][1], "#66a5c7"]);
+	    } 
     }
 
     Pump_In_Sale("Pump_In_Sale", 0, 0, 633, 400, kpiData);
