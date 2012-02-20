@@ -5,7 +5,7 @@
 var offset = 0;
 //TODO : Put this in some common place for all the infographics to see
 var monthname = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
-var fullMonthName = new Array("January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+var fullMonthName = new Array("January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
 
 function init(date) {
     drawGraph01(date); //Retail_Sale
