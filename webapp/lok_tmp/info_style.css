@@ -87,12 +87,15 @@ body {
 
 #info04{
 	position: relative;
-	padding-left: 150px;
+	padding-left: 320px;
 	top: -410px;
+}
+
+#info04 h{
 
 }
 
-.splitter{
+#splitter01{
 	position: relative;
 	top: -350px
 }
@@ -109,13 +112,13 @@ body {
 	background-image:url("images/bg.png");
 	top:160px;
 	background-repeat:repeat;
-	height: 1122px;
+	height: 520px;
 }
 
 #info05{
 	position: relative;
 	padding-left: 150px;
-	top:20px;
+	top:50px;
 }
 
 #Dealer_Retention02{
@@ -126,8 +129,8 @@ body {
 
 #info06{
 	position: relative;
-	padding-left: 500px;
-	top:-119px;
+	padding-left: 550px;
+	top:-90px;
 }
 
 #Visit_Per_Customer02{
@@ -138,10 +141,91 @@ body {
 
 #info07{
 	position: relative;
-	padding-left: 500px;
-	top:-119px;
+	top:-340px;
+	padding-left:120px;
+	color:white;
+
 }
 
+#Kevpointer{
+	position: relative;
+	top:-578px;
+}
+
+#dot04{
+	position: absolute;
+	top: 25px;
+	left: 480px;
+	height:170px;
+	border-color:#E0E0E0;
+	border-width: 8px;
+	border-left-style: dotted;
+}
+
+#dot05{
+	position: absolute;
+	top:220px;
+	left: 20px;
+	width: 975px;
+	border-color:#E0E0E0;
+	border-width: 8px;
+	border-bottom-style: dotted;
+}
+
+#splitter02{
+	position: relative;
+	top: -538px;
+}
+
+#part03{
+	position: relative;
+	background-image:url("images/bg03.png");
+	top:303px;
+	background-repeat:repeat;
+	height: 750px;
+}
+
+#info08{
+	position: relative;
+	top:50px;
+	padding-left:150px;
+	color:black;
+
+}
+
+#info09{
+	position: relative;
+	top:-303px;
+	padding-left:580px;
+	color:black;
+}
+
+#info10{
+	position: relative;
+	top:-250px;
+	padding-left:150px;
+	color:black;
+}
+
+#dot06{
+	position: absolute;
+	top: 45px;
+	left: 520px;
+	height:300px;
+	border-color:#2F4F4F;
+	border-width: 8px;
+	border-left-style: dotted;
+}
+
+#dot07{
+	position: absolute;
+	top:380px;
+	left: 20px;
+	width: 975px;
+	border-color:#2F4F4F;
+	border-width: 8px;
+	border-bottom-style: dotted;
+}
 
 
 
