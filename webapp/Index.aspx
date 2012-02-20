@@ -83,8 +83,8 @@
 		<div id="main">
 			<ul>
 				<li><span><a href="javascript:navigator_Go('Sales.aspx');"><img src="images/icon_sale.png" alt="Sale"></a>Sale</span></li>
-				<li><span><a href="http://yahoo.com"><img src="images/icon_service.png" alt="Service"></a>Service</span></li>
-				<li><span><a href="http://bing.com"><img src="images/icon_lead.png" alt="Lead"></a>Lead</span></li>
+				<li><span><a href="javascript:navigator_Go('http://yahoo.com');"><img src="images/icon_service.png" alt="Service"></a>Service</span></li>
+				<li><span><a href="javascript:navigator_Go('http://bing.com');"><img src="images/icon_lead.png" alt="Lead"></a>Lead</span></li>
 			</ul>
             <address></address>
 		</div>
