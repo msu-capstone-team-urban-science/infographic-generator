@@ -119,6 +119,7 @@ function drawGraph06(date) // Need KPI name
 			break;
 		}
 	}
+    alert(kpiData);
 	DrawPie("Dealer_Retention02", 0, 0, 100, 100, kpiData);
 }
 
