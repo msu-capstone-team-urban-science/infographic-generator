@@ -161,13 +161,14 @@ function Retail_Sale(date) {
     ctx.fillRect(25, 110, 110, -70);
     ctx.fillStyle = "#EEEE00";
     ctx.fillRect(25, 110, 110, fillHeight);
-    ctx.drawImage(img01, 0, 0, img01.width * 2, img01.height * 2);
-    ctx.fillStyle = "white";
-    //draw text
-    ctx.font = "bold 28pt Calibri";
-    ctx.fillText(monthname[date.getMonth()], 51, 135);
-    ctx.fillText(retVal, 47, 37);
-
+    img01.onload = function () {
+        ctx.drawImage(img01, 0, 0, img01.width * 2, img01.height * 2);
+        ctx.fillStyle = "white";
+        //draw text
+        ctx.font = "bold 28pt Calibri";
+        ctx.fillText(monthname[date.getMonth()], 51, 135);
+        ctx.fillText(retVal, 47, 37);
+    }
 }
 
 function Used_Vehicle_Sale(c, d) {
