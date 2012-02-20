@@ -21,7 +21,7 @@
         }
 
         function GetFullMonth() {
-            var fullMonthName = new Array("January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+            var fullMonthName = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
             var todate = new Date;
             document.getElementById('month').innerHTML = fullMonthName[todate.getMonth()];
         }
