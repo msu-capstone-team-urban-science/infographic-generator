@@ -1,7 +1,3 @@
-// var myCanvas;
-// var ctx;
-// var offset=0;
-// var data = new Array(["sale1",89],["sale2",60],["sale3",75],["sale4",20],["sale5",100]);
 var offset = 0;
 //TODO : Put this in some common place for all the infographics to see
 var monthname = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
