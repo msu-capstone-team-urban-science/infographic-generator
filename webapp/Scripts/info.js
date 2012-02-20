@@ -251,7 +251,7 @@ CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r)
 function Cost_Per_Sale(ctx, d)
 {
     var img02 = new Image();
-    var img02.src = 'images/cost_per_sale.png';
+    img02.src = 'images/cost_per_sale.png';
 
     ctx.fillStyle="#green";
     //draw rectangle in the back of the image
