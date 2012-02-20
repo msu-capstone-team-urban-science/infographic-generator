@@ -515,10 +515,11 @@ function Competitive_Segment_Sale() {
             ctx.drawImage(img04, 0, 0, img04.width, img04.height);
             ctx.font = "bold 34pt Calibri";
             ctx.fillText("LOST", 110, 30);
-            ctx.fillText("SALE", 120, 70);
+            ctx.fillText("SALES", 97, 70);
             ctx.fillStyle = "white";
             ctx.fillText("LOST", 111, 28);
-            ctx.fillText("SALES", 111, 68);
+            //TODO: FIX IT SO IT SAYS SALES INSTEAD OF SALE
+            ctx.fillText("SALES", 97, 68);
             ctx.fillStyle = "black";
             ctx.font = "bold 40pt Calibri";
             ctx.fillText(449, 155, 120);
