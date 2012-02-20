@@ -41,7 +41,12 @@
 		            tilt: -3
 		        });
 		    });
+
+            function navigator_Go(url) {
+                window.location.assign(url); // This technique is almost exactly the same as a full <a> page refresh, but it prevents Mobile Safari from jumping out of full-screen mode
+            }
 		</script>
+        
 		<style type="text/css">
 			ul {    
 				list-style: none;
@@ -77,7 +82,7 @@
     <div id="mpage">		
 		<div id="main">
 			<ul>
-				<li><span><a href="Sales.aspx"><img src="images/icon_sale.png" alt="Sale"></a>Sale</span></li>
+				<li><span><a href="javascript:navigator_Go('Sales.aspx');"><img src="images/icon_sale.png" alt="Sale"></a>Sale</span></li>
 				<li><span><a href="http://yahoo.com"><img src="images/icon_service.png" alt="Service"></a>Service</span></li>
 				<li><span><a href="http://bing.com"><img src="images/icon_lead.png" alt="Lead"></a>Lead</span></li>
 			</ul>
