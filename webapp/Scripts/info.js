@@ -119,7 +119,6 @@ function drawGraph06(date) // Need KPI name
 			break;
 		}
 	}
-    alert(kpiData);
 	DrawPie("Dealer_Retention02", 0, 0, 100, 100, kpiData);
 }
 
@@ -137,7 +136,7 @@ function drawGraph08(date) // Need KPI name
 
 	for (var i = 0; i < kpiArray.length; i++)
 	{
-		if (kpiArray[i][0] == "Visit_Per_Customer")
+		if (kpiArray[i][0] == "Visits_Per_Customer")
 		{
 			kpiData = kpiArray[i][1];
 			break;
