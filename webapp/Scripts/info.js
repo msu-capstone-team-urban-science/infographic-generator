@@ -253,7 +253,7 @@ function Cost_Per_Sale(ctx, d)
     var img02 = new Image();
     img02.src = 'images/cost_per_sale.png';
 
-    ctx.fillStyle="#green";
+    ctx.fillStyle="green";
     //draw rectangle in the back of the image
     //x,y, width, height
     img02.onload= function()
