@@ -391,7 +391,7 @@ function DrawPie(c, x, y, w, h, d)
 	context.shadowColor = textColor;
 	context.shadowBlur = 2;
 	context.fillStyle = textColor;
-	context.fillText((d*100) + "%", text_offset, centerY + (text_size / 2));
+	context.fillText(((Math.round(d*1000))/10) + "%", text_offset, centerY + (text_size / 2));
 }
 
 function DrawBox(ctx, text1, text2)
