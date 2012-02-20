@@ -8,7 +8,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<head runat="server">
+<head id="Head1" runat="server">
 
     <link href="Styles/info_style.css" rel="stylesheet" type="text/css" />
     <title>Infographic Generator</title>
@@ -19,7 +19,14 @@
         function StartupSales() {
             LoadJSON();
             var TodayDate = new Date;
-            init(TodayDate);   
+            init(TodayDate);
+            GetFullMonth();
+        }
+
+        function GetFullMonth() {
+            var fullMonthName = new Array("January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+            var todate = new Date;
+            document.getElementById('month').innerHTML = fullMonthName[todate.getMonth()];
         }
     </script>
 </head>
@@ -29,9 +36,7 @@
 				<div id="header">
 						<img src="images/header.jpg"></img>
 						<p id="category">Sales</p>
-						<p id="month"><script type="text/javascript">
-//var todate = new Date; fullMonthName[todate.getMonth()];
-</script></p>
+						<p id="month"></p>
 				</div>
 				<div id="infographic">
 					<div id="info01">
