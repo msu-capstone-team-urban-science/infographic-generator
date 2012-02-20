@@ -29,7 +29,9 @@
 				<div id="header">
 						<img src="images/header.jpg"></img>
 						<p id="category">Sales</p>
-						<p id="month"><script type="text/javascript">var todate = new Date; fullMonthName[todate.getMonth()];</script></p>
+						<p id="month"><script type="text/javascript">
+//var todate = new Date; fullMonthName[todate.getMonth()];
+</script></p>
 				</div>
 				<div id="infographic">
 					<div id="info01">
