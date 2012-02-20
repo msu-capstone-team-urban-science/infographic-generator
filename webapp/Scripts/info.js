@@ -60,7 +60,7 @@ function drawGraph03(date)
             break;
         }
     }
-    Cost_Per_Sale(ctx3[date, kpiData]);
+    Cost_Per_Sale(ctx3,[date, kpiData]);
 }
 
 function drawGraph04(date) // Need kpi names
