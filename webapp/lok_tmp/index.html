@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width/" >
+<meta name="viewport" content="width=device-width, maximum-scale=1.0" />
 	<head>
 		<title>Infographic element Demo</title>
-		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="stylesheet" media="all and (orientation:portrait)" href="portrait.css">
+		<link rel="stylesheet" media="all and (orientation:landscape)" href="landscape.css">
 		<script src="javascript/jquery-1.5.min.js"></script>
 		<script src="javascript/jquery.roundabout.js"></script>
 		<script src="javascript/jquery.event.drag-2.0.js"></script>
 		<script src="javascript/jquery.event.drop-2.0.js"></script>
+		<script type="text/javascript">
+			var updateLayout = function() {
+			  if (window.innerWidth != currentWidth) {
+				currentWidth = window.innerWidth;
+				var orient = (currentWidth == 320) ? "profile" : "landscape";
+				document.body.setAttribute("orient", orient);
+				window.scrollTo(0, 1);
+			  }
+			};
+			iPhone.DomLoad(updateLayout);
+			setInterval(updateLayout, 400);
+		</script>
 		<script>
 		/*
 		   $(document).ready(function() {
@@ -59,15 +75,13 @@
 		</style>
 	</head>
 	<body>
-	<div id="mpage">		
-		<div id="main">
-			<ul>
-				<li><span><a href="http://google.com"><img src="images/icon_sale.png" alt="Sale"></a>Sale</span></li>
-				<li><span><a href="http://yahoo.com"><img src="images/icon_service.png" alt="Service"></a>Service</span></li>
-				<li><span><a href="http://bing.com"><img src="images/icon_lead.png" alt="Lead"></a>Lead</span></li>
-			</ul>
-            <address></address>
-		</div>
+	<div id="main">
+		<ul>
+			<li><span><a href="info.html"><img src="images/icon_sale.png" alt="Sale"></a>Sale</span></li>
+			<li><span><a href="http://yahoo.com"><img src="images/icon_service.png" alt="Service"></a>Service</span></li>
+			<li><span><a href="http://bing.com"><img src="images/icon_lead.png" alt="Lead"></a>Lead</span></li>
+		</ul>
+		<address></address>
 	</div>
 	</body>
 </html>
