@@ -7,15 +7,43 @@
 </script>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width/" >
+<meta name="viewport" content="width=device-width, maximum-scale=1.0" />
 
 <head runat="server">
-    <title>Infographic Generator Home Page</title>
+    <title>Infographics Generator Home Page</title>
+        <link rel="stylesheet" media="all and (orientation:portrait)" href="Styles/portrait.css">
+		<link rel="stylesheet" media="all and (orientation:landscape)" href="Styles/landscape.css">
         <link href="Styles/style.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="Scripts/jquery.roundabout.js"></script>
+		<script type="text/javascript" src="Scripts/jquery.event.drag-2.0.js"></script>
+		<script type="text/javascript" src="Scripts/jquery.event.drop-2.0.js"></script>
+		<script type="text/javascript">
+		    var updateLayout = function () {
+		        if (window.innerWidth != currentWidth) {
+		            currentWidth = window.innerWidth;
+		            var orient = (currentWidth == 320) ? "profile" : "landscape";
+		            document.body.setAttribute("orient", orient);
+		            window.scrollTo(0, 1);
+		        }
+		    };
+		    iPhone.DomLoad(updateLayout);
+		    setInterval(updateLayout, 400);
+		</script>
+		<script type="text/javascript">
+		    $(document).ready(function () {
+		        $('ul').roundabout({
+		            minScale: 0.6,
+		            reflect: true,
+		            enableDrag: true,
+		            tilt: -3
+		        });
+		    });
+		</script>
 		<style type="text/css">
-			ul {
+			ul {    
 				list-style: none;
 				padding: 0;
 				margin: 0 auto;
@@ -23,10 +51,9 @@
 				height: 24em;
 			}
 			li {
-				
-				<%--height: 12em;
-				width: 12em;
-				background-color: #ffffff;--%>
+				//height: 12em;
+				//width: 12em;
+				//background-color: #ffffff;
 				opacity: 0.1;
 				text-align: center;
 				cursor: pointer;
@@ -44,33 +71,8 @@
 				display: block;
 				padding-top: 3.5em;
 			}
-			////////////
-			@media all and (max-width: 768px) {
-				body {
-					/* extra styles for mobile or portrait*/
-				}
-			}
-
-			@media all and (min-width: 769px) {
-				body {
-					/* extra styles for desktop or landscape*/
-				}
-			}
-			if (!isNaN(window.orientation)) {
-				var orientation = (window.orientation == 0 || window.orientation == 180) ? "portrait" : "landscape";
-				$("body").addClass(orientation);
-			} else {
-				// Choose layout depending on viewport width
-				var orientation = ($(window).width() < 980) ? "portrait" : "landscape";
-				$("body").addClass(orientation);
-			}
-			
-			window.onorientationchange = function() {
-				var orientation = (window.orientation == 0 || window.orientation == 180) ? "portrait" : "landscape";
-				$("body").attr("class", orientation);
-			}
 		</style>
-</head>
+	</head>
 <body>
     <div id="mpage">		
 		<div id="main">
@@ -82,21 +84,7 @@
             <address></address>
 		</div>
 	</div>
-    	<script src="scripts/jquery-1.7.1.min.js"  type="text/javascript"></script>
-		<script type="text/javascript" src="Scripts/jquery.roundabout.js"></script>
-		<script type="text/javascript" src="Scripts/jquery.event.drag-2.0.js"></script>
-		<script type="text/javascript" src="Scripts/jquery.event.drop-2.0.js"></script>
-		<script type="text/javascript">
-		    $(document).ready(function () {
-		        $('ul').roundabout({
-		            // minOpacity: 1,
-		            minScale: 0.6,
-		            reflect: true,
-		            enableDrag: true,
-		            tilt: -3
-		        });
-		    });
-		</script>
+
 </body>
 </html>
 

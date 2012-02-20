@@ -2,26 +2,29 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+<script runat="server">
+
+</script>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <head id="Head1" runat="server">
 
-    <link href="Styles/info_style.css" rel="stylesheet" type="text/css" />
-    <title>Infographic Generator</title>
-    <script type="text/javascript" src="Scripts/info.js"></script>
-    <script src="scripts/jquery-1.7.1.min.js"  type="text/javascript"></script>
+    <link href="Styles/sales_style.css" rel="stylesheet" type="text/css" />
+    <title>Infographics Generator</title>
+    <script type="text/javascript" src="Scripts/sales.js"></script>
+    <script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"  ></script>
     <script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
     <script type="text/javascript">
         function StartupSales() {
             LoadJSON();
-			//TODO : SYNC This date with the date below.
             var TodayDate = new Date;
             init(TodayDate);
             GetFullMonth();
         }
 
         function GetFullMonth() {
-            var fullMonthName = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+            var fullMonthName = new Array("January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
             var todate = new Date;
             document.getElementById('month').innerHTML = fullMonthName[todate.getMonth()];
         }
@@ -37,14 +40,14 @@
 				</div>
 				<div id="infographic">
 					<div id="info01">
-						<h2>Retail Sale</h2>
+						<h2>Retail Sales</h2>
 						<canvas id="Retail_Sale" width="155" height="150">
 							<!-- Insert fallback content here -->
 							Sorry, your browser doesn't support canvas technology
 						</canvas>
 					</div>
 					<div id="info02">
-						<h2>Used Vehicle Sale</h2>
+						<h2>Used Vehicle Sales</h2>
 						<canvas id="Used_Vehicle_Sale" width="165" height="150">
 							<!-- Insert fallback content here -->
 							Sorry, your browser doesn't support canvas technology
@@ -58,7 +61,7 @@
 						</canvas>
 					</div>
 					<div id="info04">
-						<h2>Cost Per Sale</h2>
+						<h2>Pump In Sales</h2>
 						<canvas id="Pump_In_Sale" width="630" height="400">
 							<!-- Insert fallback content here -->
 							Sorry, your browser doesn't support canvas technology
@@ -67,7 +70,8 @@
 					<div id="dot01"></div>
 					<div id="dot02"></div>
 					<div id="dot03"></div>
-					<div class="splitter"><img src="images/splitter.png"></img></div>
+					<div id="splitter01"> <img src="images/splitter.png"></img>
+                    </div>
 				</div>
 			</div>
 			<div id="part02">
@@ -92,14 +96,43 @@
 							Sorry, your browser doesn't support canvas technology
 						</canvas>
 				</div>
+                <img src="images/PointingDude.png" id="Kevpointer">
 				<div id="info07">
-						<h2>Cost Per Sale</h2>
+						<h2>Competitive Segment Sales</h2>
 						<canvas id="Competitive_Segment_Sale" width="630" height="400">
 							<!-- Insert fallback content here -->
 							Sorry, your browser doesn't support canvas technology
 						</canvas>
-					</div>
+			    </div>
+                <div id="splitter02"><img src="images/splitter.png"></div>
+				<div id="dot04"></div>
+				<div id="dot05"></div>
 			</div>
+			<div id="part03">
+				<div id="info08">
+					<h2>Lost Profit</h2>
+					<canvas id="Lost_Profit" width="360" height="280">
+						<!-- Insert fallback content here -->
+						Sorry, your browser doesn't support canvas technology
+					</canvas>
+				</div>
+				<div id="info09">
+					<h2>Lost Sales</h2>
+					<canvas id="Lost_Sale" width="237" height="235">
+						<!-- Insert fallback content here -->
+						Sorry, your browser doesn't support canvas technology
+					</canvas>
+				</div>
+				<div id="info10">
+					<h2>Customers</h2>
+					<canvas id="Customer" width="700" height="180">
+						<!-- Insert fallback content here -->
+						Sorry, your browser doesn't support canvas technology
+					</canvas>
+				</div>
+				<div id="dot06"></div>
+				<div id="dot07"></div>
+            </div>
 		</div>
 </body>
 </html>
