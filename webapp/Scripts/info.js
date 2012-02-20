@@ -83,13 +83,13 @@ function drawGraph04(date) // Need kpi names
 	    {
 		    kpiData.push(["Anthony Motors", kpiArray[i][1], "#66a5c7"]);
 	    }
-	    else if (kpiArray[i][0] == "Pump_In_Sale_Anytown_Automotive")
+	    else if (kpiArray[i][0] == "Pump_In_Sales_Anytown_Automotive")
 	    {
 		    kpiData.push(["Anytown Automotive", kpiArray[i][1], "#ff9b00"]);
 	    }
-	    else if (kpiArray[i][0] == "Pump_In_Sale_Alan_Autosmart")
+	    else if (kpiArray[i][0] == "Pump_In_Sale_Allan_Autosmart")
 	    {
-		    kpiData.push(["Alan Autosmart", kpiArray[i][1], "#f54c08"]);
+		    kpiData.push(["Allan Autosmart", kpiArray[i][1], "#f54c08"]);
 	    }
 	    else if (kpiArray[i][0] == "Pump_In_Sale_Jefferson_Automotive")
 	    {
