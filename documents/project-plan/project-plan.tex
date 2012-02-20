@@ -1,18 +1,25 @@
 \documentclass[11pt,a4paper,oneside]{article}
 \usepackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
 \usepackage[section]{placeins}
+\usepackage{fancyhdr}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks,
-    citecolor=blue,
-    filecolor=blue,
-    linkcolor=blue,
-    urlcolor=blue
+    citecolor=RoyalBlue,
+    filecolor=RoyalBlue,
+    linkcolor=RoyalBlue,
+    urlcolor=RoyalBlue
 }
 \usepackage[all]{hypcap}
+\pagestyle{fancyplain}
 
 \begin{document}
+\lhead{Infographic Generator}
+\rhead{Project Plan}
 \begin{titlepage}
+
+
 
 \begin{center}
 
@@ -47,18 +54,31 @@ Kevin Shreve\\
 \section{Executive Summary}
 
 
-The Infographics generator will create a new an intuitive way to present the Key Performance Indicators (KPI) that Urban Science has been collecting. Our HTML5 mobile application will be used to show Corporate OEM’s or Ford plant managers, the exact kind of data to improve performance.\\
+Over three decades ago, a professor at Wayne State University took on a challenge because Cadillac called it unsolvable.  That man was Jim Anderson.  His computer-generated dot maps gave Cadillac's marketing department a competitive advantage by allowing them to easily visualize dealership locations across the nation.  Jim began using the power of computers to analyze these networks of dealerships and started a company that specialized in the planning and management of these networks.  Thus, Urban Science was born.\\
 
-The main objective of this system is to increase usage of the KPI data, and make it easier to read and understand. Users will be able to use a selection screen to find a category in which they have interest. Once a category is selected, the following screen will bring up an infographic containing data related to that category. This functionality will allow the user to easily find the infographic they want to see. Urban Science is in a great market position, where in bad economic times companies use their data to save money, and in good economic times companies use Urban Science to help them make money. Our application will deliver a robust solution to break down the data, so that clients can know exactly what relevant data in order to be successful.\\
 
-Our software will also build the framework to allow Urban Science to continue to use our product, by being able to easily add in more infographics. This allows for future extensibility for Urban Science to keep the similar look and feel that the users will become accustomed to seeing. This product will be a key selling point for Urban Science to offer its clientele as the easy to understand interface will guide their customers towards new goals.\\
+Urban Science is now an international company, headquartered in Detroit, Michigan.  They assist nearly every original equipment manufacturer (OEM) in over 60 countries.  Our job is to design a webapp to show OEMs monthly performance data on vehicle sales, lead management, and service for their primary market area.  OEMs use this performance data to adjust spending to maximize their market potential.  The appeal of our webapp is its ease of use, and visual appeal.\\
+
+
+In today's world, the display of information is an evolving art.  Yesterday's solution was clipart and spreadsheets, but that is no longer enough.  We require a more impactful approach to delivering a point.  The modern solution is an informaiton graphic or infographic.  An infographic is a graphical display that quickly conveys data that would otherwise require a lengthy explanation.  Modern infographics use clever design schemes and cartoon charecters to keep the viewer interested and to show relationships in the data.\\
+
+
+Our webapp uses a brand new type of infographic that is designed to update dynamically.  It uses information directly from Urban Science to generate graphics that reflect the most up-to-date monthly data.  The webapp also provides the ability to view previous months to allow OEMs to refrence historical data.\\
 
 
 \section{Functional Specifications}
 
-The main focus of project is to create a new and creative experience for the KPI data. The user interface will be very simple, allowing for on the fly use by those giving presentations or demonstrating the product to clients. When a client sees this unique display of information they will assuredly choose Urban Science to help them with their strategy.\\
 
-The system will be a standalone web app, but may have the possibility of being pulled into another website at their discretion. It will be displayed via Safari on an iPad, with the android platform or access via a desktop computer being the secondary access point.\\
+features: 
+   - infographics
+   - months
+   - menu
+   - dynamicness
+
+
+The webapp is focus of project is to create a new and creative experience for the KPI data. The user interface will be very simple, allowing for on the fly use by those giving presentations or demonstrating the product to clients. When a client sees this unique display of information they will assuredly choose Urban Science to help them with their strategy.\\
+
+
 
 
 \section{Design Specifications}
@@ -137,7 +157,7 @@ The main menu will be used to select a category.  Once the category has been sel
 
 \section{Schedule}
 
-\subsection{Week 1 (Jan 9 - Jan 15)}
+\subsection{Week 1 (January 9, 2012)}
 \begin{itemize}
 \item Had our first conference call with our customer
 \item Set up weekly conference calls with our customer
@@ -146,7 +166,7 @@ The main menu will be used to select a category.  Once the category has been sel
 \end{itemize}
 
 
-\subsection{Week 2 (Jan 16 - Jan 22)}
+\subsection{Week 2 (January 16, 2012)}
 \begin{itemize}
 \item Started UML diagrams
 \item Installed Windows Server 2008 R2
@@ -156,7 +176,7 @@ The main menu will be used to select a category.  Once the category has been sel
 \item Talked with our customer about interface mockups
 \end{itemize}
 
-\subsection{Week 3 (Jan 23 - Jan 29)}
+\subsection{Week 3 (January 23, 2012)}
 \begin{itemize}
 \item Completed more UML diagrams
 \item First draft of project-plan
@@ -165,20 +185,107 @@ The main menu will be used to select a category.  Once the category has been sel
 \item Created sample infographic elements
 \end{itemize}
 
-\subsection{Week 4 (Jan 30 - Feb 5)}
+\subsection{Milestone: Status Reports}
+\begin{itemize}
+\item Gave report to class
+\end{itemize}
+
+\subsection{Week 4 (January 30, 2012)}
 \begin{itemize}
 \item Created infographic elements using actual KPI data
 \item Wrote website to showcase infographics
 \item Decided to work on sales infographic first
 \end{itemize}
 
-\subsection{Week 4 (Feb 6 - Feb 12)}
+\subsection{Milestone: Project Plan Presentation}
+\begin{itemize}
+\item Gave presentation in class
+\end{itemize}
+
+\subsection{Week 5 (February 6, 2012)}
 \begin{itemize}
 \item Presented project plan to class
 \item Changed from using XML to JSON for pulling database information
 \item Have roundabout working with several images for infographic selector buttons
 \item Successfully pulled data from a SQL database using ASP.NET
 \end{itemize}
+
+\subsection{Week 6 (February 13, 2012)}
+\begin{itemize}
+\item more of the same
+\end{itemize}
+
+\subsection{Week 7 (February 20, 2012)}
+\begin{itemize}
+\item more of the same
+\end{itemize}
+
+\subsection{Milestone: Alpha Demonstrations}
+\begin{itemize}
+\item Has not occured
+\end{itemize}
+
+\subsection{Week 8 (February 27, 2012)}
+\begin{itemize}
+\item more of the same
+\end{itemize}
+
+\subsection{Week 9 (March 12, 2012)}
+\begin{itemize}
+\item more of the same
+\end{itemize}
+
+\subsection{Week 10 (March 19, 2012)}
+\begin{itemize}
+\item more of the same
+\end{itemize}
+
+\subsection{Week 11 (March 26, 2012)}
+\begin{itemize}
+\item more of the same
+\end{itemize}
+
+\subsection{Milestone: Beta Demonstrations}
+\begin{itemize}
+\item Has not occured
+\end{itemize}
+
+\subsection{Week 12 (April 2, 2012)}
+\begin{itemize}
+\item more of the same
+\end{itemize}
+
+\subsection{Week 13 (April 9, 2012)}
+\begin{itemize}
+\item more of the same
+\end{itemize}
+
+\subsection{Week 14 (April 16, 2012)}
+\begin{itemize}
+\item more of the same
+\end{itemize}
+
+\subsection{Week 15 (April 23, 2012)}
+\begin{itemize}
+\item more of the same
+\end{itemize}
+
+\subsection{Milestone: Projet Video}
+\begin{itemize}
+\item Has not occured
+\end{itemize}
+
+\subsection{Milestone: All Deliverables}
+\begin{itemize}
+\item Has not occured
+\end{itemize}
+
+\subsection{Milestone: Design Day}
+\begin{itemize}
+\item Has not occured
+\end{itemize}
+
+
 
 
 \section{Risks}
