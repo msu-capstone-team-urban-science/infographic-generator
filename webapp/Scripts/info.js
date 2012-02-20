@@ -126,7 +126,7 @@ function drawGraph07(date)
 {
 	canvas = document.getElementById("Visit_Per_Customer01");
 	ctx5 = canvas.getContext("2d");
-	DrawBox(ctx5, "Visit Per", "Customer");
+	DrawBox(ctx5, "Visits Per", "Customer");
 }
 
 function drawGraph08(date) // Need KPI name
