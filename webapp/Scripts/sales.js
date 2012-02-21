@@ -2,7 +2,10 @@ var offset = 0;
 //TODO : Put this in some common place for all the infographics to see
 var monthname = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
 var fullMonthName = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
-
+var stopPoint;
+var stopPos=0;
+var Comp_Seg_Sale_data = new Array(["Anytown Automotive",98],["Jeff Williams Toyota",167],["Uptown Honda",105],["Fred Rodges Mazda",103],["Garrett Ford",68],["Peter Lake Ford", 50]);
+var customer_data = {'Single Visit Customer':567,'Recent Sales Customer':184,};
 function init(date) {
     drawGraph01(date); //Retail_Sale
     drawGraph02(date); //Used_Vehicle_Sale
@@ -15,13 +18,11 @@ function init(date) {
     drawGraph09(date); //Competitive_Segment_Sale
     drawGraph10(date); //Lost_Profit
     drawGraph11(date); //Lost_Sale
-    drawGraph12(date); //Customer
+//    drawGraph12(date); //Customer
 }
 
 function drawGraph01(date) {
-    canvas = document.getElementById("Retail_Sale");
-    ctx = canvas.getContext("2d");
-    Retail_Sale(date);
+    Retail_Sale("Retail_Sale", date);
     //call Retail_Sale every 20 millisecond
     //return setInterval(Retail_Sale, 20);
 }
@@ -41,8 +42,6 @@ function drawGraph02(date) {
 }
 
 function drawGraph03(date) {
-    canvas = document.getElementById("Cost_Per_Sale");
-    ctx3 = canvas.getContext("2d");
     var kpiArray = SearchKPIByDate(date);
     var kpiData = "";
 
@@ -52,7 +51,7 @@ function drawGraph03(date) {
             break;
         }
     }
-    Cost_Per_Sale(ctx3, [date, kpiData]);
+    Cost_Per_Sale("Cost_Per_Sale", [date, kpiData]);
 }
 
 function drawGraph04(date) // Need kpi names
@@ -62,32 +61,30 @@ function drawGraph04(date) // Need kpi names
 
     for (var i = 0; i < kpiArray.length; i++) {
         if (kpiArray[i][0] == "Pump_In_Sales_Anytown_Automotive") {
-            kpiData.push(["Anytown Automotive", kpiArray[i][1], "#ff9b00"]);
+            kpiData.push([kpiArray[i][1], "Anytown Automotive", "#ff9b00"]);
         }
         else if (kpiArray[i][0] == "Pump_In_Sale_Allan_Automart") {
-            kpiData.push(["Allan Automart", kpiArray[i][1], "#f54c08"]);
+            kpiData.push([kpiArray[i][1], "Allan Automart", "#f54c08"]);
         }
         else if (kpiArray[i][0] == "Pump_In_Sale_Jefferson_Automotive") {
-            kpiData.push(["Jefferson Automotive", kpiArray[i][1], "#b4213f"]);
+            kpiData.push([kpiArray[i][1], "Jefferson Automotive", "#b4213f"]);
         }
         else if (kpiArray[i][0] == "Pump_In_Sale_Nestor_Auto_Center") {
-            kpiData.push(["Nestor Auto Center", kpiArray[i][1], "#69039d"]);
+            kpiData.push([kpiArray[i][1], "Nestor Auto Center", "#69039d"]);
         }
         else if (kpiArray[i][0] == "Pump_In_Sale_Diamond_Automotive") {
-            kpiData.push(["Diamond Automotive", kpiArray[i][1], "#283577"]);
+            kpiData.push([kpiArray[i][1], "Diamond Automotive", "#283577"]);
         }
         else if (kpiArray[i][0] == "Pump_In_Sale_Anthony_Motors") {
-            kpiData.push(["Anthony Motors", kpiArray[i][1], "#66a5c7"]);
+            kpiData.push([kpiArray[i][1], "Anthony Motors", "#66a5c7"]);
         }
     }
-
+   
     Pump_In_Sale("Pump_In_Sale", 0, 0, 633, 400, kpiData);
 }
 
 function drawGraph05(date) {
-    var canvas = document.getElementById("Dealer_Retention01");
-    var ctx4 = canvas.getContext("2d");
-    DrawBox(ctx4, "Dealer", "Retention");
+    DrawBox("Dealer_Retention01", "Dealer", "Retention");
 }
 
 function drawGraph06(date) // Need KPI name
@@ -105,9 +102,7 @@ function drawGraph06(date) // Need KPI name
 }
 
 function drawGraph07(date) {
-    canvas = document.getElementById("Visit_Per_Customer01");
-    ctx5 = canvas.getContext("2d");
-    DrawBox(ctx5, "Visits Per", "Customer");
+    DrawBox("Visit_Per_Customer01", "Visits Per", "Customer");
 }
 
 function drawGraph08(date) // Need KPI name
@@ -142,15 +137,30 @@ function drawGraph09(date) {
 }
 
 function drawGraph10(date) {
-    canvas = document.getElementById("Lost_Profit");
-    ctx7 = canvas.getContext("2d");
-    Lost_Profit(ctx7);
+    var kpiArray = SearchKPIByDate(date);
+    var kpiData = "";
+
+    for (var i = 0; i < kpiArray.length; i++) {
+        if (kpiArray[i][0] == "Lost_Profit") {
+            kpiData = kpiArray[i][1];
+            break;
+        }
+    }
+    Lost_Profit("Lost_Profit", kpiData);
 }
 
 function drawGraph11(date) {
-    canvas = document.getElementById("Lost_Sale");
-    ctx8 = canvas.getContext("2d");
-    Lost_Sale(ctx8);
+
+    var kpiArray = SearchKPIByDate(date);
+    var kpiData = "";
+
+    for (var i = 0; i < kpiArray.length; i++) {
+        if (kpiArray[i][0] == "Lost_Sale") {
+            kpiData = kpiArray[i][1];
+            break;
+        }
+    }
+    Lost_Sale("Lost_Sale", kpiData);
 }
 
 function drawGraph12(date) {
@@ -160,8 +170,11 @@ function drawGraph12(date) {
 }
 
 
-function Retail_Sale(date) {
-    img01 = new Image();
+function Retail_Sale(c, date) {
+    var canvas = document.getElementById(c);
+    var ctx = canvas.getContext("2d");
+
+    var img01 = new Image();
     img01.src = 'images/retail_car.png';
     var infoRet = SearchKPIByDate(date);
     var retVal;
@@ -214,7 +227,7 @@ function Used_Vehicle_Sale(c, d) {
     ctx.fillRect(20, 100, 130, 35);
     ctx.fillStyle = "black";
     //date
-    ctx.fillText(monthname[d[0].getMonth()], 45, 90);
+    ctx.fillText(monthname[d[0].getMonth()] +" "+d[0].getFullYear().toString().substr(2, 3), 45, 90);
     //data
     ctx.fillText(d[1], 70, 130);
 }
@@ -238,7 +251,11 @@ CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
     return this;
 }
 
-function Cost_Per_Sale(ctx, d) {
+function Cost_Per_Sale(c, d) {
+
+    var canvas = document.getElementById(c);
+    var ctx = canvas.getContext("2d");
+
     var img02 = new Image();
     img02.src = 'images/cost_per_sale.png';
 
@@ -261,6 +278,7 @@ function Pump_In_Sale(c, x, y, w, h, d) {
     // BUG: bottom most text may extend over max defined width. if last
     // piece of data is small, allow some extra room on the canvas for
     // slightly overextended text.
+
     var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
     var blX = x;
@@ -272,12 +290,13 @@ function Pump_In_Sale(c, x, y, w, h, d) {
     var controlX = x;
     var controlY = y;
 
+    d.sort(); // puts the smallest data on top
 
     // find sum of all data for spacing
     var i = 0;
     var sum = 0;
     for (i = 0; i < d.length; i = i + 1) {
-        sum = sum + parseInt(d[i][1]);
+        sum = sum + parseInt(d[i][0]);
     }
 
 
@@ -299,7 +318,7 @@ function Pump_In_Sale(c, x, y, w, h, d) {
     for (i = 0; i < d.length; i = i + 1) {
         context.beginPath();
         context.moveTo(blX, blY);
-        var temp = ((d[i][1] / sum) * h)
+        var temp = ((d[i][0] / sum) * h)
         midY = midY + temp;
         context.quadraticCurveTo(controlX, midY, midX, midY);
         context.quadraticCurveTo(trX, midY, trX, trY);
@@ -318,7 +337,7 @@ function Pump_In_Sale(c, x, y, w, h, d) {
         var text_size = 10;
         context.font = "bold " + text_size + "pt Calibri";
         context.fillStyle = "#ffffff";
-        context.fillText(d[i][0], (midX / 3) * 2.5, midY - temp / 2 + text_size / 2);
+        context.fillText(d[i][1], (midX / 3) * 2.5, midY - temp / 2 + text_size / 2);
     }
 }
 
@@ -376,9 +395,10 @@ function DrawPie(c, x, y, w, h, d) {
     context.fillText(((Math.round(d * 1000)) / 10) + "%", text_offset, centerY + (text_size / 2));
 }
 
-function DrawBox(ctx, text1, text2) {
+function DrawBox(c, text1, text2) {
     // Create fill gradient
-
+    var canvas = document.getElementById(c);
+    var ctx = canvas.getContext("2d");
 
     // Fill the path
     //ctx.fllStyle = gradient;
@@ -404,39 +424,78 @@ function DrawBox(ctx, text1, text2) {
 }
 
 function Competitive_Segment_Sale() {
-    canvas = document.getElementById("Competitive_Segment_Sale");
-    ctx6 = canvas.getContext("2d");
-    img03 = new Image();
-    img03.src = 'images/car2.png';
-    var data = new Array(["sale1", 89], ["sale2", 60], ["sale3", 75], ["sale4", 20], ["sale5", 100]);
-    ctx6.fillStyle = '#00F';
-
-    i = 0;
-    for (i = 0; i < data.length; i++) {
-        position = Math.floor(data[i][1] / 10);
-        if (offset < position) {
-            offset += 0.05;
-            ctx6.drawImage(img03, 70 + offset * 30, i * 30, img03.width, img03.height);
-            ctx6.clearRect(70 + (offset - 1) * 30, i * 30, img03.width, img03.height);
-            if (offset >= position) {
-                // ctx6.clearRect(70+(offset)*30, i*30, img03.width, img03.height);
-                // offset=0;
-
-                j = 0;
-                n = offset;
-                //for(j=0;j<data.length;j++)
-                //{
-                n += 0.05;
-                ctx6.clearRect(70 + (n) * 30, i * 30, img03.width, img03.height);
-
-                //}
-                offset = 0;
-            }
-        }
-    }
+	var canvas = document.getElementById("Competitive_Segment_Sale");
+	var ctx6 = canvas.getContext("2d");
+	var img03 = new Image();
+	img03.src = 'images/car2.png';
+	//var data = new Array(["sale1",89],["sale2",60],["sale3",75],["sale4",20],["sale5",100]);
+	ctx6.fillStyle ='#00F';
+	
+	var i=0;
+	for(i=0;i<Comp_Seg_Sale_data.length;i++)
+	{
+		position = Math.floor(Comp_Seg_Sale_data[i][1]/15);
+		if(offset < position){
+			offset+=0.05;
+			ctx6.drawImage(img03, 180+offset*30, i*30, img03.width, img03.height);
+			ctx6.clearRect(180+(offset-1)*30, i*30, img03.width, img03.height);
+			if(offset >= position)
+			{
+				stopPoint[stopPos]=offset;
+				stopPos++;
+				
+				//TODO animation
+				// ctx6.clearRect(70+(offset)*30, i*30, img03.width, img03.height);
+				
+				
+				
+				// n=offset;
+				//for(j=0;j<data.length;j++)
+				//{
+				// n+=0.05;
+					// ctx6.clearRect(70+(n)*30, i*30, img03.width, img03.height);
+					
+				//}
+				// offset=0;
+			}
+			
+		}
+		// if(stopPos-1 >= data.length)
+		// {
+			// alert(offset);
+			// offset=0;
+			// j=0;
+			// for(j=0;j<data.length;j++)
+			// {
+				// ctx6.clearRect(70+(stopPoint[j])*30, j*30, img03.width, img03.height);
+			// }
+		// }
+		// else
+		// {
+			// j=0;
+			// n=offset-10;
+			// for(j=0;j<data.length;j++)
+			// {
+				// n+=0.01;
+				//ctx6.clearRect(70+(n)*30, j*30, img03.width, img03.height);
+				
+			// }
+			// offset=0;
+		//}
+		
+	}
+	
+	// j=0;
+	// for(j=0;j<data.length;j++)
+	// {
+		// ctx6.clearRect(70+(stopPoint[j])*30, j*30, img03.width, img03.height);
+	// }
 }
 
-    function Lost_Profit(context) {
+    function Lost_Profit(c, d) {
+        var canvas = document.getElementById(c);
+        var context = canvas.getContext("2d");
+
         var lineWidth = 8;
         var innerBorder = 5;
         var primaryColor = "#ffc821";
@@ -496,7 +555,7 @@ function Competitive_Segment_Sale() {
         // Draw the text exclamation point
         context.font = "40px Arial";
         context.fillStyle = "red";
-        context.fillText("$" + 886388, 190, 100);
+        context.fillText("$" + d, 190, 100);
 
         context.textAlign = "center";
         context.textBaseline = "middle";
@@ -508,8 +567,11 @@ function Competitive_Segment_Sale() {
 
     }
 
-    function Lost_Sale(ctx) {
-        img04 = new Image();
+    function Lost_Sale(c, d) {
+        var canvas = document.getElementById(c);
+        var ctx = canvas.getContext("2d");
+
+        var img04 = new Image();
         img04.src = 'images/puzzle.png';
         img04.onload = function () {
             ctx.drawImage(img04, 0, 0, img04.width, img04.height);
@@ -527,16 +589,16 @@ function Competitive_Segment_Sale() {
     }
 
 
-    function Customer(div, w, h, c1, c2) {
+    function Customer(canvas, w, h, c1, c2) {
         //Adjust chart width and height
         w = w - 20; h = h - 50;
-        var c = document.getElementById(div);
+        var c = document.getElementById(canvas);
         // Check the element is in the DOM and the browser supports canvas
         if (c.getContext) {
             var ctx7 = c.getContext("2d");
             var max = 0; //Innitialise maximum bar height to zero
             var len = 0; //Innitialise no of bars to zero
-            sum = 0;
+            var sum = 0;
             for (key in customer_data) {
                 if (customer_data[key] > max) max = customer_data[key];
                 sum += customer_data[key];
@@ -551,8 +613,8 @@ function Competitive_Segment_Sale() {
             gradient.addColorStop(1, '#000');
 
             max = max - border;
-            txtArea = w * 0.2 * 1.7;
-            full = w - (border * 2) - txtArea;
+            var txtArea = w * 0.2 * 1.7;
+            var full = w - (border * 2) - txtArea;
             ctx7.strokeStyle = '#fff';
             ctx7.save();
 
@@ -561,7 +623,7 @@ function Competitive_Segment_Sale() {
             ctx7.shadowBlur = border / 2;
             ctx7.shadowColor = "black";
             ctx7.fillStyle = c1;
-            n = 0;
+            var n = 0;
             for (key in customer_data) {
                 ctx7.fillRect(border + txtArea, (border * 2) + (bar_h * n), (customer_data[key] / max) * full, bar_h - border);
                 n++;
