@@ -1,0 +1,13 @@
+body {
+	background-color : #FFF1230;
+	background-image:url("images/main_bk_pt.png");
+	background-repeat: no-repeat;
+	
+	background-attachment:fixed;
+}
+
+#main{
+	position:absolute;
+	left: 0px;
+	top:100px;
+}
