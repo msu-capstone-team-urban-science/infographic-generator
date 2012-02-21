@@ -4,8 +4,7 @@ var monthname = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"
 var fullMonthName = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
 var stopPoint;
 var stopPos=0;
-var Comp_Seg_Sale_data = new Array(["Anytown Automotive",98],["Jeff Williams Toyota",167],["Uptown Honda",105],["Fred Rodges Mazda",103],["Garrett Ford",68],["Peter Lake Ford", 50]);
-var customer_data = {'Single Visit Customer':567,'Recent Sales Customer':184,};
+
 function init(date) {
     drawGraph01(date); //Retail_Sale
     drawGraph02(date); //Used_Vehicle_Sale
@@ -18,7 +17,7 @@ function init(date) {
     drawGraph09(date); //Competitive_Segment_Sale
     drawGraph10(date); //Lost_Profit
     drawGraph11(date); //Lost_Sale
-//    drawGraph12(date); //Customer
+    drawGraph12(date); //Customer
 }
 
 function drawGraph01(date) {
@@ -120,20 +119,44 @@ function drawGraph08(date) // Need KPI name
 }
 
 function drawGraph09(date) {
+   // var Comp_Seg_Sale_data = new Array(["Anytown Automotive", 98], ["Jeff Williams Toyota", 167], ["Uptown Honda", 105], 
+   //["Fred Rodges Mazda", 103], ["Garrett Ford", 68], ["Peter Lake Ford", 50]);
     canvasT = document.getElementById("Competitive_Segment_Sale");
     ctxText = canvasT.getContext("2d");
     ctxText.fillStyle = "white";
     //pull from database
-    data = new Array(["sale1", 89], ["sale2", 60], ["sale3", 75], ["sale4", 20], ["sale5", 100]);
+    var kpiArray = SearchKPIByDate(date);
+    var kpiData = new Array();
+
+    for (var i = 0; i < kpiArray.length; i++) {
+        if (kpiArray[i][0] == "Competitive_Segment_Sale_Anytown_Automotive") {
+            kpiData.push(["Anytown Automotive",kpiArray[i][1]]);
+        }
+        else if (kpiArray[i][0] == "Competitive_Segment_Sale_Jeff_Williams_Toyotas") {
+            kpiData.push(["Jeff Williams Toyota", kpiArray[i][1]]);
+        }
+        else if (kpiArray[i][0] == "Competitive_Segment_Sale_Uptown_Honda") {
+            kpiData.push(["Uptown Honda",kpiArray[i][1]]);
+        }
+        else if (kpiArray[i][0] == "Competitive_Segment_Sale_Fred_Rodgers_Mazda") {
+            kpiData.push(["Fred Rodgers Mazda",kpiArray[i][1]]);
+        }
+        else if (kpiArray[i][0] == "Competitive_Segment_Sale_Garrett_Ford") {
+            kpiData.push(["Garrett Ford", kpiArray[i][1]]);
+        }
+        else if (kpiArray[i][0] == "Competitive_Segment_Sale_Peter_Lake_Ford") {
+            kpiData.push(["Peter Lake Ford", kpiArray[i][1]]);
+        }
+    }
+
     //draw text
-    k = 0;
-    for (k = 0; k < data.length; k++) {
-        ctxText.fillText(data[k][0], 0, 20 + k * 30);
-        ctxText.fillText(data[k][1], 100 + Math.floor(data[k][1] / 10) * 30, 20 + k * 30);
+    for (var k = 0; k < kpiData.length; k++) {
+        ctxText.fillText(kpiData[k][0], 0, 20 + k * 30);
+        ctxText.fillText(kpiData[k][1], 100 + Math.floor(kpiData[k][1] / 10) * 30, 20 + k * 30);
     }
     //Competitive_Segment_Sale(ctx6, data);
     //call Competitive_Segment_Sale every 20 millisecond
-    return setInterval(Competitive_Segment_Sale, 20);
+    return setInterval(Competitive_Segment_Sale(kpiData), 20);
 }
 
 function drawGraph10(date) {
@@ -165,8 +188,20 @@ function drawGraph11(date) {
 
 function drawGraph12(date) {
 
+   // var customer_data = { 'Single Visit Customer': 567, 'Recent Sales Customer': 184 };
+    var kpiArray = SearchKPIByDate(date);
+    var kpiData = new Array();
+
+    for (var i = 0; i < kpiArray.length; i++) {
+        if (kpiArray[i][0] == "Single_Visit_Customers") {
+            kpiData.push(["Single Visit Customer", kpiArray[i][1]]);
+        }
+        else if (kpiArray[i][0] == "Recent_Sales_Customers") {
+            kpiData.push(["Recent Sales Customers", kpiArray[i][1]]);
+        }
+    }
     //Customer("Customer",w,h,c1,c2,title)	
-    Customer("Customer", 700, 200, "#36648B", "#FAF0E6");
+    Customer("Customer", 700, 200, "#36648B", "#FAF0E6", kpiData);
 }
 
 
@@ -423,18 +458,17 @@ function DrawBox(c, text1, text2) {
     ctx.fillText(text2, 25, 90);
 }
 
-function Competitive_Segment_Sale() {
+function Competitive_Segment_Sale(Data) {
 	var canvas = document.getElementById("Competitive_Segment_Sale");
 	var ctx6 = canvas.getContext("2d");
 	var img03 = new Image();
 	img03.src = 'images/car2.png';
-	//var data = new Array(["sale1",89],["sale2",60],["sale3",75],["sale4",20],["sale5",100]);
 	ctx6.fillStyle ='#00F';
 	
 	var i=0;
-	for(i=0;i<Comp_Seg_Sale_data.length;i++)
+	for(i=0;i<Data.length;i++)
 	{
-		position = Math.floor(Comp_Seg_Sale_data[i][1]/15);
+		position = Math.floor(Data[i][1]/15);
 		if(offset < position){
 			offset+=0.05;
 			ctx6.drawImage(img03, 180+offset*30, i*30, img03.width, img03.height);
@@ -589,7 +623,7 @@ function Competitive_Segment_Sale() {
     }
 
 
-    function Customer(canvas, w, h, c1, c2) {
+    function Customer(canvas, w, h, c1, c2, data) {
         //Adjust chart width and height
         w = w - 20; h = h - 50;
         var c = document.getElementById(canvas);
@@ -599,9 +633,9 @@ function Competitive_Segment_Sale() {
             var max = 0; //Innitialise maximum bar height to zero
             var len = 0; //Innitialise no of bars to zero
             var sum = 0;
-            for (key in customer_data) {
-                if (customer_data[key] > max) max = customer_data[key];
-                sum += customer_data[key];
+            for (key in data) {
+                if (data[key] > max) max = data[key];
+                sum += data[key];
                 len++;
             }
             var border = 4; //Changing the border mar distort the graph
@@ -624,28 +658,28 @@ function Competitive_Segment_Sale() {
             ctx7.shadowColor = "black";
             ctx7.fillStyle = c1;
             var n = 0;
-            for (key in customer_data) {
-                ctx7.fillRect(border + txtArea, (border * 2) + (bar_h * n), (customer_data[key] / max) * full, bar_h - border);
+            for (key in data) {
+                ctx7.fillRect(border + txtArea, (border * 2) + (bar_h * n), (data[key] / max) * full, bar_h - border);
                 n++;
             }
 
             ctx7.shadowColor = "white";
             n = 0;
-            for (key in customer_data) {
-                ctx7.strokeRect(border + txtArea, (border * 2) + (bar_h * n), (customer_data[key] / max) * full, bar_h - border);
+            for (key in data) {
+                ctx7.strokeRect(border + txtArea, (border * 2) + (bar_h * n), (data[key] / max) * full, bar_h - border);
                 n++;
             }
 
             ctx7.shadowOffsetX = border / -2;
             n = 0;
-            for (key in customer_data) {
-                ctx7.strokeRect(border + txtArea, (border * 2) + (bar_h * n), ((customer_data[key] / max) * full), bar_h - border);
+            for (key in data) {
+                ctx7.strokeRect(border + txtArea, (border * 2) + (bar_h * n), ((data[key] / max) * full), bar_h - border);
                 n++;
             }
             ctx7.shadowOffsetY = border / -2;
             n = 0;
-            for (key in customer_data) {
-                ctx7.strokeRect(border + txtArea, (border * 2) + (bar_h * n), ((customer_data[key] / max) * full), bar_h - border);
+            for (key in data) {
+                ctx7.strokeRect(border + txtArea, (border * 2) + (bar_h * n), ((data[key] / max) * full), bar_h - border);
                 n++;
             }
             ctx7.restore();
@@ -657,11 +691,11 @@ function Competitive_Segment_Sale() {
             ctx7.shadowBlur = 1;
             ctx7.shadowColor = "black";
             n = 0;
-            for (key in customer_data) {
+            for (key in data) {
                 ctx7.fillStyle = c2;
                 ctx7.fillText(key, (border + 10), (border * 2) + (bar_h * n) + (bar_h / 1.8), txtArea - 15);
                 ctx7.font = 'bold 18px sans-serif';
-                ctx7.fillText(customer_data[key], (border + 10 + txtArea), (border * 2) + (bar_h * n) + (bar_h / 1.8), full);
+                ctx7.fillText(data[key], (border + 10 + txtArea), (border * 2) + (bar_h * n) + (bar_h / 1.8), full);
                 n++;
             }
             ctx7.restore();
