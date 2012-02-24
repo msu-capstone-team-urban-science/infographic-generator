@@ -118,7 +118,7 @@
 				</div>
 				<div id="info09">
 					<h2>Lost Sales</h2>
-					<canvas id="Lost_Sale" width="237" height="235">
+					<canvas id="Lost_Sale" width="350" height="235">
 						<!-- Insert fallback content here -->
 						Sorry, your browser doesn't support canvas technology
 					</canvas>

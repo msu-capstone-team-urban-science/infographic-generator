@@ -3,8 +3,6 @@
 // var offset=0;
 // var data = new Array(["sale1",89],["sale2",60],["sale3",75],["sale4",20],["sale5",100]);
 var offset=0;
-var stopPoint;
-var stopPos=0;
 var Comp_Seg_Sale_data = new Array(["Anytown Automotive",98],["Jeff Williams Toyota",167],["Uptown Honda",105],["Fred Rodges Mazda",103],["Garrett Ford",68],["Peter Lake Ford", 50]);
 var customer_data = {'Single Visit Customer':567,'Recent Sales Customer':184,};
 function init(){
@@ -82,21 +80,8 @@ function drawGraph08() {
 }
 
 function drawGraph09() {
-	canvasT = document.getElementById("Competitive_Segment_Sale");
-	ctxText = canvasT.getContext("2d");
-	ctxText.fillStyle="white";
-	//data = new Array(["sale1",89],["sale2",60],["sale3",75],["sale4",20],["sale5",100]);
-	//draw text
-	k=0;
-	for(k=0;k<Comp_Seg_Sale_data.length;k++)
-	{
-		ctxText.font = "bold 12pt Calibri";
-		 ctxText.fillText(Comp_Seg_Sale_data[k][0], 0, 15+k*30);
-		 ctxText.fillText(Comp_Seg_Sale_data[k][1], 210+Math.floor(Comp_Seg_Sale_data[k][1]/15)*30, 15+k*30);
-	}
-	//Competitive_Segment_Sale(ctx6, data);
-   //call Competitive_Segment_Sale every 20 millisecond
-  return setInterval(Competitive_Segment_Sale, 20);
+
+  return setInterval(Competitive_Segment_Sale, 10);
 }
 
 function drawGraph10() {
@@ -351,73 +336,77 @@ function DrawBox(ctx, text1, text2){
 }
 
 function Competitive_Segment_Sale(){
-	canvas = document.getElementById("Competitive_Segment_Sale");
-	ctx6 = canvas.getContext("2d");
-	img03 = new Image();
-	img03.src = 'images/car2.png';
-	//var data = new Array(["sale1",89],["sale2",60],["sale3",75],["sale4",20],["sale5",100]);
-	ctx6.fillStyle ='#00F';
-	
-	i=0;
-	for(i=0;i<Comp_Seg_Sale_data.length;i++)
+   var canvas = document.getElementById("Competitive_Segment_Sale");
+    var ctx6 = canvas.getContext("2d");
+    var img03 = new Image();
+    img03.src = 'images/car2.png';
+    img03.onload = function () {
+        ctx6.fillStyle = "white";
+
+        var maxPos = Math.floor(Competitive_Segment_Sale_findMax(Comp_Seg_Sale_data) / 12);
+        ctx6.fillText(maxPos, 650, 15 + i * 30);
+
+        var final_pos = iniStopPos(Comp_Seg_Sale_data);
+
+        var i = 0;
+        for (i = 0; i < Comp_Seg_Sale_data.length; i++) {
+            var position = Math.floor(Comp_Seg_Sale_data[i][1] / 12);
+            if (offset < position) {
+                offset += 0.02;
+                //ctx6.fillText(i, 200, i * 20);
+                ctx6.drawImage(img03, 180 + offset * 30, i * 30, img03.width, img03.height);
+
+                ctx6.clearRect(180 + (offset - 0.9) * 30, i * 30, img03.width, img03.height);
+                ctx6.font = "bold 12pt Calibri";
+                //draw KPI_Name
+                ctx6.fillText(Comp_Seg_Sale_data[i][0], 0, 15 + i * 30);
+                //draw KPI_Data
+                ctx6.fillText(Comp_Seg_Sale_data[i][1], 215 + position * 30, 15 + i * 30);
+
+                if (offset + 0.02 > maxPos) {
+                    var j = 0, offx = offset;
+                    for (j = 0; j < final_pos.length; j++) {
+                        //TODO: draw number after the car reach destination
+                        //ctx6.fillText(Comp_Seg_Sale_data[j][1], 215+Math.floor(Comp_Seg_Sale_data[j][1]/12)*30, 15+j*30);
+                        ctx6.clearRect(180 + (final_pos[j]) * 30, j * 30, img03.width, img03.height);
+
+                        //ctx6.fillText(final_pos[j], 215+position*35, 15+j*30);
+
+                    }
+                    offset = 0;
+                }
+            }
+        }
+    }
+
+}
+
+function iniStopPos(array)
+{
+	var final_pos=new Array();
+	var i=0;
+	for(i=0; i<array.length;i++)
 	{
-		position = Math.floor(Comp_Seg_Sale_data[i][1]/15);
-		if(offset < position){
-			offset+=0.05;
-			ctx6.drawImage(img03, 180+offset*30, i*30, img03.width, img03.height);
-			ctx6.clearRect(180+(offset-1)*30, i*30, img03.width, img03.height);
-			if(offset >= position)
-			{
-				stopPoint[stopPos]=offset;
-				stopPos++;
-				
-				//TODO animation
-				// ctx6.clearRect(70+(offset)*30, i*30, img03.width, img03.height);
-				
-				
-				
-				// n=offset;
-				//for(j=0;j<data.length;j++)
-				//{
-				// n+=0.05;
-					// ctx6.clearRect(70+(n)*30, i*30, img03.width, img03.height);
-					
-				//}
-				// offset=0;
-			}
-			
-		}
-		// if(stopPos-1 >= data.length)
-		// {
-			// alert(offset);
-			// offset=0;
-			// j=0;
-			// for(j=0;j<data.length;j++)
-			// {
-				// ctx6.clearRect(70+(stopPoint[j])*30, j*30, img03.width, img03.height);
-			// }
-		// }
-		// else
-		// {
-			// j=0;
-			// n=offset-10;
-			// for(j=0;j<data.length;j++)
-			// {
-				// n+=0.01;
-				//ctx6.clearRect(70+(n)*30, j*30, img03.width, img03.height);
-				
-			// }
-			// offset=0;
-		//}
-		
+		final_pos[i]=Math.floor(array[i][1]/12);
 	}
 	
-	// j=0;
-	// for(j=0;j<data.length;j++)
-	// {
-		// ctx6.clearRect(70+(stopPoint[j])*30, j*30, img03.width, img03.height);
-	// }
+	return final_pos;
+	
 }
+
+function Competitive_Segment_Sale_findMax(array){
+	var i=0;
+	var max=0;
+	for(i=0; i<array.length;i++)
+	{
+		if(array[i][1]>max)
+		{
+			max=array[i][1];
+		}
+	}
+	return max;
+}
+
 
 function Lost_Profit(context){
 	var lineWidth = 8;

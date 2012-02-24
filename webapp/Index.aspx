@@ -15,7 +15,6 @@
     <title>Infographics Generator Home Page</title>
         <link rel="stylesheet" media="all and (orientation:portrait)" href="Styles/portrait.css">
 		<link rel="stylesheet" media="all and (orientation:landscape)" href="Styles/landscape.css">
-        <link href="Styles/style.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
 		<script type="text/javascript" src="Scripts/jquery.roundabout.js"></script>
 		<script type="text/javascript" src="Scripts/jquery.event.drag-2.0.js"></script>
@@ -24,7 +23,13 @@
 		    var updateLayout = function () {
 		        if (window.innerWidth != currentWidth) {
 		            currentWidth = window.innerWidth;
-		            var orient = (currentWidth == 320) ? "profile" : "landscape";
+		            var orient = "";
+		            if (currentWidth == 320) {
+		                orient = "portrait";
+		            }
+		            else {
+		                orient = "landscape";
+		            }
 		            document.body.setAttribute("orient", orient);
 		            window.scrollTo(0, 1);
 		        }
@@ -56,9 +61,9 @@
 				height: 24em;
 			}
 			li {
-				//height: 12em;
-				//width: 12em;
-				//background-color: #ffffff;
+				height: 12em;
+				width: 12em;
+				background-color: #0;
 				opacity: 0.1;
 				text-align: center;
 				cursor: pointer;
@@ -82,9 +87,9 @@
     <div id="mpage">		
 		<div id="main">
 			<ul>
-				<li><span><a href="javascript:navigator_Go('Sales.aspx');"><img src="images/icon_sale.png" alt="Sale"></a>Sale</span></li>
-				<li><span><a href="javascript:navigator_Go('http://yahoo.com');"><img src="images/icon_service.png" alt="Service"></a>Service</span></li>
-				<li><span><a href="javascript:navigator_Go('http://bing.com');"><img src="images/icon_lead.png" alt="Lead"></a>Lead</span></li>
+				<li><span><a href="javascript:navigator_Go('Sales.aspx');"><img src="images/icon_sale.png" alt=""></a>Sale</span></li>
+				<li><span><a href="javascript:navigator_Go('Sales.aspx');"><img src="images/icon_service.png" alt=""></a>Service</span></li>
+				<li><span><a href="javascript:navigator_Go('Sales.aspx');"><img src="images/icon_lead.png" alt=""></a>Lead</span></li>
 			</ul>
             <address></address>
 		</div>

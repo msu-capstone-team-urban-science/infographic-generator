@@ -1,9 +1,8 @@
 var offset = 0;
+
 //TODO : Put this in some common place for all the infographics to see
 var monthname = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
 var fullMonthName = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
-var stopPoint;
-var stopPos=0;
 
 function init(date) {
     drawGraph01(date); //Retail_Sale
@@ -121,9 +120,6 @@ function drawGraph08(date) // Need KPI name
 function drawGraph09(date) {
    // var Comp_Seg_Sale_data = new Array(["Anytown Automotive", 98], ["Jeff Williams Toyota", 167], ["Uptown Honda", 105], 
    //["Fred Rodges Mazda", 103], ["Garrett Ford", 68], ["Peter Lake Ford", 50]);
-    canvasT = document.getElementById("Competitive_Segment_Sale");
-    ctxText = canvasT.getContext("2d");
-    ctxText.fillStyle = "white";
     //pull from database
     var kpiArray = SearchKPIByDate(date);
     var kpiData = new Array();
@@ -150,13 +146,16 @@ function drawGraph09(date) {
     }
 
     //draw text
-    for (var k = 0; k < kpiData.length; k++) {
-        ctxText.fillText(kpiData[k][0], 0, 20 + k * 30);
-        ctxText.fillText(kpiData[k][1], 100 + Math.floor(kpiData[k][1] / 10) * 30, 20 + k * 30);
-    }
+//    for (var k = 0; k < kpiData.length; k++) {
+//        ctxText.fillText(kpiData[k][0], 0, 20 + k * 30);
+//        ctxText.fillText(kpiData[k][1], 100 + Math.floor(kpiData[k][1] / 10) * 30, 20 + k * 30);
+//    }
     //Competitive_Segment_Sale(ctx6, data);
     //call Competitive_Segment_Sale every 20 millisecond
-    return setInterval(Competitive_Segment_Sale(kpiData), 20);
+    //Competitive_Segment_Sale(kpiData);
+    var s = setTimeout(function () {Competitive_Segment_Sale(kpiData);}, 20);
+    //Competitive_Segment_Sale.Comp_Seg_Sale_data = kpiData;
+    //return setInterval(Competitive_Segment_Sale, 20);
 }
 
 function drawGraph10(date) {
@@ -369,7 +368,13 @@ function Pump_In_Sale(c, x, y, w, h, d) {
         context.fill();
 
         // Draw text
-        var text_size = 10;
+        var text_size = 14;
+        if (temp < text_size) {
+            text_size = temp;
+        }
+        if (text_size < 8) {
+            text_size = 8;
+        }
         context.font = "bold " + text_size + "pt Calibri";
         context.fillStyle = "#ffffff";
         context.fillText(d[i][1], (midX / 3) * 2.5, midY - temp / 2 + text_size / 2);
@@ -458,246 +463,246 @@ function DrawBox(c, text1, text2) {
     ctx.fillText(text2, 25, 90);
 }
 
-function Competitive_Segment_Sale(Data) {
-	var canvas = document.getElementById("Competitive_Segment_Sale");
-	var ctx6 = canvas.getContext("2d");
-	var img03 = new Image();
-	img03.src = 'images/car2.png';
-	ctx6.fillStyle ='#00F';
-	
-	var i=0;
-	for(i=0;i<Data.length;i++)
-	{
-		position = Math.floor(Data[i][1]/15);
-		if(offset < position){
-			offset+=0.05;
-			ctx6.drawImage(img03, 180+offset*30, i*30, img03.width, img03.height);
-			ctx6.clearRect(180+(offset-1)*30, i*30, img03.width, img03.height);
-			if(offset >= position)
-			{
-				stopPoint[stopPos]=offset;
-				stopPos++;
-				
-				//TODO animation
-				// ctx6.clearRect(70+(offset)*30, i*30, img03.width, img03.height);
-				
-				
-				
-				// n=offset;
-				//for(j=0;j<data.length;j++)
-				//{
-				// n+=0.05;
-					// ctx6.clearRect(70+(n)*30, i*30, img03.width, img03.height);
-					
-				//}
-				// offset=0;
-			}
-			
-		}
-		// if(stopPos-1 >= data.length)
-		// {
-			// alert(offset);
-			// offset=0;
-			// j=0;
-			// for(j=0;j<data.length;j++)
-			// {
-				// ctx6.clearRect(70+(stopPoint[j])*30, j*30, img03.width, img03.height);
-			// }
-		// }
-		// else
-		// {
-			// j=0;
-			// n=offset-10;
-			// for(j=0;j<data.length;j++)
-			// {
-				// n+=0.01;
-				//ctx6.clearRect(70+(n)*30, j*30, img03.width, img03.height);
-				
-			// }
-			// offset=0;
-		//}
-		
-	}
-	
-	// j=0;
-	// for(j=0;j<data.length;j++)
-	// {
-		// ctx6.clearRect(70+(stopPoint[j])*30, j*30, img03.width, img03.height);
-	// }
+function Competitive_Segment_Sale(Comp_Seg_Sale_data) {
+    var canvas = document.getElementById("Competitive_Segment_Sale");
+    var ctx6 = canvas.getContext("2d");
+    var img03 = new Image();
+    img03.src = 'images/car2.png';
+    img03.onload = function () {
+        ctx6.fillStyle = "white";
+
+        var maxPos = Math.floor(Competitive_Segment_Sale_findMax(Comp_Seg_Sale_data) / 12);
+        ctx6.fillText(maxPos, 650, 15 + i * 30);
+
+        var final_pos = iniStopPos(Comp_Seg_Sale_data);
+
+        var i = 0;
+        for (i = 0; i < Comp_Seg_Sale_data.length; i++) {
+            var position = Math.floor(Comp_Seg_Sale_data[i][1] / 12);
+            if (offset < position) {
+                offset += 0.02;
+                //ctx6.fillText(i, 200, i * 20);
+                //                ctx6.drawImage(img03, 180 + offset * 25, i * 30, img03.width, img03.height);
+                ctx6.drawImage(img03, 180 + position*25, i * 30, img03.width, img03.height);
+
+                ctx6.clearRect(180 + (offset - 0.9) * 25, i * 30, img03.width, img03.height);
+                ctx6.font = "bold 12pt Calibri";
+                //draw KPI_Name
+                ctx6.fillText(Comp_Seg_Sale_data[i][0], 0, 15 + i * 30);
+                //draw KPI_Data
+                ctx6.fillText(Comp_Seg_Sale_data[i][1], 215 + position * 25, 15 + i * 30);
+
+                if (offset + 0.02 > maxPos) {
+                    var j = 0, offx = offset;
+                    for (j = 0; j < final_pos.length; j++) {
+                        //TODO: draw number after the car reach destination
+                        //ctx6.fillText(Comp_Seg_Sale_data[j][1], 215+Math.floor(Comp_Seg_Sale_data[j][1]/12)*30, 15+j*30);
+                        ctx6.clearRect(180 + (final_pos[j]) * 30, j * 30, img03.width, img03.height);
+
+                        //ctx6.fillText(final_pos[j], 215+position*35, 15+j*30);
+
+                    }
+                    offset = 0;
+                }
+            }
+        }
+    }
+    //var s = setTimeout(Competitive_Segment_Sale(Comp_Seg_Sale_data),20);
 }
 
-    function Lost_Profit(c, d) {
-        var canvas = document.getElementById(c);
-        var context = canvas.getContext("2d");
-
-        var lineWidth = 8;
-        var innerBorder = 5;
-        var primaryColor = "#ffc821";
-        var secondaryColor = "#faf100";
-        var tertiaryColor = "#dcaa09";
-        // Load the context of the canvas
-
-        var width = 200;
-        var height = 200;
-        var padding = 20;
-
-        // Create a triangluar path
-        context.beginPath();
-        context.moveTo(padding + width / 2, padding);
-        context.lineTo(padding + width, height + padding);
-        context.lineTo(padding, height + padding);
-        context.closePath();
-
-        // Create fill gradient
-        var gradient = context.createLinearGradient(0, 0, 0, height);
-        gradient.addColorStop(0, primaryColor);
-        gradient.addColorStop(1, secondaryColor);
-
-        // Add a shadow around the object
-        context.shadowBlur = 10;
-        context.shadowColor = "black";
-
-        // Stroke the outer outline
-        context.lineWidth = lineWidth * 2;
-        context.lineJoin = "round";
-        context.strokeStyle = gradient;
-        context.stroke();
-
-        // Turn off the shadow, or all future fills will have shadows
-        context.shadowColor = "transparent";
-
-        // Fill the path
-        context.fillStyle = gradient;
-        context.fill();
-
-        // Add a horizon reflection with a gradient to transparent
-        gradient = context.createLinearGradient(0, padding, 0, padding + height);
-        gradient.addColorStop(0, "transparent");
-        gradient.addColorStop(0.5, "transparent");
-        gradient.addColorStop(0.5, tertiaryColor);
-        gradient.addColorStop(1, secondaryColor);
-
-        context.fillStyle = gradient;
-        context.fill();
-
-        // Stroke the inner outline
-        context.lineWidth = lineWidth;
-        context.lineJoin = "round";
-        context.strokeStyle = "#333";
-        context.stroke();
-
-        // Draw the text exclamation point
-        context.font = "40px Arial";
-        context.fillStyle = "red";
-        context.fillText("$" + d, 190, 100);
-
-        context.textAlign = "center";
-        context.textBaseline = "middle";
-        context.font = "bold 80px 'Times New Roman', Times, serif";
-        context.fillStyle = "#333";
-        try {
-            context.fillText("!", padding + width / 2, padding + height / 1.5);
-        } catch (ex) { }
-
+function iniStopPos(array) {
+    var final_pos = new Array();
+    for (var i = 0; i < array.length; i++) {
+        final_pos[i] = Math.floor(array[i][1] / 12);
     }
+    return final_pos;
+}
 
-    function Lost_Sale(c, d) {
-        var canvas = document.getElementById(c);
-        var ctx = canvas.getContext("2d");
-
-        var img04 = new Image();
-        img04.src = 'images/puzzle.png';
-        img04.onload = function () {
-            ctx.drawImage(img04, 0, 0, img04.width, img04.height);
-            ctx.font = "bold 34pt Calibri";
-            ctx.fillText("LOST", 110, 30);
-            ctx.fillText("SALES", 97, 70);
-            ctx.fillStyle = "white";
-            ctx.fillText("LOST", 111, 28);
-            //TODO: FIX IT SO IT SAYS SALES INSTEAD OF SALE
-            ctx.fillText("SALES", 97, 68);
-            ctx.fillStyle = "black";
-            ctx.font = "bold 40pt Calibri";
-            ctx.fillText(449, 155, 120);
+function Competitive_Segment_Sale_findMax(array) {
+    var max = 0;
+    for (var i = 0; i < array.length; i++) {
+        if (array[i][1] > max) {
+            max = array[i][1];
         }
     }
+    return max;
+}
+
+function Lost_Profit(c, d) {
+    var canvas = document.getElementById(c);
+    var context = canvas.getContext("2d");
+
+    var lineWidth = 8;
+    var innerBorder = 5;
+    var primaryColor = "#ffc821";
+    var secondaryColor = "#faf100";
+    var tertiaryColor = "#dcaa09";
+    // Load the context of the canvas
+
+    var width = 200;
+    var height = 200;
+    var padding = 20;
+
+    // Create a triangluar path
+    context.beginPath();
+    context.moveTo(padding + width / 2, padding);
+    context.lineTo(padding + width, height + padding);
+    context.lineTo(padding, height + padding);
+    context.closePath();
+
+    // Create fill gradient
+    var gradient = context.createLinearGradient(0, 0, 0, height);
+    gradient.addColorStop(0, primaryColor);
+    gradient.addColorStop(1, secondaryColor);
+
+    // Add a shadow around the object
+    context.shadowBlur = 10;
+    context.shadowColor = "black";
+
+    // Stroke the outer outline
+    context.lineWidth = lineWidth * 2;
+    context.lineJoin = "round";
+    context.strokeStyle = gradient;
+    context.stroke();
+
+    // Turn off the shadow, or all future fills will have shadows
+    context.shadowColor = "transparent";
+
+    // Fill the path
+    context.fillStyle = gradient;
+    context.fill();
+
+    // Add a horizon reflection with a gradient to transparent
+    gradient = context.createLinearGradient(0, padding, 0, padding + height);
+    gradient.addColorStop(0, "transparent");
+    gradient.addColorStop(0.5, "transparent");
+    gradient.addColorStop(0.5, tertiaryColor);
+    gradient.addColorStop(1, secondaryColor);
+
+    context.fillStyle = gradient;
+    context.fill();
+
+    // Stroke the inner outline
+    context.lineWidth = lineWidth;
+    context.lineJoin = "round";
+    context.strokeStyle = "#333";
+    context.stroke();
+
+    // Draw the text exclamation point
+    context.font = "40px Arial";
+    context.fillStyle = "red";
+    context.fillText("$" + d, 190, 100);
+
+    context.textAlign = "center";
+    context.textBaseline = "middle";
+    context.font = "bold 80px 'Times New Roman', Times, serif";
+    context.fillStyle = "#333";
+    try {
+        context.fillText("!", padding + width / 2, padding + height / 1.5);
+    } catch (ex) { }
+
+}
+
+function Lost_Sale(c, d) {
+    var canvas = document.getElementById(c);
+    var ctx = canvas.getContext("2d");
+
+    var img04 = new Image();
+    img04.src = 'images/puzzle.png';
+    img04.onload = function () {
+        ctx.drawImage(img04, 0, 0, img04.width, img04.height);
+        ctx.font = "bold 34pt Calibri";
+        ctx.fillText("LOST", 110, 30);
+        ctx.fillText("SALES", 97, 70);
+        ctx.fillStyle = "white";
+        ctx.fillText("LOST", 111, 28);
+        //TODO: FIX IT SO IT SAYS SALES INSTEAD OF SALE
+        ctx.fillText("SALES", 97, 68);
+        ctx.fillStyle = "black";
+        ctx.font = "bold 40pt Calibri";
+        ctx.fillText(449, 155, 120);
+    }
+}
 
 
-    function Customer(canvas, w, h, c1, c2, data) {
-        //Adjust chart width and height
-        w = w - 20; h = h - 50;
-        var c = document.getElementById(canvas);
-        // Check the element is in the DOM and the browser supports canvas
-        if (c.getContext) {
-            var ctx7 = c.getContext("2d");
-            var max = 0; //Innitialise maximum bar height to zero
-            var len = 0; //Innitialise no of bars to zero
-            var sum = 0;
-            for (key in data) {
-                if (data[key] > max) max = data[key];
-                sum += data[key];
-                len++;
+function Customer(canvas, w, h, c1, c2, data) {
+    //Adjust chart width and height
+    w = w - 20; h = h - 50;
+    var c = document.getElementById(canvas);
+    // Check the element is in the DOM and the browser supports canvas
+    if (c.getContext) {
+        var ctx7 = c.getContext("2d");
+        var max = 0; //Initialise maximum bar height to zero
+        var len = 0; //Initialise no of bars to zero
+        var sum = 0;
+        for (key in data) {
+            if (data[key][1] > max) {
+                max = data[key][1];
             }
-            var border = 4; //Changing the border mar distort the graph
-            var bar_h = (h - border) / len;
-            var gradient = ctx7.createLinearGradient(w / 2, 50, w / 2, h);
-            gradient.addColorStop(0, '#000');
-            gradient.addColorStop(0.1, '#eee');
-            gradient.addColorStop(0.5, '#fff');
-            gradient.addColorStop(1, '#000');
+            sum += data[key][1];
+            len++;
+        }
+        var border = 4; //Changing the border mar distort the graph
+        var bar_h = (h - border) / len;
+        var gradient = ctx7.createLinearGradient(w / 2, 50, w / 2, h);
+        gradient.addColorStop(0, '#000');
+        gradient.addColorStop(0.1, '#eee');
+        gradient.addColorStop(0.5, '#fff');
+        gradient.addColorStop(1, '#000');
 
-            max = max - border;
-            var txtArea = w * 0.2 * 1.7;
-            var full = w - (border * 2) - txtArea;
-            ctx7.strokeStyle = '#fff';
-            ctx7.save();
+        max = max - border;
+        var txtArea = w * 0.2 * 1.7;
+        var full = w - (border * 2) - txtArea;
+        ctx7.strokeStyle = '#fff';
+        ctx7.save();
 
-            ctx7.shadowOffsetX = border / 2;
-            ctx7.shadowOffsetY = border / 2;
-            ctx7.shadowBlur = border / 2;
-            ctx7.shadowColor = "black";
-            ctx7.fillStyle = c1;
-            var n = 0;
-            for (key in data) {
-                ctx7.fillRect(border + txtArea, (border * 2) + (bar_h * n), (data[key] / max) * full, bar_h - border);
-                n++;
-            }
+        ctx7.shadowOffsetX = border / 2;
+        ctx7.shadowOffsetY = border / 2;
+        ctx7.shadowBlur = border / 2;
+        ctx7.shadowColor = "black";
+        ctx7.fillStyle = c1;
+        var n = 0;
 
-            ctx7.shadowColor = "white";
-            n = 0;
-            for (key in data) {
-                ctx7.strokeRect(border + txtArea, (border * 2) + (bar_h * n), (data[key] / max) * full, bar_h - border);
-                n++;
-            }
+        for (key in data) {
+            ctx7.fillRect(border + txtArea, (border * 2) + (bar_h * n), (data[key][1] / max) * full, bar_h - border);
+            n++;
+        }
 
-            ctx7.shadowOffsetX = border / -2;
-            n = 0;
-            for (key in data) {
-                ctx7.strokeRect(border + txtArea, (border * 2) + (bar_h * n), ((data[key] / max) * full), bar_h - border);
-                n++;
-            }
-            ctx7.shadowOffsetY = border / -2;
-            n = 0;
-            for (key in data) {
-                ctx7.strokeRect(border + txtArea, (border * 2) + (bar_h * n), ((data[key] / max) * full), bar_h - border);
-                n++;
-            }
-            ctx7.restore();
+        ctx7.shadowColor = "white";
+        n = 0;
+        for (key in data) {
+            ctx7.strokeRect(border + txtArea, (border * 2) + (bar_h * n), (data[key][1] / max) * full, bar_h - border);
+            n++;
+        }
 
-            ctx7.save();
+        ctx7.shadowOffsetX = border / -2;
+        n = 0;
+        for (key in data) {
+            ctx7.strokeRect(border + txtArea, (border * 2) + (bar_h * n), ((data[key][1] / max) * full), bar_h - border);
+            n++;
+        }
+        ctx7.shadowOffsetY = border / -2;
+        n = 0;
+        for (key in data) {
+            ctx7.strokeRect(border + txtArea, (border * 2) + (bar_h * n), ((data[key][1] / max) * full), bar_h - border);
+            n++;
+        }
+        ctx7.restore();
+
+        ctx7.save();
+        ctx7.font = 'bold 18px sans-serif';
+        ctx7.shadowOffsetX = 1;
+        ctx7.shadowOffsetY = 1;
+        ctx7.shadowBlur = 1;
+        ctx7.shadowColor = "black";
+        n = 0;
+        for (key in data) {
+            ctx7.fillStyle = c2;
+            ctx7.fillText(data[key][0], (border + 10), (border * 2) + (bar_h * n) + (bar_h / 1.8), txtArea - 15);
             ctx7.font = 'bold 18px sans-serif';
-            ctx7.shadowOffsetX = 1;
-            ctx7.shadowOffsetY = 1;
-            ctx7.shadowBlur = 1;
-            ctx7.shadowColor = "black";
-            n = 0;
-            for (key in data) {
-                ctx7.fillStyle = c2;
-                ctx7.fillText(key, (border + 10), (border * 2) + (bar_h * n) + (bar_h / 1.8), txtArea - 15);
-                ctx7.font = 'bold 18px sans-serif';
-                ctx7.fillText(data[key], (border + 10 + txtArea), (border * 2) + (bar_h * n) + (bar_h / 1.8), full);
-                n++;
-            }
-            ctx7.restore();
+            ctx7.fillText(data[key][1], (border + 10 + txtArea), (border * 2) + (bar_h * n) + (bar_h / 1.8), full);
+            n++;
         }
+        ctx7.restore();
     }
+}
