@@ -7,9 +7,6 @@
 
     <link href="Styles/sales_style.css" rel="stylesheet" type="text/css" />
     <title>Infographics Generator</title>
-    <style type="text/css">
-		#AnotherDemo { background-color:#FFCCCC; padding:10px; height:180px;text-align:center; }
-	</style>
     <script type="text/javascript" src="Scripts/sales.js"></script>
     <script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"  ></script>
     <script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
@@ -139,32 +136,26 @@
 				<div id="dot07"></div>
             </div>
 		</div>
-        <div id="AnotherDemo">
-			Another demo wipe area!
-			<br />
-			<span id="anotherResult">...</span>
-		</div>
-		
+
 		<script type="text/javascript">
 			function wipeStatus(dir, result)
 			{
 				var de = new Date();
                 if(dir == "Right") {
-				    de.setMonth(9);
+				    de.setMonth(de.getMonth()+1);
                 } else {
-                    de.setMonth(9);
+                    de.setMonth(de.getMonth()-1);
                 }
 				HandleMonthChange(de);
 			}
 			
-			$("#AnotherDemo").wipetouch(
+			$("#header").wipetouch(
 			{
 				allowDiagonal:false,
 				tapToClick: false,
 				wipeLeft: function(result) { wipeStatus("Left",result);},
 				wipeRight: function(result) { wipeStatus("Right",result);},
 			});	
-            $("#AnotherDemo").click(function() {wipeStatus("Right",0); })
 		</script>
 	</div>
 
