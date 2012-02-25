@@ -164,6 +164,7 @@
 				wipeLeft: function(result) { wipeStatus("Left",result);},
 				wipeRight: function(result) { wipeStatus("Right",result);},
 			});	
+            $("#AnotherDemo").click(function() {wipeStatus("Right",0); })
 		</script>
 	</div>
 
