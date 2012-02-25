@@ -17,9 +17,9 @@
             //var TodayDate = new Date;
 			HandleMonthChange(new Date)
             //init(TodayDate);
-            //GetFullMonth(TodayDate);
+			//GetFullMonth(TodayDate);
         }
-		
+
 		function HandleMonthChange(d) {
 			init(d);
             GetFullMonth(d);
@@ -33,7 +33,7 @@
 </head>
 <body onload="StartupSales()">
     <div id="swipeArea">
-    <div id="main">
+        <div id="main">
 			<div id="part01">
 				<div id="header">
 						<img src="images/header.jpg"></img>
@@ -142,9 +142,9 @@
 			{
 				var de = new Date();
                 if(dir == "Right") {
-				    de.setMonth() = de.getMonth()+1;
+				    de.setMonth() = 9;
                 } else {
-                    de.setMonth() = de.getMonth()-1;
+                    de.setMonth() = 9;
                 }
 				HandleMonthChange(de);
 			}
