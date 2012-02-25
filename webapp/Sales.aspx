@@ -150,9 +150,9 @@
 			{
 				var de = new Date();
                 if(dir == "Right") {
-				    de.setMonth() = 9;
+				    de.setMonth(9);
                 } else {
-                    de.setMonth() = 9;
+                    de.setMonth(9);
                 }
 				HandleMonthChange(de);
 			}
