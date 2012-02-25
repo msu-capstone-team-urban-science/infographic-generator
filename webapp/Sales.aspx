@@ -10,7 +10,7 @@
     <script type="text/javascript" src="Scripts/sales.js"></script>
     <script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"  ></script>
     <script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
-	<script type="text/javascript" src="jquery.wipetouch.js"></script>
+	<script type="text/javascript" src="Scripts/jquery.wipetouch.js"></script>
     <script type="text/javascript">
         function StartupSales() {
             LoadJSON();
