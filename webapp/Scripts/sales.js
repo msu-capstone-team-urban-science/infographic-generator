@@ -483,7 +483,7 @@ function DrawBox(c, text1, text2) {
 
 function Competitive_Segment_Sale(Comp_Seg_Sale_data) {
     var canvas = document.getElementById("Competitive_Segment_Sale");
-	clearCanvas(canvas);
+	clearCanvas("Competitive_Segment_Sale"); // TODO: CHANGE THIS TO have the canvas name as a arg
     var ctx6 = canvas.getContext("2d");
     var img03 = new Image();
     img03.src = 'images/car2.png';
