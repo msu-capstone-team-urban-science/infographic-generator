@@ -21,7 +21,7 @@ function init(date) {
 
 function clearCanvas(c) {
     var canvas = document.getElementById(c);
-	var context = canvas.getContext("2d");
+	var ctx = canvas.getContext("2d");
 	// Store the current transformation matrix
 	ctx.save();
 
