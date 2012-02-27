@@ -26,7 +26,6 @@ function clearCanvas(c) {
     context.rect(0, 0, canvas.width, canvas.height);
     context.fill();
 }
-}
 
 function drawGraph01(date) {
     Retail_Sale("Retail_Sale", date);
