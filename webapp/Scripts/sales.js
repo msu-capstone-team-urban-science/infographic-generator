@@ -482,8 +482,8 @@ function DrawBox(c, text1, text2) {
 }
 
 function Competitive_Segment_Sale(Comp_Seg_Sale_data) {
-	clearCanvas(c);
     var canvas = document.getElementById("Competitive_Segment_Sale");
+	clearCanvas(canvas);
     var ctx6 = canvas.getContext("2d");
     var img03 = new Image();
     img03.src = 'images/car2.png';
