@@ -19,6 +19,15 @@ function init(date) {
     drawGraph12(date); //Customer
 }
 
+function clearCanvas(c) {
+    var canvas = document.getElementById(c);
+    var context = canvas.getContext("2d");
+    context.fillStyle = "#FFF";	
+    context.rect(0, 0, canvas.width, canvas.height);
+    context.fill();
+}
+}
+
 function drawGraph01(date) {
     Retail_Sale("Retail_Sale", date);
     //call Retail_Sale every 20 millisecond
@@ -205,6 +214,7 @@ function drawGraph12(date) {
 
 
 function Retail_Sale(c, date) {
+	clearCanvas(c);
     var canvas = document.getElementById(c);
     var ctx = canvas.getContext("2d");
 
@@ -241,6 +251,7 @@ function Retail_Sale(c, date) {
 }
 
 function Used_Vehicle_Sale(c, d) {
+	clearCanvas(c);
     var canvas = document.getElementById(c);
     var ctx = canvas.getContext("2d");
 
@@ -286,7 +297,7 @@ CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
 }
 
 function Cost_Per_Sale(c, d) {
-
+	clearCanvas(c);
     var canvas = document.getElementById(c);
     var ctx = canvas.getContext("2d");
 
@@ -309,6 +320,7 @@ function Cost_Per_Sale(c, d) {
 }
 
 function Pump_In_Sale(c, x, y, w, h, d) {
+	clearCanvas(c);
     // BUG: bottom most text may extend over max defined width. if last
     // piece of data is small, allow some extra room on the canvas for
     // slightly overextended text.
@@ -382,7 +394,7 @@ function Pump_In_Sale(c, x, y, w, h, d) {
 }
 
 function DrawPie(c, x, y, w, h, d) {
-
+	clearCanvas(c);
     // data format
     // 
     // accepts a percentage expressed as a decimal
@@ -436,6 +448,7 @@ function DrawPie(c, x, y, w, h, d) {
 }
 
 function DrawBox(c, text1, text2) {
+	clearCanvas(c);
     // Create fill gradient
     var canvas = document.getElementById(c);
     var ctx = canvas.getContext("2d");
@@ -464,6 +477,7 @@ function DrawBox(c, text1, text2) {
 }
 
 function Competitive_Segment_Sale(Comp_Seg_Sale_data) {
+	clearCanvas(c);
     var canvas = document.getElementById("Competitive_Segment_Sale");
     var ctx6 = canvas.getContext("2d");
     var img03 = new Image();
@@ -529,6 +543,7 @@ function Competitive_Segment_Sale_findMax(array) {
 }
 
 function Lost_Profit(c, d) {
+	clearCanvas(c);
     var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
 
@@ -604,6 +619,7 @@ function Lost_Profit(c, d) {
 }
 
 function Lost_Sale(c, d) {
+	clearCanvas(c);
     var canvas = document.getElementById(c);
     var ctx = canvas.getContext("2d");
 
@@ -616,7 +632,6 @@ function Lost_Sale(c, d) {
         ctx.fillText("SALES", 97, 70);
         ctx.fillStyle = "white";
         ctx.fillText("LOST", 111, 28);
-        //TODO: FIX IT SO IT SAYS SALES INSTEAD OF SALE
         ctx.fillText("SALES", 97, 68);
         ctx.fillStyle = "black";
         ctx.font = "bold 40pt Calibri";
@@ -626,6 +641,7 @@ function Lost_Sale(c, d) {
 
 
 function Customer(canvas, w, h, c1, c2, data) {
+	clearCanvas(canvas);
     //Adjust chart width and height
     w = w - 20; h = h - 50;
     var c = document.getElementById(canvas);
