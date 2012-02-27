@@ -37,8 +37,7 @@ function FormatDate(date) {
 function SearchKPIByDate(date) {
     var returnArr = new Array();
     var locStorage = new Storage();
-
-
+	
     var counter = 0;
     for(var i=0, l=locStorage.size(); i<l; i++) {
         var value = locStorage.get(i);        

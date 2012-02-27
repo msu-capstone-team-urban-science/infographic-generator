@@ -1,10 +1,5 @@
 ﻿<%@ Page Language="C#" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<script runat="server">
-
-</script>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -15,23 +10,30 @@
     <script type="text/javascript" src="Scripts/sales.js"></script>
     <script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"  ></script>
     <script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
+	<script type="text/javascript" src="Scripts/jquery.wipetouch.js"></script>
     <script type="text/javascript">
         function StartupSales() {
             LoadJSON();
-            var TodayDate = new Date;
-            init(TodayDate);
-            GetFullMonth();
+            //var TodayDate = new Date;
+			HandleMonthChange(new Date)
+            //init(TodayDate);
+			//GetFullMonth(TodayDate);
         }
 
-        function GetFullMonth() {
-            var fullMonthName = new Array("January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
-            var todate = new Date;
+		function HandleMonthChange(d) {
+			init(d);
+            GetFullMonth(d);
+		}
+
+        function GetFullMonth(todate) {
+            var fullMonthName = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
             document.getElementById('month').innerHTML = fullMonthName[todate.getMonth()];
         }
     </script>
 </head>
 <body onload="StartupSales()">
-    <div id="main">
+    <div id="swipeArea">
+        <div id="main">
 			<div id="part01">
 				<div id="header">
 						<img src="images/header.jpg"></img>
@@ -118,7 +120,7 @@
 				</div>
 				<div id="info09">
 					<h2>Lost Sales</h2>
-					<canvas id="Lost_Sale" width="237" height="235">
+					<canvas id="Lost_Sale" width="350" height="235">
 						<!-- Insert fallback content here -->
 						Sorry, your browser doesn't support canvas technology
 					</canvas>
@@ -134,5 +136,29 @@
 				<div id="dot07"></div>
             </div>
 		</div>
+
+		<script type="text/javascript">
+			function wipeStatus(dir, result)
+			{
+				var de = new Date();
+                if(dir == "Right") {
+				    de.setMonth(de.getMonth()+1);
+                } else {
+                    de.setMonth(de.getMonth()-1);
+                }
+				HandleMonthChange(de);
+			}
+			
+			$("#header").wipetouch(
+			{
+				allowDiagonal:false,
+				tapToClick: false,
+				wipeLeft: function(result) { wipeStatus("Left",result);},
+				wipeRight: function(result) { wipeStatus("Right",result);},
+			});	
+		</script>
+	</div>
+
+
 </body>
 </html>
