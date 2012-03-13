@@ -52,3 +52,27 @@ function SearchKPIByDate(date) {
     }
     return returnArr;
 }
+
+//Finding the total range that our data spans.
+//function dateRange() {
+//    var locStorage = new Storage();
+//    var FirstMonth,FirstYear,LastMonth,LastYear;
+
+//    for (var i = 0, l = locStorage.size(); i < l; i++) {
+//        var value = locStorage.get(i);
+//        //find the newest year
+//        if (FormatDate(value.KPI_date).getFullYear() > LastYear) {
+//            LastYear = FormatDate(value.KPI_date).getFullYear();
+//        } else if (FormatDate(value.KPI_date).getFullYear() < FirstYear) { // finding the oldest year
+//            FirstYear = FormatDate(value.KPI_date).getFullYear();
+//        }
+
+//        //if it is apart of the newest year, then find the newest month
+//        if ((FormatDate(value.KPI_date).getFullYear() == LastYear) && (FormatDate(value.KPI_date).getMonth() > LastMonth)) {
+//            LastMonth = FormatDate(value.KPI_date).getMonth();
+//        } else if ((FormatDate(value.KPI_date).getFullYear() < FirstYear) && (FormatDate(value.KPI_date).getMonth() < FirstMonth)) {
+//            FirstMonth = FormatDate(value.KPI_date).getMonth();
+//        }
+//    }
+//    return [FirstMonth,FirstYear,LastMonth,LastYear];
+//}

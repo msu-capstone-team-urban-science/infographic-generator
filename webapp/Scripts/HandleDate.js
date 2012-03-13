@@ -15,7 +15,17 @@ function GetFullMonth(todate) {
 
 function changeMonth(x) {
     currDate.setMonth(currDate.getMonth() + x);
-    //currDate.setFullYear(currDate.getFullYear, currDate.getMonth() + x, currDate.getDay());
     initSales(currDate);
     GetFullMonth(currDate);
+}
+
+function wipeStatus(dir, result) {
+   // var dr = dateRange();
+   // alert(dr);
+    if (dir == "Right") {
+        changeMonth(-1);
+    }
+    if (dir == "Left") {
+        changeMonth(1);
+    }
 }

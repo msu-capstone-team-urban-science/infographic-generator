@@ -122,23 +122,13 @@
 		</div>
 	</div>
 
-	<script type="text/javascript">
-		function wipeStatus(dir, result)
-		{
-			if(dir == "Right") {
-                changeMonth(-1);
-			} 
-			if (dir == "Left") {
-				changeMonth(1);
-			}
-		}
-		
+	<script type="text/javascript">		
 		$("#header").wipetouch(
 		{
 			allowDiagonal:false,
 			tapToClick: false,
 			wipeLeft: function(result) { wipeStatus("Left",result);},
-			wipeRight: function(result) { wipeStatus("Right",result);}
+			wipeRight: function(result) { wipeStatus("Right",result);},
 		});	
 	</script>
 </body>
