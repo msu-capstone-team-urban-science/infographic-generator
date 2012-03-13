@@ -128,14 +128,14 @@
 	<script type="text/javascript">
 		function wipeStatus(dir, result)
 		{
-			//var de = getCurrDate();
+			var de = getCurrDate();
 			if(dir == "Right") {
-				getCurrDate().setMonth(getCurrDate().getMonth()+1);
+				de.setMonth(de.getMonth()+1);
 			} 
 			if (dir == "Left") {
-				getCurrDate().setMonth(getCurrDate().getMonth()-1);
+				de.setMonth(de.getMonth()-1);
 			}
-			changeMonth(getCurrDate());
+			changeMonth(de);
 		}
 		
 		$("#header").wipetouch(

@@ -12,10 +12,15 @@ function initDate() {
 function changeMonth(d) {
 	init(d);
 	GetFullMonth(d);
+	setCurrDate(d);
 }
 
 function getCurrDate() { 
 	return window.showing_date_now;
+}
+
+function setCurrDate(d) {
+	window.showing_date_now = d;
 }
 
 function GetFullMonth(todate) {
