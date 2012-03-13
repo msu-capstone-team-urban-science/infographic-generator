@@ -341,8 +341,6 @@ function Pump_In_Sale(c, x, y, w, h, d) {
         sum = sum + parseInt(d[i][0]);
     }
 
-
-
     // draw first line of figure
     context.beginPath();
     context.moveTo(blX, blY);

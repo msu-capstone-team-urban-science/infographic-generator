@@ -9,8 +9,13 @@ function initDate() {
 		GetFullMonth(currDate);
 	}
 }
-
-
 function GetFullMonth(todate) {
 	document.getElementById('month').innerHTML = fullMonthName[todate.getMonth()];
+}
+
+function changeMonth(x) {
+    currDate.setMonth(currDate.getMonth() + x);
+    //currDate.setFullYear(currDate.getFullYear, currDate.getMonth() + x, currDate.getDay());
+    initSales(currDate);
+    GetFullMonth(currDate);
 }

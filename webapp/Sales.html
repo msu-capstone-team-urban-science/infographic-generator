@@ -1,28 +1,27 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<head id="Head1" runat="server">
-
-    <link href="Styles/sales_style.css" rel="stylesheet" type="text/css" />
-    <title>Infographics Generator</title>
-    <script type="text/javascript" src="Scripts/sales.js"></script>
-	<script type="text/javascript" src="Scripts/HandleDate.js"></script>
-    <script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"  ></script>
-    <script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
-	<script type="text/javascript" src="Scripts/jquery.wipetouch.js"></script>
-    <script type="text/javascript">
-        function StartupSales() {
-			initDate();
-            LoadJSON();
-        }
-    </script>
-</head>
+<html>
+	<head id="Head1" runat="server">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<link href="Styles/sales_style.css" rel="stylesheet" type="text/css" />
+		<title>Infographics Generator</title>
+		<script type="text/javascript" src="Scripts/sales.js"></script>
+		<script type="text/javascript" src="Scripts/HandleDate.js"></script>
+		<script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"  ></script>
+		<script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
+		<script type="text/javascript" src="Scripts/jquery.wipetouch.js"></script>
+		<script type="text/javascript">
+			function StartupSales() {
+				LoadJSON();
+				initDate();
+			}
+		</script>
+	</head>
 <body onload="StartupSales()">
 	<div id="main">
 		<div id="part01">
 			<div id="header">
-					<img src="images/header.jpg"></img>
+					<img src="images/header.jpg" /> 
 					<p id="category">Sales</p>
 					<p id="month"></p>
 			</div>
@@ -58,7 +57,7 @@
 				<div id="dot01"></div>
 				<div id="dot02"></div>
 				<div id="dot03"></div>
-				<div id="splitter01"> <img src="images/splitter.png"></img>
+				<div id="splitter01"> <img src="images/splitter.png" />
 				</div>
 			</div>
 		</div>
@@ -84,7 +83,7 @@
 						Sorry, your browser doesn't support canvas technology
 					</canvas>
 			</div>
-			<img src="images/PointingDude.png" id="Kevpointer">
+			<img src="images/PointingDude.png" id="Kevpointer" />
 			<div id="info07">
 					<h2>Competitive Segment Sales</h2>
 					<canvas id="Competitive_Segment_Sale" width="630" height="400">
@@ -92,7 +91,7 @@
 						Sorry, your browser doesn't support canvas technology
 					</canvas>
 			</div>
-			<div id="splitter02"><img src="images/splitter.png"></div>
+			<div id="splitter02"><img src="images/splitter.png" /></div>
 			<div id="dot04"></div>
 			<div id="dot05"></div>
 		</div>
@@ -126,14 +125,12 @@
 	<script type="text/javascript">
 		function wipeStatus(dir, result)
 		{
-			var de = getCurrDate();
 			if(dir == "Right") {
-				de.setMonth(de.getMonth()+1);
+                changeMonth(-1);
 			} 
 			if (dir == "Left") {
-				de.setMonth(de.getMonth()-1);
+				changeMonth(1);
 			}
-			changeMonth(de);
 		}
 		
 		$("#header").wipetouch(
@@ -141,7 +138,7 @@
 			allowDiagonal:false,
 			tapToClick: false,
 			wipeLeft: function(result) { wipeStatus("Left",result);},
-			wipeRight: function(result) { wipeStatus("Right",result);},
+			wipeRight: function(result) { wipeStatus("Right",result);}
 		});	
 	</script>
 </body>
