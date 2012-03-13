@@ -16,8 +16,6 @@
 			initDate();
             LoadJSON();
         }
-		
-
     </script>
 </head>
 <body onload="StartupSales()">
@@ -137,12 +135,20 @@
 			}
 			changeMonth(de);
 		}
+		function wipeLeftdir, result)
+		{
+			var de = getCurrDate();
+			if (dir == "Left") {
+				de.setMonth(de.getMonth()-1);
+			}
+			changeMonth(de);
+		}
 		
 		$("#header").wipetouch(
 		{
 			allowDiagonal:false,
 			tapToClick: false,
-			wipeLeft: function(result) { wipeStatus("Left",result);},
+			wipeLeft: function(result) { wipeLeft("Left",result);},
 			wipeRight: function(result) { wipeStatus("Right",result);},
 		});	
 	</script>

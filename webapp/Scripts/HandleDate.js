@@ -5,14 +5,10 @@ var showing_date_now;
 function initDate() {
 	if(!window.showing_date_now) {
 		window.showing_date_now = new Date;
-		changeMonth(showing_date_now);
+		alert(window.showing_date_now);
+		initSales(window.showing_date_now);
+		GetFullMonth(window.showing_date_now);
 	}
-}
-
-function changeMonth(d) {
-	init(d);
-	GetFullMonth(d);
-	setCurrDate(d);
 }
 
 function getCurrDate() { 

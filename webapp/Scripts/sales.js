@@ -1,6 +1,6 @@
 var offset = 0;
 
-function init(date) {
+function initSales(date) {
     drawGraph01(date); //Retail_Sale
     drawGraph02(date); //Used_Vehicle_Sale
     drawGraph03(date); //Cost_Per_Sale
