@@ -5,6 +5,8 @@ body {
 
 #header{
 	top: -50px;
+	position: fixed;
+	z-index: 1;
 }
 
 #category{
@@ -33,6 +35,11 @@ body {
 	background-image:url("../images/light_rock.jpg");
 	background-repeat:repeat;
 	height: 1122px;
+}
+
+#infographic 
+{
+    padding-top: 345px;
 }
 
 #info01{

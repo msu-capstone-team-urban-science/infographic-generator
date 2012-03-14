@@ -124,13 +124,19 @@
 	</div>
 
 	<script type="text/javascript">		
-		$("#header").wipetouch(
+		$(document).wipetouch(
 		{
 			allowDiagonal:false,
 			tapToClick: false,
 			wipeLeft: function(result) { wipeStatus("Left",result);},
 			wipeRight: function(result) { wipeStatus("Right",result);},
+            wipeUp: false,
+            wipeDown: false,
+            preventDefault: false,
+            moveX: 200,
 		});	
+
+
 	</script>
 </body>
 </html>
