@@ -47,7 +47,7 @@ function insideDateRange(month) {
 ////Finding the total range that our data spans.
 function dateRange() {
     var locStorage = new Storage();
-    var FirstMonth = 13, FirstYear = 3099, LastMonth = 0, LastYear = 0;
+    var FirstMonth,FirstYear, LastMonth, LastYear;
 
     for (var i = 0, l = locStorage.size(); i < l; i++) {
         var value = locStorage.get(i);
