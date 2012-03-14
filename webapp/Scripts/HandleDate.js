@@ -10,7 +10,7 @@ function initDate() {
 	}
 }
 function GetFullMonth(todate) {
-	document.getElementById('month').innerHTML = fullMonthName[todate.getMonth()];
+	document.getElementById('month').innerHTML = fullMonthName[todate.getMonth()] +" " + todate.getFullYear();
 }
 
 function changeMonth(x) {
