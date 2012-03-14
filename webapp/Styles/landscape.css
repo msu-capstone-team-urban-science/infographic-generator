@@ -1,6 +1,6 @@
 body {
 	background-color : #FFFFFD;
-	background-image:url("../images/main_bk.png");
+	background-image:url("/../images/main_bk.png");
 	background-repeat: no-repeat;
 	background-size: 1030px 748px;
 	background-attachment:fixed;
@@ -8,6 +8,6 @@ body {
 
 #main{
 	position:absolute;
-	left: 140px;
-	top:25px;
+	left: 250px;
+	top:55px;
 }

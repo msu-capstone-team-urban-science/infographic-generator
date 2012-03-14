@@ -1,13 +1,13 @@
 body {
 	background-color : #FFF1230;
-	background-image:url("../images/main_bk_pt.png");
+	background-image:url("/../images/main_bk_pt.png");
 	background-repeat: no-repeat;
-	
+	background-size: 770px 1010px;
 	background-attachment:fixed;
 }
 
 #main{
 	position:absolute;
-	left: 0px;
-	top:100px;
+	left: 80px;
+	top:200px;
 }
