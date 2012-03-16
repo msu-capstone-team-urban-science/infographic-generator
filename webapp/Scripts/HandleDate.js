@@ -27,11 +27,13 @@ function changeMonth(x) {
 function insideDateRange(month) {
     var bool = 0;
     var tempDate = new Date()
-    tempDate.setFullYear(currDate.getFullYear(), currDate.getMonth(), currDate.getDay());
+    tempDate.setFullYear(currDate.getFullYear(), month, currDate.getDay());
     var dR = dateRange();
 
     ////The date function handles wrapping into new years, so we first create a temp date to see what the new month,year we will get
     tempDate.setMonth(month);
+    // dr0  ,   dr1,     dr2,    dr3
+    //[FirstMonth, FirstYear, LastMonth, LastYear]
 
     if ((tempDate.getFullYear() <= dR[3]) && (tempDate.getFullYear() >= dR[1])) {
         if ((tempDate.getMonth() <= dR[2]) && (tempDate.getMonth() >= dR[0])) {
@@ -40,7 +42,6 @@ function insideDateRange(month) {
     } else {
         bool = 0;
     }
-
     return bool;
 }
 

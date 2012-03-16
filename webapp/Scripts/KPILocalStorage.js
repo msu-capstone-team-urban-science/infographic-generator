@@ -14,11 +14,12 @@ function LoadJSON() {
 
 //Helper function so that we can get/set easily on the local storage
 function Storage() {
-    this.get = function (name) {
-        return JSON.parse(window.localStorage.getItem(name));
+    this.get = function (key) {
+        return JSON.parse(window.localStorage.getItem(key));
     };
-    this.set = function (name, value) {
-        window.localStorage.setItem(name, JSON.stringify(value));
+    this.set = function (key, value) {
+        window.localStorage.removeItem(key);
+        window.localStorage.setItem(key, JSON.stringify(value));
     };
     this.clear = function () {
         window.localStorage.clear();
