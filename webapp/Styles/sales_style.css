@@ -3,6 +3,13 @@ body {
 	background-position:center;
 }
 
+#homeButton{
+	position: absolute;
+	top:180px;
+	left: 80px;
+	
+}
+
 #header{
 	top: -50px;
 	position: fixed;
