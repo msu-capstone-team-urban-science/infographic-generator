@@ -86,13 +86,13 @@
 
                 // draw cloud
                 context.beginPath();
-                context.moveTo(170*(w/430)+x, 80*(h/180)+y);
-                context.bezierCurveTo(130*(w/430)+x, 100*(h/180)+y, 130*(w/430)+x, 150*(h/180)+y, 230*(w/430)+x, 150*(h/180)+y);
-                context.bezierCurveTo(250*(w/430)+x, 180*(h/180)+y, 320*(w/430)+x, 180*(h/180)+y, 340*(w/430)+x, 150*(h/180)+y);
-                context.bezierCurveTo(420*(w/430)+x, 150*(h/180)+y, 420*(w/430)+x, 120*(h/180)+y, 390*(w/430)+x, 100*(h/180)+y);
-                context.bezierCurveTo(430*(w/430)+x, 40*(h/180)+y, 370*(w/430)+x, 30*(h/180)+y, 340*(w/430)+x, 50*(h/180)+y);
-                context.bezierCurveTo(320*(w/430)+x, 5*(h/180)+y, 250*(w/430)+x, 20*(h/180)+y, 250*(w/430)+x, 50*(h/180)+y);
-                context.bezierCurveTo(200*(w/430)+x, 5*(h/180)+y, 150*(w/430)+x, 20*(h/180)+y, 170*(w/430)+x, 80*(h/180)+y);
+                context.moveTo(40*(w/430)+x, 75*(h/180)+y);
+                context.bezierCurveTo(x,             95*(h/180)+y,  x,             145*(h/180)+y, 100*(w/430)+x, 145*(h/180)+y);
+                context.bezierCurveTo(120*(w/430)+x, 175*(h/180)+y, 190*(w/430)+x, 175*(h/180)+y, 210*(w/430)+x, 145*(h/180)+y);
+                context.bezierCurveTo(290*(w/430)+x, 145*(h/180)+y, 290*(w/430)+x, 115*(h/180)+y, 260*(w/430)+x, 95*(h/180)+y);
+                context.bezierCurveTo(300*(w/430)+x, 35*(h/180)+y,  240*(w/430)+x, 25*(h/180)+y,  210*(w/430)+x, 45*(h/180)+y);
+                context.bezierCurveTo(190*(w/430)+x, y,             120*(w/430)+x, 15*(h/180)+y,  120*(w/430)+x, 45*(h/180)+y);
+                context.bezierCurveTo(70*(w/430)+x,  y,             20*(w/430)+x,  15*(h/180)+y,  40*(w/430)+x,  75*(h/180)+y);
                 context.closePath();
 
                 // make gradient
@@ -111,14 +111,35 @@
                 var canvas = document.getElementById(c);
                 var context = canvas.getContext("2d");
 
-                var centerX = x / 2;
-                var centerY = y / 2;
+                var centerX = x;
+                var centerY = y;
                 var radius = r; 
 
                 context.beginPath();
                 context.arc(centerX, centerY, r, 0, 2 * Math.PI, false);
                 context.fillStyle = "#FFEF00";
                 context.fill();
+            }
+
+            function DrawX (c, x, y)
+            {
+                var canvas = document.getElementById(c);
+                var context = canvas.getContext("2d");
+
+                context.beginPath();
+                context.moveTo(0, y);
+                context.lineTo(canvas.width, y);
+                context.lineWidth = 1;
+                context.strokeStyle = "#ff0000";
+                context.stroke();
+
+                context.beginPath();
+                context.moveTo(x, 0);
+                context.lineTo(x, canvas.height);
+                context.lineWidth = 1;
+                context.strokeStyle = "#ff0000";
+                context.stroke();
+
             }
             function DrawHouse (c, x, y, h)
             {
@@ -178,6 +199,8 @@
             window.onload = function(){
                 var canvas = document.getElementById("myCanvas");
                 var context = canvas.getContext("2d");
+                //context.canvas.width  = window.innerWidth;
+                //context.canvas.height = window.innerHeight;
 
                 // data
                 var month = "May";
@@ -200,8 +223,8 @@
                 context.fill();
 
                 // draw sections
-                DrawSection("myCanvas", 0, 311, canvas.width / 2, canvas.height, [120, "#0067A5"]);
-                DrawSection("myCanvas", canvas.width / 2, 311, canvas.width / 2, canvas.height, [120, "0073CF"]);
+                DrawSection("myCanvas", 0, 311, canvas.width / 2, canvas.height, [canvas.width / 6, "#0067A5"]);
+                DrawSection("myCanvas", canvas.width / 2, 311, canvas.width / 2, canvas.height, [canvas.width / 6, "0073CF"]);
                 DrawSection("myCanvas", 0, 730, canvas.width, canvas.height, [canvas.width / 2, "#8ED6FF"]);
                 DrawSection("myCanvas", canvas.width / 2, 830, canvas.width, canvas.height, [canvas.width / 2, "#0047AB"]);
                 DrawSection("myCanvas", 0, 930, canvas.width, canvas.height, [canvas.width / 2, "#002366"]);
@@ -210,14 +233,15 @@
 // GRAPHICS SECTION
 
                 // draw sun
-                DrawSun("myCanvas", 245, 370, 50);
+                DrawSun("myCanvas", canvas.width/6, 200, 90);
 
                 // draw cloud
-                DrawCloud("myCanvas", 385, 140, 180, 100)
+                DrawCloud("myCanvas", canvas.width*4/6-115, 100, 340, 180);
 
                 // draw houses
-                DrawHouse("myCanvas", 70, 200, 99);
-                DrawHouse("myCanvas", 452, 200, 99);
+                DrawHouse("myCanvas", canvas.width/6-100, 150, 200);
+                DrawHouse("myCanvas", canvas.width*4/6-100, 150, 200);
+
 
 
 // TEXT SECTION
@@ -225,55 +249,55 @@
                 // draw top text
                 context.font = "40pt Calibri";
                 context.fillStyle = "#eeeeee";
-                context.fillText("In " + month + " Of " + year, 200, 50);
+                context.fillText("In " + month + " Of " + year, canvas.width/3, 50);
 
                 // draw active / inactive text
                 context.fillStyle = "#ffffff";
 
-                context.font = "15pt Calibri";
-                context.fillText("Active", 203, 250);
-                context.fillText("Customers", 170, 265);
-                context.font = "30pt Calibri";
-                context.fillText(kpiActive, 255, 265);
+                context.font = "20pt Calibri";
+                context.fillText("Active", canvas.width/6+123, 250);
+                context.fillText("Customers", canvas.width/6+80, 270);
+                context.font = "40pt Calibri";
+                context.fillText(kpiActive, canvas.width/6+189, 270);
 
-                context.font = "15pt Calibri";
-                context.fillText("Inactive", 571, 250);
-                context.fillText("Customers", 550, 265);
-                context.font = "30pt Calibri";
-                context.fillText(kpiInactive, 635, 265);
+                context.font = "20pt Calibri";
+                context.fillText("Inactive", canvas.width*4/6+108, 250);
+                context.fillText("Customers", canvas.width*4/6+80, 270);
+                context.font = "40pt Calibri";
+                context.fillText(kpiInactive, canvas.width*4/6+189, 270);
 
                 context.font = "35pt Calibri";
                 //context.fillStyle = "#8E00FF";
-                context.fillText(((Math.round((kpiSingleVisitCustomer/kpiActive) * 1000)) / 10) + "%", 100, 550);
+                context.fillText(((Math.round((kpiSingleVisitCustomer/kpiActive) * 1000)) / 10) + "%", 40, 550);
 
                 context.font = "15pt Calibri";
-                context.fillText("are single visit", 100, 570);
+                context.fillText("are single visit", 40, 570);
                 context.font = "22pt Calibri";
-                context.fillText("customers", 100, 592);
+                context.fillText("customers", 40, 592);
 
                 //context.fillStyle = "#8ED600";
 
                 context.font = "36pt Calibri";
-                context.fillText("Missing Monies", 420, 520);
+                context.fillText("Missing Money", canvas.width/2+40, 520);
                 context.font = "24pt Calibri";
-                context.fillText("Labor", 420, 574);
+                context.fillText("Labor", canvas.width/2+40, 574);
                 context.font = "12pt Calibri";
-                context.fillText("Opportunity", 420, 586);
+                context.fillText("Opportunity", canvas.width/2+40, 586);
                 context.font = "36pt Calibri";
-                context.fillText("$" + kpiServiceLaborOpportunity, 500, 586);
+                context.fillText("$" + kpiServiceLaborOpportunity, canvas.width/2+120, 586);
 
                 context.font = "24pt Calibri";
-                context.fillText("Parts", 420, 644);
+                context.fillText("Parts", canvas.width/2+40, 644);
                 context.font = "12pt Calibri";
-                context.fillText("Opportunity", 420, 656);
+                context.fillText("Opportunity", canvas.width/2+40, 656);
                 context.font = "36pt Calibri";
-                context.fillText("$" + kpiServicePartsOpportunity, 500, 656);
+                context.fillText("$" + kpiServicePartsOpportunity, canvas.width/2+120, 656);
             };
  
         </script>
     </head>
     <body>
-        <canvas id="myCanvas" width="1536" height="1500">
+        <canvas id="myCanvas" width="1400" height="1500">
         </canvas>
     </body>
 </html>
