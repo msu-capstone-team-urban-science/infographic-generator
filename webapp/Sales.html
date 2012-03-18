@@ -22,8 +22,14 @@
 		<div id="part01">
 			<div id="header">
 				<div id="homeButton"><a href="index.html"><img src="images/home_button.png"></a></div>
-				<img src="images/header.jpg" alt="header.jpg"/> 
-				<p id="category">Sales</p>
+				<img src="images/header2.jpg" alt="header.jpg"/> 
+                <div id="slider">   
+                    <ul>
+                        <li><p id="category">Sales</p></li>
+                        <li>Kevin</li>
+                        <li>all</li>
+                    </ul>
+                </div>
 				<p id="month"></p>
 			</div>
 			<div id="infographic">
@@ -135,6 +141,12 @@
             preventDefault: false,
             moveX: 200,
 		});	
+        
+        $(document).ready(function(){
+          $("#category").click(function(){
+            $(this).animate({left:1000},"slow");
+            });
+        });
 	</script>
 </body>
 </html>
