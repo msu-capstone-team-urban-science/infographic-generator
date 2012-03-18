@@ -196,10 +196,44 @@
 
             }
 
+            function DrawSpirograph (c, x, y)
+            {
+                var canvas = document.getElementById(c);
+                var context = canvas.getContext("2d");
+
+                // values needed to generate spirograph
+                var fixedCircleRadius = 200;
+                var movingCircleRadius = -101;
+                var height = 201;
+
+                // other vars
+                var pX = 0;
+                var pY = 0;
+                var t = 0;
+
+                // move to starting point
+                pX = (fixedCircleRadius - movingCircleRadius)*Math.cos(t) + height*Math.cos(((fixedCircleRadius-movingCircleRadius)/movingCircleRadius)*t);
+                pY = (fixedCircleRadius - movingCircleRadius)*Math.sin(t) - height*Math.sin(((fixedCircleRadius-movingCircleRadius)/movingCircleRadius)*t);
+                context.moveTo(pX + x,pY + y);
+                context.beginPath();
+
+                // then draw the line
+                for (t = 0; t < 5300; t = t + .01)
+                {
+                    pX = (fixedCircleRadius - movingCircleRadius)*Math.cos(t) + height*Math.cos(((fixedCircleRadius-movingCircleRadius)/movingCircleRadius)*t);
+                    pY = (fixedCircleRadius - movingCircleRadius)*Math.sin(t) - height*Math.sin(((fixedCircleRadius-movingCircleRadius)/movingCircleRadius)*t);
+                    context.lineTo(x + pX,y + pY);
+            
+                }
+                context.lineWidth = .5;
+                context.strokeStyle = "#ff0000";
+                context.stroke();
+            }
+
             window.onload = function(){
                 var canvas = document.getElementById("myCanvas");
                 var context = canvas.getContext("2d");
-                //context.canvas.width  = window.innerWidth;
+                context.canvas.width  = window.innerWidth;
                 //context.canvas.height = window.innerHeight;
 
                 // data
@@ -242,6 +276,7 @@
                 DrawHouse("myCanvas", canvas.width/6-100, 150, 200);
                 DrawHouse("myCanvas", canvas.width*4/6-100, 150, 200);
 
+                //DrawSpirograph("myCanvas", 555, 555);
 
 
 // TEXT SECTION
