@@ -182,7 +182,7 @@ function drawGraph11(date) {
     var kpiData = "";
 
     for (var i = 0; i < kpiArray.length; i++) {
-        if (kpiArray[i][0] == "Lost_Sale") {
+        if (kpiArray[i][0] == "Lost_Sales") {
             kpiData = kpiArray[i][1];
             break;
         }
@@ -599,7 +599,7 @@ function Lost_Profit(c, d) {
 
     // Draw the text exclamation point
     context.font = "40px Arial";
-    context.fillStyle = "red";
+    context.fillStyle = "red";	
     context.fillText("$" + d, 190, 100);
 
     context.textAlign = "center";
@@ -629,7 +629,7 @@ function Lost_Sale(c, d) {
         ctx.fillText("SALES", 97, 68);
         ctx.fillStyle = "black";
         ctx.font = "bold 40pt Calibri";
-        ctx.fillText(449, 155, 120);
+        ctx.fillText(d, 155, 120);
     }
 }
 

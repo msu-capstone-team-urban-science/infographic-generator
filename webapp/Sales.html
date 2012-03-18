@@ -15,21 +15,19 @@
 				LoadJSON();
 				initDate();
 			}
+			
+			function navigator_Go(url) {
+                window.location.assign(url); // This technique is almost exactly the same as a full <a> page refresh, but it prevents Mobile Safari from jumping out of full-screen mode
+            }
 		</script>
 	</head>
 <body onload="StartupSales()">
 	<div id="main">
 		<div id="part01">
 			<div id="header">
-				<div id="homeButton"><a href="index.html"><img src="images/home_button.png"></a></div>
+				<div id="homeButton"><a href="javascript:navigator_Go('index.html');"><img src="images/home_button.png"></a></div>
 				<img src="images/header2.jpg" alt="header.jpg"/> 
-                <div id="slider">   
-                    <ul>
-                        <li><p id="category">Sales</p></li>
-                        <li>Kevin</li>
-                        <li>all</li>
-                    </ul>
-                </div>
+                <p id="category">Sales</p>
 				<p id="month"></p>
 			</div>
 			<div id="infographic">
