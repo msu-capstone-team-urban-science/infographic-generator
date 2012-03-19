@@ -6,11 +6,14 @@ function initDate() {
 	if(!currDate) {
 		currDate = new Date;
 		initSales(currDate);
-		GetFullMonth(currDate);
+		GetFullMonth(currDate,0);
 	}
 }
-function GetFullMonth(todate) {
-	document.getElementById('month').innerHTML = fullMonthName[todate.getMonth()] +" " + todate.getFullYear();
+function GetFullMonth(todate,b) {
+    document.getElementById('month').innerHTML = fullMonthName[todate.getMonth()] + " " + todate.getFullYear();
+    if (b) {
+        document.getElementById('month2').innerHTML = fullMonthName[todate.getMonth()-b] + " " + todate.getFullYear();
+    }
 }
 
 function changeMonth(x) {
@@ -18,7 +21,13 @@ function changeMonth(x) {
     if (insideDateRange(newMonth)) {
         currDate.setMonth(newMonth);
         initSales(currDate);
-        GetFullMonth(currDate);
+        GetFullMonth(currDate, x);
+        //TODO: Change Direction
+        $("#month").animate({ "left": "-850px" }, 0);
+        $("#month2").animate({ "left": "0px" }, 0);
+        $("#month2").animate({ "left": "+=850px" }, 1500);
+        $("#month").animate({ "left": "+=850px" }, 1000);
+        
     }
 }
 
@@ -75,7 +84,9 @@ function wipeStatus(dir, result) {
     if (dir == "Right") {
         changeMonth(-1);
     }
-    if (dir == "Left") {
+    if (dir == "Left") {        
+//        $("#month").animate({ "left": "850px" }, 0);
+//        $("#month").animate({ "left": "-=850px" }, 1000);
         changeMonth(1);
     }
 }

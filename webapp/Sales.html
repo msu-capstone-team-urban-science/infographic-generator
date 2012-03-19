@@ -29,6 +29,7 @@
 				<img src="images/header2.jpg" alt="header.jpg"/> 
                 <p id="category">Sales</p>
 				<p id="month"></p>
+                <p id="month2"></p>
 			</div>
 			<div id="infographic">
 				<div id="info01">
@@ -132,19 +133,13 @@
 		{
 			allowDiagonal:false,
 			tapToClick: false,
-			wipeLeft: function(result) { wipeStatus("Left",result);},
+			wipeLeft: function(result) { wipeStatus("Left",result); },
 			wipeRight: function(result) { wipeStatus("Right",result);},
             wipeUp: false,
             wipeDown: false,
             preventDefault: false,
             moveX: 200,
 		});	
-        
-        $(document).ready(function(){
-          $("#category").click(function(){
-            $(this).animate({left:1000},"slow");
-            });
-        });
 	</script>
 </body>
 </html>
