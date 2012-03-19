@@ -22,11 +22,20 @@ function changeMonth(x) {
         currDate.setMonth(newMonth);
         initSales(currDate);
         GetFullMonth(currDate, x);
-        //TODO: Change Direction
-        $("#month").animate({ "left": "-850px" }, 0);
-        $("#month2").animate({ "left": "0px" }, 0);
-        $("#month2").animate({ "left": "+=850px" }, 1500);
-        $("#month").animate({ "left": "+=850px" }, 1000);
+        if (x < 0) {
+            $("#month").animate({ "left": "-850px" }, 0);
+            $("#month2").animate({ "left": "0px" }, 0);
+            $("#month2").animate({ "left": "+=850px" }, 1500);
+            $("#month").animate({ "left": "+=850px" }, 1000);
+        } else {
+            $("#month").animate({ "left": "850px" }, 0);
+            $("#month2").animate({ "left": "0px" }, 0);
+            $("#month2").animate({ "left": "-=850px" }, 1500);
+            $("#month").animate({ "left": "-=850px" }, 1000);
+        }
+
+       
+
         
     }
 }
