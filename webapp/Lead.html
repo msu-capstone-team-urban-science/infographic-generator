@@ -23,9 +23,10 @@
 					fillH = 50;
 
 					context.fillRect(x+10,y+100, fillW, fillH);
-
-					context.drawImage(img, x, y, img.width/4.29, img.height/4.29);
-
+					img.onload = function()
+					{
+						context.drawImage(img, x, y, img.width/4.29, img.height/4.29);
+					}
             }
 
 
