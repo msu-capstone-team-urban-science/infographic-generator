@@ -230,10 +230,72 @@
                 context.stroke();
             }
 
+            function DrawPerson (c, x, y, h)
+            {
+                var canvas = document.getElementById(c);
+                var context = canvas.getContext("2d");
+
+                var lineWidth = h/10;
+                var headRadius = h/10;
+
+                // draw head
+                context.beginPath();
+                context.arc(x+lineWidth*2.4, y+headRadius, headRadius * .95, 0, 2 * Math.PI, false);
+                context.fillStyle = "#000000";
+                context.fill();
+
+                // draw left leg
+                context.beginPath();
+                context.moveTo(x + lineWidth*1.65, y+h*3/5);
+                context.lineTo(x + lineWidth*1.65, y+h);
+                context.lineWidth = lineWidth;
+                context.lineCap = "round";
+                context.strokeStyle = "#000000";
+                context.stroke();
+
+                // draw right leg
+                context.beginPath();
+                context.moveTo(x+lineWidth*3.15, y+h*3/5);
+                context.lineTo(x+lineWidth*3.15, y+h);
+                context.lineWidth = lineWidth;
+                context.lineCap = "round";
+                context.strokeStyle = "#000000";
+                context.stroke();
+
+                // draw body
+                context.beginPath();
+                context.moveTo(x+lineWidth*2.4, y+headRadius*2);
+                context.lineTo(x+lineWidth*2.4, y+h*3/5);
+                context.lineWidth = lineWidth*5/2;
+                context.lineCap = "butt";
+                context.strokeStyle = "#000000";
+                context.stroke();
+
+                // draw left arm
+                context.beginPath();
+                context.moveTo(x+lineWidth*.5, y+headRadius*2+lineWidth/2);
+                context.lineTo(x+lineWidth*.5, y+h*3/5);
+                context.lineWidth = lineWidth*4/5;
+                context.lineCap = "round";
+                context.strokeStyle = "#000000";
+                context.stroke();
+
+                // draw right arm
+                context.beginPath();
+                context.moveTo(x+lineWidth*4.3, y+headRadius*2+lineWidth/2);
+                context.lineTo(x+lineWidth*4.3, y+h*3/5);
+                context.lineWidth = lineWidth*4/5;
+                context.lineCap = "round";
+                context.strokeStyle = "#000000";
+                context.stroke();
+
+            }
+
+
             window.onload = function(){
                 var canvas = document.getElementById("myCanvas");
                 var context = canvas.getContext("2d");
-                context.canvas.width  = window.innerWidth;
+                //context.canvas.width  = window.innerWidth;
                 //context.canvas.height = window.innerHeight;
 
                 // data
@@ -279,15 +341,24 @@
                 //DrawSpirograph("myCanvas", 555, 555);
 
 
+                //DrawX("myCanvas", 444, 444);
+                DrawPerson("myCanvas", 40, 590, 50);
+                DrawPerson("myCanvas", 40, 650, 50);
+                DrawPerson("myCanvas", 75, 590, 50);
+                DrawPerson("myCanvas", 75, 650, 50);
+
+
+                DrawPerson("myCanvas", 40, 400, 110);
+
+
 // TEXT SECTION
 
                 // draw top text
                 context.font = "40pt Calibri";
-                context.fillStyle = "#eeeeee";
+                context.fillStyle = "#ffffff";
                 context.fillText("In " + month + " Of " + year, canvas.width/3, 50);
 
                 // draw active / inactive text
-                context.fillStyle = "#ffffff";
 
                 context.font = "20pt Calibri";
                 context.fillText("Active", canvas.width/6+123, 250);
@@ -301,14 +372,20 @@
                 context.font = "40pt Calibri";
                 context.fillText(kpiInactive, canvas.width*4/6+189, 270);
 
-                context.font = "35pt Calibri";
+                context.font = "55pt Calibri";
                 //context.fillStyle = "#8E00FF";
-                context.fillText(((Math.round((kpiSingleVisitCustomer/kpiActive) * 1000)) / 10) + "%", 40, 550);
+                context.fillText(((Math.round((kpiSingleVisitCustomer/kpiActive) * 1000)) / 10) + "%", 90, 510);
 
-                context.font = "15pt Calibri";
-                context.fillText("are single visit", 40, 570);
-                context.font = "22pt Calibri";
-                context.fillText("customers", 40, 592);
+                context.font = "30pt Calibri";
+                context.fillText("are single visit", 40, 540);
+                context.font = "44pt Calibri";
+                context.fillText("customers", 40, 580);
+                context.font = "47pt Calibri";
+                context.fillText(((Math.round((1-(kpiSingleVisitCustomer/kpiActive)) * 1000)) / 10) + "%", 110, 702);
+                context.font = "28pt Calibri";
+                context.fillText("conversely", 110, 655);
+                context.font = "38pt Calibri";
+                context.fillText("are regulars", 40, 740);
 
                 //context.fillStyle = "#8ED600";
 
@@ -327,12 +404,13 @@
                 context.fillText("Opportunity", canvas.width/2+40, 656);
                 context.font = "36pt Calibri";
                 context.fillText("$" + kpiServicePartsOpportunity, canvas.width/2+120, 656);
+
             };
  
         </script>
     </head>
     <body>
-        <canvas id="myCanvas" width="1400" height="1500">
+        <canvas id="myCanvas" width="1300" height="1500">
         </canvas>
     </body>
 </html>
