@@ -5,24 +5,63 @@
 <link href="styles/lead_style.css" rel="stylesheet" type="text/css" />
 <title>Infographics Generator</title>
         <script type="text/javascript">
-            function DrawMail(c, x, y)
+            function DrawMail(c, x, y, kpiMail, kpiPhone)
             {
 			        var canvas = document.getElementById(c);
 					var context = canvas.getContext("2d");
                 	img = new Image();
 					img.src = 'images/response.png';
 					context.fillStyle="#FFA54F";
-					//draw rectangle in the back of the image
-					//x,y, width, height
-					fillW= 350; 
-					fillH = 50;
-
+					var kpiTotal = kpiMail + kpiPhone;
+					var MailP = kpiMail/kpiTotal;
+					var PhoneP= kpiPhone/kpiTotal;
+					//document.write(MailP);
+					//draw rectangle in the back of the mail image
+					if(MailP <= 0.5)
+					{
+						fillW= 700 * MailP; 
+						fillH = 50;
+						MailP = 0;
+					}
+					else if(MailP > 0.5)
+					{
+						MailP = MailP-0.5;
+						fillW= 350; 
+						fillH = 50;
+					}
 					context.fillRect(x+10, y+10, fillW, fillH);
-					
-					fillW= 70;
-					fillH = 50;
+					if(MailP > 0)
+					{
+						fillW= 700 * MailP;
+						fillH = 50;
 
-					context.fillRect(x+10,y+100, fillW, fillH);
+						context.fillRect(x+10,y+100, fillW, fillH);
+					}
+				
+					//draw rectangle in the back of the phone image
+					if(PhoneP <= 0.5)
+					{
+						fillW= 760 * PhoneP; 
+						//fillW = 350
+						fillH = 80;
+						PhoneP = 0;
+					}
+					else if(PhoneP > 0.5)
+					{
+						PhoneP = PhoneP-0.5;
+						fillW= 760/2; 
+						fillH = 80;
+					}
+					context.fillRect(x+740, y+80, x-fillW, fillH);				
+					if(PhoneP > 0)
+					{
+						fillW= 760 * PhoneP;
+						fillH = 80;
+
+						context.fillRect(x+740,y+8, x-fillW, fillH);
+					}					
+					
+					
 					img.onload = function()
 					{
 						context.drawImage(img, x, y, img.width/4.29, img.height/4.29);
@@ -41,9 +80,10 @@
                 var year = "2012";
 
                 // fake kpi
-                var kpiMail = "1602";
+                var kpiMail = 1602;
+				var kpiPhone = 687;
 
-				DrawMail("myCanvas", 20, 657);
+				DrawMail("myCanvas", 20, 657, kpiMail, kpiPhone);
 
             };
  
