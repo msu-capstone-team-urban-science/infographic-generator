@@ -5,7 +5,7 @@ body {
 
 #homeButton{
 	position: absolute;
-	top:180px;
+	top:155px;
 	left: 80px;
 	
 }
@@ -30,6 +30,16 @@ body {
 	font-size:54px;
 	color:white;
 	top:35px;
+	z-index: 1;
+}
+
+#month2{
+	position: absolute;
+	padding-left:410px;
+	font-size:54px;
+	color:white;
+	top:35px;
+	z-index: 1;
 }
 
 #main{
@@ -240,10 +250,6 @@ body {
 	border-width: 8px;
 	border-bottom-style: dotted;
 }
-
-
-
-
 
 
 

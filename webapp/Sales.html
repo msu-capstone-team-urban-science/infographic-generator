@@ -14,9 +14,9 @@
 			function StartupSales() {
 				LoadJSON();
 				initDate();
-            }
-
-            function navigator_Go(url) {
+			}
+			
+			function navigator_Go(url) {
                 window.location.assign(url); // This technique is almost exactly the same as a full <a> page refresh, but it prevents Mobile Safari from jumping out of full-screen mode
             }
 		</script>
@@ -26,9 +26,10 @@
 		<div id="part01">
 			<div id="header">
 				<div id="homeButton"><a href="javascript:navigator_Go('index.html');"><img src="images/home_button.png"></a></div>
-				<img src="images/header.jpg" alt="header.jpg"/> 
-				<p id="category">Sales</p>
+				<img src="images/header2.jpg" alt="header.jpg"/> 
+                <p id="category">Sales</p>
 				<p id="month"></p>
+                <p id="month2"></p>
 			</div>
 			<div id="infographic">
 				<div id="info01">
@@ -132,7 +133,7 @@
 		{
 			allowDiagonal:false,
 			tapToClick: false,
-			wipeLeft: function(result) { wipeStatus("Left",result);},
+			wipeLeft: function(result) { wipeStatus("Left",result); },
 			wipeRight: function(result) { wipeStatus("Right",result);},
             wipeUp: false,
             wipeDown: false,
