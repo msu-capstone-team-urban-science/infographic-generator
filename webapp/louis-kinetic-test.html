@@ -61,6 +61,10 @@ function animate(lastTime, mySpiro){
     context.strokeStyle = mySpiro.c;
     context.stroke();
 
+    context.fillStyle = "#ffffff"
+    context.fillText("fixed: " + fixedCircleRadius ,50,canvas.height - 60);
+    context.fillText("moving: " + movingCircleRadius ,50,canvas.height - 40);
+    context.fillText("height: " + height ,50,canvas.height - 20);
  
     // request new frame
     if (mySpiro.t <= mySpiro.x*2*Math.PI)
@@ -85,9 +89,9 @@ window.onload = function(){
     var mySpiro = {
         t: 0,
         c: 0,
-        f: Math.floor(Math.random()*canvas.height/2),
-        m: Math.floor(Math.random()*canvas.height/2),
-        h: Math.floor(Math.random()*canvas.height/2),
+        f: Math.floor((Math.random()*canvas.height) - canvas.height/2),
+        m: Math.floor((Math.random()*canvas.height) - canvas.height/2),
+        h: Math.floor((Math.random()*canvas.height) - canvas.height/2),
         x:1
     };
 	mySpiro.x=(Math.abs(mySpiro.m)/GCD(Math.abs(mySpiro.f),Math.abs(mySpiro.m)));
@@ -99,6 +103,6 @@ window.onload = function(){
 };
     </script>
 </head>
-<body bgcolor="#1a1a1a">
+<body bgcolor="#000000">
       <canvas id="myCanvas" width="777" height="777" />
 </body>
