@@ -162,11 +162,20 @@
 					var context = canvas.getContext("2d");
                 	img = new Image();
 					img.src = 'images/response.png';
-					context.fillStyle="#FFA54F";
+					context.fillStyle = "#8ED6FF";
 					var kpiTotal = kpiMail + kpiPhone;
 					var MailP = kpiMail/kpiTotal;
 					var PhoneP= kpiPhone/kpiTotal;
 					//document.write(MailP);
+					
+					context.beginPath();
+					context.rect(x+6, y, 370, -120);
+					context.fill();
+					context.lineWidth = 1;
+					context.strokeStyle = "black";
+					context.stroke();
+					
+					
 					//draw rectangle in the back of the mail image
 					if(MailP <= 0.5)
 					{
@@ -189,6 +198,16 @@
 						context.fillRect(x+10,y+100, fillW, fillH);
 					}
 				
+				
+				
+				    context.fillStyle="#FFA54F";
+					context.beginPath();
+					context.rect(x+370, y, 370, -120);
+					context.fill();
+					context.lineWidth = 1;
+					context.strokeStyle = "black";
+					context.stroke();
+					
 					//draw rectangle in the back of the phone image
 					if(PhoneP <= 0.5)
 					{
@@ -239,8 +258,30 @@
 				DrawUniqueCustomers("myCanvas", 200, 190);
 				DrawResponse("myCanvas", 20, 657, kpiMail, kpiPhone);
 				
+				//section
 				
+				context.beginPath();
+                context.moveTo(25 , 300);
+                context.lineTo(25 , 800);
+                context.lineWidth = 2;
+                context.lineCap = "square";
+                context.strokeStyle = "#000000";
+                context.stroke();
 				
+				context.moveTo(25 , 300);
+                context.lineTo(760 , 300);
+                context.lineWidth = 2;
+                context.lineCap = "square";
+                context.strokeStyle = "#000000";
+                context.stroke();
+				
+				context.moveTo(760 , 300);
+                context.lineTo(760 , 800);
+                context.lineWidth = 2;
+                context.lineCap = "square";
+                context.strokeStyle = "#000000";
+                context.stroke();
+
 				
 				//Text
 				
