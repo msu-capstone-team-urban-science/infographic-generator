@@ -5,7 +5,158 @@
 <link href="styles/lead_style.css" rel="stylesheet" type="text/css" />
 <title>Infographics Generator</title>
         <script type="text/javascript">
-            function DrawMail(c, x, y, kpiMail, kpiPhone)
+			function DrawUniqueCustomers(c,x,y)
+			{
+                var canvas = document.getElementById(c);
+                var context = canvas.getContext("2d");
+
+                var lineWidth = 7;
+				
+				context.arc(x+170, y-50, 20, 0, 2 * Math.PI, false);
+                context.fillStyle = "#000000";
+                context.fill();
+				
+				//draw man
+				context.moveTo(x + 130, y +30);
+                context.lineTo(x + 170 ,y +30);
+                context.lineWidth = lineWidth;
+                context.lineCap = "round";
+                context.strokeStyle = "#000000";
+                context.stroke();
+				
+				//draw man
+				context.moveTo(x + 170, y -30);
+                context.lineTo(x + 170 ,y +30);
+                context.lineWidth = lineWidth;
+                context.lineCap = "round";
+                context.strokeStyle = "#000000";
+                context.stroke();
+				
+				//draw man
+				context.moveTo(x + 170, y -20);
+                context.lineTo(x + 100 ,y -10);
+                context.lineWidth = lineWidth;
+                context.lineCap = "round";
+                context.strokeStyle = "#000000";
+                context.stroke();
+			
+                // draw 
+                context.beginPath();
+                context.moveTo(x , y);
+                context.lineTo(x +100 , y);
+                context.lineWidth = lineWidth;
+                context.lineCap = "round";
+                context.strokeStyle = "#000000";
+                context.stroke();
+
+                // draw 
+                context.moveTo(x -20, y+40);
+                context.lineTo(x +120 , y+40);
+                context.lineWidth = lineWidth;
+                context.lineCap = "round";
+                context.strokeStyle = "#000000";
+                context.stroke();
+				
+				// draw leg
+                context.moveTo(x +30, y);
+                context.lineTo(x +10 , y+80);
+                context.lineWidth = lineWidth;
+                context.lineCap = "round";
+                context.strokeStyle = "#000000";
+                context.stroke();
+				
+				// draw legs
+                context.moveTo(x +65, y);
+                context.lineTo(x +85 , y+80);
+                context.lineWidth = lineWidth;
+                context.lineCap = "round";
+                context.strokeStyle = "#000000";
+                context.stroke();
+				
+				// draw 
+
+                context.moveTo(x + 10, y);
+                context.lineTo(x + 10 , y-70);
+                context.lineWidth = lineWidth;
+                context.lineCap = "round";
+                context.strokeStyle = "#000000";
+                context.stroke();
+				
+				// draw umbrella
+                context.moveTo(x -60, y-70);
+                context.lineTo(x +80 , y-70);
+                context.lineWidth = lineWidth;
+                context.lineCap = "round";
+                context.strokeStyle = "#000000";
+                context.stroke();
+				
+				
+				// draw umbrella
+				//context.beginPath();
+				context.moveTo(x-60, y-70);
+				context.quadraticCurveTo(x+10, y-120, x+80, y-70);
+                context.lineWidth = lineWidth;
+                context.lineCap = "round";
+                context.strokeStyle = "#000000";
+				context.fillStyle = "#000000";
+                context.fill();
+                context.stroke();
+				
+				//draw computer
+				context.moveTo(x +50, y-10);
+                context.lineTo(x +90 , y-10);
+                context.lineWidth = lineWidth;
+                context.lineCap = "round";
+                context.strokeStyle = "#000000";
+                context.stroke();
+				
+			    //draw computer
+				context.moveTo(x + 50, y-10);
+                context.lineTo(x + 40 ,y-40);
+                context.lineWidth = lineWidth;
+                context.lineCap = "round";
+                context.strokeStyle = "#000000";
+                context.stroke();
+				
+				//draw chair
+				context.moveTo(x + 140, y+80);
+                context.lineTo(x + 140 ,y +40);
+                context.lineWidth = lineWidth;
+                context.lineCap = "round";
+                context.strokeStyle = "#000000";
+                context.stroke();
+				
+				//draw chair
+				context.moveTo(x + 180, y+80);
+                context.lineTo(x + 180 ,y -10);
+                context.lineWidth = lineWidth;
+                context.lineCap = "round";
+                context.strokeStyle = "#000000";
+                context.stroke();
+				
+				//draw chair
+				context.moveTo(x + 140, y +40);
+                context.lineTo(x + 180 ,y +40);
+                context.lineWidth = lineWidth;
+                context.lineCap = "round";
+                context.strokeStyle = "#000000";
+                context.stroke();
+				
+				//draw man
+				context.moveTo(x + 130, y +30);
+                context.lineTo(x + 130 ,y +80);
+                context.lineWidth = lineWidth;
+                context.lineCap = "round";
+                context.strokeStyle = "#000000";
+                context.stroke();
+				
+				
+				
+			
+				
+							
+			}
+            function DrawResponse(c, x, y, kpiMail, kpiPhone)
             {
 			        var canvas = document.getElementById(c);
 					var context = canvas.getContext("2d");
@@ -49,16 +200,17 @@
 					else if(PhoneP > 0.5)
 					{
 						PhoneP = PhoneP-0.5;
-						fillW= 760/2; 
+						fillW= 720/2; 
 						fillH = 80;
 					}
-					context.fillRect(x+740, y+80, x-fillW, fillH);				
+					context.fillRect(x+740, y+80, x-20-fillW, fillH);			
 					if(PhoneP > 0)
 					{
-						fillW= 760 * PhoneP;
+						fillW= 720 * PhoneP;
 						fillH = 80;
 
-						context.fillRect(x+740,y+8, x-fillW, fillH);
+						context.fillRect(x+740,y+8, x-20-fillW, fillH);
+						//document.write(x+740);	
 					}					
 					
 					
@@ -80,10 +232,31 @@
                 var year = "2012";
 
                 // fake kpi
-                var kpiMail = 1602;
-				var kpiPhone = 687;
+                var kpiMail = 600;
+				var kpiPhone = 1687;
 
-				DrawMail("myCanvas", 20, 657, kpiMail, kpiPhone);
+				DrawUniqueCustomers("myCanvas", 200, 190);
+				DrawResponse("myCanvas", 20, 657, kpiMail, kpiPhone);
+				
+				
+				
+				
+				//Text
+				context.font = "40pt Calibri";
+                context.fillStyle = "#000000";
+                context.font = "30pt Calibri";
+                context.fillText("Response by", 30, 580);
+				context.fillText("Mail", 30, 620);
+				context.font = "60pt Calibri";
+				context.fillText(kpiMail,110,650);
+				
+				context.font = "40pt Calibri";
+                context.fillStyle = "#000000";
+                context.font = "30pt Calibri";
+                context.fillText("Response by", 550, 580);
+				context.fillText("Phone", 650, 620);
+				context.font = "60pt Calibri";
+				context.fillText(kpiPhone,480,650);
 
             };
  
@@ -93,7 +266,7 @@
 <div id="ele">
 	<img src="images/lead_ele.png"/>
 </div>
-<canvas id="myCanvas" width="1550" height="1500">
+<canvas id="myCanvas" width="700" height="1500">
 <!-- Insert fallback content here -->
 Sorry, your browser doesn't support canvas technology
 </canvas>
