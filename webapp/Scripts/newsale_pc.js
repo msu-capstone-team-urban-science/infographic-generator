@@ -366,3 +366,295 @@ function Customer(canvas, x,y,w, h, c1, c2, data) {
     // //Customer("Customer",w,h,c1,c2,title)	
     // Customer(c, x, y, w, h, "#36648B", "#FAF0E6", kpiData);
 // }
+
+//from louis
+function Retail_Sale(c, x, y, w, h, d) {
+    // d = [date, display value]
+    var date = d[0];
+	clearCanvas(c);
+    var canvas = document.getElementById(c);
+    var ctx = canvas.getContext("2d");
+    ctx.scale(w/77,h/76);
+    x = x/(w/77);
+    y = y/(h/76);
+    var img01 = new Image();
+    img01.src = 'images/retail_car.png';
+
+    //draw rectangle in the back of the image
+    //x,y, width, height
+    var fillHeight = (d[1]) / -4;
+    if (fillHeight < -70) {
+        fillHeight = -70;
+    }
+    ctx.fillStyle = "white";
+    ctx.fillRect(x+25, y+110, 110, -70);
+    ctx.fillStyle = "#EEEE00";
+    ctx.fillRect(x+25, y+110, 110, fillHeight);
+    img01.onload = function () {
+        ctx.drawImage(img01, x, y, img01.width * 2, img01.height * 2);
+        ctx.fillStyle = "white";
+        //draw text
+        ctx.font = "bold 28pt Calibri";
+        ctx.fillText(monthname[date.getMonth()], x+51, y+135);
+        ctx.fillText(d[1], x+47, y+37);
+    }
+}
+
+function Used_Vehicle_Sale(c, x, y, w, h, d) {
+	clearCanvas(c);
+    var canvas = document.getElementById(c);
+    var ctx = canvas.getContext("2d");
+    ctx.scale(w/150,h/130);
+    x = x/(w/150);
+    y = y/(h/130);
+
+    //outer rectangle
+    ctx.roundRect(x+0, y, 150, 130, 5).stroke();
+    //inner rectangle
+    ctx.roundRect(x+5, y+5, 140, 120, 5).stroke();
+    //fill the inner rectangle
+    ctx.fill();
+    ctx.font = "bold 20pt Calibri";
+    //color of the "FOR SALE" text
+    ctx.fillStyle = "#EEEE00";
+    ctx.fillText("FOR SALE", x+10, y+30);
+    ctx.fillStyle = "white";
+    //rectangle for date display
+    ctx.fillRect(x+10, y+40, 130, 35);
+    //rectangle for data display
+    ctx.fillRect(x+10, y+80, 130, 35);
+    ctx.fillStyle = "black";
+    //date
+    ctx.fillText(monthname[d[0].getMonth()] +" "+d[0].getFullYear().toString().substr(2, 3), x+35, y+70);
+    //data
+    ctx.fillText(d[1], x+60, y+110);
+}
+
+
+function Cost_Per_Sale(c, x, y, w, h, d) {
+	clearCanvas(c);
+    var canvas = document.getElementById(c);
+    var ctx = canvas.getContext("2d");
+    ctx.scale(w/122,h/80);
+    x = x/(w/122);
+    y = y/(h/80);
+
+    var img02 = new Image();
+    img02.src = 'images/cost_per_sale.png';
+
+    ctx.fillStyle = "green";
+    //draw rectangle in the back of the image
+    //x,y, width, height
+    img02.onload = function () {
+        ctx.drawImage(img02, x, y, img02.width * 1.5, img02.height * 1.5);
+        ctx.fillStyle = "green";
+        //draw textChalkboard
+        //ctx.font = "bold 18pt Quartz MS"; ///	windows only
+        ctx.font = "bold 28pt MarkerFelt-Thin";
+        ctx.fillText(monthname[d[0].getMonth()], x+65, y+117);
+        ctx.font = "bold 38pt MarkerFelt-Thin";
+        ctx.fillText(d[1], x+65, y+75);
+    }
+}
+
+
+
+function DrawBox(c, x, y, w, h, d) {
+	clearCanvas(c);
+    // Create fill gradient
+    var canvas = document.getElementById(c);
+    var ctx = canvas.getContext("2d");
+    ctx.scale(w/120,h/120);
+    x = x/(w/120);
+    y = y/(h/120);
+    var text1 = d[0];
+    var text2 = d[1];
+    // Fill the path
+    //ctx.fllStyle = gradient;
+    //ntext.fill();
+
+    ctx.strokeRect(x+10, y+10, 100, 100);
+    var grd = ctx.createLinearGradient(x+10, y+10, 59.9, 100);
+
+    grd.addColorStop(0, "purple");
+
+    grd.addColorStop(1, "red");
+
+    ctx.fillStyle = grd;
+    ctx.fillRect(x+10, y+10, 29.9, 100);
+    ctx.strokeRect(x, y, 120, 120);
+    ctx.font = "16pt Arial";
+
+    ctx.shadowColor = "white";
+    ctx.shadowBlur = 2;
+    ctx.fillStyle = "white";
+    ctx.fillText(text1, x+15, y+50);
+    ctx.fillText(text2, x+15, y+80);
+}
+
+//old
+
+CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
+    /*
+    This function draw the rectangle with round corner
+    parameter: x, y: position of the left top corner
+    w, h: width, height
+    r: radius of the corners
+    */
+    if (w < 2 * r) r = w / 2;
+    if (h < 2 * r) r = h / 2;
+    this.beginPath();
+    this.moveTo(x + r, y);
+    this.arcTo(x + w, y, x + w, y + h, r);
+    this.arcTo(x + w, y + h, x, y + h, r);
+    this.arcTo(x, y + h, x, y, r);
+    this.arcTo(x, y, x + w, y, r);
+    this.closePath();
+    return this;
+}
+
+
+function Pump_In_Sale(c, x, y, w, h, d) {
+	clearCanvas(c);
+    // BUG: bottom most text may extend over max defined width. if last
+    // piece of data is small, allow some extra room on the canvas for
+    // slightly overextended text.
+
+    var canvas = document.getElementById(c);
+    var context = canvas.getContext("2d");
+    var blX = x;
+    var blY = y + h;
+    var trX = x + w;
+    var trY = y;
+    var midX = x + (w / 2);
+    var midY = y + (h / 2);
+    var controlX = x;
+    var controlY = y;
+
+    d.sort(); // puts the smallest data on top
+
+    // find sum of all data for spacing
+    var i = 0;
+    var sum = 0;
+    for (i = 0; i < d.length; i = i + 1) {
+        sum = sum + parseInt(d[i][0]);
+    }
+
+    // draw first line of figure
+    context.beginPath();
+    context.moveTo(blX, blY);
+    midY = y;
+    context.quadraticCurveTo(controlX, midY, midX, midY);
+    context.quadraticCurveTo(trX, midY, trX, trY);
+    context.quadraticCurveTo(trX, blY, midX, h);
+    context.quadraticCurveTo(controlX, h, blX, blY);
+    context.strokeStyle = "#000000";
+    context.fillStyle = d[0][2];
+    context.fill();
+
+
+    // draw lines to finish figure
+    for (i = 0; i < d.length; i = i + 1) {
+        context.beginPath();
+        context.moveTo(blX, blY);
+        var temp = ((d[i][0] / sum) * h)
+        midY = midY + temp;
+        context.quadraticCurveTo(controlX, midY, midX, midY);
+        context.quadraticCurveTo(trX, midY, trX, trY);
+        context.quadraticCurveTo(trX, blY, midX, h);
+        context.quadraticCurveTo(controlX, h, blX, blY);
+
+        if (i + 1 == d.length) {
+            context.fillStyle = d[i][2];
+        } else {
+            context.fillStyle = d[i + 1][2];
+        }
+        context.strokeStyle = "black";
+        context.fill();
+
+        // Draw text
+        var text_size = 14;
+        if (temp < text_size) {
+            text_size = temp;
+        }
+        if (text_size < 8) {
+            text_size = 8;
+        }
+        context.font = "bold " + text_size + "pt Calibri";
+        context.fillStyle = "#ffffff";
+        context.fillText(d[i][1], (midX / 3) * 2.5, midY - temp / 2 + text_size / 2);
+    }
+}
+
+
+function DrawPie(c, x, y, w, h, d) {
+	clearCanvas(c);
+    // data format
+    // 
+    // accepts a percentage expressed as a decimal
+    // example: DrawPie("myCanvas",0,0,100,100,.66); would display 66%
+
+    var ringColor = "#000000";
+    var highlightColor = "#ff0000";
+    var textColor = "#ffffff";
+
+
+    var canvas = document.getElementById(c);
+    var context = canvas.getContext("2d");
+    var counterclockwise = false;
+    var centerX = (w / 2) + x;
+    var centerY = (h / 2) + y;
+    var i = 0;
+    var thickWidth = w / 10;
+    var thinWidth = thickWidth / 4;
+    var radius = (w / 2) - thickWidth;
+
+
+    // Draw thin ring
+    context.beginPath();
+    context.moveTo(centerX, centerY - radius);
+    context.arc(centerX, centerY, radius, (Math.PI / 2) * 3, (Math.PI / 2) * 7, counterclockwise);
+    context.lineWidth = thinWidth;
+    context.strokeStyle = ringColor;
+    context.shadowColor = ringColor;
+    context.shadowBlur = 2;
+    context.stroke();
+
+
+    // Draw thick ring
+    context.beginPath();
+    context.arc(centerX, centerY, radius, (Math.PI / 2) * 3, (d * 2 * Math.PI) + ((Math.PI / 2) * 3), counterclockwise);
+    context.lineWidth = thickWidth;
+    context.shadowColor = highlightColor;
+    context.shadowBlur = 2;
+    context.strokeStyle = highlightColor;
+    context.stroke();
+
+
+    // Draw text
+    var text_offset = centerX - radius + thickWidth;
+    var text_size = w / 5;
+    context.font = text_size + "pt Calibri";
+    context.shadowColor = textColor;
+    context.shadowBlur = 2;
+    context.fillStyle = textColor;
+    context.fillText(((Math.round(d * 1000)) / 10) + "%", text_offset, centerY + (text_size / 2));
+}
+
+function iniStopPos(array) {
+    var final_pos = new Array();
+    for (var i = 0; i < array.length; i++) {
+        final_pos[i] = Math.floor(array[i][1] / 12);
+    }
+    return final_pos;
+}
+
+function Competitive_Segment_Sale_findMax(array) {
+    var max = 0;
+    for (var i = 0; i < array.length; i++) {
+        if (array[i][1] > max) {
+            max = array[i][1];
+        }
+    }
+    return max;
+}
