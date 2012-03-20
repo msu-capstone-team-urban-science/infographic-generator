@@ -1,9 +1,5 @@
 var offset = 0;
 
-//var test = GetKPI(date,"DL"):
-//ctx.scale(w/width,h/heigh);
-//x = x/(w/width);
-//y = y/(h/heigh);
 function initSales(date) {
 	var canvas = document.getElementById("myCanvas");
 	var context = canvas.getContext("2d");
@@ -18,7 +14,7 @@ function initSales(date) {
             kpiData.push(["Peter Lake Ford", GetKPI(date,"Competitive_Segment_Sale_Peter_Lake_Ford"]);
 
 			
-	var s = setTimeout(function () {Competitive_Segment_Sale(canvas, 100, 0, 100,100,kpiData);}, 20);
+	//var s = setTimeout(function () {Competitive_Segment_Sale(canvas, 100, 0, 100,100,kpiData);}, 20);
 		
     //drawGraph10(canvas, 0, 100, date); //Lost_Profit
 	var kpiData= GetKPI(date,"Lost_Profit"):
@@ -46,21 +42,20 @@ function clearCanvas(c) {
 }
 
 
-function Competitive_Segment_Sale(c,x,y,w,hComp_Seg_Sale_data) {
+function Competitive_Segment_Sale(c,x,y,w,h,Comp_Seg_Sale_data) {
 	clearCanvas(c); // TODO: CHANGE THIS TO have the canvas name as a arg
     var canvas = document.getElementById(c);
     var ctx6 = canvas.getContext("2d");
 	
-	ctx6.scale(w/width,h/heigh);
-	x = x/(w/width);
-	y = y/(h/heigh);
+	ctx6.scale(w/700,h/200);
+	x = x/(w/700);
+	y = y/(h/200);
 	
     var img03 = new Image();
     img03.src = 'images/car2.png';
     img03.onload = function () {
-        ctx6.fillStyle = "white";
-
         var maxPos = Math.floor(Competitive_Segment_Sale_findMax(Comp_Seg_Sale_data) / 12);
+	    ctx6.fillStyle = "white";
         ctx6.fillText(maxPos, x+650, y+15 + i * 30);
 
         var final_pos = iniStopPos(Comp_Seg_Sale_data);
@@ -99,14 +94,14 @@ function Competitive_Segment_Sale(c,x,y,w,hComp_Seg_Sale_data) {
     //var s = setTimeout(Competitive_Segment_Sale(Comp_Seg_Sale_data),20);
 }
 
-function Lost_Profit(c, x,y,w,h,d) {
+function Lost_Profit(c,x,y,w,h,d) {
 	clearCanvas(c);
     var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
 
-	ctx.scale(w/width,h/heigh);
-	x = x/(w/width);
-	y = y/(h/heigh);
+	context.scale(w/200,h/200);
+	x = x/(w/200);
+	y = y/(h/200);
 	
     var lineWidth = 8;
     var innerBorder = 5;
@@ -184,13 +179,13 @@ function Lost_Sale(c, x, y, w, h, d) {
 	clearCanvas(c);
     var canvas = document.getElementById(c);
     var ctx = canvas.getContext("2d");
-
-	ctx.scale(w/width,h/heigh);
-	x = x/(w/width);
-	y = y/(h/heigh);
-	
     var img04 = new Image();
     img04.src = 'images/puzzle.png';
+	
+	ctx.scale(w/img04.width,h/img04.height);
+	x = x/(w/img04.width);
+	y = y/(h/img04.height);
+	
     img04.onload = function () {
         ctx.drawImage(img04, x+0, y+0, img04.width, img04.height);
         ctx.font = "bold 34pt Calibri";
@@ -211,13 +206,14 @@ function Customer(canvas, x,y,w, h, c1, c2, data) {
     w = w - 20; h = h - 50;
     var c = document.getElementById(canvas);
 	
-	ctx.scale(w/width,h/heigh);
-	x = x/(w/width);
-	y = y/(h/heigh);
-	
     // Check the element is in the DOM and the browser supports canvas
     if (c.getContext) {
         var ctx7 = c.getContext("2d");
+		
+		ctx7.scale(w/width,h/heigh);
+		x = x/(w/width);
+		y = y/(h/heigh);
+		
         var max = 0; //Initialise maximum bar height to zero
         var len = 0; //Initialise no of bars to zero
         var sum = 0;
