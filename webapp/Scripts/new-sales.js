@@ -23,9 +23,10 @@ function GetKPI(date, kpiToFind) {
 
     for (var i = 0; i < kpiArray.length; i++) {
         if (kpiArray[i][0] == kpiToFind) {
-            return kpiArray[i][1];
+            kpiData = kpiArray[i][1];
         }
     }
+    return kpiData;
 }
 function clearCanvas(c) {
     var canvas = document.getElementById(c);
@@ -33,12 +34,12 @@ function clearCanvas(c) {
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	var w = canvas.width;
 	canvas.width = 1;
-	canvas.width = w
+	canvas.width = w;
 }
 
 function drawGraph01(date) {
     var data = [date, GetKPI(date, "Retail_Sales")];
-    Retail_Sale("Retail_Sale", 30, 0, 154, 152, data);
+    Retail_Sale("Retail_Sale", 0, 0, 54, 52, data);
     //call Retail_Sale every 20 millisecond
     //return setInterval(Retail_Sale, 20);
 }
@@ -54,7 +55,7 @@ function drawGraph02(date) {
         }
     }
     var data = [date, kpiData];
-    Used_Vehicle_Sale("Used_Vehicle_Sale", 0, 0, 100, data);
+    Used_Vehicle_Sale("Used_Vehicle_Sale", 10, 10, 75, 65, data);
 }
 
 function drawGraph03(date) {
@@ -228,21 +229,24 @@ function Retail_Sale(c, x, y, w, h, d) {
 	clearCanvas(c);
     var canvas = document.getElementById(c);
     var ctx = canvas.getContext("2d");
-
+    ctx.scale(w/77,h/76);
+    x = x/(w/77);
+    y = y/(h/76);
     var img01 = new Image();
     img01.src = 'images/retail_car.png';
 
-
+    //draw rectangle in the back of the image
+    //x,y, width, height
     var fillHeight = (d[1]) / -4;
     if (fillHeight < -70) {
         fillHeight = -70;
     }
     ctx.fillStyle = "white";
-    ctx.fillRect(x+25, y+110, 110*(w/154), -70*(h/152));
+    ctx.fillRect(x+25, y+110, 110, -70);
     ctx.fillStyle = "#EEEE00";
-    ctx.fillRect(x+25, y+110, 110*(w/154), fillHeight*(h/152));
+    ctx.fillRect(x+25, y+110, 110, fillHeight);
     img01.onload = function () {
-        ctx.drawImage(img01, x, y, img01.width * 2*(w/154), img01.height * 2 *(h/152));
+        ctx.drawImage(img01, x, y, img01.width * 2, img01.height * 2);
         ctx.fillStyle = "white";
         //draw text
         ctx.font = "bold 28pt Calibri";
@@ -251,31 +255,34 @@ function Retail_Sale(c, x, y, w, h, d) {
     }
 }
 
-function Used_Vehicle_Sale(c, x, y, h, d) {
+function Used_Vehicle_Sale(c, x, y, w, h, d) {
 	clearCanvas(c);
     var canvas = document.getElementById(c);
     var ctx = canvas.getContext("2d");
+    ctx.scale(w/150,h/130);
+    x = x/(w/150);
+    y = y/(h/130);
 
     //outer rectangle
-    ctx.roundRect(x, y, h*(15/13), h, 5).stroke();
+    ctx.roundRect(x+0, y, 150, 130, 5).stroke();
     //inner rectangle
-    ctx.roundRect(x+h/26, y+h/30, h*(15/13), h, 5).stroke();
+    ctx.roundRect(x+5, y+5, 140, 120, 5).stroke();
     //fill the inner rectangle
     ctx.fill();
     ctx.font = "bold 20pt Calibri";
     //color of the "FOR SALE" text
     ctx.fillStyle = "#EEEE00";
-    ctx.fillText("FOR SALE", x+20, y+50);
+    ctx.fillText("FOR SALE", x+10, y+30);
     ctx.fillStyle = "white";
     //rectangle for date display
-    ctx.fillRect(x+20, y+60, 130*(w/150), 35*(h/130));
+    ctx.fillRect(x+10, y+40, 130, 35);
     //rectangle for data display
-    ctx.fillRect(y+20, x+100, 130*(w/150), 35*(h/130));
+    ctx.fillRect(x+10, y+80, 130, 35);
     ctx.fillStyle = "black";
     //date
-    ctx.fillText(monthname[d[0].getMonth()] +" "+d[0].getFullYear().toString().substr(2, 3), x+45, y+90);
+    ctx.fillText(monthname[d[0].getMonth()] +" "+d[0].getFullYear().toString().substr(2, 3), x+35, y+70);
     //data
-    ctx.fillText(d[1], x+70, y+130);
+    ctx.fillText(d[1], x+60, y+110);
 }
 
 CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
