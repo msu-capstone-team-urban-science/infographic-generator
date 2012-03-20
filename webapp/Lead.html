@@ -232,8 +232,9 @@
                 var year = "2012";
 
                 // fake kpi
-                var kpiMail = 600;
-				var kpiPhone = 1687;
+				var kpiUnique = 1831;
+                var kpiMail = 1602;
+				var kpiPhone = 687;
 
 				DrawUniqueCustomers("myCanvas", 200, 190);
 				DrawResponse("myCanvas", 20, 657, kpiMail, kpiPhone);
@@ -242,6 +243,16 @@
 				
 				
 				//Text
+				
+				//Unique Customers
+				context.font = "40pt Calibri";
+                context.fillStyle = "#000000";
+                context.font = "30pt Calibri";
+                context.fillText("Unique Customers", 430, 180);
+				context.font = "60pt Calibri";
+				context.fillText(kpiUnique,510,250);
+				
+				//Response Method
 				context.font = "40pt Calibri";
                 context.fillStyle = "#000000";
                 context.font = "30pt Calibri";
