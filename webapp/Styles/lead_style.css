@@ -6,9 +6,15 @@ z-index: 2;
 }
 
 #ele{
-top: -20px;
+top: -5px;
 left: 707px;
 position: fixed;
-z-index: -1;
+z-index: 3;
 }
 
+#sep1{
+	position: absolute;
+	top:0px;
+	left:0px;
+	z-index: 1;
+}

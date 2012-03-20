@@ -172,7 +172,7 @@
 					context.rect(x+6, y, 370, -120);
 					context.fill();
 					context.lineWidth = 1;
-					context.strokeStyle = "black";
+					context.strokeStyle = "white";
 					context.stroke();
 					
 					
@@ -205,7 +205,7 @@
 					context.rect(x+370, y, 370, -120);
 					context.fill();
 					context.lineWidth = 1;
-					context.strokeStyle = "black";
+					context.strokeStyle = "white";
 					context.stroke();
 					
 					//draw rectangle in the back of the phone image
@@ -285,6 +285,16 @@
 				
 				//Text
 				
+				//Title
+				//Unique Customers
+				context.font = "40pt Calibri";
+                context.fillStyle = "#000000";
+                context.font = "24pt Calibri";
+                context.fillText("Lead Management ", 10, 50);
+				context.font = "60pt Calibri";
+				context.fillText(month + ", " + year,300,80);
+				
+				
 				//Unique Customers
 				context.font = "40pt Calibri";
                 context.fillStyle = "#000000";
@@ -318,6 +328,10 @@
 <div id="ele">
 	<img src="images/lead_ele.png"/>
 </div>
+<div id="sep1">
+	<img src="images/lead_sep.png"/>
+</div>	
+
 <canvas id="myCanvas" width="700" height="1500">
 <!-- Insert fallback content here -->
 Sorry, your browser doesn't support canvas technology
