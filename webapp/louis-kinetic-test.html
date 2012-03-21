@@ -1,0 +1,108 @@
+<head>
+    <script>
+window.requestAnimFrame = (function(callback){
+    return window.requestAnimationFrame ||
+    window.webkitRequestAnimationFrame ||
+    window.mozRequestAnimationFrame ||
+    window.oRequestAnimationFrame ||
+    window.msRequestAnimationFrame ||
+    function(callback){
+        window.setTimeout(callback, 1000 / 60);
+    };
+})();
+
+function animate(lastTime, mySpiro){
+    var canvas = document.getElementById("myCanvas");
+    var context = canvas.getContext("2d");
+ 
+    // update
+    var date = new Date();
+    var time = date.getTime();
+    var timeDiff = time - lastTime;
+    var linearSpeed = 10; // pixels / second
+    var linearDistEachFrame = .3;
+	mySpiro.t = mySpiro.t + .1 * timeDiff;
+    lastTime = time;
+ 
+    // clear
+    context.clearRect(0, 0, canvas.width, canvas.height);
+ 
+    // draw
+    // values needed to generate spirograph
+
+    var fixedCircleRadius = mySpiro.f;
+    var movingCircleRadius = mySpiro.m;
+    var height = mySpiro.h;
+
+    // other vars
+    var pX = 0;
+    var pY = 0;
+    var x = canvas.width/2;
+    var y = canvas.height/2;
+    //var t = mySpiro.t;
+    var t = 0;
+
+
+    // move to starting point
+    pX = (fixedCircleRadius - movingCircleRadius)*Math.cos(t) + height*Math.cos(((fixedCircleRadius-movingCircleRadius)/movingCircleRadius)*t);
+    pY = (fixedCircleRadius - movingCircleRadius)*Math.sin(t) - height*Math.sin(((fixedCircleRadius-movingCircleRadius)/movingCircleRadius)*t);
+    context.moveTo(pX + x,pY + y);
+    context.beginPath();
+
+    // then draw the line
+    for (t = 0; t < mySpiro.t; t = t + .01)
+    {
+        pX = (fixedCircleRadius - movingCircleRadius)*Math.cos(t) + height*Math.cos(((fixedCircleRadius-movingCircleRadius)/movingCircleRadius)*t);
+        pY = (fixedCircleRadius - movingCircleRadius)*Math.sin(t) - height*Math.sin(((fixedCircleRadius-movingCircleRadius)/movingCircleRadius)*t);
+        context.lineTo(x + pX,y + pY);
+
+    }
+    context.lineWidth = 1;
+    context.strokeStyle = mySpiro.c;
+    context.stroke();
+
+    context.fillStyle = "#ffffff"
+    context.fillText("fixed: " + fixedCircleRadius ,50,canvas.height - 60);
+    context.fillText("moving: " + movingCircleRadius ,50,canvas.height - 40);
+    context.fillText("height: " + height ,50,canvas.height - 20);
+ 
+    // request new frame
+    if (mySpiro.t <= mySpiro.x*2*Math.PI)
+    {
+        requestAnimFrame(function(){
+            animate(lastTime, mySpiro);
+        });
+    }
+}
+ function GCD(a,b){
+	var t;
+	while(b!=0)b=a%(t=b),a=t;		
+	return a;
+}
+window.onload = function(){
+
+    var canvas = document.getElementById("myCanvas");
+    var context = canvas.getContext("2d");
+    context.canvas.width  = window.innerWidth - 50;
+    context.canvas.height = window.innerHeight - 50;
+
+    var mySpiro = {
+        t: 0,
+        c: 0,
+        f: Math.floor((Math.random()*canvas.height) - canvas.height/2),
+        m: Math.floor((Math.random()*canvas.height) - canvas.height/2),
+        h: Math.floor((Math.random()*canvas.height) - canvas.height/2),
+        x:1
+    };
+	mySpiro.x=(Math.abs(mySpiro.m)/GCD(Math.abs(mySpiro.f),Math.abs(mySpiro.m)));
+    var colorArray = ["#fa9033", "#ffda3b", "#ffff1b", "#ffff59", "#faf831", "#fcfa65", "#3cb24a", "#85de67", "#067952", "#42a964", "#0d94b0", "#caf7f1", "#39a6c8", "#95def6", "#27c0ef", "#0098d6", "#74aad8", "#1f60ad", "#0e268b", "#130f88", "#13016f", "#fcffff", "#f9f9fc", "#fffeff", "#f9f9f9", "#fefefe", "#fcfcfc", "#fffeff", "#fdf996", "#ffa2b8", "#fa5192", "#ff1366", "#f62821", "#ff246f", "#fffeff", "#b73d9c", "#a762ab", "#360062", "#f60f41", "#f82015", "#fa1b16", "#ef2310", "#f88721"];
+    mySpiro.c = colorArray[Math.floor(Math.random()*43)];
+    var date = new Date();
+    var time = date.getTime();
+    animate(time, mySpiro);
+};
+    </script>
+</head>
+<body bgcolor="#000000">
+      <canvas id="myCanvas" width="777" height="777" />
+</body>

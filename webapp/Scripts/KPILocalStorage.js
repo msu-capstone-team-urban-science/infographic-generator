@@ -53,3 +53,17 @@ function SearchKPIByDate(date) {
     }
     return returnArr;
 }
+
+// Allows KPI data to be more easily retrieved
+function GetKPI(date, kpiName) {
+    var kpiArray = SearchKPIByDate(date);
+    var kpiData = "";
+
+    for (var i = 0; i < kpiArray.length; i++) {
+        if (kpiArray[i][0] == kpiName) {
+            kpiData = kpiArray[i][1];
+            break;
+        }
+    }
+    return kpiData;
+}
