@@ -12,16 +12,17 @@ position: fixed;
 z-index: 3;
 }
 
-#sep1{
-	position: absolute;
-	top:0px;
-	left:0px;
-	z-index: 1;
-}
-
 #stone{
 	position: absolute;
 	top:585px;
 	left:28px;
 	z-index: -1;
+}
+
+
+#sep1{
+	position: absolute;
+	top:0px;
+	left:0px;
+
 }
