@@ -189,7 +189,7 @@ function Pump_In_Sale(c, x, y, w, h, d) {
         }
         context.font = "bold " + text_size + "pt Calibri";
         context.fillStyle = "#ffffff";
-        context.fillText(d[i][1], (midX - (w / 7)), midY - temp / 2 + text_size / 2);
+        context.fillText(d[i][1], x + (w / 3), midY - temp / 2 + text_size / 2);
     }
 }
 // Name: DrawSection
@@ -504,4 +504,149 @@ function DrawPerson (c, x, y, h)
     context.strokeStyle = "#000000";
     context.stroke();
 
+}
+
+
+
+
+
+
+function DrawStripes(c, x, y, w, h) {
+
+    var canvas = document.getElementById(c);
+    var context = canvas.getContext("2d");
+
+
+    //context.fillStyle = "#dddddd";
+    //context.fillRect(x, y, w, h);
+    var stripeWidth = 9;
+    context.lineWidth = 1;
+    //context.fillStyle = "#74c043";
+    context.fillStyle = "#eeeeee";
+    var i = 0;
+    for (i = 0-h; i < w; i = (i + (stripeWidth*2)))
+    {
+
+        context.beginPath();
+        if (i < 0)
+        {
+            context.moveTo(x, y - i);
+            context.lineTo(x, y-i - stripeWidth);
+            context.lineTo(x + i + stripeWidth + h, y + h);
+            context.lineTo(x + i + h, y + h);
+            context.lineTo(x, y-i);
+
+        }else if(i+h < w)
+        {
+            context.moveTo(x + i, y);
+            context.lineTo(x + i + stripeWidth, y);
+            context.lineTo(x + i + stripeWidth + h, y + h);
+            context.lineTo(x + i + h, y + h);
+            context.lineTo(x + i, y);
+        }else
+        {
+            context.moveTo(x + i, y);
+            context.lineTo(x + i + stripeWidth, y);
+            context.lineTo(x + w, y + h - (i + h - w)- stripeWidth);
+            context.lineTo(x + w, y + h - (i + h - w));
+            context.lineTo(x + i, y);
+        }
+
+
+
+        context.closePath();
+        context.fill();
+    }
+
+
+}
+
+
+function DrawPie(c, x, y, w, h, d) {
+	clearCanvas(c);
+    // data format
+    // 
+    // accepts a percentage expressed as a decimal
+    // example: DrawPie("myCanvas",0,0,100,100,.66); would display 66%
+
+    var ringColor = "#000000";
+    var highlightColor = "#ff0000";
+    var textColor = "#ffffff";
+
+
+    var canvas = document.getElementById(c);
+    var context = canvas.getContext("2d");
+    var counterclockwise = false;
+    var centerX = (w / 2) + x;
+    var centerY = (h / 2) + y;
+    var i = 0;
+    var thickWidth = w / 10;
+    var thinWidth = thickWidth / 4;
+    var radius = (w / 2) - thickWidth;
+
+
+    // Draw thin ring
+    context.beginPath();
+    context.moveTo(centerX, centerY - radius);
+    context.arc(centerX, centerY, radius, (Math.PI / 2) * 3, (Math.PI / 2) * 7, counterclockwise);
+    context.lineWidth = thinWidth;
+    context.strokeStyle = ringColor;
+    context.shadowColor = ringColor;
+    context.shadowBlur = 2;
+    context.stroke();
+
+
+    // Draw thick ring
+    context.beginPath();
+    context.arc(centerX, centerY, radius, (Math.PI / 2) * 3, (d * 2 * Math.PI) + ((Math.PI / 2) * 3), counterclockwise);
+    context.lineWidth = thickWidth;
+    context.shadowColor = highlightColor;
+    context.shadowBlur = 2;
+    context.strokeStyle = highlightColor;
+    context.stroke();
+
+
+    // Draw text
+    var text_offset = centerX - radius + thickWidth;
+    var text_size = w / 5;
+    context.font = text_size + "pt Calibri";
+    context.shadowColor = textColor;
+    context.shadowBlur = 2;
+    context.fillStyle = textColor;
+    context.fillText(((Math.round(d * 1000)) / 10) + "%", text_offset, centerY + (text_size / 2));
+}
+
+
+
+function DrawBox(c, x, y, w, h, d) {
+	clearCanvas(c);
+    // Create fill gradient
+    var canvas = document.getElementById(c);
+    var ctx = canvas.getContext("2d");
+    ctx.scale(w/120,h/120);
+    x = x/(w/120);
+    y = y/(h/120);
+    var text1 = d[0];
+    var text2 = d[1];
+    // Fill the path
+    //ctx.fllStyle = gradient;
+    //ntext.fill();
+
+    ctx.strokeRect(x+10, y+10, 100, 100);
+    var grd = ctx.createLinearGradient(x+10, y+10, 59.9, 100);
+
+    grd.addColorStop(0, "purple");
+
+    grd.addColorStop(1, "red");
+
+    ctx.fillStyle = grd;
+    ctx.fillRect(x+10, y+10, 29.9, 100);
+    ctx.strokeRect(x, y, 120, 120);
+    ctx.font = "16pt Arial";
+
+    ctx.shadowColor = "white";
+    ctx.shadowBlur = 2;
+    ctx.fillStyle = "white";
+    ctx.fillText(text1, x+15, y+50);
+    ctx.fillText(text2, x+15, y+80);
 }

@@ -16,8 +16,11 @@
 
                 // fill background
                 context.beginPath();
-                context.rect(0, 0, canvas.width, canvas.height);
-                context.fillStyle = "#ffffff";
+                var grd = context.createLinearGradient(canvas.width/2, 0, canvas.width/2, 747);
+                grd.addColorStop(1, "#93c572");
+                grd.addColorStop(0, "#cccccc");
+                context.fillStyle = grd;
+                context.rect(0, 0, canvas.width, 747);
                 context.fill();
 
                 // draw image
@@ -30,7 +33,9 @@
                     context.drawImage(imgBackground, 570, 210);
                     DrawCanvasPart1 ("myCanvas");
                 }
-                imgBackground.src = "images/light_rock.jpg";
+                //imgBackground.src = "images/light_rock.jpg";
+                DrawStripes("myCanvas", 0, 0, canvas.width, 747);
+                    DrawCanvasPart1 ("myCanvas");
             };
 
             function DrawCanvasPart1 (c)
@@ -63,40 +68,39 @@
 
 
                 // draw circles
+
+                var circleColor = "#ededed"
+                context.fillStyle = circleColor;
+                context.strokeStyle = circleColor;
+
+
                 context.beginPath(); // top left
                 context.arc(canvas.width/4, 200, 120, 0, 2 * Math.PI, false);
-                context.fillStyle = "#7CFC00";
                 context.fill();
 
                 context.beginPath(); // top right
                 context.arc((canvas.width/2) + 290, 200, 120, 0, 2 * Math.PI, false);
-                context.fillStyle = "#7CFC00";
                 context.fill();
 
                 context.beginPath(); // middle left
                 context.arc(canvas.width/4, 490, 120, 0, 2 * Math.PI, false);
-                context.fillStyle = "#7CFC00";
                 context.fill();
 
                 context.beginPath(); // bottom left
                 context.arc(canvas.width/4, 780, 120, 0, 2 * Math.PI, false);
-                context.fillStyle = "#7CFC00";
                 context.fill();
+
+                context.lineWidth = 77; // define line properties
+                context.lineCap = "butt";
 
                 context.beginPath(); // vertical line
                 context.moveTo(canvas.width/4, 200);
                 context.lineTo(canvas.width/4, 780);
-                context.lineWidth = 77;
-                context.lineCap = "butt";
-                context.strokeStyle = "#7CFC00";
                 context.stroke();
 
                 context.beginPath(); // horizontal line
                 context.moveTo(canvas.width/4, 200);
                 context.lineTo(canvas.width/2 + 290, 200);
-                context.lineWidth = 77;
-                context.lineCap = "butt";
-                context.strokeStyle = "#7CFC00";
                 context.stroke();
 
                 var imageObj = new Image();
@@ -108,12 +112,15 @@
 
 
             // GRAPHICS SECTION
-                Retail_Sale("myCanvas", canvas.width/4-71, 123, 77, 76, [date, GetKPI(date, "Retail_Sales")]);
-                Used_Vehicle_Sale("myCanvas", canvas.width/4-71, 433, 150, 130, [date, GetKPI(date, "Used_Vehicle_Sales")]);
+
+                Used_Vehicle_Sale("myCanvas", canvas.width/4-75, 135, 150, 130, [date, GetKPI(date, "Used_Vehicle_Sales")]);
+
+                Retail_Sale("myCanvas", canvas.width/4-75, 415, 77, 76, [date, GetKPI(date, "Retail_Sales")]);
+
                 Cost_Per_Sale("myCanvas", canvas.width/2 + 290 - 88, 130, 122, 80, [date, GetKPI(date, "Cost_Per_Sale")]);
         
                 Pump_In_Sale("myCanvas", canvas.width/4+212, 330, canvas.width - (canvas.width/4+212), 370, [[GetKPI(date, "Pump_In_Sales_Anytown_Automotive"), "Anytown Automotive", "#ff9b00"], [GetKPI(date, "Pump_In_Sale_Allan_Automart"), "Allan Automart", "#f54c08"], [GetKPI(date, "Pump_In_Sale_Jefferson_Automotive"), "Jefferson Automotive", "#b4213f"], [GetKPI(date, "Pump_In_Sale_Nestor_Auto_Center"), "Nestor Auto Center", "#69039d"], [GetKPI(date, "Pump_In_Sale_Diamond_Automotive"), "Diamond Automotive", "#283577"], [GetKPI(date, "Pump_In_Sale_Anthony_Motors"), "Anthony Motors", "#66a5c7"]]);
-
+                //DrawStripes("myCanvas", 0, 0, canvas.width, canvas.height);
 
 
                 //DrawX("myCanvas",100, 600);
