@@ -308,10 +308,40 @@
 		context.fill();
 		
 		context.beginPath();
-		context.arc(x+15, y+10, 5, 0, 2 * Math.PI, false);
+		context.arc(x+15, y+20, 5, 0, 2 * Math.PI, false);
 		context.fillStyle = "#ffffff";
 		context.fill();
 		context.restore();
+		
+		
+		//draw whiteboard
+		context.beginPath();
+		context.save()
+		context.moveTo(x-410, y - 50);
+		context.lineTo(x-130, y - 50);
+		context.lineTo(x-130, y - 130);
+		context.lineTo(x-410, y - 130);
+		context.lineTo(x-410, y - 50);
+		context.moveTo(x-410, y - 43);
+		context.lineTo(x-130, y - 43);
+		context.lineWidth = lineWidth;
+		context.lineCap = "square";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		context.fillStyle = "#ffffff";
+		context.fill();
+		context.restore();
+		
+		
+		//draw marker
+		context.beginPath();
+		context.moveTo(x-240, y - 45);
+		context.lineTo(x-200, y - 45);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#ffffff";
+		context.stroke();
+		
 		
 		//draw tables
 		context.beginPath();
@@ -617,6 +647,14 @@
 	context.fillText(kpiOld, x + 300,y );
 	context.fillText(kpiLost, x + 590,y );
 	
+	context.fillStyle = "#000000";
+	context.font = "28pt Calibri";
+	context.fillText("Sales from Lead", x + 190,y -180);
+	context.fillText("New", x + 30,y -100);
+	context.fillText("Used", x + 295,y -100);
+	context.fillStyle = "#ffffff";
+	context.fillText("Lost", x + 590,y -100);
+	
 	};
  
         </script>
@@ -625,11 +663,13 @@
 	<div id="ele">
 		<img src="images/lead_ele.png"/>
 	</div>
+	<div id="stone">
+		<img src="images/lead_stone.jpg"/ width = "745px" height="240px">
+	</div>
 	<div id="sep1">
 		<img src="images/lead_sep.png"/>
 	</div>	
-
-	<canvas id="myCanvas" width="700" height="1500">
+	<canvas id="myCanvas" width="695" height="1500">
 	<!-- Insert fallback content here -->
 	Sorry, your browser doesn't support canvas technology
 	</canvas>

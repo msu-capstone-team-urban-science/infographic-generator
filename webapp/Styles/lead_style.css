@@ -18,3 +18,9 @@ z-index: 3;
 	left:0px;
 	z-index: 1;
 }
+
+#stone{
+	position: absolute;
+	top:585px;
+	left:28px;
+	z-index: -1;
