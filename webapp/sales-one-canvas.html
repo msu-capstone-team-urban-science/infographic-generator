@@ -2,34 +2,65 @@
 <html>
     <head>
 		<script type="text/javascript" src="Scripts/HandleDate.js"></script>
+		<script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
 		<script type="text/javascript" src="Scripts/elements.js"></script>
         <script>
-function DrawCanvasPart1 (c)
-{
-    var canvas = document.getElementById(c);
-    var context = canvas.getContext("2d");
+            window.onload = function(){
+                var canvas = document.getElementById("myCanvas");
+                var context = canvas.getContext("2d");
+                //context.canvas.width  = window.innerWidth;
+                //context.canvas.height = window.innerHeight;
 
-    var imgSplitter = new Image();
 
-    imgSplitter.onload = function(){
-        context.drawImage(imgSplitter, 0, 747, canvas.width, 200);  // however, not using a draw function means that this rarely appears... BUGGGGGG!
-        DrawCanvasPart2 ("myCanvas");
-    }
-    imgSplitter.src = "images/splitter.png";
-}
-function DrawCanvasPart2 (c)
-{
-    var canvas = document.getElementById(c);
-    var context = canvas.getContext("2d");
+                // BACKGROUND SECTION
+
+                // fill background
+                context.beginPath();
+                context.rect(0, 0, canvas.width, canvas.height);
+                context.fillStyle = "#ffffff";
+                context.fill();
+
+                // draw image
+                var imgBackground = new Image();
+
+                imgBackground.onload = function(){
+                    context.drawImage(imgBackground, 0, 0); // I don't draw using a function because if i do, the elements draw out of order
+                    context.drawImage(imgBackground, 570, 0);
+                    context.drawImage(imgBackground, 0, 210);
+                    context.drawImage(imgBackground, 570, 210);
+                    DrawCanvasPart1 ("myCanvas");
+                }
+                imgBackground.src = "images/light_rock.jpg";
+            };
+
+            function DrawCanvasPart1 (c)
+            {
+                var canvas = document.getElementById(c);
+                var context = canvas.getContext("2d");
+
+                var imgSplitter = new Image();
+
+                imgSplitter.onload = function(){
+                    context.drawImage(imgSplitter, 0, 747, canvas.width, 200);  // however, not using a draw function means that this rarely appears... BUGGGGGG!
+                    DrawCanvasPart2 ("myCanvas");
+                }
+                imgSplitter.src = "images/splitter.png";
+            }
+
+
+            function DrawCanvasPart2 (c)
+            {
+                var canvas = document.getElementById(c);
+                var context = canvas.getContext("2d");
 
                 // data
                 var month = "May";
                 var year = "2012";
+                //var date = new Date;
 
                 // fake kpi
-                var kpiRetailSales = "1467";
+                var kpiRetailSales = GetKPI(date, "Retail_Sale");
                 var kpiUsedVehicleSales = "1467";
-                var date = new Date;
 
 
                 // draw circles
@@ -77,44 +108,17 @@ function DrawCanvasPart2 (c)
                 imageObj.src = "images/PointingDude.png";
 
 
-// GRAPHICS SECTION
+            // GRAPHICS SECTION
                 Retail_Sale("myCanvas", canvas.width/4-71, 123, 77, 76, [date, kpiRetailSales]);
                 Used_Vehicle_Sale("myCanvas", canvas.width/4-71, 433, 150, 130, [date, kpiUsedVehicleSales]);
                 Cost_Per_Sale("myCanvas", canvas.width/2 + 290 - 88, 130, 122, 80, [date, kpiUsedVehicleSales]);
                 Pump_In_Sale("myCanvas", canvas.width/4+212, 330, canvas.width - (canvas.width/4+212), 370, [[3, "Anytown Automotives", "#ff9b00"],[33, "Anytown Automotive", "#ff9bff"],[3, "aeostnh Automotive", "#5555ff"]]);
                 //DrawX("myCanvas",100, 600);
 
-// TEXT SECTION
+            // TEXT SECTION
 
 
-}
-            window.onload = function(){
-                var canvas = document.getElementById("myCanvas");
-                var context = canvas.getContext("2d");
-                //context.canvas.width  = window.innerWidth;
-                //context.canvas.height = window.innerHeight;
-
-
-// BACKGROUND SECTION
-
-                // fill background
-                context.beginPath();
-                context.rect(0, 0, canvas.width, canvas.height);
-                context.fillStyle = "#ffffff";
-                context.fill();
-
-                // draw image
-                var imgBackground = new Image();
-
-                imgBackground.onload = function(){
-                    context.drawImage(imgBackground, 0, 0); // I don't draw using a function because if i do, the elements draw out of order
-                    context.drawImage(imgBackground, 570, 0);
-                    context.drawImage(imgBackground, 0, 210);
-                    context.drawImage(imgBackground, 570, 210);
-                    DrawCanvasPart1 ("myCanvas");
-                }
-                imgBackground.src = "images/light_rock.jpg";
-            };
+            }
  
         </script>
     </head>

@@ -43,7 +43,8 @@ function Used_Vehicle_Sale(c, x, y, w, h, d) {
     ctx.strokeStyle = "black";
     ctx.lineWidth = 1;
     //outer rectangle
-    ctx.roundRect(x+0, y, 150, 130, 5).stroke();
+    ctx.roundRect(x+0, y, 150, 130, 5);
+    ctx.stroke();
     //inner rectangle
     ctx.roundRect(x+5, y+5, 140, 120, 5).stroke();
     //fill the inner rectangle
