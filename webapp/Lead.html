@@ -245,17 +245,21 @@
 		var canvas = document.getElementById(c);
 		var context = canvas.getContext("2d");
 		var lineWidth = 7;
+		img1 = new Image();
+		img1.src = 'images/lead_usedcar.png';
+		img2 = new Image();
+		img2.src = 'images/lead_newcar.png';
 
 		context.beginPath();
-		context.arc(x, y, 20, 0, 2 * Math.PI, false);
+		context.arc(x-50, y, 20, 0, 2 * Math.PI, false);
 		context.fillStyle = "#000000";
 		context.fill();
 
 
 		
 		//draw man body
-		context.moveTo(x, y);
-		context.quadraticCurveTo(x + 10, y+30, x, y + 65);
+		context.moveTo(x-50, y);
+		context.quadraticCurveTo(x - 40, y+30, x-50, y + 65);
 		context.lineWidth = lineWidth;
 		context.lineCap = "round";
 		context.strokeStyle = "#000000";
@@ -264,8 +268,8 @@
 		
 		
 		//draw man
-		context.moveTo(x , y + 65);
-		context.lineTo(x - 30, y + 100);
+		context.moveTo(x -50, y + 65);
+		context.lineTo(x - 80, y + 100);
 		context.lineWidth = lineWidth;
 		context.lineCap = "round";
 		context.strokeStyle = "#000000";
@@ -273,36 +277,44 @@
 
 
 		//draw man
-		context.moveTo(x , y + 65);
-		context.lineTo(x + 30, y + 80);
+		context.moveTo(x -50, y + 65);
+		context.lineTo(x -20, y + 80);
+		context.lineTo(x -35, y + 100);
 		context.lineWidth = lineWidth;
 		context.lineCap = "round";
 		context.strokeStyle = "#000000";
 		context.stroke();
 		
-		//draw man lost
-		context.moveTo(x +30, y + 80);
-		context.lineTo(x +15, y + 100);
+		context.moveTo(x -50, y + 40);
+		context.quadraticCurveTo(x - 60, y+20, x - 100, y+15);
 		context.lineWidth = lineWidth;
 		context.lineCap = "round";
 		context.strokeStyle = "#000000";
 		context.stroke();
 		
-		context.moveTo(x, y + 40);
-		context.quadraticCurveTo(x - 10, y+20, x - 50, y+15);
+		context.moveTo(x-50, y + 45);
+		context.quadraticCurveTo(x - 60, y+30, x - 100, y +30);
 		context.lineWidth = lineWidth;
 		context.lineCap = "round";
 		context.strokeStyle = "#000000";
 		context.stroke();
 		
-		context.moveTo(x, y + 45);
-		context.quadraticCurveTo(x - 10, y+30, x - 50, y +30);
-		context.lineWidth = lineWidth;
-		context.lineCap = "round";
-		context.strokeStyle = "#000000";
-		context.stroke();
+		//draw door
+		context.save();
+		context.beginPath();
+		context.fillStyle="#black";
+		context.beginPath();
+		context.rect(x, y-60, 80, 170);
+		context.fill();
+		
+		context.beginPath();
+		context.arc(x+15, y+10, 5, 0, 2 * Math.PI, false);
+		context.fillStyle = "#ffffff";
+		context.fill();
+		context.restore();
 		
 		//draw tables
+		context.beginPath();
 		context.fillStyle="#black";
 		context.beginPath();
 		context.rect(x-300, y + 110, 100, -60);
@@ -364,6 +376,38 @@
 		context.strokeStyle = "#000000";
 		context.stroke();
 		
+		context.beginPath();
+		context.moveTo(x-380, y);
+		context.lineTo(x-380, y + 110);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		context.moveTo(x-380, y + 70);
+		context.lineTo(x-340, y + 70);
+		context.lineTo(x-340, y + 110);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		context.beginPath();
+		context.moveTo(x-640, y);
+		context.lineTo(x-640, y + 110);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		context.moveTo(x-640, y + 70);
+		context.lineTo(x-600, y + 70);
+		context.lineTo(x-600, y + 110);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
 		
 		//draw man (big)
 		context.beginPath();
@@ -412,6 +456,64 @@
 		context.lineCap = "round";
 		context.strokeStyle = "#000000";
 		context.stroke();
+		
+		
+		//draw man (small)
+		context.beginPath();
+		context.arc(x - 350, y, 20, 0, 2 * Math.PI, false);
+		context.fillStyle = "#000000";
+		context.fill();
+		context.beginPath();
+		
+		context.moveTo(x-350, y);
+		context.lineTo(x-350, y + 60);
+		context.lineTo(x-320, y + 60);
+		context.lineTo(x-320, y + 100);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		context.beginPath();
+		context.moveTo(x-350, y+40);
+		context.quadraticCurveTo(x - 330, y +50, x-320, y+10);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+				
+		context.beginPath();
+		context.arc(x - 610, y, 20, 0, 2 * Math.PI, false);
+		context.fillStyle = "#000000";
+		context.fill();
+		context.beginPath();
+		
+		context.moveTo(x-610, y);
+		context.lineTo(x-610, y + 60);
+		context.lineTo(x-580, y + 60);
+		context.lineTo(x-580, y + 100);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		context.beginPath();
+		context.moveTo(x-610, y+40);
+		context.quadraticCurveTo(x - 590, y +50, x-570, y+10);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		img1.onload = function()
+		{
+			context.drawImage(img1, x-295, y + 8, img1.width/4, img1.height/4);
+		}
+		
+		img2.onload = function()
+		{
+			context.drawImage(img2, x-565, y +10, img2.width/1.75, img2.height/1.75);
+		}
 		
 	}
 
@@ -484,9 +586,9 @@
 	context.font = "60pt Calibri";
 	context.fillText(kpiUnique,510,250);
 
+	//Response Method
 	var x = 0;
 	var y = -250;
-	//Response Method
 	context.font = "40pt Calibri";
 	context.fillStyle = "#000000";
 	context.font = "30pt Calibri";
@@ -503,6 +605,18 @@
 	context.font = "60pt Calibri";
 	context.fillText(kpiPhone,x + 480, y + 650);
 
+	//sales
+	
+	var x = 100;
+	var y = 810;
+	
+	//
+	context.fillStyle = "#ffffff";
+	context.font = "45pt Calibri";
+	context.fillText(kpiNew, x + 30,y );
+	context.fillText(kpiOld, x + 300,y );
+	context.fillText(kpiLost, x + 590,y );
+	
 	};
  
         </script>
