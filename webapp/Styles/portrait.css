@@ -11,3 +11,8 @@ body {
 	left: 80px;
 	top:200px;
 }
+
+#myCanvas { 
+	width: 768px;
+	height: 1024px;
+}

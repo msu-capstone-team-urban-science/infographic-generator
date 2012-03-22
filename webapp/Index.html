@@ -7,15 +7,19 @@
     <title>Infographics Generator Home Page</title>
         <link rel="stylesheet" media="all and (orientation:portrait)" href="Styles/portrait.css">
 		<link rel="stylesheet" media="all and (orientation:landscape)" href="Styles/landscape.css">
+		<link href="Styles/index.css" rel="stylesheet" type="text/css" />
+
 		<script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
 		<script type="text/javascript" src="Scripts/jquery.roundabout.js"></script>
 		<script type="text/javascript" src="Scripts/jquery.event.drag-2.0.js"></script>
-		<script type="text/javascript" src="Scripts/jquery.event.drop-2.0.js"></script>
+		<script type="text/javascript" src="Scripts/elements.js"></script><script type="text/javascript" src="Scripts/jquery.event.drop-2.0.js"></script>
 		<script type="text/javascript">
+			
+			var orient = "";
 		    var updateLayout = function () {
 		        if (window.innerWidth != currentWidth) {
 		            currentWidth = window.innerWidth;
-		            var orient = "";
+		            
 		            if (currentWidth == 320) {
 		                orient = "portrait";
 		            }
@@ -31,49 +35,43 @@
 		</script>
 		<script type="text/javascript">
 		    $(document).ready(function () {
-		        $('ul').roundabout({
-		            minScale: 0.6,
-		            reflect: true,
-		            enableDrag: true,
-		            tilt: -3
-		        });
-		    });
+				$('ul').roundabout({
+					minScale: 0.6,
+					reflect: true,
+					enableDrag: true,
+					tilt: -3
+				});
+			});
 
             function navigator_Go(url) {
                 window.location.assign(url); // This technique is almost exactly the same as a full <a> page refresh, but it prevents Mobile Safari from jumping out of full-screen mode
             }
-		</script>
-        
-		<style type="text/css">
-			ul {    
-				list-style: none;
-				padding: 0;
-				margin: 0 auto;
-				width: 36em;
-				height: 24em;
-			}
-			li {
-				height: 12em;
-				width: 12em;
-				background-color: #0;
-				opacity: 0.1;
-				text-align: center;
-				cursor: pointer;
-				border: 0px solid #bbb;
-				-webkit-border-radius: 7em;
-				-moz-border-radius: 7em;
-				-ms-border-radius: 7em;
-				-o-border-radius: 7em;
-				border-radius: 7em;
-			}
-				li.roundabout-in-focus {
-					cursor: default;
+			
+			window.onload = function(){
+				var canvas = document.getElementById("myCanvas");
+                var context = canvas.getContext("2d");
+				context.fillStyle = "#FFF";
+				if(orient == "landscape") { 
+					context.fillRect(canvas.width/3.5,canvas.height-(canvas.height/4)-45,canvas.width/1.5,180);
+					DrawStripes("myCanvas",canvas.width/3.5,canvas.height-(canvas.height/4)-45,canvas.width/1.5,180,100);
+					
+					context.font = "bold 32pt Calibri";
+					context.fillStyle = "#65B133";
+					context.fillText("Team Urban Science - Spring 2012", canvas.width/3.5, canvas.height-(canvas.height/4));
+					context.fillText("CSE498: The Capstone Experience", canvas.width/3.5, canvas.height-(canvas.height/4)+60);
+					context.fillText("Michigan State University", canvas.width/3.5, canvas.height-(canvas.height/4)+120);
+				} else {
+					context.fillRect(canvas.width/2.5,canvas.height-(canvas.height/4)-45,canvas.width/1.8,180);
+					DrawStripes("myCanvas",canvas.width/2.5,canvas.height-(canvas.height/4)-45,canvas.width/1.8,180,100);
+					
+					context.font = "bold 30pt Calibri";
+					context.fillStyle = "#65B133";
+					context.fillText("Team Urban Science - Spring 2012", canvas.width/2.5, canvas.height-(canvas.height/4));
+					context.fillText("CSE498: The Capstone Experience", canvas.width/2.5, canvas.height-(canvas.height/4)+60);
+					context.fillText("Michigan State University", canvas.width/2.5, canvas.height-(canvas.height/4)+120);
 				}
-			span {
-				display: block;
-				padding-top: 3.5em;
 			}
-		</style>
+		</script>
 	</head>
 <body>
     <div id="mpage">		
@@ -84,7 +82,9 @@
 				<li><span><a href="javascript:navigator_Go('Lead.html');"><img src="images/icon_lead.png" alt=""></a>Lead</span></li>
 			</ul>
             <address></address>
+			
 		</div>
+		<canvas id="myCanvas" width="1024" height="768">Canvas not supported on your device.</canvas>
 	</div>
 </body>
 </html>
