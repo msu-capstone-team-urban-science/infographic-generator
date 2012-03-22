@@ -1,5 +1,7 @@
 <!DOCTYPE HTML>
 <html>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width/" >
     <head>
 		<script type="text/javascript" src="Scripts/HandleDate.js"></script>
 		<script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
@@ -7,14 +9,22 @@
 		<script type="text/javascript" src="Scripts/draw-new-sales.js"></script>
         <script>
             window.onload = function(){
-                var date = new Date;
+				var date = new Date;
                 DrawSalesInfographic("myCanvas", date);
             }
- 
         </script>
+		<link rel="stylesheet" type="text/css" href="Styles/sales-one-canvas_style.css" />
     </head>
     <body>
-        <canvas id="myCanvas" width="1000" height="1500">
-        </canvas>
+		<div id="main">
+			<div id="header">
+							<img src="images/header2.jpg">
+							<a href="index.html"><img id="hButton" src="images/home_button.png"></a>
+							<p id="category">Sales</p>
+							<p id="month">January</p>
+			</div>
+			<canvas id="myCanvas" width="1000" height="1500">
+			</canvas>
+		</div>
     </body>
 </html>
