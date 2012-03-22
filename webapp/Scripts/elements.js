@@ -187,7 +187,7 @@ function Pump_In_Sale(c, x, y, w, h, d) {
         }
         context.font = "bold " + text_size + "pt Calibri";
         context.fillStyle = "#ffffff";
-        context.fillText(d[i][1], x + (w*5/12), midY - temp / 2 + text_size / 2);
+        context.fillText(d[i][1], x + (w*11/24), midY - temp / 2 + text_size / 2);
     }
 }
 // Name: DrawSection
