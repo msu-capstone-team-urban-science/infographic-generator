@@ -155,7 +155,6 @@ function Pump_In_Sale(c, x, y, w, h, d) {
     context.quadraticCurveTo(trX, midY, trX, trY);
     context.quadraticCurveTo(trX, blY, midX, blY);
     context.quadraticCurveTo(controlX, blY, blX, blY);
-    //context.strokeStyle = "#000000";
     context.fillStyle = d[0][2];
     context.fill();
 
@@ -176,7 +175,6 @@ function Pump_In_Sale(c, x, y, w, h, d) {
         } else {
             context.fillStyle = d[i + 1][2];
         }
-        //context.strokeStyle = "black";
         context.fill();
 
         // Draw text
@@ -189,7 +187,7 @@ function Pump_In_Sale(c, x, y, w, h, d) {
         }
         context.font = "bold " + text_size + "pt Calibri";
         context.fillStyle = "#ffffff";
-        context.fillText(d[i][1], x + (w / 3), midY - temp / 2 + text_size / 2);
+        context.fillText(d[i][1], x + (w*11/24), midY - temp / 2 + text_size / 2);
     }
 }
 // Name: DrawSection
@@ -210,7 +208,7 @@ function DrawSection (c, x, y, w, h, d)
     context.moveTo(x, y + pointerHeight + cornerCurveSize);
     
     // left side
-    context.lineTo(x, h);
+    context.lineTo(x, y+h);
 
     // bottom
     context.lineTo(x + w, y + h);
@@ -511,7 +509,7 @@ function DrawPerson (c, x, y, h)
 
 
 
-function DrawStripes(c, x, y, w, h) {
+function DrawStripes(c, x, y, w, h, d) {
 
     var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
@@ -522,7 +520,7 @@ function DrawStripes(c, x, y, w, h) {
     var stripeWidth = 9;
     context.lineWidth = 1;
     //context.fillStyle = "#74c043";
-    context.fillStyle = "#eeeeee";
+    context.fillStyle = d;
     var i = 0;
     for (i = 0-h; i < w; i = (i + (stripeWidth*2)))
     {
@@ -563,7 +561,7 @@ function DrawStripes(c, x, y, w, h) {
 
 
 function DrawPie(c, x, y, w, h, d) {
-	clearCanvas(c);
+	//clearCanvas(c);
     // data format
     // 
     // accepts a percentage expressed as a decimal
