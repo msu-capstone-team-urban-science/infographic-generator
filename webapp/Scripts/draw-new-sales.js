@@ -1,4 +1,4 @@
-            function DrawSalesInfographic (c)
+            function DrawSalesInfographic (c, date)
 {
                 var canvas = document.getElementById(c);
                 var context = canvas.getContext("2d");
@@ -37,13 +37,10 @@
 
 
 
-            function DrawCanvasPart2 (c)
+            function DrawCanvasPart2 (c, date)
             {
                 var canvas = document.getElementById(c);
                 var context = canvas.getContext("2d");
-
-                // data
-                var date = new Date;
 
 
                 // draw circles
@@ -102,7 +99,7 @@
 
             }
 
-            function DrawCanvasPart3 (c)
+            function DrawCanvasPart3 (c, date)
             {
                 var canvas = document.getElementById(c);
                 var context = canvas.getContext("2d");
@@ -210,8 +207,8 @@
                 context.restore();
 
 
-                DrawPie("myCanvas", 150, 1050, 100, 100, GetKPI(date, "Dealer_Retention"));
-                DrawPie("myCanvas", 750, 1050, 100, 100, GetKPI(date, "Visits_Per_Customer"));
+                DrawPie("myCanvas", 150, 1050, 100, 100, parseInt(GetKPI(date, "Dealer_Retention"))/100);
+                DrawPie("myCanvas", 750, 1050, 100, 100, parseInt(GetKPI(date, "Visits_Per_Customer"))/100);
 
 
             }
