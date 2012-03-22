@@ -504,16 +504,10 @@ function DrawPerson (c, x, y, h)
 
 }
 
-
-
-
-
-
-function DrawStripes(c, x, y, w, h, d) {
-
+function DrawStripes(c, x, y, w, h, d) 
+{
     var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
-
 
     //context.fillStyle = "#dddddd";
     //context.fillRect(x, y, w, h);
@@ -524,7 +518,6 @@ function DrawStripes(c, x, y, w, h, d) {
     var i = 0;
     for (i = 0-h; i < w; i = (i + (stripeWidth*2)))
     {
-
         context.beginPath();
         if (i < 0)
         {
@@ -533,7 +526,6 @@ function DrawStripes(c, x, y, w, h, d) {
             context.lineTo(x + i + stripeWidth + h, y + h);
             context.lineTo(x + i + h, y + h);
             context.lineTo(x, y-i);
-
         }else if(i+h < w)
         {
             context.moveTo(x + i, y);
@@ -549,9 +541,6 @@ function DrawStripes(c, x, y, w, h, d) {
             context.lineTo(x + w, y + h - (i + h - w));
             context.lineTo(x + i, y);
         }
-
-
-
         context.closePath();
         context.fill();
     }
