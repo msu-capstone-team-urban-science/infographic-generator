@@ -1,0 +1,28 @@
+	ul {    
+		list-style: none;
+		padding: 0;
+		margin: 0 auto;
+		width: 36em;
+		height: 24em;
+	}
+	li {
+		height: 12em;
+		width: 12em;
+		background-color: #0;
+		opacity: 0.1;
+		text-align: center;
+		cursor: pointer;
+		border: 0px solid #bbb;
+		-webkit-border-radius: 7em;
+		-moz-border-radius: 7em;
+		-ms-border-radius: 7em;
+		-o-border-radius: 7em;
+		border-radius: 7em;
+	}
+	li.roundabout-in-focus {
+		cursor: default;
+	}
+	span {
+		display: block;
+		padding-top: 3.5em;
+	}
