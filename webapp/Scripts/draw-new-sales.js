@@ -42,7 +42,7 @@
                 var canvas = document.getElementById(c);
                 var context = canvas.getContext("2d");
                 var date = new Date;
-
+date.setFullYear(date.getFullYear(),date.getMonth()+1,date.getDay());
                 // draw circles
                 var circleColor = "#ededed"
                 context.fillStyle = circleColor;
@@ -113,6 +113,7 @@
                 var canvas = document.getElementById(c);
                 var context = canvas.getContext("2d");
                 var date = new Date;
+date.setFullYear(date.getFullYear(),date.getMonth()+1,date.getDay());
                 // draw grey background below splitter image
                 //context.fillStyle = "#333333";
                 //context.rect(0,947, canvas.width, 300);
