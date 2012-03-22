@@ -94,7 +94,7 @@
                 context.fillText("Used Vehicle Sales", 167, 120);
                 context.fillText("Retail Sales", 199, 400);
                 context.fillText("Cost Per Sale", 733, 120);
-
+                context.shadowBlur = 0;
 
                 // draw the pointing dude
                 var imageObj = new Image();
