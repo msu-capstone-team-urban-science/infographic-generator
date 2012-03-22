@@ -86,6 +86,14 @@
                 Cost_Per_Sale("myCanvas", canvas.width/2 + 290 - 88, 130, 122, 80, [date, GetKPI(date, "Cost_Per_Sale")]);
                 Pump_In_Sale("myCanvas", canvas.width/4+212, 330, canvas.width - (canvas.width/4+212), 370, [[GetKPI(date, "Pump_In_Sales_Anytown_Automotive"), "Anytown Automotive", "#ff9b00"], [GetKPI(date, "Pump_In_Sale_Allan_Automart"), "Allan Automart", "#f54c08"], [GetKPI(date, "Pump_In_Sale_Jefferson_Automotive"), "Jefferson Automotive", "#b4213f"], [GetKPI(date, "Pump_In_Sale_Nestor_Auto_Center"), "Nestor Auto Center", "#69039d"], [GetKPI(date, "Pump_In_Sale_Diamond_Automotive"), "Diamond Automotive", "#283577"], [GetKPI(date, "Pump_In_Sale_Anthony_Motors"), "Anthony Motors", "#66a5c7"]]);
 
+                // get some text on the screen
+                context.font = "bold 15pt Calibri";
+                context.fillStyle = "#ffffff";
+                context.shadowColor = "#000000";
+                context.shadowBlur = 10;
+                context.fillText("Used Vehicle Sales", 167, 120);
+                context.fillText("Retail Sales", 199, 400);
+                context.fillText("Cost Per Sale", 733, 120);
 
 
                 // draw the pointing dude
