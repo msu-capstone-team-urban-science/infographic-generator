@@ -207,8 +207,8 @@
                 context.restore();
 
 
-                DrawPie("myCanvas", 150, 1050, 100, 100, parseInt(GetKPI(date, "Dealer_Retention"))/100);
-                DrawPie("myCanvas", 750, 1050, 100, 100, parseInt(GetKPI(date, "Visits_Per_Customer"))/100);
+                DrawPie("myCanvas", 150, 1050, 100, 100, parseInt(GetKPI(date, "Dealer_Retention")));
+                DrawPie("myCanvas", 750, 1050, 100, 100, parseInt(GetKPI(date, "Visits_Per_Customer")));
 
 
             }
