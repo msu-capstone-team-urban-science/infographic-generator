@@ -17,12 +17,13 @@
 	color: white;
 }
 #month{
-	position:absolute;
-	top:0px;
-	left: 700px;
-	font-size:70px;
-	color: white;
+ position:absolute;
+ top:0px;
+ left: 650px;
+ font-size:70px;
+ color: white;
 }
+
 #myCanvas{
 	position:absolute;
 	top:207px;
