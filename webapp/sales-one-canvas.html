@@ -8,13 +8,15 @@
             window.onload = function(){
                 var canvas = document.getElementById("myCanvas");
                 var context = canvas.getContext("2d");
-                //context.canvas.width  = window.innerWidth;
-                //context.canvas.height = window.innerHeight;
 
 
-                // BACKGROUND SECTION
+                //    |\   | \   __   . . .
+                //    | |  | /  /  \  | | |
+                //    | |  |<   |--|  | | |
+                //    |/   | \  |  |   v v    some stuff
 
-                // fill background
+
+                // fill the top section of the background with a gradient
                 context.beginPath();
                 var grd = context.createLinearGradient(canvas.width/2, 0, canvas.width/2, 747);
                 grd.addColorStop(1, "#93c572");
@@ -23,34 +25,22 @@
                 context.rect(0, 0, canvas.width, 747);
                 context.fill();
 
-                // draw image
-                var imgBackground = new Image();
 
-                imgBackground.onload = function(){
-                    context.drawImage(imgBackground, 0, 0); // I don't draw using a function because if i do, the elements draw out of order
-                    context.drawImage(imgBackground, 570, 0);
-                    context.drawImage(imgBackground, 0, 210);
-                    context.drawImage(imgBackground, 570, 210);
-                    DrawCanvasPart1 ("myCanvas");
-                }
-                //imgBackground.src = "images/light_rock.jpg";
-                DrawStripes("myCanvas", 0, 0, canvas.width, 747);
-                    DrawCanvasPart1 ("myCanvas");
-            };
+                // draw stripes over the gradient
+                DrawStripes("myCanvas", 0, 0, canvas.width, 747, "#eeeeee");
 
-            function DrawCanvasPart1 (c)
-            {
-                var canvas = document.getElementById(c);
-                var context = canvas.getContext("2d");
 
+                // draw the splitter image
                 var imgSplitter = new Image();
-
                 imgSplitter.onload = function(){
-                    context.drawImage(imgSplitter, 0, 747, canvas.width, 200);  // however, not using a draw function means that this rarely appears... BUGGGGGG!
-                    DrawCanvasPart2 ("myCanvas");
+                    context.drawImage(imgSplitter, 0, 747, canvas.width, 200); // below the stripes
+                    context.drawImage(imgSplitter, 0, 1247, canvas.width, 200); // below the grey area
+                    DrawCanvasPart2 ("myCanvas");  // drawing the entire canvas must be broken up in to multiple functions when loading an image to avoid race condition of background drawing over foreground
                 }
                 imgSplitter.src = "images/splitter.png";
-            }
+
+            };
+
 
 
             function DrawCanvasPart2 (c)
@@ -59,16 +49,10 @@
                 var context = canvas.getContext("2d");
 
                 // data
-                var month = "May";
-                var year = "2012";
                 var date = new Date;
-
-                // fake kpi
-                var kpiUsedVehicleSales = "1467";
 
 
                 // draw circles
-
                 var circleColor = "#ededed"
                 context.fillStyle = circleColor;
                 context.strokeStyle = circleColor;
@@ -103,30 +87,134 @@
                 context.lineTo(canvas.width/2 + 290, 200);
                 context.stroke();
 
+
+
+                // draw some elements on top of the circles
+                Used_Vehicle_Sale("myCanvas", canvas.width/4-75, 135, 150, 130, [date, GetKPI(date, "Used_Vehicle_Sales")]);
+                Retail_Sale("myCanvas", canvas.width/4-75, 415, 77, 76, [date, GetKPI(date, "Retail_Sales")]);
+                Cost_Per_Sale("myCanvas", canvas.width/2 + 290 - 88, 130, 122, 80, [date, GetKPI(date, "Cost_Per_Sale")]);
+                Pump_In_Sale("myCanvas", canvas.width/4+212, 330, canvas.width - (canvas.width/4+212), 370, [[GetKPI(date, "Pump_In_Sales_Anytown_Automotive"), "Anytown Automotive", "#ff9b00"], [GetKPI(date, "Pump_In_Sale_Allan_Automart"), "Allan Automart", "#f54c08"], [GetKPI(date, "Pump_In_Sale_Jefferson_Automotive"), "Jefferson Automotive", "#b4213f"], [GetKPI(date, "Pump_In_Sale_Nestor_Auto_Center"), "Nestor Auto Center", "#69039d"], [GetKPI(date, "Pump_In_Sale_Diamond_Automotive"), "Diamond Automotive", "#283577"], [GetKPI(date, "Pump_In_Sale_Anthony_Motors"), "Anthony Motors", "#66a5c7"]]);
+
+
+
+                // draw the pointing dude
                 var imageObj = new Image();
              
                 imageObj.onload = function(){
-                    context.drawImage(imageObj, canvas.width/4-111, 650);
+                    context.drawImage(imageObj, canvas.width/4-111, 648);
+                    DrawCanvasPart3("myCanvas");
                 };
                 imageObj.src = "images/PointingDude.png";
 
+            }
 
-            // GRAPHICS SECTION
+            function DrawCanvasPart3 (c)
+            {
+                var canvas = document.getElementById(c);
+                var context = canvas.getContext("2d");
 
-                Used_Vehicle_Sale("myCanvas", canvas.width/4-75, 135, 150, 130, [date, GetKPI(date, "Used_Vehicle_Sales")]);
+                // draw grey background below splitter image
+                //context.fillStyle = "#333333";
+                //context.rect(0,947, canvas.width, 300);
+                DrawSection("myCanvas", 0, 903, canvas.width, 300, [0, "#333333"]);
 
-                Retail_Sale("myCanvas", canvas.width/4-75, 415, 77, 76, [date, GetKPI(date, "Retail_Sales")]);
+                context.save();
+                context.translate(canvas.width, 1291);
+                context.rotate(Math.PI);
+                DrawSection("myCanvas", 0, 0, canvas.width, 300, [0, "#333333"]);
+                context.restore();
+                //context.fill();
 
-                Cost_Per_Sale("myCanvas", canvas.width/2 + 290 - 88, 130, 122, 80, [date, GetKPI(date, "Cost_Per_Sale")]);
-        
-                Pump_In_Sale("myCanvas", canvas.width/4+212, 330, canvas.width - (canvas.width/4+212), 370, [[GetKPI(date, "Pump_In_Sales_Anytown_Automotive"), "Anytown Automotive", "#ff9b00"], [GetKPI(date, "Pump_In_Sale_Allan_Automart"), "Allan Automart", "#f54c08"], [GetKPI(date, "Pump_In_Sale_Jefferson_Automotive"), "Jefferson Automotive", "#b4213f"], [GetKPI(date, "Pump_In_Sale_Nestor_Auto_Center"), "Nestor Auto Center", "#69039d"], [GetKPI(date, "Pump_In_Sale_Diamond_Automotive"), "Diamond Automotive", "#283577"], [GetKPI(date, "Pump_In_Sale_Anthony_Motors"), "Anthony Motors", "#66a5c7"]]);
-                //DrawStripes("myCanvas", 0, 0, canvas.width, canvas.height);
+                // draw some elements over the grey midsection
+                context.font = "30pt Calibri";
+                context.fillStyle = "#ffffff";
+
+                // Dealer
+                context.save();
+                context.translate(200, 1150);
+                context.rotate(-0.42);
+                context.fillText("D", -15, -105);
+                context.rotate(0.22);
+                context.fillText("e", -10, -105);
+                context.rotate(0.15);
+                context.fillText("a", -9, -105);
+                context.rotate(0.15);
+                context.fillText("l", -6, -105);
+                context.rotate(0.14);
+                context.fillText("e", -10, -105);
+                context.rotate(0.16);
+                context.fillText("r", -9, -105);
+                context.restore();
+
+                // Retention
+                context.save();
+                context.translate(200, 1100);
+                context.rotate(.95);
+                context.fillText("R", -13, 80);
+                context.rotate(-0.31);
+                context.fillText("e", -10, 80);
+                context.rotate(-0.22);
+                context.fillText("t", -6, 80);
+                context.rotate(-0.22);
+                context.fillText("e", -10, 80);
+                context.rotate(-0.26);
+                context.fillText("n", -9, 80);
+                context.rotate(-0.26);
+                context.fillText("t", -6, 80);
+                context.rotate(-0.2);
+                context.fillText("i", -6, 80);
+                context.rotate(-0.21);
+                context.fillText("o", -10, 80);
+                context.rotate(-0.29);
+                context.fillText("n", -9, 80);
+                context.restore();
 
 
-                //DrawX("myCanvas",100, 600);
 
-            // TEXT SECTION
 
+                // Dealer
+                context.save();
+                context.translate(200, 1150);
+                context.rotate(-0.42);
+                context.fillText("D", -15, -105);
+                context.rotate(0.22);
+                context.fillText("e", -10, -105);
+                context.rotate(0.15);
+                context.fillText("a", -9, -105);
+                context.rotate(0.15);
+                context.fillText("l", -6, -105);
+                context.rotate(0.14);
+                context.fillText("e", -10, -105);
+                context.rotate(0.16);
+                context.fillText("r", -9, -105);
+                context.restore();
+
+                // Retention
+                context.save();
+                context.translate(200, 1100);
+                context.rotate(.95);
+                context.fillText("R", -13, 80);
+                context.rotate(-0.31);
+                context.fillText("e", -10, 80);
+                context.rotate(-0.22);
+                context.fillText("t", -6, 80);
+                context.rotate(-0.22);
+                context.fillText("e", -10, 80);
+                context.rotate(-0.26);
+                context.fillText("n", -9, 80);
+                context.rotate(-0.26);
+                context.fillText("t", -6, 80);
+                context.rotate(-0.2);
+                context.fillText("i", -6, 80);
+                context.rotate(-0.21);
+                context.fillText("o", -10, 80);
+                context.rotate(-0.29);
+                context.fillText("n", -9, 80);
+                context.restore();
+
+
+                DrawPie("myCanvas", 150, 1050, 100, 100, /*GetKPI(date, "Dealer_Retention")*/ .53);
+                DrawPie("myCanvas", 750, 1050, 100, 100, /*GetKPI(date, "Dealer_Retention")*/ .53);
 
             }
  
