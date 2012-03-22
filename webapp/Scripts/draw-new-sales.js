@@ -37,11 +37,11 @@
 
 
 
-            function DrawCanvasPart2 (c, date)
+            function DrawCanvasPart2 (c)
             {
                 var canvas = document.getElementById(c);
                 var context = canvas.getContext("2d");
-
+                var date = new Date;
 
                 // draw circles
                 var circleColor = "#ededed"
@@ -99,11 +99,11 @@
 
             }
 
-            function DrawCanvasPart3 (c, date)
+            function DrawCanvasPart3 (c)
             {
                 var canvas = document.getElementById(c);
                 var context = canvas.getContext("2d");
-
+                var date = new Date;
                 // draw grey background below splitter image
                 //context.fillStyle = "#333333";
                 //context.rect(0,947, canvas.width, 300);
