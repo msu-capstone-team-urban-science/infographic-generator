@@ -120,6 +120,7 @@
                 //context.fill();
 
                 // draw some elements over the grey midsection
+
                 context.font = "30pt Calibri";
                 context.fillStyle = "#ffffff";
 
@@ -164,50 +165,53 @@
                 context.restore();
 
 
-
-
-                // Dealer
+                // Visits Per
                 context.save();
-                context.translate(200, 1150);
-                context.rotate(-0.42);
-                context.fillText("D", -15, -105);
-                context.rotate(0.22);
-                context.fillText("e", -10, -105);
-                context.rotate(0.15);
-                context.fillText("a", -9, -105);
-                context.rotate(0.15);
-                context.fillText("l", -6, -105);
+                context.translate(800, 1150);
+                context.rotate(-0.49);
+                context.fillText("V", -15, -105);
+                context.rotate(0.16);
+                context.fillText("i", -6, -105);
                 context.rotate(0.14);
+                context.fillText("s", -9, -105);
+                context.rotate(0.11);
+                context.fillText("i", -6, -105);
+                context.rotate(0.1);
+                context.fillText("t", -6, -105);
+                context.rotate(0.13);
+                context.fillText("s", -9, -105);
+                context.rotate(0.20);
+                context.fillText("P", -9, -105);
+                context.rotate(0.18);
                 context.fillText("e", -10, -105);
                 context.rotate(0.16);
                 context.fillText("r", -9, -105);
                 context.restore();
 
-                // Retention
+                // Customer
                 context.save();
-                context.translate(200, 1100);
-                context.rotate(.95);
-                context.fillText("R", -13, 80);
-                context.rotate(-0.31);
-                context.fillText("e", -10, 80);
-                context.rotate(-0.22);
-                context.fillText("t", -6, 80);
-                context.rotate(-0.22);
-                context.fillText("e", -10, 80);
-                context.rotate(-0.26);
-                context.fillText("n", -9, 80);
-                context.rotate(-0.26);
-                context.fillText("t", -6, 80);
-                context.rotate(-0.2);
-                context.fillText("i", -6, 80);
-                context.rotate(-0.21);
-                context.fillText("o", -10, 80);
+                context.translate(800, 1100);
+                context.rotate(1);
+                context.fillText("C", -13, 80);
+                context.rotate(-0.4);
+                context.fillText("u", -10, 80);
                 context.rotate(-0.29);
-                context.fillText("n", -9, 80);
+                context.fillText("s", -9, 80);
+                context.rotate(-0.21);
+                context.fillText("t", -6, 80);
+                context.rotate(-0.23);
+                context.fillText("o", -10, 80);
+                context.rotate(-0.3);
+                context.fillText("m", -10, 80);
+                context.rotate(-0.45);
+                context.fillText("e", -10, 80);
+                context.rotate(-0.24);
+                context.fillText("r", -6, 80);
                 context.restore();
 
 
-                DrawPie("myCanvas", 150, 1050, 100, 100, /*GetKPI(date, "Dealer_Retention")*/ .53);
-                DrawPie("myCanvas", 750, 1050, 100, 100, /*GetKPI(date, "Dealer_Retention")*/ .53);
+                DrawPie("myCanvas", 150, 1050, 100, 100, GetKPI(date, "Dealer_Retention"));
+                DrawPie("myCanvas", 750, 1050, 100, 100, GetKPI(date, "Visits_Per_Customer"));
+
 
             }
