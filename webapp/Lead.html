@@ -556,8 +556,10 @@
 	
 		context.font = "28pt Calibri";
 		context.fillStyle = "#000";
-		context.fillText("Average Response Time", x-120, y-100);
-		context.fillText(d[1] + " minutes",x+95,y-45);
+		context.fillText("Average Response Time", x+105, y-50);
+		context.fillText(" minutes",x+175,y-10);
+		context.font = "bold  28pt Calibri";
+		context.fillText(d[1],x+105,y-10);
 		//DrawClockDial(c,x,y,w,h);
 		DrawClockFace(c,x,y,w,h,d);
 	}
@@ -659,16 +661,19 @@
 		var kpiLost = 12;
 		var kpiNew = 36;
 		var kpiOld = 12;
-
+		var kpiAve = new Array();
+		kpiAve[0] = 50.2;
+		kpiAve[1] = 41.2;
 		DrawUniqueCustomers("myCanvas", 200, 190);
 		DrawResponse("myCanvas", 20, 417, kpiMail, kpiPhone);
-		DrawSales("myCanvas", 680, 710, kpiLost, kpiNew, kpiOld)
+		DrawAvgRespTime ("myCanvas", 130, 680, 5, 5, kpiAve);
+		DrawSales("myCanvas", 680, 850, kpiLost, kpiNew, kpiOld);
 
 		//section
 
 		context.beginPath();
 		context.moveTo(25 , 300);
-		context.lineTo(25 , 830);
+		context.lineTo(25 , 980);
 		context.lineWidth = 2;
 		context.lineCap = "square";
 		context.strokeStyle = "#000000";
@@ -682,7 +687,7 @@
 		context.stroke();
 				
 		context.moveTo(760 , 300);
-		context.lineTo(760 , 830);
+		context.lineTo(760 , 980);
 		context.lineWidth = 2;
 		context.lineCap = "square";
 		context.strokeStyle = "#000000";
@@ -731,7 +736,7 @@
 		//sales
 		
 		var x = 100;
-		var y = 810;
+		var y = 950;
 		
 		//
 		context.fillStyle = "#ffffff";
@@ -766,7 +771,7 @@
 	</canvas>
 
 	<div id="stone">
-		<img src="images/lead_stone.jpg"/ width = "745px" height="240px">
+		<img src="images/lead_stone.jpg"/ width = "745px" height="400px">
 	</div>
 	<div id="sep1">
 		<img src="images/lead_sep.png"/>
