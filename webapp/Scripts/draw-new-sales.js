@@ -112,6 +112,14 @@ function DrawCanvasPart3(c,date)
 	context.rotate(Math.PI);
 	DrawSection("myCanvas", 0, 0, canvas.width, 300, [0, "#333333"]);
 	context.restore();
+
+	DrawSection("myCanvas", 0, 1203, canvas.width, 300, [0, "#444444"]);
+
+	context.save();
+	context.translate(canvas.width, 1591);
+	context.rotate(Math.PI);
+	DrawSection("myCanvas", 0, 0, canvas.width, 300, [0, "#444444"]);
+	context.restore();
 	//context.fill();
 
 	// draw some elements over the grey midsection
