@@ -7,9 +7,13 @@
 		<script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
 		<script type="text/javascript" src="Scripts/elements.js"></script>
 		<script type="text/javascript" src="Scripts/draw-new-sales.js"></script>
+		<script type="text/javascript" src="Scripts/HandleDate.js"></script>
+		<script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="Scripts/jquery.wipetouch.js"></script>
         <script>
             window.onload = function(){
-                DrawSalesInfographic("myCanvas");
+                LoadJSON();
+				DrawSalesInfographic("myCanvas",initDate());
             }
         </script>
 		<link rel="stylesheet" type="text/css" href="Styles/sales-one-canvas_style.css" />
@@ -20,10 +24,25 @@
 							<img src="images/header.jpg">
 							<a href="index.html"><img id="hButton" src="images/home_button.png"></a>
 							<p id="category">Sales</p>
-							<p id="month">April '12</p>
+							<p id="month"></p>
+							<p id="month2"></p>
 			</div>
 			<canvas id="myCanvas" width="1000" height="1500">
 			</canvas>
 		</div>
+		
+	<script type="text/javascript">		
+		$(document).wipetouch(
+		{
+			allowDiagonal:false,
+			tapToClick: false,
+			wipeLeft: function(result) { wipeStatus("Left",result); },
+			wipeRight: function(result) { wipeStatus("Right",result);},
+            wipeUp: false,
+            wipeDown: false,
+            preventDefault: false,
+            moveX: 200,
+		});	
+	</script>
     </body>
 </html>
