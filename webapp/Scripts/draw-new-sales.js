@@ -1,3 +1,9 @@
+//Notice from Lok
+//array that stores the name of element, x, y, width, height and data through the year
+//for every element we draw, make sure you pass the above information into the array
+//format: trendArray.push(['name-of-element', x, y, width, height,[JanData, FebData,...]]);
+//if there is a radius with no width and height, just pass the radius twice
+var trendArray=new Array();
 function DrawSalesInfographic (c,date)
 {
 	var canvas = document.getElementById(c);
@@ -74,6 +80,16 @@ function DrawCanvasPart2 (c,date)
 	Retail_Sale("myCanvas", canvas.width/4-75, 415, 77, 76, [date, GetKPI(date, "Retail_Sales")]);
 	Cost_Per_Sale("myCanvas", canvas.width/2 + 290 - 88, 130, 122, 80, [date, GetKPI(date, "Cost_Per_Sale")]);
 	Pump_In_Sale("myCanvas", canvas.width/4+212, 330, canvas.width - (canvas.width/4+212), 370, [[GetKPI(date, "Pump_In_Sales_Anytown_Automotive"), "Anytown Automotive", "#ff9b00"], [GetKPI(date, "Pump_In_Sale_Allan_Automart"), "Allan Automart", "#f54c08"], [GetKPI(date, "Pump_In_Sale_Jefferson_Automotive"), "Jefferson Automotive", "#b4213f"], [GetKPI(date, "Pump_In_Sale_Nestor_Auto_Center"), "Nestor Auto Center", "#69039d"], [GetKPI(date, "Pump_In_Sale_Diamond_Automotive"), "Diamond Automotive", "#283577"], [GetKPI(date, "Pump_In_Sale_Anthony_Motors"), "Anthony Motors", "#66a5c7"]]);
+	
+	
+	//Array of elements infomation
+	/*!!! you have to add 207px(height of header picture) to y !!!*/
+	var dataArray = GetTrendKPI(date, 'Retail_Sale');
+	trendArray.push(['Retail Sale', canvas.width/4-71, 123, 152, 152,dataArray,'Description']);
+	//trendArray.push(['Used Vehicle Sale', canvas.width/4-75, 135+207, 150, 130]);
+	//trendArray.push(['Cost Per Sale', canvas.width/2 + 202, 130+207, 240, 192]);
+	//trendArray.push(['Pump In Sale', canvas.width/4+212, 330+207, canvas.width - (canvas.width/4+212), 370]);
+
 
 	// get some text on the screen
 	context.font = "bold 19pt Calibri";
@@ -217,4 +233,41 @@ function DrawCanvasPart3(c,date)
 	DrawPie("myCanvas", 750, 1050, 100, 100, GetKPI(date, "Visits_Per_Customer"));
 
 
+}
+
+//DIALOG BOX HANG
+
+
+$(document).ready(function () {
+	// if user clicked on button, the overlay layer or the dialogbox, close the dialog	
+	$('#dialog-overlay, #dialog-box').bind("touchstart click", function () {		
+		$('#dialog-overlay, #dialog-box').hide();		
+		return false;
+	});
+	
+	// if user resize the window, call the same function again
+	// to make sure the overlay fills the screen and dialogbox aligned to center	
+	$(window).resize(function () {
+		
+		//only do it if the dialog box is not hidden
+		if (!$('#dialog-box').is(':hidden')) popup();		
+	});		
+});
+
+function popup(message) {
+	// get the screen height and width  
+	var maskHeight = $(document).height();  
+	var maskWidth = $(window).width();
+	
+	// calculate the values for center alignment
+	var dialogTop =  (maskHeight/3) - ($('#dialog-box').height());  
+	var dialogLeft = (maskWidth/2) - ($('#dialog-box').width()/2); 
+	
+	// assign values to the overlay and dialog box
+	$('#dialog-overlay').css({height:maskHeight, width:maskWidth}).show();
+	$('#dialog-box').css({top:dialogTop, left:dialogLeft}).show();
+	
+	// display the message
+	$('#dialog-message').html(message);
+			
 }

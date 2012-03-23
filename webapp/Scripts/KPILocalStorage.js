@@ -66,3 +66,27 @@ function GetKPI(date, kpiName) {
     }
     return kpiData;
 }
+
+function GetTrendKPI(date, kpiName){
+	var kpiArray = new Array(); 
+	var month=0;;
+	var x=0;
+	if(date.getMonth() <= 6) {
+		x=0;
+	}
+	else{
+		x=date.getMonth()-6;
+	}
+	while(x<date.getMonth()) {
+		for(i=0;i<monthname.length;i++){
+			if(i=x){
+				month=monthname[i];
+			}
+		}
+		kpiArray.push([month,GetKPI(date.setFullYear(date.getFullYear(),x,date.getDay()),kpiName)]);
+		x++;
+		alert('www');
+	}
+	
+	return kpiArray;
+}
