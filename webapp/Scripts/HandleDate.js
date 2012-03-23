@@ -5,14 +5,14 @@ var currDate;
 function initDate() {
 	if(!currDate) {
 		currDate = new Date;
-		initSales(currDate);
 		GetFullMonth(currDate,0);
 	}
+	return currDate;
 }
 function GetFullMonth(todate,b) {
-    document.getElementById('month').innerHTML = fullMonthName[todate.getMonth()] + " " + todate.getFullYear();
+    document.getElementById('month').innerHTML = fullMonthName[todate.getMonth()] + " '" + todate.getFullYear().toString().substr(2,3);
     if (b) {
-        document.getElementById('month2').innerHTML = fullMonthName[todate.getMonth()-b] + " " + todate.getFullYear();
+        document.getElementById('month2').innerHTML = fullMonthName[todate.getMonth()-b] + " '" + todate.getFullYear().toString().substr(2,3);
     }
 }
 
@@ -20,26 +20,21 @@ function changeMonth(x) {
     var newMonth = currDate.getMonth() + x;
     if (insideDateRange(newMonth)) {
         currDate.setMonth(newMonth);
-        initSales(currDate);
+		DrawSalesInfographic("myCanvas",currDate);
         GetFullMonth(currDate, x);
         if (x < 0) {
-            $("#month").animate({ "left": "-850px" }, 0);
-            $("#month2").animate({ "left": "0px" }, 0);
-            $("#month2").animate({ "left": "+=850px" }, 1500);
-            $("#month").animate({ "left": "+=850px" }, 1000);
+            //$("#month").animate({ "left": "-850px" }, 0);
+            //$("#month2").animate({ "left": "0px" }, 0);
+            //$("#month2").animate({ "left": "+=850px" }, 1500);
+            //$("#month").animate({ "left": "+=850px" }, 1000);
         } else {
-            $("#month").animate({ "left": "850px" }, 0);
-            $("#month2").animate({ "left": "0px" }, 0);
-            $("#month2").animate({ "left": "-=850px" }, 1500);
-            $("#month").animate({ "left": "-=850px" }, 1000);
-        }
-
-       
-
-        
+            //$("#month").animate({ "left": "850px" }, 0);
+            //$("#month2").animate({ "left": "0px" }, 0);
+            //$("#month2").animate({ "left": "-=850px" }, 1500);
+            //$("#month").animate({ "left": "-=850px" }, 1000);
+        }       
     }
 }
-
 
 //check if it is within our range, and then return true or false based on those values.
 function insideDateRange(month) {
@@ -52,7 +47,6 @@ function insideDateRange(month) {
     tempDate.setMonth(month);
     // dr0  ,   dr1,     dr2,    dr3
     //[FirstMonth, FirstYear, LastMonth, LastYear]
-
     if ((tempDate.getFullYear() <= dR[3]) && (tempDate.getFullYear() >= dR[1])) {
         if ((tempDate.getMonth() <= dR[2]) && (tempDate.getMonth() >= dR[0])) {
             bool = 1;
@@ -94,8 +88,6 @@ function wipeStatus(dir, result) {
         changeMonth(-1);
     }
     if (dir == "Left") {        
-//        $("#month").animate({ "left": "850px" }, 0);
-//        $("#month").animate({ "left": "-=850px" }, 1000);
         changeMonth(1);
     }
 }
