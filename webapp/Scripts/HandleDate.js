@@ -4,7 +4,7 @@ var currDate;
 
 function initDate() {
 	if(!currDate) {
-		currDate = new Date;
+		currDate = new Date();
 		GetFullMonth(currDate,0);
 	}
 	return currDate;

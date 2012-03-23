@@ -84,11 +84,13 @@ function DrawCanvasPart2 (c,date)
 	
 	//Array of elements infomation
 	/*!!! you have to add 207px(height of header picture) to y !!!*/
-	var dataArray = GetTrendKPI(date, 'Retail_Sale');
-	trendArray.push(['Retail Sale', canvas.width/4-71, 123, 152, 152,dataArray,'Description']);
-	//trendArray.push(['Used Vehicle Sale', canvas.width/4-75, 135+207, 150, 130]);
-	//trendArray.push(['Cost Per Sale', canvas.width/2 + 202, 130+207, 240, 192]);
-	//trendArray.push(['Pump In Sale', canvas.width/4+212, 330+207, canvas.width - (canvas.width/4+212), 370]);
+	//var dataArray = GetTrendKPI(date, 'Retail_Sales');
+	trendArray.push(['Retail Sale', canvas.width/4-71, 415+207, 152, 152,GetTrendKPI(date, 'Retail_Sales'),'Description']);
+	/////trendArray.push(['Retail Sale', canvas.width/4-71, 123+207, 152, 152,dataArray,'Description']);
+	
+	trendArray.push(['Used Vehicle Sale', canvas.width/4-75, 135+207, 150, 130,GetTrendKPI(date, 'Used_Vehicle_Sales'),'Description']);
+	trendArray.push(['Cost Per Sale', canvas.width/2 + 202, 130+207, 240, 192,GetTrendKPI(date, 'Cost_Per_Sale'),'Description']);
+	trendArray.push(['Pump In Sale', canvas.width/4+212, 330+207, canvas.width - (canvas.width/4+212), 370,GetTrendKPI(date, 'Pump_In_Sales_Anytown_Automotive'),'Description']);
 
 
 	// get some text on the screen

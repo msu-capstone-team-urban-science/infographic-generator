@@ -67,26 +67,33 @@ function GetKPI(date, kpiName) {
     return kpiData;
 }
 
-function GetTrendKPI(date, kpiName){
+function GetTrendKPI(date, kpiName) {
 	var kpiArray = new Array(); 
-	var month=0;;
+	var month;
 	var x=0;
-	if(date.getMonth() <= 6) {
+	var yy=date.getFullYear();
+	var mm=date.getMonth();
+	var dd=date.getDay();
+	var tmpDate=new Date();
+		tmpDate.setFullYear(yy,mm,dd);
+	if(tmpDate.getMonth() < 6) {
 		x=0;
 	}
 	else{
-		x=date.getMonth()-6;
+		x=tmpDate.getMonth()-6;
 	}
-	while(x<date.getMonth()) {
-		for(i=0;i<monthname.length;i++){
-			if(i=x){
-				month=monthname[i];
-			}
-		}
-		kpiArray.push([month,GetKPI(date.setFullYear(date.getFullYear(),x,date.getDay()),kpiName)]);
-		x++;
-		alert('www');
-	}
+	var num=tmpDate.getMonth();
 	
+	//although x changes, tmpDate.setFullYear doesn't change properly
+	while(x<=num) {
+		tmpDate.setFullYear(tmpDate.getFullYear(),x,tmpDate.getDay());
+		month=monthname[x];
+		var kpi=GetKPI(tmpDate,kpiName);
+		//alert(tmpDate.getMonth());
+		alert(kpi);
+
+		kpiArray.push([month,kpi]);
+		x++;
+	}
 	return kpiArray;
 }
