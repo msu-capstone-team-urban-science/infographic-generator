@@ -21,10 +21,11 @@ function changeMonth(x) {
     if (insideDateRange(newMonth)) {
         currDate.setMonth(newMonth);
 		DrawSalesInfographic("myCanvas",currDate);
-        GetFullMonth(currDate, x);
+		//GetFullMonth(currDate,x);
+        GetFullMonth(currDate, 0);
         if (x < 0) {
-            //$("#month").animate({ "left": "-850px" }, 0);
-            //$("#month2").animate({ "left": "0px" }, 0);
+           // $("#month").animate({ "left": "-8500px" }, 0);
+            //$("#month2").animate({ "left": "410px" }, 0);
             //$("#month2").animate({ "left": "+=850px" }, 1500);
             //$("#month").animate({ "left": "+=850px" }, 1000);
         } else {
