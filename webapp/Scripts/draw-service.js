@@ -5,7 +5,7 @@ function DrawService (c, date)
 
 
     // data
-    var month = date.getMonth();
+    var month = fullMonthName[date.getMonth()];
     var year = date.getFullYear();
 
     // fake kpi
