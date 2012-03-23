@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="viewport" content="width=device-width/" >
+<meta name="viewport" content="width=device-width" />
 <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
 <head runat="server">
     <title>Infographics Generator Home Page</title>
@@ -48,8 +48,10 @@
             }
 			
 			window.onload = function(){
-				var canvas = document.getElementById("myCanvas");
+				/*
+                var canvas = document.getElementById("myCanvas");
                 var context = canvas.getContext("2d");
+
 				context.fillStyle = "#FFF";
 				if(orient == "landscape") { 
 					context.fillRect(canvas.width/3.5,canvas.height-(canvas.height/4)-45,canvas.width/1.5,180);
@@ -61,6 +63,8 @@
 					context.fillText("Team Urban Science - Spring 2012", canvas.width/3.5, canvas.height-(canvas.height/4));
 					context.fillText("CSE498: The Capstone Experience", canvas.width/3.5, canvas.height-(canvas.height/4)+60);
 					context.fillText("Michigan State University", canvas.width/3.5, canvas.height-(canvas.height/4)+120);
+
+                    
 				} else {
 					context.fillRect(canvas.width/2.5,canvas.height-(canvas.height/4)-45,canvas.width/1.8,180);
 					DrawStripes("myCanvas",canvas.width/2.5,canvas.height-(canvas.height/4)-45,canvas.width/1.8,180,"#dddddd");
@@ -70,11 +74,12 @@
 					context.fillText("Team Urban Science - Spring 2012", canvas.width/2.5, canvas.height-(canvas.height/4));
 					context.fillText("CSE498: The Capstone Experience", canvas.width/2.5, canvas.height-(canvas.height/4)+60);
 					context.fillText("Michigan State University", canvas.width/2.5, canvas.height-(canvas.height/4)+120);
-				}
+				}*/
 			}
 		</script>
 	</head>
 <body>
+
     <div id="mpage">		
 		<div id="main">
 			<ul>
@@ -87,6 +92,7 @@
 		</div>
 		<canvas id="myCanvas" width="1024" height="768">Canvas not supported on your device.</canvas>
 	</div>
+<img src="images/branding.png" style="position:fixed;top:0px;left:0px;width:1030px;"/>
 </body>
 </html>
 
