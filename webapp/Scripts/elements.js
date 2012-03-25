@@ -3,6 +3,7 @@ function Retail_Sale(c, x, y, w, h, d) {
     var date = d[0];
     var canvas = document.getElementById(c);
     var ctx = canvas.getContext("2d");
+    ctx.save();
     ctx.scale(w/77,h/76);
     x = x/(w/77);
     y = y/(h/76);
@@ -27,12 +28,14 @@ function Retail_Sale(c, x, y, w, h, d) {
         ctx.fillText(monthname[date.getMonth()], x+51, y+135);
         ctx.fillText(d[1], x+47, y+37);
     }
+    ctx.restore();
 }
 
 
 function Used_Vehicle_Sale(c, x, y, w, h, d) {
     var canvas = document.getElementById(c);
     var ctx = canvas.getContext("2d");
+    ctx.save();
     ctx.scale(w/150,h/130);
     x = x/(w/150);
     y = y/(h/130);
@@ -67,6 +70,7 @@ function Used_Vehicle_Sale(c, x, y, w, h, d) {
     ctx.fillText(monthname[d[0].getMonth()] +" "+d[0].getFullYear().toString().substr(2, 3), x+35, y+70);
     //data
     ctx.fillText(d[1], x+60, y+110);
+    ctx.restore();
 }
 
 
@@ -93,6 +97,7 @@ CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
 function Cost_Per_Sale(c, x, y, w, h, d) {
     var canvas = document.getElementById(c);
     var ctx = canvas.getContext("2d");
+    ctx.save();
     ctx.scale(w/122,h/80);
     x = x/(w/122);
     y = y/(h/80);
@@ -113,6 +118,7 @@ function Cost_Per_Sale(c, x, y, w, h, d) {
         ctx.font = "bold 38pt MarkerFelt-Thin";
         ctx.fillText(d[1], x+65, y+75);
     }
+    ctx.restore();
 }
 
 
@@ -126,6 +132,7 @@ function Pump_In_Sale(c, x, y, w, h, d) {
 
     var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
+    context.save()
     var blX = x; // bottom left
     var blY = y + h;
     var trX = x + w; // top right
@@ -186,6 +193,7 @@ function Pump_In_Sale(c, x, y, w, h, d) {
         context.fillStyle = "#ffffff";
         context.fillText(d[i][1], x + (w*11/24), midY - temp / 2 + text_size / 2);
     }
+    context.restore();
 }
 
 
@@ -194,14 +202,15 @@ function Pump_In_Sale(c, x, y, w, h, d) {
 // Author: Louis Bodnar
 function DrawSection (c, x, y, w, h, d)
 {
+    var canvas = document.getElementById(c);
+    var context = canvas.getContext("2d");
+    context.save();
 
     var sectionColor = d[1]; // this is the color of the section bubble blurb thingy
     var pointerHeight = 44; // this is the height of the little top thingy
     var pointerDistance = d[0]; // this is the distance from x where the pointer will be placed
     var cornerCurveSize = 33; // this is the radius of the corner curve
 
-    var canvas = document.getElementById(c);
-    var context = canvas.getContext("2d");
 
     // draw section
     context.beginPath();
@@ -265,6 +274,7 @@ function DrawSection (c, x, y, w, h, d)
     context.closePath();
     context.fillStyle = sectionColor;
     context.fill();
+    context.restore();
 
 }
 
@@ -278,6 +288,8 @@ function DrawCloud (c, x, y, w, h)
     // BUG: Need to add raindrops
     var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
+
+    context.save();
 
     // draw cloud
     context.beginPath();
@@ -296,6 +308,7 @@ function DrawCloud (c, x, y, w, h)
     grd.addColorStop(1, "#555555"); // dark grey
     context.fillStyle = grd;
     context.fill();
+    context.restore();
 
 }
 
@@ -308,6 +321,7 @@ function DrawSun (c, x, y, r)
     // BUG: Need to add sunbeams
     var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
+    context.save();
 
     var centerX = x;
     var centerY = y;
@@ -317,6 +331,7 @@ function DrawSun (c, x, y, r)
     context.arc(centerX, centerY, r, 0, 2 * Math.PI, false);
     context.fillStyle = "#FFEF00";
     context.fill();
+    context.restore();
 }
 
 
@@ -326,6 +341,7 @@ function DrawX (c, x, y)
 {
     var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
+    context.save();
 
     context.beginPath();
     context.moveTo(0, y);
@@ -340,6 +356,7 @@ function DrawX (c, x, y)
     context.lineWidth = 1;
     context.strokeStyle = "#ff0000";
     context.stroke();
+    context.restore();
 
 }
 
@@ -351,6 +368,7 @@ function DrawHouse (c, x, y, h)
 {
     var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
+    context.save();
 
     var houseColor = "#C04000";
     var windowColor = "#F0F8FF";
@@ -399,7 +417,7 @@ function DrawHouse (c, x, y, h)
     context.lineTo(5*(h/10)+x,8*(h/10)+y);
     context.fillStyle = doorColor;
     context.fill();
-
+    context.restore();
 }
 
 
@@ -409,6 +427,7 @@ function DrawPerson (c, x, y, h)
 {
     var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
+    context.save();
 
     var lineWidth = h/10;
     var headRadius = h/10;
@@ -464,6 +483,7 @@ function DrawPerson (c, x, y, h)
     context.strokeStyle = "#000000";
     context.stroke();
 
+    context.restore();
 }
 
 // Name: DrawStripes
@@ -473,6 +493,7 @@ function DrawStripes(c, x, y, w, h, d)
     var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
 
+    context.save();
     //context.fillStyle = "#dddddd";
     //context.fillRect(x, y, w, h);
     var stripeWidth = 9;
@@ -509,7 +530,7 @@ function DrawStripes(c, x, y, w, h, d)
         context.fill();
     }
 
-
+    context.restore();
 }
 
 // Name: DrawPie
@@ -528,6 +549,7 @@ function DrawPie(c, x, y, w, h, d) {
 
     var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
+    context.save();
     var counterclockwise = false;
     var centerX = (w / 2) + x;
     var centerY = (h / 2) + y;
@@ -567,7 +589,7 @@ function DrawPie(c, x, y, w, h, d) {
     context.fillStyle = textColor;
     context.fillText(((Math.round(d * 1000)) / 10) + "%", text_offset, centerY + (text_size / 2));
 
-    context.shadowBlur = 0;
+    context.restore();
 }
 
 
@@ -578,6 +600,8 @@ function DrawBox(c, x, y, w, h, d) {
     // Create fill gradient
     var canvas = document.getElementById(c);
     var ctx = canvas.getContext("2d");
+    ctx.save();
+
     ctx.scale(w/120,h/120);
     x = x/(w/120);
     y = y/(h/120);
@@ -604,6 +628,7 @@ function DrawBox(c, x, y, w, h, d) {
     ctx.fillStyle = "white";
     ctx.fillText(text1, x+15, y+50);
     ctx.fillText(text2, x+15, y+80);
+    ctx.restore();
 }
 
 // Name: DrawCompetitiveSegmentSale
@@ -612,7 +637,8 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
 	//clearCanvas(c); // TODO: CHANGE THIS TO have the canvas name as a arg
     var canvas = document.getElementById(c);
     var ctx6 = canvas.getContext("2d");
-	
+	ctx6.save();
+
 	ctx6.scale(w/700,h/200);
 	x = x/(w/700);
 	y = y/(h/200);
@@ -658,6 +684,7 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
         }
     }
     //var s = setTimeout(Competitive_Segment_Sale(Comp_Seg_Sale_data),20);
+    ctx6.restore();
 }
 
 
@@ -692,6 +719,7 @@ function DrawLostSale(c, x, y, w, h, d) {
 	//clearCanvas(c);
     var canvas = document.getElementById(c);
     var ctx = canvas.getContext("2d");
+    ctx.save();
     var img04 = new Image();
     img04.src = 'images/puzzle.png';
 	
@@ -711,6 +739,7 @@ function DrawLostSale(c, x, y, w, h, d) {
         ctx.font = "bold 40pt Calibri";
         ctx.fillText(d, x+155, y+120);
     }
+    ctx.restore();
 }
 
 // Name: DrawLostProfit
@@ -719,6 +748,7 @@ function DrawLostProfit(c,x,y,w,h,d) {
 	//clearCanvas(c);
     var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
+    context.save();
 
 	context.scale(w/200,h/200);
 	x = x/(w/200);
@@ -792,7 +822,7 @@ function DrawLostProfit(c,x,y,w,h,d) {
     try {
         context.fillText("!", x+padding + width / 2, y+padding + height / 1.5);
     } catch (ex) { }
-
+    context.restore();
 }
 
 
@@ -801,6 +831,7 @@ function DrawLostProfit(c,x,y,w,h,d) {
 function DrawPlaid(c,x,y,w,h,d) {
     var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
+    context.save();
 
     var backgroundColor = "#ffffff";
     var lineColorOne = "#d9f28a";
@@ -892,5 +923,5 @@ function DrawPlaid(c,x,y,w,h,d) {
         context.stroke();
 
     }
-
+    context.restore();
 }
