@@ -241,11 +241,11 @@ function DrawCanvasPart3(c,date)
     kpiData.push(["Fred Rodgers Mazda",GetKPI(date,"Competitive_Segment_Sale_Fred_Rodgers_Mazda")]);
     kpiData.push(["Garrett Ford", GetKPI(date,"Competitive_Segment_Sale_Garrett_Ford")]);
     kpiData.push(["Peter Lake Ford", GetKPI(date,"Competitive_Segment_Sale_Peter_Lake_Ford")]);
-    DrawCompetitiveSegmentSale(c,100,1400,800,200,kpiData);
+    DrawCompetitiveSegmentSale(c,100,1500,800,200,kpiData);
 
 
-    DrawLostProfit(c, 600, 1500, 200, 200, GetKPI(date, "Lost_Profit"));
-    DrawLostSale(c, 100, 1500, 200, 200, GetKPI(date, "Lost_Sales"));
+    DrawLostProfit(c, 600, 1700, 200, 200, GetKPI(date, "Lost_Profit"));
+    DrawLostSale(c, 100, 1700, 200, 200, GetKPI(date, "Lost_Sales"));
 
 }
 
