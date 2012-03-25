@@ -31,7 +31,7 @@ function DrawSalesInfographic (c,date)
 	var imgSplitter = new Image();
 	imgSplitter.onload = function(){
 		context.drawImage(imgSplitter, 0, 747, canvas.width, 200); // below the stripes
-		context.drawImage(imgSplitter, 0, 1647, canvas.width, 200); // below the grey area
+		context.drawImage(imgSplitter, 0, 1547, canvas.width, 200); // below the grey area
 		DrawCanvasPart2(c,date);  // drawing the entire canvas must be broken up in to multiple functions when loading an image to avoid race condition of background drawing over foreground
 	}
 	imgSplitter.src = "images/splitter.png";
