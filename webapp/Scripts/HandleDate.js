@@ -21,6 +21,7 @@ function changeMonth(x) {
     if (insideDateRange(newMonth)) {
         currDate.setMonth(newMonth);
 		DrawSalesInfographic("myCanvas",currDate);
+		DrawService("myCanvas",currDate);
 		//GetFullMonth(currDate,x);
         GetFullMonth(currDate, 0);
         if (x < 0) {
@@ -84,7 +85,7 @@ function dateRange() {
     return [FirstMonth, FirstYear, LastMonth, LastYear];
 }
 
-function wipeStatus(dir, result) {
+function wipeStatus(dir) {
     if (dir == "Right") {
         changeMonth(-1);
     }

@@ -3,12 +3,11 @@ function DrawService (c, date)
     var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
 
-
     // data
     var month = fullMonthName[date.getMonth()];
     var year = date.getFullYear();
 
-    // fake kpi
+    // kpi
     var kpiActive = GetKPI(date, "Active_Customers");
     var kpiInactive = GetKPI(date, "Inactive_Customers");
     var kpiServiceLaborOpportunity = GetKPI(date, "Service_Labor_Opportunity");
