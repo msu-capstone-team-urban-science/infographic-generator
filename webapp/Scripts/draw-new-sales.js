@@ -243,6 +243,7 @@ function DrawCanvasPart3(c,date)
     kpiData.push(["Peter Lake Ford", GetKPI(date,"Competitive_Segment_Sale_Peter_Lake_Ford")]);
     DrawCompetitiveSegmentSale(c,300,1500,800,200,kpiData);
 
+    DrawPlaid(c,0,1747,canvas.width,400,0);
 
     DrawLostProfit(c, 100, 1800, 200, 200, GetKPI(date, "Lost_Profit"));
     DrawLostSale(c, 500, 1800, 200, 200, GetKPI(date, "Lost_Sales"));

@@ -1,7 +1,6 @@
 function Retail_Sale(c, x, y, w, h, d) {
     // d = [date, display value]
     var date = d[0];
-	//clearCanvas(c);
     var canvas = document.getElementById(c);
     var ctx = canvas.getContext("2d");
     ctx.scale(w/77,h/76);
@@ -32,7 +31,6 @@ function Retail_Sale(c, x, y, w, h, d) {
 
 
 function Used_Vehicle_Sale(c, x, y, w, h, d) {
-	//clearCanvas(c);
     var canvas = document.getElementById(c);
     var ctx = canvas.getContext("2d");
     ctx.scale(w/150,h/130);
@@ -93,7 +91,6 @@ CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
 }
 
 function Cost_Per_Sale(c, x, y, w, h, d) {
-	//clearCanvas(c);
     var canvas = document.getElementById(c);
     var ctx = canvas.getContext("2d");
     ctx.scale(w/122,h/80);
@@ -190,6 +187,9 @@ function Pump_In_Sale(c, x, y, w, h, d) {
         context.fillText(d[i][1], x + (w*11/24), midY - temp / 2 + text_size / 2);
     }
 }
+
+
+
 // Name: DrawSection
 // Author: Louis Bodnar
 function DrawSection (c, x, y, w, h, d)
@@ -403,44 +403,6 @@ function DrawHouse (c, x, y, h)
 }
 
 
-// Name: DrawSpirograph
-// Author: Louis Bodnar
-function DrawSpirograph (c, x, y)
-{
-    var canvas = document.getElementById(c);
-    var context = canvas.getContext("2d");
-
-    // values needed to generate spirograph
-    var fixedCircleRadius = 200;
-    var movingCircleRadius = -101;
-    var height = 201;
-
-    // other vars
-    var pX = 0;
-    var pY = 0;
-    var t = 0;
-
-    // move to starting point
-    pX = (fixedCircleRadius - movingCircleRadius)*Math.cos(t) + height*Math.cos(((fixedCircleRadius-movingCircleRadius)/movingCircleRadius)*t);
-    pY = (fixedCircleRadius - movingCircleRadius)*Math.sin(t) - height*Math.sin(((fixedCircleRadius-movingCircleRadius)/movingCircleRadius)*t);
-    context.moveTo(pX + x,pY + y);
-    context.beginPath();
-
-    // then draw the line
-    for (t = 0; t < 5300; t = t + .01)
-    {
-        pX = (fixedCircleRadius - movingCircleRadius)*Math.cos(t) + height*Math.cos(((fixedCircleRadius-movingCircleRadius)/movingCircleRadius)*t);
-        pY = (fixedCircleRadius - movingCircleRadius)*Math.sin(t) - height*Math.sin(((fixedCircleRadius-movingCircleRadius)/movingCircleRadius)*t);
-        context.lineTo(x + pX,y + pY);
-
-    }
-    context.lineWidth = .5;
-    context.strokeStyle = "#ff0000";
-    context.stroke();
-}
-
-
-
 // Name: DrawPerson
 // Author: Louis Bodnar
 function DrawPerson (c, x, y, h)
@@ -604,6 +566,8 @@ function DrawPie(c, x, y, w, h, d) {
     context.shadowBlur = 2;
     context.fillStyle = textColor;
     context.fillText(((Math.round(d * 1000)) / 10) + "%", text_offset, centerY + (text_size / 2));
+
+    context.shadowBlur = 0;
 }
 
 
@@ -657,7 +621,7 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
     img03.src = 'images/car2.png';
     img03.onload = function () {
         var maxPos = Math.floor(Competitive_Segment_Sale_findMax(Comp_Seg_Sale_data) / 12);
-	    ctx6.fillStyle = "white";
+        ctx6.fillStyle = "white";
         ctx6.fillText(maxPos, x+650, y+15 + i * 30);
 
         var final_pos = iniStopPos(Comp_Seg_Sale_data);
@@ -794,7 +758,7 @@ function DrawLostProfit(c,x,y,w,h,d) {
     context.stroke();
 
     // Turn off the shadow, or all future fills will have shadows
-    context.shadowColor = "transparent";
+    context.shadowBlur = 0;
 
     // Fill the path
     context.fillStyle = gradient;
@@ -831,3 +795,102 @@ function DrawLostProfit(c,x,y,w,h,d) {
 
 }
 
+
+// Name: DrawPlaid
+// Author: Louis Bodnar
+function DrawPlaid(c,x,y,w,h,d) {
+    var canvas = document.getElementById(c);
+    var context = canvas.getContext("2d");
+
+    var backgroundColor = "#ffffff";
+    var lineColorOne = "#d9f28a";
+    var lineColorTwo = "#81f28a";
+    var lineColorThree = "#ffbe93";
+    var lineColorFour = "#81f28a";
+
+
+    // fill background
+    context.fillStyle = backgroundColor;
+    context.fillRect(x, y, w, h);
+    
+
+
+    // draw first set of vertical lines
+    context.strokeStyle = lineColorOne;
+    context.lineWidth = 20;
+    var double = 0;
+    for (var i = 60; i < w; i = i + 120)
+    {
+        context.beginPath();
+        if (double == 1)
+        {
+            double = 0;
+            context.moveTo(i-10, y);
+            context.lineTo(i-10, y+h);
+            context.moveTo(i+10, y);
+            context.lineTo(i+10, y+h);
+        }else
+        {
+            double = 1;
+            context.moveTo(i, y);
+            context.lineTo(i, y+h);
+        }
+
+        context.stroke();
+
+    }
+
+
+    // draw second set of vertical lines
+    context.strokeStyle = lineColorTwo;
+    context.lineWidth = 15;
+    double = 0;
+    for (var i = 60; i < w; i = i + 120)
+    {
+        context.beginPath();
+        if (double == 1)
+        {
+            double = 0;
+            context.moveTo(i-10, y);
+            context.lineTo(i-10, y+h);
+            context.moveTo(i+10, y);
+            context.lineTo(i+10, y+h);
+        }else
+        {
+            double = 1;
+            context.moveTo(i, y);
+            context.lineTo(i, y+h);
+        }
+
+        context.stroke();
+
+    }
+
+
+
+    // draw set of horizontal lines
+    context.strokeStyle = lineColorThree;
+    context.lineWidth = 10;
+    var double = 0;
+    for (var i = 60; i < h; i = i + 120)
+    {
+        context.beginPath();
+        if (double == 1)
+        {
+            double = 0;
+            context.moveTo(x, y+i-20);
+            context.lineTo(x+w, y+i-20);
+            context.moveTo(x, y+i+20);
+            context.lineTo(x+w, y+i+20);
+        }else
+        {
+            double = 1;
+            context.moveTo(x, y+i);
+            context.lineTo(x+w, y+i);
+        }
+
+        context.stroke();
+
+    }
+
+}
