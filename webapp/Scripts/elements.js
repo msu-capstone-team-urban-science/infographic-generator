@@ -504,6 +504,8 @@ function DrawPerson (c, x, y, h)
 
 }
 
+// Name: DrawStripes
+// Author: Louis Bodnar
 function DrawStripes(c, x, y, w, h, d) 
 {
     var canvas = document.getElementById(c);
@@ -548,7 +550,8 @@ function DrawStripes(c, x, y, w, h, d)
 
 }
 
-
+// Name: DrawPie
+// Author: Louis Bodnar
 function DrawPie(c, x, y, w, h, d) {
 	//clearCanvas(c);
     // data format
@@ -604,9 +607,10 @@ function DrawPie(c, x, y, w, h, d) {
 }
 
 
-
+// Name: DrawBox
+// Author: Peter Chen
 function DrawBox(c, x, y, w, h, d) {
-	clearCanvas(c);
+	//clearCanvas(c);
     // Create fill gradient
     var canvas = document.getElementById(c);
     var ctx = canvas.getContext("2d");
@@ -637,3 +641,193 @@ function DrawBox(c, x, y, w, h, d) {
     ctx.fillText(text1, x+15, y+50);
     ctx.fillText(text2, x+15, y+80);
 }
+
+// Name: DrawCompetitiveSegmentSale
+// Author: Lok Cheung
+function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
+	//clearCanvas(c); // TODO: CHANGE THIS TO have the canvas name as a arg
+    var canvas = document.getElementById(c);
+    var ctx6 = canvas.getContext("2d");
+	
+	ctx6.scale(w/700,h/200);
+	x = x/(w/700);
+	y = y/(h/200);
+	
+    var img03 = new Image();
+    img03.src = 'images/car2.png';
+    img03.onload = function () {
+        var maxPos = Math.floor(Competitive_Segment_Sale_findMax(Comp_Seg_Sale_data) / 12);
+	    ctx6.fillStyle = "white";
+        ctx6.fillText(maxPos, x+650, y+15 + i * 30);
+
+        var final_pos = iniStopPos(Comp_Seg_Sale_data);
+        var offset = 0;
+        var i = 0;
+        for (i = 0; i < Comp_Seg_Sale_data.length; i++) {
+            var position = Math.floor(Comp_Seg_Sale_data[i][1] / 12);
+            if (offset < position) {
+                offset += 0.02;
+                //ctx6.fillText(i, 200, i * 20);
+                //                ctx6.drawImage(img03, 180 + offset * 25, i * 30, img03.width, img03.height);
+                ctx6.drawImage(img03, x+180 + position*25, y+i * 30, img03.width, img03.height);
+
+                ctx6.clearRect(x+180 + (offset - 0.9) * 25, y+i * 30, img03.width, img03.height);
+                ctx6.font = "bold 12pt Calibri";
+                //draw KPI_Name
+                ctx6.fillText(Comp_Seg_Sale_data[i][0], x+0, y+15 + i * 30);
+                //draw KPI_Data
+                ctx6.fillText(Comp_Seg_Sale_data[i][1], x+215 + position * 25, y+15 + i * 30);
+
+                if (offset + 0.02 > maxPos) {
+                    var j = 0, offx = offset;
+                    for (j = 0; j < final_pos.length; j++) {
+                        //TODO: draw number after the car reach destination
+                        //ctx6.fillText(Comp_Seg_Sale_data[j][1], 215+Math.floor(Comp_Seg_Sale_data[j][1]/12)*30, 15+j*30);
+                        ctx6.clearRect(x+180 + (final_pos[j]) * 30, y+j * 30, img03.width, img03.height);
+
+                        //ctx6.fillText(final_pos[j], 215+position*35, 15+j*30);
+
+                    }
+                    offset = 0;
+                }
+            }
+        }
+    }
+    //var s = setTimeout(Competitive_Segment_Sale(Comp_Seg_Sale_data),20);
+}
+
+
+// Name: Competitive_Segment_Sale_findMax
+// Author: Lok Cheung
+// Purpose: Support function for Competitive_Segment_Sale
+function Competitive_Segment_Sale_findMax(array) {
+    var max = 0;
+    for (var i = 0; i < array.length; i++) {
+        if (array[i][1] > max) {
+            max = array[i][1];
+        }
+    }
+    return max;
+}
+
+
+// Name: iniStopPos
+// Author: Lok Cheung
+// Purpose: Support function for Competitive_Segment_Sale
+function iniStopPos(array) {
+    var final_pos = new Array();
+    for (var i = 0; i < array.length; i++) {
+        final_pos[i] = Math.floor(array[i][1] / 12);
+    }
+    return final_pos;
+}
+
+// Name: DrawLostSale
+// Author: Lok Cheung
+function DrawLostSale(c, x, y, w, h, d) {
+	clearCanvas(c);
+    var canvas = document.getElementById(c);
+    var ctx = canvas.getContext("2d");
+    var img04 = new Image();
+    img04.src = 'images/puzzle.png';
+	
+	ctx.scale(w/img04.width,h/img04.height);
+	x = x/(w/img04.width);
+	y = y/(h/img04.height);
+	
+    img04.onload = function () {
+        ctx.drawImage(img04, x+0, y+0, img04.width, img04.height);
+        ctx.font = "bold 34pt Calibri";
+        ctx.fillText("LOST", x+110, y+30);
+        ctx.fillText("SALES", x+97, y+70);
+        ctx.fillStyle = "white";
+        ctx.fillText("LOST", x+111, y+28);
+        ctx.fillText("SALES", x+97, y+68);
+        ctx.fillStyle = "black";
+        ctx.font = "bold 40pt Calibri";
+        ctx.fillText(d, x+155, y+120);
+    }
+}
+
+// Name: DrawLostProfit
+// Author: Peter Chen
+function DrawLostProfit(c,x,y,w,h,d) {
+	clearCanvas(c);
+    var canvas = document.getElementById(c);
+    var context = canvas.getContext("2d");
+
+	context.scale(w/200,h/200);
+	x = x/(w/200);
+	y = y/(h/200);
+	
+    var lineWidth = 8;
+    var innerBorder = 5;
+    var primaryColor = "#ffc821";
+    var secondaryColor = "#faf100";
+    var tertiaryColor = "#dcaa09";
+    // Load the context of the canvas
+
+    var width = 200;
+    var height = 200;
+    var padding = 20;
+
+    // Create a triangluar path
+    context.beginPath();
+    context.moveTo(x+padding + width / 2, y+padding);
+    context.lineTo(x+padding + width, y+height + padding);
+    context.lineTo(x+padding, y+height + padding);
+    context.closePath();
+
+    // Create fill gradient
+    var gradient = context.createLinearGradient(x+0, y+0, x+0, y+height);
+    gradient.addColorStop(0, primaryColor);
+    gradient.addColorStop(1, secondaryColor);
+
+    // Add a shadow around the object
+    context.shadowBlur = 10;
+    context.shadowColor = "black";
+
+    // Stroke the outer outline
+    context.lineWidth = lineWidth * 2;
+    context.lineJoin = "round";
+    context.strokeStyle = gradient;
+    context.stroke();
+
+    // Turn off the shadow, or all future fills will have shadows
+    context.shadowColor = "transparent";
+
+    // Fill the path
+    context.fillStyle = gradient;
+    context.fill();
+
+    // Add a horizon reflection with a gradient to transparent
+    gradient = context.createLinearGradient(x+0, y+padding, x+0, y+padding + height);
+    gradient.addColorStop(0, "transparent");
+    gradient.addColorStop(0.5, "transparent");
+    gradient.addColorStop(0.5, tertiaryColor);
+    gradient.addColorStop(1, secondaryColor);
+
+    context.fillStyle = gradient;
+    context.fill();
+
+    // Stroke the inner outline
+    context.lineWidth = lineWidth;
+    context.lineJoin = "round";
+    context.strokeStyle = "#333";
+    context.stroke();
+
+    // Draw the text exclamation point
+    context.font = "40px Arial";
+    context.fillStyle = "red";	
+    context.fillText("$" + d, x+190, y+100);
+
+    context.textAlign = "center";
+    context.textBaseline = "middle";
+    context.font = "bold 80px 'Times New Roman', Times, serif";
+    context.fillStyle = "#333";
+    try {
+        context.fillText("!", x+padding + width / 2, y+padding + height / 1.5);
+    } catch (ex) { }
+
+}
+

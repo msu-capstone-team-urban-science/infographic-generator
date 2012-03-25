@@ -31,7 +31,7 @@ function DrawSalesInfographic (c,date)
 	var imgSplitter = new Image();
 	imgSplitter.onload = function(){
 		context.drawImage(imgSplitter, 0, 747, canvas.width, 200); // below the stripes
-		context.drawImage(imgSplitter, 0, 1547, canvas.width, 200); // below the grey area
+		context.drawImage(imgSplitter, 0, 1647, canvas.width, 200); // below the grey area
 		DrawCanvasPart2("myCanvas",date);  // drawing the entire canvas must be broken up in to multiple functions when loading an image to avoid race condition of background drawing over foreground
 	}
 	imgSplitter.src = "images/splitter.png";
@@ -131,12 +131,12 @@ function DrawCanvasPart3(c,date)
 	DrawSection("myCanvas", 0, 0, canvas.width, 300, [0, "#333333"]);
 	context.restore();
 
-	DrawSection("myCanvas", 0, 1203, canvas.width, 300, [0, "#444444"]);
+	DrawSection("myCanvas", 0, 1203, canvas.width, 400, [0, "#444444"]);
 
 	context.save();
-	context.translate(canvas.width, 1591);
+	context.translate(canvas.width, 1691);
 	context.rotate(Math.PI);
-	DrawSection("myCanvas", 0, 0, canvas.width, 300, [0, "#444444"]);
+	DrawSection("myCanvas", 0, 0, canvas.width, 400, [0, "#444444"]);
 	context.restore();
 	//context.fill();
 
@@ -231,9 +231,17 @@ function DrawCanvasPart3(c,date)
 	context.restore();
 
 
-	DrawPie("myCanvas", 150, 1050, 100, 100, GetKPI(date, "Dealer_Retention"));
-	DrawPie("myCanvas", 750, 1050, 100, 100, GetKPI(date, "Visits_Per_Customer"));
+	DrawPie(c, 150, 1050, 100, 100, GetKPI(date, "Dealer_Retention"));
+	DrawPie(c, 750, 1050, 100, 100, GetKPI(date, "Visits_Per_Customer"));
 
+    var kpiData = new Array();
+    kpiData.push(["Anytown Automotive",GetKPI(date,"Competitive_Segment_Sale_Anytown_Automotive")]);
+    kpiData.push(["Jeff Williams Toyota", GetKPI(date,"Competitive_Segment_Sale_Jeff_Williams_Toyotas")]);
+    kpiData.push(["Uptown Honda",GetKPI(date,"Competitive_Segment_Sale_Uptown_Honda")]);
+    kpiData.push(["Fred Rodgers Mazda",GetKPI(date,"Competitive_Segment_Sale_Fred_Rodgers_Mazda")]);
+    kpiData.push(["Garrett Ford", GetKPI(date,"Competitive_Segment_Sale_Garrett_Ford")]);
+    kpiData.push(["Peter Lake Ford", GetKPI(date,"Competitive_Segment_Sale_Peter_Lake_Ford")]);
+    DrawCompetitiveSegmentSale(c,100,1600,800,400,kpiData);
 
 }
 
