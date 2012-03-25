@@ -131,12 +131,12 @@ function DrawCanvasPart3(c,date)
 	DrawSection(c, 0, 0, canvas.width, 300, [0, "#333333"]);
 	context.restore();
 
-	DrawSection(c, 0, 1203, canvas.width, 400, [0, "#444444"]);
+	DrawSection(c, 0, 1203, canvas.width, 300, [0, "#444444"]);
 
 	context.save();
-	context.translate(canvas.width, 1691);
+	context.translate(canvas.width, 1591);
 	context.rotate(Math.PI);
-	DrawSection(c, 0, 0, canvas.width, 400, [0, "#444444"]);
+	DrawSection(c, 0, 0, canvas.width, 300, [0, "#444444"]);
 	context.restore();
 	//context.fill();
 
