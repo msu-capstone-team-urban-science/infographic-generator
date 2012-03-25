@@ -699,7 +699,7 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
 
 // Name: Competitive_Segment_Sale_findMax
 // Author: Lok Cheung
-// Purpose: Support function for Competitive_Segment_Sale
+// Purpose: Support function for DrawCompetitiveSegmentSale
 function Competitive_Segment_Sale_findMax(array) {
     var max = 0;
     for (var i = 0; i < array.length; i++) {
@@ -713,7 +713,7 @@ function Competitive_Segment_Sale_findMax(array) {
 
 // Name: iniStopPos
 // Author: Lok Cheung
-// Purpose: Support function for Competitive_Segment_Sale
+// Purpose: Support function for DrawCompetitiveSegmentSale
 function iniStopPos(array) {
     var final_pos = new Array();
     for (var i = 0; i < array.length; i++) {
@@ -725,7 +725,7 @@ function iniStopPos(array) {
 // Name: DrawLostSale
 // Author: Lok Cheung
 function DrawLostSale(c, x, y, w, h, d) {
-	clearCanvas(c);
+	//clearCanvas(c);
     var canvas = document.getElementById(c);
     var ctx = canvas.getContext("2d");
     var img04 = new Image();
@@ -752,7 +752,7 @@ function DrawLostSale(c, x, y, w, h, d) {
 // Name: DrawLostProfit
 // Author: Peter Chen
 function DrawLostProfit(c,x,y,w,h,d) {
-	clearCanvas(c);
+	//clearCanvas(c);
     var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
 

@@ -25,14 +25,14 @@ function DrawSalesInfographic (c,date)
 	context.fill();
 
 	// draw stripes over the gradient
-	DrawStripes("myCanvas", 0, 0, canvas.width, 747, "#eeeeee");
+	DrawStripes(c, 0, 0, canvas.width, 747, "#eeeeee");
 
 	// draw the splitter image
 	var imgSplitter = new Image();
 	imgSplitter.onload = function(){
 		context.drawImage(imgSplitter, 0, 747, canvas.width, 200); // below the stripes
 		context.drawImage(imgSplitter, 0, 1647, canvas.width, 200); // below the grey area
-		DrawCanvasPart2("myCanvas",date);  // drawing the entire canvas must be broken up in to multiple functions when loading an image to avoid race condition of background drawing over foreground
+		DrawCanvasPart2(c,date);  // drawing the entire canvas must be broken up in to multiple functions when loading an image to avoid race condition of background drawing over foreground
 	}
 	imgSplitter.src = "images/splitter.png";
 };
@@ -76,10 +76,10 @@ function DrawCanvasPart2 (c,date)
 	context.stroke();
 
 	// draw some elements on top of the circles
-	Used_Vehicle_Sale("myCanvas", canvas.width/4-75, 135, 150, 130, [date, GetKPI(date, "Used_Vehicle_Sales")]);
-	Retail_Sale("myCanvas", canvas.width/4-75, 415, 77, 76, [date, GetKPI(date, "Retail_Sales")]);
-	Cost_Per_Sale("myCanvas", canvas.width/2 + 290 - 88, 130, 122, 80, [date, GetKPI(date, "Cost_Per_Sale")]);
-	Pump_In_Sale("myCanvas", canvas.width/4+212, 330, canvas.width - (canvas.width/4+212), 370, [[GetKPI(date, "Pump_In_Sales_Anytown_Automotive"), "Anytown Automotive", "#ff9b00"], [GetKPI(date, "Pump_In_Sale_Allan_Automart"), "Allan Automart", "#f54c08"], [GetKPI(date, "Pump_In_Sale_Jefferson_Automotive"), "Jefferson Automotive", "#b4213f"], [GetKPI(date, "Pump_In_Sale_Nestor_Auto_Center"), "Nestor Auto Center", "#69039d"], [GetKPI(date, "Pump_In_Sale_Diamond_Automotive"), "Diamond Automotive", "#283577"], [GetKPI(date, "Pump_In_Sale_Anthony_Motors"), "Anthony Motors", "#66a5c7"]]);
+	Used_Vehicle_Sale(c, canvas.width/4-75, 135, 150, 130, [date, GetKPI(date, "Used_Vehicle_Sales")]);
+	Retail_Sale(c, canvas.width/4-75, 415, 77, 76, [date, GetKPI(date, "Retail_Sales")]);
+	Cost_Per_Sale(c, canvas.width/2 + 290 - 88, 130, 122, 80, [date, GetKPI(date, "Cost_Per_Sale")]);
+	Pump_In_Sale(c, canvas.width/4+212, 330, canvas.width - (canvas.width/4+212), 370, [[GetKPI(date, "Pump_In_Sales_Anytown_Automotive"), "Anytown Automotive", "#ff9b00"], [GetKPI(date, "Pump_In_Sale_Allan_Automart"), "Allan Automart", "#f54c08"], [GetKPI(date, "Pump_In_Sale_Jefferson_Automotive"), "Jefferson Automotive", "#b4213f"], [GetKPI(date, "Pump_In_Sale_Nestor_Auto_Center"), "Nestor Auto Center", "#69039d"], [GetKPI(date, "Pump_In_Sale_Diamond_Automotive"), "Diamond Automotive", "#283577"], [GetKPI(date, "Pump_In_Sale_Anthony_Motors"), "Anthony Motors", "#66a5c7"]]);
 	
 	
 	//Array of elements infomation
@@ -109,7 +109,7 @@ function DrawCanvasPart2 (c,date)
  
 	imageObj.onload = function(){
 		context.drawImage(imageObj, canvas.width/4-111, 648);
-		DrawCanvasPart3("myCanvas",date);
+		DrawCanvasPart3(c,date);
 	};
 	imageObj.src = "images/PointingDude.png";
 
@@ -123,20 +123,20 @@ function DrawCanvasPart3(c,date)
 	// draw grey background below splitter image
 	//context.fillStyle = "#333333";
 	//context.rect(0,947, canvas.width, 300);
-	DrawSection("myCanvas", 0, 903, canvas.width, 300, [0, "#333333"]);
+	DrawSection(c, 0, 903, canvas.width, 300, [0, "#333333"]);
 
 	context.save();
 	context.translate(canvas.width, 1291);
 	context.rotate(Math.PI);
-	DrawSection("myCanvas", 0, 0, canvas.width, 300, [0, "#333333"]);
+	DrawSection(c, 0, 0, canvas.width, 300, [0, "#333333"]);
 	context.restore();
 
-	DrawSection("myCanvas", 0, 1203, canvas.width, 400, [0, "#444444"]);
+	DrawSection(c, 0, 1203, canvas.width, 400, [0, "#444444"]);
 
 	context.save();
 	context.translate(canvas.width, 1691);
 	context.rotate(Math.PI);
-	DrawSection("myCanvas", 0, 0, canvas.width, 400, [0, "#444444"]);
+	DrawSection(c, 0, 0, canvas.width, 400, [0, "#444444"]);
 	context.restore();
 	//context.fill();
 
@@ -242,6 +242,10 @@ function DrawCanvasPart3(c,date)
     kpiData.push(["Garrett Ford", GetKPI(date,"Competitive_Segment_Sale_Garrett_Ford")]);
     kpiData.push(["Peter Lake Ford", GetKPI(date,"Competitive_Segment_Sale_Peter_Lake_Ford")]);
     DrawCompetitiveSegmentSale(c,100,1600,800,400,kpiData);
+
+
+    DrawLostProfit(c, 600, 1900, 200, 200,GetKPI(date, "Lost_Profit"));
+    DrawLostSale(c, 100, 1900, 200, 200, GetKPI(date, "Lost_Sales"));
 
 }
 
