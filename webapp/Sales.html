@@ -16,6 +16,7 @@
             }
         </script>
 		<link rel="stylesheet" type="text/css" href="Styles/sales-one-canvas_style.css" />
+		<link rel="stylesheet" type="text/css" href="Styles/header.css" />
     </head>
     <body>
 		<div id="main">
@@ -42,8 +43,8 @@
 		{
 			allowDiagonal:false,
 			tapToClick: true,
-			wipeLeft: function(result) { wipeStatus("Left",result); },
-			wipeRight: function(result) { wipeStatus("Right",result);},
+			wipeLeft: function() { wipeStatus("Left"); },
+			wipeRight: function() { wipeStatus("Right");},
             wipeUp: false,
             wipeDown: false,
             preventDefault: false,

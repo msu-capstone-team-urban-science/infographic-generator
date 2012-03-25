@@ -10,14 +10,36 @@
         <script>
 
             window.onload = function(){
-                var date = new Date;
-                DrawService ("myCanvas", date);
+                DrawService ("myCanvas", initDate());
             };
- 
+			
+			
         </script>
+		<link rel="stylesheet" type="text/css" href="Styles/service.css" />
+		<link rel="stylesheet" type="text/css" href="Styles/header.css" />
     </head>
     <body>
         <canvas id="myCanvas" width="1000" height="1500">
         </canvas>
+		<p id="category">Service</p>
+		<p id="month"></p>
+		<p id="month2"></p>
+		
+		<script type="text/javascript">	
+			$(document).wipetouch(
+			{
+				allowDiagonal:false,
+				tapToClick: true,
+				wipeLeft: function() { wipeStatus("Left"); },
+				wipeRight: function() { wipeStatus("Right");},
+				wipeUp: false,
+				wipeDown: false,
+				preventDefault: false,
+				moveX: 200,
+			});	
+			
+			//$(document).click(function() { wipeStatus("Left"); })
+		
+		</script>
     </body>
 </html>
