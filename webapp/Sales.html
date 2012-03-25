@@ -43,8 +43,8 @@
 		{
 			allowDiagonal:false,
 			tapToClick: true,
-			wipeLeft: function() { wipeStatus("Left"); },
-			wipeRight: function() { wipeStatus("Right");},
+			wipeLeft: function(result) { wipeStatus("Left",result); },
+			wipeRight: function(result) { wipeStatus("Right",result);},
             wipeUp: false,
             wipeDown: false,
             preventDefault: false,

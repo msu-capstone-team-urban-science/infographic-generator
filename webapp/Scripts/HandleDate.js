@@ -21,14 +21,14 @@ function changeMonth(x) {
     if (insideDateRange(newMonth)) {
         currDate.setMonth(newMonth);
 		DrawSalesInfographic("myCanvas",currDate);
-		DrawService("myCanvas",currDate);
+		//DrawService("myCanvas",currDate);
 		//GetFullMonth(currDate,x);
         GetFullMonth(currDate, 0);
         if (x < 0) {
-           // $("#month").animate({ "left": "-8500px" }, 0);
-            //$("#month2").animate({ "left": "410px" }, 0);
-            //$("#month2").animate({ "left": "+=850px" }, 1500);
-            //$("#month").animate({ "left": "+=850px" }, 1000);
+			$("#month").animate({ "left": "-850px" }, 0);
+            $("#month2").animate({ "left": "410px" }, 0);
+            $("#month2").animate({ "left": "+=850px" }, 1500);
+            $("#month").animate({ "left": "+=850px" }, 1000);
         } else {
             //$("#month").animate({ "left": "850px" }, 0);
             //$("#month2").animate({ "left": "0px" }, 0);
@@ -55,7 +55,7 @@ function insideDateRange(month) {
         }
     } else {
         bool = 0;
-    }
+    } 
     return bool;
 }
 
@@ -85,7 +85,7 @@ function dateRange() {
     return [FirstMonth, FirstYear, LastMonth, LastYear];
 }
 
-function wipeStatus(dir) {
+function wipeStatus(dir,result) {
     if (dir == "Right") {
         changeMonth(-1);
     }
