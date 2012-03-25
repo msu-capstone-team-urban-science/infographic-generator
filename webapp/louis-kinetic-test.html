@@ -50,10 +50,17 @@ function animate(lastTime, mySpiro){
     context.beginPath();
 
     // then draw the line
-    for (t = 0; t < mySpiro.t; t = t + .01)
+    for (t = 0; t <= mySpiro.t; t = t + .01)
     {
-        pX = (fixedCircleRadius - movingCircleRadius)*Math.cos(t) + height*Math.cos(((fixedCircleRadius-movingCircleRadius)/movingCircleRadius)*t);
-        pY = (fixedCircleRadius - movingCircleRadius)*Math.sin(t) - height*Math.sin(((fixedCircleRadius-movingCircleRadius)/movingCircleRadius)*t);
+        if (t > mySpiro.x)
+        {
+            pX = (fixedCircleRadius - movingCircleRadius)*Math.cos(mySpiro.x) + height*Math.cos(((fixedCircleRadius-movingCircleRadius)/movingCircleRadius)*mySpiro.x);
+            pY = (fixedCircleRadius - movingCircleRadius)*Math.sin(mySpiro.x) - height*Math.sin(((fixedCircleRadius-movingCircleRadius)/movingCircleRadius)*mySpiro.x);
+        }else
+        {
+            pX = (fixedCircleRadius - movingCircleRadius)*Math.cos(t) + height*Math.cos(((fixedCircleRadius-movingCircleRadius)/movingCircleRadius)*t);
+            pY = (fixedCircleRadius - movingCircleRadius)*Math.sin(t) - height*Math.sin(((fixedCircleRadius-movingCircleRadius)/movingCircleRadius)*t);
+        }
         context.lineTo(x + pX,y + pY);
 
     }
@@ -67,7 +74,7 @@ function animate(lastTime, mySpiro){
     context.fillText("height: " + height ,50,canvas.height - 20);
  
     // request new frame
-    if (mySpiro.t <= mySpiro.x*2*Math.PI)
+    if (mySpiro.t <= mySpiro.x)
     {
         requestAnimFrame(function(){
             animate(lastTime, mySpiro);
@@ -94,7 +101,7 @@ window.onload = function(){
         h: Math.floor((Math.random()*canvas.height) - canvas.height/2),
         x:1
     };
-	mySpiro.x=(Math.abs(mySpiro.m)/GCD(Math.abs(mySpiro.f),Math.abs(mySpiro.m)));
+	mySpiro.x=(Math.abs(mySpiro.m)/GCD(Math.abs(mySpiro.f),Math.abs(mySpiro.m)))*2*Math.PI;
     var colorArray = ["#fa9033", "#ffda3b", "#ffff1b", "#ffff59", "#faf831", "#fcfa65", "#3cb24a", "#85de67", "#067952", "#42a964", "#0d94b0", "#caf7f1", "#39a6c8", "#95def6", "#27c0ef", "#0098d6", "#74aad8", "#1f60ad", "#0e268b", "#130f88", "#13016f", "#fcffff", "#f9f9fc", "#fffeff", "#f9f9f9", "#fefefe", "#fcfcfc", "#fffeff", "#fdf996", "#ffa2b8", "#fa5192", "#ff1366", "#f62821", "#ff246f", "#fffeff", "#b73d9c", "#a762ab", "#360062", "#f60f41", "#f82015", "#fa1b16", "#ef2310", "#f88721"];
     mySpiro.c = colorArray[Math.floor(Math.random()*43)];
     var date = new Date();
