@@ -244,8 +244,8 @@ function DrawCanvasPart3(c,date)
     DrawCompetitiveSegmentSale(c,300,1500,800,200,kpiData);
 
 
-    DrawLostProfit(c, 600, 1800, 200, 200, GetKPI(date, "Lost_Profit"));
-    DrawLostSale(c, 100, 1800, 200, 200, GetKPI(date, "Lost_Sales"));
+    DrawLostProfit(c, 100, 1800, 200, 200, GetKPI(date, "Lost_Profit"));
+    DrawLostSale(c, 500, 1800, 200, 200, GetKPI(date, "Lost_Sales"));
 
 }
 
