@@ -926,4 +926,7 @@ function DrawPlaid(c,x,y,w,h,d) {
     context.restore();
 }
 
+function navigator_Go(url) {
+    window.location.assign(url); // This technique is almost exactly the same as a full <a> page refresh, but it prevents Mobile Safari from jumping out of full-screen mode
+}
 
