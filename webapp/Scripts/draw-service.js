@@ -3,17 +3,6 @@ function DrawService (c, date)
     var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
 
-    // data
-    var month = fullMonthName[date.getMonth()];
-    var year = date.getFullYear();
-
-    // kpi
-    var kpiActive = GetKPI(date, "Active_Customers");
-    var kpiInactive = GetKPI(date, "Inactive_Customers");
-    var kpiServiceLaborOpportunity = GetKPI(date, "Service_Labor_Opportunity");
-    var kpiServicePartsOpportunity = GetKPI(date, "Service_Parts_Opportunity");
-    var kpiSingleVisitCustomer = GetKPI(date, "Single_Visit_Customers");
-
 
 // BACKGROUND SECTION
 
@@ -31,6 +20,31 @@ function DrawService (c, date)
     DrawSection("myCanvas", 0, 930, canvas.width, canvas.height, [canvas.width / 2, "#002366"]);
 
 
+
+    var img = new Image();
+    img.src = 'images/dollar.png';
+    img.onload = function () {
+        context.drawImage(img, 670, 450);
+        DrawService2(c, date);
+    }
+
+}
+
+function DrawService2 (c, date)
+{
+    var canvas = document.getElementById(c);
+    var context = canvas.getContext("2d");
+
+    // kpi
+    var kpiActive = GetKPI(date, "Active_Customers");
+    var kpiInactive = GetKPI(date, "Inactive_Customers");
+    var kpiServiceLaborOpportunity = GetKPI(date, "Service_Labor_Opportunity");
+    var kpiServicePartsOpportunity = GetKPI(date, "Service_Parts_Opportunity");
+    var kpiSingleVisitCustomer = GetKPI(date, "Single_Visit_Customers");
+
+    var month = fullMonthName[date.getMonth()];
+    var year = date.getFullYear();
+
 // GRAPHICS SECTION
 
     // draw sun
@@ -43,16 +57,12 @@ function DrawService (c, date)
     DrawHouse("myCanvas", canvas.width/6-100, 150, 200);
     DrawHouse("myCanvas", canvas.width*4/6-100, 150, 200);
 
-    //DrawSpirograph("myCanvas", 555, 555);
-
 
     //DrawX("myCanvas", 444, 444);
     DrawPerson("myCanvas", 40, 590, 50);
     DrawPerson("myCanvas", 40, 650, 50);
     DrawPerson("myCanvas", 75, 590, 50);
     DrawPerson("myCanvas", 75, 650, 50);
-
-
     DrawPerson("myCanvas", 40, 400, 110);
 
 
@@ -85,12 +95,14 @@ function DrawService (c, date)
     context.fillText("are single visit", 40, 540);
     context.font = "44pt Calibri";
     context.fillText("customers", 40, 580);
+
+    context.font = "55pt Calibri";
+    context.fillText("while", 110, 655);
     context.font = "47pt Calibri";
     context.fillText(((Math.round((1-(kpiSingleVisitCustomer/kpiActive)) * 1000)) / 10) + "%", 110, 702);
-    context.font = "28pt Calibri";
-    context.fillText("conversely", 110, 655);
-    context.font = "38pt Calibri";
-    context.fillText("are regulars", 40, 740);
+    context.font = "41pt Calibri";
+    context.fillText("came back", 40, 743);
+
 
     //context.fillStyle = "#8ED600";
 
