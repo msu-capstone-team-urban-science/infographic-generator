@@ -1,24 +1,12 @@
 #main{
 	position:absolute;
-	top:0;
+	top:0px;
 	left:0;
-}
-
-#header{
-	position: fixed;
-	z-index: 1;
-}
-
-#hButton{
-	position:absolute;
-	top:70px;
-	left: 60px;
-	width: 80px;
 }
 
 #myCanvas{
 	position:absolute;
-	top:207px;
+	top:100px;
 }
 #dialog-overlay {
 

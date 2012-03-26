@@ -1,23 +1,35 @@
+#header{
+	position: fixed;
+	z-index: 1;
+}
+
+#hButton{
+	position:absolute;
+	top:10px;
+	left: 60px;
+	width: 80px;
+}
+
 #category{
 	position:absolute;
-	top:0px;
+	top:-60px;
 	left:380px;
 	font-size:70px;
 	color: white;
 }
 
 #month{
- position:absolute;
- top:0px;
- left: 635px;
- font-size:70px;
- color: white;
+	position:absolute;
+	top:-60px;
+	left: 635px;
+	font-size:70px;
+	color: white;
 }
 
 #month2{
- position:absolute;
- top:0px;
- left: 635px;
- font-size:70px;
- color: white;
+	position:absolute;
+	top:-60px;
+	left: 635px;
+	font-size:70px;
+	color: white;
 }
