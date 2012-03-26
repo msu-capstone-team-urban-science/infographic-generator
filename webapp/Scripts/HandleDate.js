@@ -11,9 +11,9 @@ function initDate() {
 }
 function GetFullMonth(todate,b) {
 
-    document.getElementById('month').innerHTML = fullMonthName[todate.getMonth()] +"'"+ todate.getFullYear().toString().substr(2,3);
+    document.getElementById('month').innerHTML = fullMonthName[todate.getMonth()] +" '"+ todate.getFullYear().toString().substr(2,3);
     if (b) {
-        document.getElementById('month2').innerHTML = fullMonthName[todate.getMonth()-b] +"'"+ todate.getFullYear().toString().substr(2,3);
+        document.getElementById('month2').innerHTML = fullMonthName[todate.getMonth()-b] +" '"+ todate.getFullYear().toString().substr(2,3);
     }
 }
 
