@@ -2,9 +2,15 @@
 
 <html>
 <head>
-<link href="styles/lead_style.css" rel="stylesheet" type="text/css" />
+
 <link rel="stylesheet" type="text/css" href="Styles/header.css" />
 <link rel="stylesheet" type="text/css" href="Styles/lead_style.css" />
+<style> 
+#myCanvas{
+	position:absolute;
+	top:0px;
+}
+</style>
 <title>Infographics Generator</title>
 	<script type="text/javascript" src="Scripts/HandleDate.js"></script>
 	<script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
@@ -659,8 +665,9 @@
 		//context.canvas.height = window.innerHeight;
 
 		// data
-		//var month = "May";
-		//var year = "2012";
+		var month = "May";
+		var year = "2012";
+		
 		
 		initDate();
 
@@ -774,7 +781,7 @@
 	<div id="main">
 		<div id="header">
 			<img src="images/header.jpg">
-			<a href="index.html"><img id="hButton" src="images/home_button.png"></a>
+			<a href="index.html"><img id="hButton" src="images/homeButton2.png"></a>
 			<p id="category">Lead</p>
 			<p id="month"></p>
 			<p id="month2"></p>

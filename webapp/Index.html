@@ -22,9 +22,11 @@
 		            
 		            if (currentWidth == 320) {
 		                orient = "portrait";
+						//document.getElementById('banner').src="images/branding-portrait.png";
 		            }
 		            else {
 		                orient = "landscape";
+						//document.getElementById('banner').src="images/branding-landscape.png";
 		            }
 		            document.body.setAttribute("orient", orient);
 		            window.scrollTo(0, 1);
@@ -92,7 +94,7 @@
 		</div>
 		<canvas id="myCanvas" width="1024" height="768">Canvas not supported on your device.</canvas>
 	</div>
-<img src="images/branding-landscape.png" style="position:absolute;top:0px;left:0px;width:1030px;"/>
+<img id="banner" src="images/branding-landscape.png" style="position:absolute;top:0px;left:0px;width:1030px;"/>
 </body>
 </html>
 
