@@ -86,12 +86,12 @@ function DrawCanvasPart2 (c,date)
 	/*!!! you have to add 207px(height of header picture) to y !!!*/
 	//var dataArray = GetTrendKPI(date, 'Retail_Sales');
 	var offset = 100;
-	trendArray.push(['Retail Sale', canvas.width/4-71, 415+offset, 152, 152,GetTrendKPI(date, 'Retail_Sales'),'Description']);
+	trendArray.push(['Retail Sale', canvas.width/4-71, 415+offset, 152, 152,GetTrendKPI(date, 'Retail_Sales'),'<p>The term Retail Sales refers to new vehicles that are registered to individuals or companies that register a small number of vehicles annually.</p>']);
 	/////trendArray.push(['Retail Sale', canvas.width/4-71, 123+offset, 152, 152,dataArray,'Description']);
 	
-	trendArray.push(['Used Vehicle Sale', canvas.width/4-75, 135+offset, 150, 130,GetTrendKPI(date, 'Used_Vehicle_Sales'),'Description']);
-	trendArray.push(['Cost Per Sale', canvas.width/2 + 202, 130+offset, 240, 192,GetTrendKPI(date, 'Cost_Per_Sale'),'Description']);
-	trendArray.push(['Pump In Sale', canvas.width/4+212, 330+offset, canvas.width - (canvas.width/4+212), 370,GetTrendKPI(date, 'Pump_In_Sales_Anytown_Automotive'),'Description']);
+	trendArray.push(['Used Vehicle Sale', canvas.width/4-75, 135+offset, 150, 130,GetTrendKPI(date, 'Used_Vehicle_Sales'),'<p>Used vehicle sales refer to the used vehicles that are sold to individuals</p>']);
+	trendArray.push(['Cost Per Sale', canvas.width/2 + 202, 130+offset, 240, 192,GetTrendKPI(date, 'Cost_Per_Sale'),'<p>The amount of money spent by purchasing leads for each vehicle sold</p>']);
+	trendArray.push(['Pump In Sale', canvas.width/4+212, 330+offset, canvas.width - (canvas.width/4+212), 370,[[GetTrendKPI(date, 'Pump_In_Sales_Anytown_Automotive'),"#ff9b00","Anytown Automotive"],[GetTrendKPI(date, 'Pump_In_Sale_Allan_Automart'),"#f54c08","Allan Automart"],[GetTrendKPI(date, 'Pump_In_Sale_Jefferson_Automotive'),"#b4213f","Jefferson Automotive"],[GetTrendKPI(date, 'Pump_In_Sale_Nestor_Auto_Center'),"#69039d","Nestor Auto Center"],[GetTrendKPI(date, 'Pump_In_Sale_Diamond_Automotive'),"#283577","Diamond Automotive"],[GetTrendKPI(date, 'Pump_In_Sale_Anthony_Motors'),"#66a5c7","Anthony Motors"]],'<p>Pump-In is the distribution of sales into the PMA by any brand dealer.</p>']);
 
 
 	// get some text on the screen
