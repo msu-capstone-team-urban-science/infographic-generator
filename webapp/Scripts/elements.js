@@ -724,8 +724,8 @@ function DrawLostSale(c, x, y, w, h, d) {
     img04.src = 'images/puzzle.png';
 	
 	ctx.scale(w/img04.width,h/img04.height);
-	x = x/(w/img04.width);
-	y = y/(h/img04.height);
+	x = x/(w/236);
+	y = y/(h/230);
 	
     img04.onload = function () {
         ctx.drawImage(img04, x+0, y+0, img04.width, img04.height);

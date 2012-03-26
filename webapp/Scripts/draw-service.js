@@ -68,13 +68,8 @@ function DrawService2 (c, date)
 
 // TEXT SECTION
 
-    // draw top text
-    //context.font = "40pt Calibri";
-    //context.fillStyle = "#ffffff";
-    //context.fillText("In " + month + " Of " + year, canvas.width/3, 50);
-
     // draw active / inactive text
-
+    context.fillStyle = "#ffffff";
     context.font = "20pt Calibri";
     context.fillText("Active", canvas.width/6+123, 250);
     context.fillText("Customers", canvas.width/6+80, 270);
