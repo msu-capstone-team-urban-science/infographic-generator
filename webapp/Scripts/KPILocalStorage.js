@@ -80,7 +80,7 @@ function GetTrendKPI(date, kpiName) {
 		x=0;
 	}
 	else{
-		x=tmpDate.getMonth()-6;
+		x=tmpDate.getMonth()-5;
 	}
 	var num=tmpDate.getMonth();
 	

@@ -39,8 +39,8 @@
 	/* styling of the dialog box, i have a fixed dimension for this demo */ 
 	margin-top:-150px;
 	margin-left: 150px;
-	width:500px; 
-	height:250px;
+	width:750px; 
+	height:400px;
 	
 	/* make sure it has the highest z-index */
 	position:absolute; 
@@ -62,7 +62,7 @@
 
 a.button {
 	/* styles for button */
-	margin:10px auto 0 auto;
+	margin:30px auto 0 auto;
 	text-align:center;
 	background-color: #e33100;
 	display: block;
