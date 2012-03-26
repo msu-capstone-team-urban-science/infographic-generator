@@ -1,3 +1,14 @@
+#main{
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+
+#myCanvas{
+	position:absolute;
+	top:100px;
+}
+
 #header{
 	position: fixed;
 	z-index: 1;

@@ -3,8 +3,16 @@
 <html>
 <head>
 <link href="styles/lead_style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="Styles/header.css" />
+<link rel="stylesheet" type="text/css" href="Styles/lead_style.css" />
 <title>Infographics Generator</title>
-        <script type="text/javascript">
+	<script type="text/javascript" src="Scripts/HandleDate.js"></script>
+	<script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
+	<script type="text/javascript" src="Scripts/elements.js"></script>
+	<script type="text/javascript" src="Scripts/draw-service.js"></script>
+	<script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="Scripts/jquery.wipetouch.js"></script>
+	<script type="text/javascript">
 	function DrawUniqueCustomers(c,x,y)
 	{
 		var canvas = document.getElementById(c);
@@ -651,8 +659,10 @@
 		//context.canvas.height = window.innerHeight;
 
 		// data
-		var month = "May";
-		var year = "2012";
+		//var month = "May";
+		//var year = "2012";
+		
+		initDate();
 
 		// fake kpi
 		var kpiUnique = 1831;
@@ -753,7 +763,7 @@
 		context.fillStyle = "#ffffff";
 		context.fillText("Lost", x + 590,y -100);
 		
-		var date = new Date;
+		//var date = new Date;
 		//Drawing Average response time
 		//DrawAvgRespTime("myCanvas", canvas.width/5, 150, canvas.width, canvas.height, [date,15]);//GetKPI(date,"Avg_Response_Time")]);
 	};
@@ -761,20 +771,29 @@
         </script>
     </head>
 	<body>
-	<div id="ele">
-		<img src="images/lead_ele.png"/>
-	</div>
-	
-	<canvas id="myCanvas" width="696" height="1500">
-	<!-- Insert fallback content here -->
-	Sorry, your browser doesn't support canvas technology
-	</canvas>
+	<div id="main">
+		<div id="header">
+			<img src="images/header.jpg">
+			<a href="index.html"><img id="hButton" src="images/home_button.png"></a>
+			<p id="category">Lead</p>
+			<p id="month"></p>
+			<p id="month2"></p>
+		</div>
+		<div id="ele">
+			<img src="images/lead_ele.png"/>
+		</div>
+		
+		<canvas id="myCanvas" width="1000" height="1500">
+		<!-- Insert fallback content here -->
+		Sorry, your browser doesn't support canvas technology
+		</canvas>
 
-	<div id="stone">
-		<img src="images/lead_stone.jpg"/ width = "745px" height="400px">
+		<div id="stone">
+			<img src="images/lead_stone.jpg"/ width = "745px" height="400px">
+		</div>
+		<div id="sep1">
+			<img src="images/lead_sep.png"/>
+		</div>	
 	</div>
-	<div id="sep1">
-		<img src="images/lead_sep.png"/>
-	</div>	
 	</body>
 </html>
