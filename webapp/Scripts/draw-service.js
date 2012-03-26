@@ -24,7 +24,7 @@ function DrawService (c, date)
     var img = new Image();
     img.src = 'images/dollar.png';
     img.onload = function () {
-        context.drawImage(img, 670, 450);
+        context.drawImage(img, 690, 520);
         DrawService2(c, date);
     }
 
@@ -107,18 +107,18 @@ function DrawService2 (c, date)
     //context.fillStyle = "#8ED600";
 
     context.font = "36pt Calibri";
-    context.fillText("Missing Money", canvas.width/2+40, 520);
+    context.fillText("Missing Money", canvas.width/2+40, 486);
     context.font = "24pt Calibri";
-    context.fillText("Labor", canvas.width/2+40, 574);
+    context.fillText("Labor", canvas.width/2+40, 540);
     context.font = "12pt Calibri";
-    context.fillText("Opportunity", canvas.width/2+40, 586);
+    context.fillText("Opportunity", canvas.width/2+40, 552);
     context.font = "36pt Calibri";
-    context.fillText("$" + kpiServiceLaborOpportunity, canvas.width/2+120, 586);
+    context.fillText("$" + kpiServiceLaborOpportunity, canvas.width/2+120, 552);
 
     context.font = "24pt Calibri";
-    context.fillText("Parts", canvas.width/2+40, 644);
+    context.fillText("Parts", canvas.width/2+40, 610);
     context.font = "12pt Calibri";
-    context.fillText("Opportunity", canvas.width/2+40, 656);
+    context.fillText("Opportunity", canvas.width/2+40, 622);
     context.font = "36pt Calibri";
-    context.fillText("$" + kpiServicePartsOpportunity, canvas.width/2+120, 656);
+    context.fillText("$" + kpiServicePartsOpportunity, canvas.width/2+120, 622);
 }
