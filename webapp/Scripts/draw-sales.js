@@ -233,6 +233,7 @@ function DrawCanvasPart3(c,date)
 
 
 	DrawPie(c, 150, 1050, 100, 100, GetKPI(date, "Dealer_Retention"));
+    //DrawX(c, 100,1800);
 	DrawPie(c, 750, 1050, 100, 100, GetKPI(date, "Visits_Per_Customer"));
 
     var kpiData = new Array();
@@ -242,12 +243,16 @@ function DrawCanvasPart3(c,date)
     kpiData.push(["Fred Rodgers Mazda",GetKPI(date,"Competitive_Segment_Sale_Fred_Rodgers_Mazda")]);
     kpiData.push(["Garrett Ford", GetKPI(date,"Competitive_Segment_Sale_Garrett_Ford")]);
     kpiData.push(["Peter Lake Ford", GetKPI(date,"Competitive_Segment_Sale_Peter_Lake_Ford")]);
-    DrawCompetitiveSegmentSale(c,300,1500,800,200,kpiData);
+
+    DrawCompetitiveSegmentSale(c,300,1300,800,200,kpiData);
 
     DrawPlaid(c,0,1747,canvas.width,400,0);
 
     DrawLostProfit(c, 100, 1800, 200, 200, GetKPI(date, "Lost_Profit"));
+
+    DrawX(c, 500,1800);
     DrawLostSale(c, 500, 1800, 200, 200, GetKPI(date, "Lost_Sales"));
+    DrawX(c, 500,1800);
 
 }
 

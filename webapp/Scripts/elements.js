@@ -634,15 +634,14 @@ function DrawBox(c, x, y, w, h, d) {
 // Name: DrawCompetitiveSegmentSale
 // Author: Lok Cheung
 function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
-	//clearCanvas(c); // TODO: CHANGE THIS TO have the canvas name as a arg
+
     var canvas = document.getElementById(c);
     var ctx6 = canvas.getContext("2d");
 	ctx6.save();
-
 	ctx6.scale(w/700,h/200);
 	x = x/(w/700);
 	y = y/(h/200);
-	
+
     var img03 = new Image();
     img03.src = 'images/car2.png';
     img03.onload = function () {
@@ -719,16 +718,18 @@ function DrawLostSale(c, x, y, w, h, d) {
 	//clearCanvas(c);
     var canvas = document.getElementById(c);
     var ctx = canvas.getContext("2d");
+
     ctx.save();
+	ctx.scale(w/236,h/230);
+	x = x/(w/236);
+	y = y/(h/230);
+
+
     var img04 = new Image();
     img04.src = 'images/puzzle.png';
 	
-	ctx.scale(w/img04.width,h/img04.height);
-	x = x/(w/236);
-	y = y/(h/230);
-	
     img04.onload = function () {
-        ctx.drawImage(img04, x+0, y+0, img04.width, img04.height);
+        ctx.drawImage(img04, x, y);
         ctx.font = "bold 34pt Calibri";
         ctx.fillText("LOST", x+110, y+30);
         ctx.fillText("SALES", x+97, y+70);
@@ -748,12 +749,12 @@ function DrawLostProfit(c,x,y,w,h,d) {
 	//clearCanvas(c);
     var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
-    context.save();
 
+	context.save();
 	context.scale(w/200,h/200);
 	x = x/(w/200);
 	y = y/(h/200);
-	
+
     var lineWidth = 8;
     var innerBorder = 5;
     var primaryColor = "#ffc821";
