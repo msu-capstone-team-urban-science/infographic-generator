@@ -72,7 +72,7 @@
 		for(var i=0;i <trendArray.length;i++ )
 		{
 			//check if touching the element location
-			
+			/*
 			if(event.originalEvent.touches[0].pageX>trendArray[i][1] && event.originalEvent.touches[0].pageX<(trendArray[i][1]+trendArray[i][3]) && event.originalEvent.touches[0].pageY>trendArray[i][2] && event.originalEvent.touches[0].pageY <(trendArray[i][2]+trendArray[i][4]))
 			{
 				event.preventDefault();
@@ -106,31 +106,42 @@
 				}
 				
 			}
+			*/
 			
 		
 			
 			//for mouse click on computer
-			/*
 			if(event.pageX>trendArray[i][1] && event.pageX<(trendArray[i][1]+trendArray[i][3]) && event.pageY>trendArray[i][2] && event.pageY <(trendArray[i][2]+trendArray[i][4]))
 			{
 				event.preventDefault();
-					popup('<table border="0" width="100%">'+
-								'<tr>'+
-								'<td width="40%">'+trendArray[i][6]+'</td>'+
-								'<td width="60%"><canvas id=trendGraph></canvas></td>'+
-								'</tr>'+
-								'</table>');
+				popup('<table border="0" width="100%">'+
+							'<tr>'+
+							'<td><canvas id="trendGraph" height="270" width="450"></canvas></td>'+
+							'</tr>'+
+							'<tr>'+
+							'<td>'+trendArray[i][6]+'</td>'+
+							'</tr>'+
+							'</table>');
 				if(trendArray[i][0]!="Pump In Sale"){
 
 					drawTrend(trendArray[i][5]);
 				}
 				else{
 					for(var j=0;j<trendArray[i][5].length;j++){
-						drawLineGraph("trendGraph",trendArray[i][0],trendArray[i][5][j][0],trendArray[i][5][j][1], j);
+						drawLineGraph("trendGraph",trendArray[i][5][j][2],trendArray[i][5][j][0],trendArray[i][5][j][1], j);
 					}
+					var canvas = document.getElementById("trendGraph");
+					var context = canvas.getContext("2d");
+					context.save();
+					context.beginPath();
+					context.moveTo(45,0);
+					context.lineTo(45,150);
+					context.lineTo(270,200);
+					context.strokeStyle = "black";	
+					context.stroke();
+					context.restore();
 				}
 			}
-			*/
 			
 		}
 
@@ -138,28 +149,35 @@
 	
 	function drawTrend(data) {
 		var canvas = document.getElementById("trendGraph");
-		var ctx = canvas.getContext("2d");
-		ctx.fillStyle ='#00F';
+		var context = canvas.getContext("2d");
+		var radius=4;
+		context.fillStyle ='#00F';
 		
 		var sum=0;
-		for(var i=0;i<data.length;i++){
-			sum+=data[i][1];
+		for(var j=0;j<data.length;j++){
+			sum+=data[j][1];
 		}
-		
+
 		for(var i=0;i<data.length;i++)
 		{
 			context.save();
 			context.beginPath();
-			context.moveTo(0,data[i][1]);
-			for(var i=1;i<data.length;i++){
-				context.lineTo(i*70+5,data[i][1]);
+			
+			context.moveTo(50,data[0][1]);
+			context.arc(50, data[0][1], radius, 0, 2 * Math.PI, false);
+			for(var k=1;k<data.length;k++){
+				context.lineTo(k*70+50,data[k][1]);
+				context.arc(k*70+50, data[k][1], radius, 0, 2 * Math.PI, false);
+				context.fill();
 			}
+			
 			context.strokeStyle = "blue";
+			context.lineWidth=2;
 			context.stroke();
 			context.restore();
 			/*
 			//x, y, w, h
-			ctx.fillRect(i*70+15, 240*(1-data[i][1]/sum), 50, 240*data[i][1]/sum);
+			ctx.fillRect(i*70+15, 240*(1-data[i][1]/sum), 50, 480*(data[i][1]-50)/sum);
 			//ctx.fillRect(i*30+15, 30+(240-data[i][1]), 50, data[i][1]);
 			ctx.fillText(data[i][0], 10+i*30, 150);
 			*/
