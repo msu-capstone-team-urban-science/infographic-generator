@@ -16,6 +16,13 @@ function GetFullMonth(todate,b) {
     }
 }
 
+function wiggle() {
+	$("#month").animate({ "left": "-=10px" }, 100);
+	$("#month").animate({ "left": "+=20px" }, 100);
+	$("#month").animate({ "left": "-=20px" }, 100);
+	$("#month").animate({ "left": "+=10px" }, 100);
+}
+
 function changeMonth(x,whichInfo) {
     var newMonth = currDate.getMonth() + x;
 	if (insideDateRange(newMonth)) {
@@ -46,7 +53,9 @@ function changeMonth(x,whichInfo) {
             $("#month2").animate({ "left": "-=1200px" }, 1000);
             $("#month").animate({ "left": "-=1485px" }, 1200);
         }       
-    }
+    } else {
+		wiggle();
+	}
 }
 
 //check if it is within our range, and then return true or false based on those values.
