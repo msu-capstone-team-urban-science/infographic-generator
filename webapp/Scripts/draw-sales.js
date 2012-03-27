@@ -250,9 +250,9 @@ function DrawCanvasPart3(c,date)
 
     DrawLostProfit(c, 100, 1800, 200, 200, GetKPI(date, "Lost_Profit"));
 
-    DrawX(c, 500,1800);
+    //DrawX(c, 500,1800);
     DrawLostSale(c, 500, 1800, 200, 200, GetKPI(date, "Lost_Sales"));
-    DrawX(c, 500,1800);
+    //DrawX(c, 500,1800);
 
 }
 
