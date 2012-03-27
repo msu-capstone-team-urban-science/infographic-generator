@@ -7,7 +7,7 @@
 		<script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
 		<script type="text/javascript" src="Scripts/elements.js"></script>
 		<script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
-		<script type="text/javascript" src="Scripts/draw-new-sales.js"></script>
+		<script type="text/javascript" src="Scripts/draw-sales.js"></script>
 		<script type="text/javascript" src="Scripts/jquery.wipetouch.js"></script>
         <script>
             window.onload = function(){
@@ -130,17 +130,18 @@
 					for(var j=0;j<trendArray[i][5].length;j++){
 						drawLineGraph("trendGraph",trendArray[i][5][j][2],trendArray[i][5][j][0],trendArray[i][5][j][1], j);
 					}
-					var canvas = document.getElementById("trendGraph");
-					var context = canvas.getContext("2d");
-					context.save();
-					context.beginPath();
-					context.moveTo(45,0);
-					context.lineTo(45,150);
-					context.lineTo(270,200);
-					context.strokeStyle = "black";	
-					context.stroke();
-					context.restore();
 				}
+				//draw x, y axis
+				var canvas = document.getElementById("trendGraph");
+				var context = canvas.getContext("2d");
+				context.save();
+				context.beginPath();
+				context.moveTo(120,0);
+				context.lineTo(120,250);
+				context.lineTo(270,250);
+				context.strokeStyle = "black";	
+				context.stroke();
+				context.restore();
 			}
 			
 		}
@@ -163,11 +164,11 @@
 			context.save();
 			context.beginPath();
 			
-			context.moveTo(50,data[0][1]);
-			context.arc(50, data[0][1], radius, 0, 2 * Math.PI, false);
+			context.moveTo(60,data[0][1]);
+			context.arc(60, data[0][1], radius, 0, 2 * Math.PI, false);
 			for(var k=1;k<data.length;k++){
-				context.lineTo(k*70+50,data[k][1]);
-				context.arc(k*70+50, data[k][1], radius, 0, 2 * Math.PI, false);
+				context.lineTo(k*70+60,data[k][1]);
+				context.arc(k*70+60, data[k][1], radius, 0, 2 * Math.PI, false);
 				context.fill();
 			}
 			
