@@ -4,11 +4,11 @@
 *************************/
 function LoadJSON() {
     var store = new Storage();
-    $.getJSON("KPI_Handler.ashx", function (item) {
-        $.each(item, function (i, kpi) {
-            store.set(kpi.record_number, kpi);
-        });
-    });
+	$.getJSON("KPI_Handler.ashx", function (item) {
+		$.each(item, function (i, kpi) {
+			store.set(kpi.record_number, kpi);
+		});
+	});
 }
 
 //Helper function so that we can get/set easily on the local storage

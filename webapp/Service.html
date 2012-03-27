@@ -8,12 +8,10 @@
 		<script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
 		<script type="text/javascript" src="Scripts/jquery.wipetouch.js"></script>
         <script>
-
             window.onload = function(){
-                DrawService ("myCanvas", initDate());
-            };
-			
-			
+				LoadJSON();
+                DrawService("myCanvas", initDate());
+            };	
         </script>
 		<link rel="stylesheet" type="text/css" href="Styles/service.css" />
 		<link rel="stylesheet" type="text/css" href="Styles/header.css" />
@@ -35,17 +33,13 @@
 			{
 				allowDiagonal:false,
 				tapToClick: true,
-				wipeLeft: function() { wipeStatus("Left"); },
-				wipeRight: function() { wipeStatus("Right");},
+				wipeLeft: function(result) { wipeStatus("Left",result,2); },
+				wipeRight: function(result) { wipeStatus("Right",result,2);},
 				wipeUp: false,
 				wipeDown: false,
 				preventDefault: false,
 				moveX: 200,
-			});	
-			
-			
-			//$(document).click(function() { wipeStatus("Left"); })
-		
+			});
 		</script>
     </body>
 </html>
