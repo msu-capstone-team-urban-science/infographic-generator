@@ -16,15 +16,25 @@ function GetFullMonth(todate,b) {
     }
 }
 
-function changeMonth(x) {
+function changeMonth(x,whichInfo) {
     var newMonth = currDate.getMonth() + x;
-	alert("before inside date range");
-    if (insideDateRange(newMonth)) {
+	if (insideDateRange(newMonth)) {
         currDate.setMonth(newMonth);
-		DrawSalesInfographic("myCanvas",currDate);
-		DrawService("myCanvas",currDate);
+		switch(whichInfo)
+		{
+		case 1:
+			DrawSalesInfographic("myCanvas",currDate);
+			break;
+		case 2:
+			DrawService("myCanvas",currDate);
+			break;
+		case 3:
+			//TODO: Make all of these function names the same
+			//DrawLead("myCanvas",currDate);
+		default:
+			break;
+		}
 		GetFullMonth(currDate,x);
-		alert("kevin");
         if (x < 0) {
 			$("#month").animate({ "left": "-850px" }, 0);
             $("#month2").animate({ "left": "635px" }, 0);
@@ -50,7 +60,6 @@ function insideDateRange(month) {
     tempDate.setMonth(month);
     // dr0  ,   dr1,     dr2,    dr3
     //[FirstMonth, FirstYear, LastMonth, LastYear]
-	alert(dR);
     if ((tempDate.getFullYear() <= dR[3]) && (tempDate.getFullYear() >= dR[1])) {
         if ((tempDate.getMonth() <= dR[2]) && (tempDate.getMonth() >= dR[0])) {
 			bool = 1;
@@ -66,7 +75,6 @@ function dateRange() {
     var locStorage = new Storage();
     var FirstMonth = 13, FirstYear = 3099, LastMonth = 0, LastYear = 0;
 
-	alert("Local storage " + locStorage.size());
     for (var i = 0, l = locStorage.size(); i < l; i++) {
         var value = locStorage.get(i);
         //find the newest year
@@ -88,11 +96,11 @@ function dateRange() {
     return [FirstMonth, FirstYear, LastMonth, LastYear];
 }
 
-function wipeStatus(dir,result) {
+function wipeStatus(dir,result,whichInfographic) {
     if (dir == "Right") {
-        changeMonth(-1);
+        changeMonth(-1,whichInfographic);
     }
     if (dir == "Left") {  
-        changeMonth(1);
+        changeMonth(1,whichInfographic);
     }
 }
