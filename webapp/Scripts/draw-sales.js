@@ -246,7 +246,7 @@ function DrawCanvasPart3(c,date)
     kpiData.push([GetKPI(date,"Competitive_Segment_Sale_Fred_Rodgers_Mazda"),"Fred Rodgers Mazda"]);
     kpiData.push([GetKPI(date,"Competitive_Segment_Sale_Garrett_Ford"),"Garrett Ford"]);
     kpiData.push([GetKPI(date,"Competitive_Segment_Sale_Peter_Lake_Ford"), "Peter Lake Ford"]);
-    DrawCompetitiveSegmentSale(c,100,1320,800,200,kpiData);
+    DrawCompetitiveSegmentSale(c,100,1300,800,200,kpiData);
     DrawPlaid(c,0,1747,canvas.width,400,0);
 
     context.save();
