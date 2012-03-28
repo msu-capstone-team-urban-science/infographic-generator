@@ -643,7 +643,7 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
 
 
     var textWidth = 180;
-    var lineSpacing = 10;
+    var lineSpacing = 15;
     var img03 = new Image();
 
     img03.onload = function () {
