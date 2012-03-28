@@ -4,6 +4,7 @@
 <head>
 
 <link rel="stylesheet" type="text/css" href="Styles/header.css" />
+<link href="styles/lead_style.css" rel="stylesheet" type="text/css" />
 <title>Infographics Generator</title>
 	<script type="text/javascript" src="Scripts/HandleDate.js"></script>
 	<script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
@@ -650,6 +651,305 @@
 		context.fillStyle = color;
 		context.fill();
 	}
+	
+	function DrawCloseRate(c,x,y,d) {
+		var canvas = document.getElementById(c);
+		var context = canvas.getContext("2d");
+		var lineWidth = 10;
+		
+		DrawMachine(c,x-35,y-5);
+		DrawMachine(c,x+100,y-5);
+		
+		context.font = "32pt Calibri";
+		context.fillStyle = "#000000";
+		context.fillText("Close Rate", x-70, y-230);
+		
+		
+		context.font = "24pt Calibri";
+		context.fillStyle = "#000000";
+		context.fillText(d + "%", x-17, y-150);
+		
+		//draw door
+		context.save();
+		context.beginPath();
+		context.fillStyle="#000000";
+		context.beginPath();
+		context.rect(x-180, y-175, 80, 170);
+		context.fill();
+		
+		context.beginPath();
+		context.arc(x-115, y-80, 5, 0, 2 * Math.PI, false);
+		context.fillStyle = "#ffffff";
+		context.fill();
+		context.restore();
+		
+				
+		//draw walk man
+		context.beginPath();
+		context.arc(x-50, y-140, 20, 0, 2 * Math.PI, false);
+		context.fillStyle = "#000000";
+		context.fill();
+		context.beginPath();
+		
+		context.moveTo(x-50, y - 140);
+		context.lineTo(x-50, y - 80);
+		context.lineTo(x-70, y - 40);
+		context.lineTo(x-75, y - 10);
+		context.moveTo(x-50, y - 80);
+		context.lineTo(x-45, y - 40);
+		context.lineTo(x-30, y - 10);
+		context.moveTo(x-50, y - 110);
+		context.lineTo(x-60, y - 90);
+		context.lineTo(x-75, y - 70);
+		context.moveTo(x-50, y - 110);
+		context.lineTo(x-30, y - 80);
+		context.lineTo(x-25, y - 70);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		//draw stand man
+		context.beginPath();
+		context.arc(x+150, y-150, 20, 0, 2 * Math.PI, false);
+		context.fillStyle = "#000000";
+		context.fill();
+		context.beginPath();
+		
+		context.moveTo(x+150, y - 150);
+		context.lineTo(x+150, y - 80);
+		context.lineTo(x+155, y - 40);
+		context.lineTo(x+160, y - 10);
+		context.moveTo(x+150, y - 80);
+		context.lineTo(x+145, y - 40);
+		context.lineTo(x+140, y - 10);
+		context.moveTo(x+150, y - 120);
+		context.quadraticCurveTo(x +190, y -100, x+150, y-80);
+		context.moveTo(x+150, y - 120);
+		context.quadraticCurveTo(x +110, y -100, x+120, y-80);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+	}
+	
+	function DrawMachine(c,x,y) {
+		var canvas = document.getElementById(c);
+		var context = canvas.getContext("2d");
+		var lineWidth = 3;
+		
+		context.save();
+		
+		//draw machine
+		context.beginPath();
+		context.fillStyle="#383838";
+		context.beginPath();
+		context.rect(x, y, 100, -200);
+		context.fill();
+		
+		context.beginPath();
+		context.fillStyle="#ffffff";
+		context.beginPath();
+		context.rect(x+10, y-130, 80, -60);
+		context.fill();
+
+		context.beginPath();
+		context.moveTo(x+5, y -125);
+		context.lineTo(x+95, y -125);
+		context.lineTo(x+95, y -195);
+		context.lineTo(x+5, y -195);
+		context.lineTo(x+5, y -125);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#C0C0C0";
+		context.stroke();
+		
+		context.beginPath();
+		context.fillStyle="#ffffff";
+		context.beginPath();
+		context.rect(x+10, y-60, 60, -50);
+		context.fill();
+		
+		context.beginPath();
+		context.moveTo(x+5, y -55);
+		context.lineTo(x+75, y -55);
+		context.lineTo(x+75, y -115);
+		context.lineTo(x+5, y -115);
+		context.lineTo(x+5, y -55);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#C0C0C0";
+		context.stroke();
+		context.restore();
+		
+		context.beginPath();
+		context.fillStyle="#383838";
+		context.beginPath();
+		context.rect(x+12, y-62, 16, -15);
+		context.rect(x+31, y-62, 16, -15);
+		context.rect(x+50, y-62, 16, -15);
+		context.rect(x+12, y-78, 16, -15);
+		context.rect(x+31, y-78, 16, -15);
+		context.rect(x+50, y-78, 16, -15);
+		context.rect(x+12, y-94, 16, -15);
+		context.rect(x+31, y-94, 16, -15);
+		context.rect(x+50, y-94, 16, -15);
+		context.fill();
+		
+		context.font = "12pt Calibri";
+		context.fillStyle = "#ffffff";
+		context.fillText("1", x+15, y-97);
+		context.fillText("2", x+34, y-97);
+		context.fillText("3", x+53, y-97);
+		context.fillText("4", x+15, y-80);
+		context.fillText("5", x+34, y-80);
+		context.fillText("6", x+53, y-80);
+		context.fillText("7", x+15, y-65);
+		context.fillText("8", x+34, y-65);
+		context.fillText("9", x+53, y-65);
+		
+		context.beginPath();
+		context.fillStyle="#ffffff";
+		context.beginPath();
+		context.rect(x+83, y-70, 10, -40);
+		context.fill();
+		
+		context.beginPath();
+		context.fillStyle="#C0C0C0";
+		context.beginPath();
+		context.rect(x+85, y-72, 6, -36);
+		context.fill();
+		
+		context.beginPath();
+		context.fillStyle="#ffffff";
+		context.beginPath();
+		context.rect(x+20, y-25, 50, -20);
+		context.fill();
+		
+		context.beginPath();
+		context.fillStyle="#383838";
+		context.beginPath();
+		context.rect(x+22, y-27, 46, -16);
+		context.fill();
+		
+		
+		
+		
+		context.restore();
+		
+		
+	}
+
+		
+		
+
+	function DrawProspectCount(c,x,y,d) {
+		var canvas = document.getElementById(c);
+		var context = canvas.getContext("2d");
+		var lineWidth = 10;
+		
+		//draw tables
+		context.beginPath();
+		context.fillStyle="#000000";
+		context.beginPath();
+		context.rect(x+20, y , 130, -60);
+		context.fill();
+
+		context.beginPath();
+		context.moveTo(x, y-65);
+		context.lineTo(x+170, y-65);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		//
+		context.beginPath();
+		context.arc(x+130, y-80, 25, Math.PI,  2* Math.PI, false);
+		context.rect(x+105, y-70 , 50, -10);
+		context.fillStyle = "#000000";
+		context.fill();
+		
+		
+		context.beginPath();
+		context.moveTo(x+100, y-113);
+		context.lineTo(x+160, y-113);
+		context.lineTo(x+150, y-140);
+		context.lineTo(x+110, y-140);
+		context.lineTo(x+100, y-113);
+		context.lineWidth = lineWidth;
+		context.lineCap = "square";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		context.fillStyle = "#000000";
+		context.fill();
+		
+		
+		//draw sit man
+		context.beginPath();
+		context.arc(x+50, y-120, 20, 0, 2 * Math.PI, false);
+		context.fillStyle = "#000000";
+		context.fill();
+		context.beginPath();
+		
+		context.moveTo(x+50, y - 120);
+		context.lineTo(x+40, y - 70);
+		context.moveTo(x+48, y - 90);
+		context.quadraticCurveTo(x +90, y -45, x+50, y-110);
+		context.moveTo(x+48, y - 90);
+		context.quadraticCurveTo(x +30, y -85, x+10, y-110);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		//draw stand man
+		context.beginPath();
+		context.arc(x-45, y-140, 20, 0, 2 * Math.PI, false);
+		context.fillStyle = "#000000";
+		context.fill();
+		context.beginPath();
+		
+		context.moveTo(x-45, y - 150);
+		context.lineTo(x-45, y - 5);
+		context.moveTo(x-45, y - 70);
+		context.quadraticCurveTo(x -60, y -25, x-70, y-10);
+		context.moveTo(x-45, y - 110);
+		context.quadraticCurveTo(x -30, y -45, x-10, y-110);
+		context.moveTo(x-45, y - 110);
+		context.lineTo(x-70, y - 70);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		context.font = "32pt Calibri";
+		context.fillStyle = "#ffffff";
+		context.fillText(d, x+40, y-20);
+		
+		context.font = "32pt Calibri";
+		context.fillStyle = "#000000";
+		context.fillText("Prospect Count", x-100, y-230);
+		
+		
+	}
+	
+	function DrawUnopenedLead(c,x,y,d) {
+		var canvas = document.getElementById(c);
+		var context = canvas.getContext("2d");
+		img_unopened = new Image();
+		img_unopened.src = 'images/lead_open-envelope.png';
+		
+		
+		img_unopened.onload = function()
+		{
+			context.drawImage(img_unopened, x, y , img_unopened.width, img_unopened.height);
+		}
+		
+		
+		
+	}
 
 	window.onload = function(){
 		var canvas = document.getElementById("myCanvas");
@@ -657,10 +957,7 @@
 		context.canvas.width = window.innerWidth;
 		//context.canvas.height = window.innerHeight;
 
-		// data
-		var month = "May";
-		var year = "2012";
-		
+
 		
 		initDate();
 
@@ -674,30 +971,26 @@
 		var kpiAve = new Array();
 		kpiAve[0] = 50.2;
 		kpiAve[1] = 41.2;
+		var kpiClose = 2.6;
+		var kpiProspect = 1287;
+		var kpiUnopened = 206;
 		DrawUniqueCustomers("myCanvas", 200, 190);
-		DrawResponse("myCanvas", 20, 417, kpiMail, kpiPhone);
-		DrawAvgRespTime ("myCanvas", 130, 680, 5, 5, kpiAve);
-		DrawSales("myCanvas", 680, 850, kpiLost, kpiNew, kpiOld);
+		DrawResponse("myCanvas", 28, 425, kpiMail, kpiPhone);
+		DrawAvgRespTime ("myCanvas", 130, 685, 5, 5, kpiAve);
+		DrawSales("myCanvas", 690, 860, kpiLost, kpiNew, kpiOld);
+		DrawCloseRate("myCanvas", 214, 1290, kpiClose);		
+		DrawProspectCount("myCanvas", 590, 1290, kpiProspect);		
+		DrawUnopenedLead("myCanvas",30,1300,kpiUnopened)
+		
 
 		//section
 
 		context.beginPath();
-		context.moveTo(25 , 300);
-		context.lineTo(25 , 980);
-		context.lineWidth = 2;
-		context.lineCap = "square";
-		context.strokeStyle = "#000000";
-		context.stroke();
-				
-		context.moveTo(25 , 300);
-		context.lineTo(760 , 300);
-		context.lineWidth = 2;
-		context.lineCap = "square";
-		context.strokeStyle = "#000000";
-		context.stroke();
-				
-		context.moveTo(760 , 300);
-		context.lineTo(760 , 980);
+		context.moveTo(33 , 310);
+		context.lineTo(770 , 310);
+		context.lineTo(770 , 1280);
+		context.lineTo(33 , 1280);
+		context.lineTo(33 , 310);
 		context.lineWidth = 2;
 		context.lineCap = "square";
 		context.strokeStyle = "#000000";
@@ -706,14 +999,7 @@
 				
 		//Text
 
-		//Title
-		//Unique Customers
-		context.font = "40pt Calibri";
-		context.fillStyle = "#000000";
-		context.font = "24pt Calibri";
-		context.fillText("Lead Management ", 10, 50);
-		context.font = "60pt Calibri";
-		context.fillText(month + ", " + year,300,80);
+
 
 
 		//Unique Customers
@@ -725,8 +1011,8 @@
 		context.fillText(kpiUnique,510,250);
 
 		//Response Method
-		var x = 0;
-		var y = -250;
+		var x = 7;
+		var y = -240;
 		context.font = "40pt Calibri";
 		context.fillStyle = "#000000";
 		context.font = "30pt Calibri";
@@ -745,8 +1031,8 @@
 
 		//sales
 		
-		var x = 100;
-		var y = 950;
+		var x = 110;
+		var y = 960;
 		
 		//
 		context.fillStyle = "#ffffff";
@@ -779,8 +1065,14 @@
 			<p id="month"></p>
 			<p id="month2"></p>
 		</div>
+		<div id="back">
+			<img src="images/lead_back.png"/>
+		</div>
 		<div id="ele">
 			<img src="images/lead_ele.png"/>
+		</div>
+		<div id="stone">
+			<img src="images/lead_stone.jpg"/ width = "745px" height="400px">
 		</div>
 		
 		<canvas id="myCanvas" width="1000" height="1500">
@@ -788,9 +1080,7 @@
 		Sorry, your browser doesn't support canvas technology
 		</canvas>
 
-		<div id="stone">
-			<img src="images/lead_stone.jpg"/ width = "745px" height="400px">
-		</div>
+
 		<div id="sep1">
 			<img src="images/lead_sep.png"/>
 		</div>	
