@@ -92,6 +92,7 @@
 				else{
 					var sortName=new Array();
 					sortName=sortstuff(trendArray[i][5]);
+					sortName.reverse();
 					for(var j=0;j<trendArray[i][5].length;j++){
 						drawLineGraph("trendGraph",sortName[j],trendArray[i][5][j][0],trendArray[i][5][j][1], j);
 					}
@@ -131,10 +132,10 @@
 			
 			context.moveTo(150,data[0][1]);
 			context.arc(150, data[0][1], radius, 0, 2 * Math.PI, false);
-			context.fillText(monthname[0],145,235);
+			context.fillText(monthname[0],145,250);
 			for(var k=1;k<data.length;k++){
 				context.arc(k*70+150, data[k][1], radius, 0, 2 * Math.PI, false);
-				context.fillText(monthname[k],k*70+145,235);		//draw month
+				context.fillText(monthname[k],k*70+145,250);		//draw month
 				context.lineTo(k*70+150,data[k][1]);
 			}
 			context.lineWidth=4;
@@ -149,12 +150,18 @@
 		var canvas = document.getElementById(c);
         var context = canvas.getContext("2d");
 		context.save();
+		context.font = "14pt Calibri";
 		context.beginPath();
-		context.lineTo(150,d[0]/3);
+		context.arc(150, (200-d[0][1]/4), 2, 0, 2 * Math.PI, false);
+		context.fillText(monthname[0],145,250);		//draw month
+		context.lineTo(150,(200-d[0][1]/4));
 		for(var i=1;i<d.length;i++){
-			context.lineTo(i*70+150,d[i]/3);
+			context.arc(i*70+150, (200-d[i][1]/4), 2, 0, 2 * Math.PI, false);
+			context.fillText(monthname[i],i*70+145,250);		//draw month
+			context.lineTo(i*70+150,(200-d[i][1]/4));
 		}
 		context.fillStyle = color; // text color
+		context.font = "10pt Calibri";
 		context.fillText(name, 0, index*20+10);
 		context.strokeStyle = color;
 		context.stroke();
@@ -164,20 +171,27 @@
 	  function sortstuff(array){
 		var tmp;
 		var name;
+		var result=new Array();
 		for(var i=0;i<array.length;i++){
-			tmp=array[i][0][1];
+			tmp=array[i][0][0][1];
 			name=array[i][2];
 			for(var j=0;j<array.length;j++){
-				if(array[j][1]>tmp){
-					tmp=array[j][0][1];
-					name=array[j][2];
-					if(array.indexOf(tmp)==-1)
-						array.push(name);
+				if(array[j][0][0][1]<tmp){
+					if(result.indexOf(array[j][2])==-1){
+						tmp=array[j][0][0][1];
+						name=array[j][2];
+						result.push(name);
+					}
 				}
 			}
 		}
+		for(var k=0;k<array.length;k++){
+			if(result.indexOf(array[k][2])==-1){
+				result.push(array[k][2]);
+			}
+		}
 		
-		return array;
+		return result;
 	  }
 		
 	</script>
