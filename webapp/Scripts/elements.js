@@ -638,7 +638,7 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
     var canvas = document.getElementById(c);
     var ctx6 = canvas.getContext("2d");
 
-    Comp_Seg_Sale_data.sort(function(a, b){return parseInt(b[0]) - parseInt(a[0]);});
+    Comp_Seg_Sale_data.sort(function(a, b){return (parseInt(b[0]) - parseInt(a[0]));});
 
 
     var textWidth = 180;
