@@ -256,7 +256,7 @@ function DrawCanvasPart3(c,date)
 	context.shadowColor = "#000000";
 	context.shadowBlur = 6;
 	context.fillText("Lost Profit", 140, 1800);
-    DrawLostSale(c, 500, 1800, 200, 200, GetKPI(date, "Lost_Sales"));
+    DrawLostSale(c, 600, 1800, 200, 200, GetKPI(date, "Lost_Sales"));
 
 }
 
