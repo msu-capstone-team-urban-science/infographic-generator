@@ -98,6 +98,7 @@ function DrawCanvasPart2 (c,date)
 
 
 	// get some text on the screen
+    context.save();
 	context.font = "bold 19pt Calibri";
 	context.fillStyle = "#ffffff";
 	context.shadowColor = "#000000";
@@ -106,8 +107,7 @@ function DrawCanvasPart2 (c,date)
 	context.fillText("Retail Sales", 189, 405);
 	context.fillText("Cost Per Sale", 723, 125);
 	context.fillText("Pump In Sale", 180, 690);
-	context.shadowBlur = 0;
-
+    context.restore();
 	// draw the pointing dude
 	var imageObj = new Image();
  
@@ -258,8 +258,8 @@ function DrawCanvasPart3(c,date)
 	context.font = "bold 30pt Calibri";
 	context.fillText("Lost Profit", 140, 1850);
     context.restore();
-    DrawLostProfit(c, 100, 1850, 200, 200, GetKPI(date, "Lost_Profit"));
 
+    DrawLostProfit(c, 100, 1850, 200, 200, GetKPI(date, "Lost_Profit"));
     DrawLostSale(c, 600, 1850, 200, 200, GetKPI(date, "Lost_Sales"));
 
 }
