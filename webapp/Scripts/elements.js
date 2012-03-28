@@ -637,14 +637,15 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
 
     var canvas = document.getElementById(c);
     var ctx6 = canvas.getContext("2d");
-	ctx6.save();
-	ctx6.scale(w/700,h/200);
-	x = x/(w/700);
-	y = y/(h/200);
+
 
     var img03 = new Image();
-    img03.src = 'images/car2.png';
+
     img03.onload = function () {
+	    ctx6.save();
+	    ctx6.scale(w/700,h/200);
+	    x = x/(w/700);
+	    y = y/(h/200);
         var maxPos = Math.floor(Competitive_Segment_Sale_findMax(Comp_Seg_Sale_data) / 12);
         ctx6.fillStyle = "white";
         ctx6.fillText(maxPos, x+650, y+15 + i * 30);
@@ -657,10 +658,10 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
             if (offset < position) {
                 offset += 0.02;
                 //ctx6.fillText(i, 200, i * 20);
-                //                ctx6.drawImage(img03, 180 + offset * 25, i * 30, img03.width, img03.height);
+                //ctx6.drawImage(img03, 180 + offset * 25, i * 30, img03.width, img03.height);
                 ctx6.drawImage(img03, x+180 + position*25, y+i * 30, img03.width, img03.height);
 
-                ctx6.clearRect(x+180 + (offset - 0.9) * 25, y+i * 30, img03.width, img03.height);
+                ctx6.fillRect(x+180 + (position - 0.9) * 25, y+i * 30, position-x, img03.height);
                 ctx6.font = "bold 12pt Calibri";
                 //draw KPI_Name
                 ctx6.fillText(Comp_Seg_Sale_data[i][0], x+0, y+15 + i * 30);
@@ -681,9 +682,10 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
                 }
             }
         }
+        ctx6.restore();
     }
+    img03.src = 'images/car2.png';
     //var s = setTimeout(Competitive_Segment_Sale(Comp_Seg_Sale_data),20);
-    ctx6.restore();
 }
 
 
@@ -731,8 +733,8 @@ function DrawLostSale(c, x, y, w, h, d) {
         ctx.fillStyle = "#ffffff";
         ctx.shadowColor = "#000000";
         ctx.shadowBlur = 6;
-        ctx.fillText("Lost", x+10, y+38);
-        ctx.fillText("Sales", x+10, y+78);
+        ctx.fillText("Lost", x+120, y+38);
+        ctx.fillText("Sales", x+120, y+78);
 
         ctx.font = "bold 40pt Calibri";
         ctx.fillText(d, x+155, y+120);
