@@ -658,7 +658,7 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
             if (offset < position) {
                 offset += 0.02;
                 //ctx6.fillText(i, 200, i * 20);
-                //                ctx6.drawImage(img03, 180 + offset * 25, i * 30, img03.width, img03.height);
+                //ctx6.drawImage(img03, 180 + offset * 25, i * 30, img03.width, img03.height);
                 ctx6.drawImage(img03, x+180 + position*25, y+i * 30, img03.width, img03.height);
 
                 ctx6.clearRect(x+180 + (offset - 0.9) * 25, y+i * 30, img03.width, img03.height);
