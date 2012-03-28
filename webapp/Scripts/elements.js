@@ -656,19 +656,19 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
 
         for (var i = 0; i < Comp_Seg_Sale_data.length; i++)
         {
-            // draw dealership name (works)
+            // draw dealership name
             ctx6.fillText(Comp_Seg_Sale_data[i][1], x, y + img03.height + i * (img03.height + lineSpacing));
 
-            // calculate bar width (works)
+            // calculate bar width
             var barWidth = (parseInt(Comp_Seg_Sale_data[i][0])/parseInt(Comp_Seg_Sale_data[0][0]))*(650 - textWidth - img03.width);
 
-            // draw bar (works)
+            // draw bar
             ctx6.fillRect(x + textWidth,y + img03.height - textSize + i * (img03.height + lineSpacing), barWidth, textSize);
 
-            // draw car at end of bar (works)
+            // draw car at end of bar
             ctx6.drawImage(img03, x + textWidth + barWidth, y + 7 + i * (img03.height + lineSpacing));
 
-            // draw kpi value (broken)
+            // draw kpi value
             ctx6.fillText(Comp_Seg_Sale_data[i][0], x + textWidth + barWidth + img03.width + 4, y + img03.height + i * (img03.height + lineSpacing));
 
         }
