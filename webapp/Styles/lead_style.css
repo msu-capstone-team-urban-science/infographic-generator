@@ -1,27 +1,25 @@
-body {
-background-image:url("../images/lead_back.png");
-background-repeat: no-repeat;
-height: 1122px;
-z-index: 2;
+#back {
+	top: -300px;
+	z-index: -2;
 }
 
 #ele{
-top: -22px;
-left: 707px;
-position: fixed;
-z-index: 3;
+	top: 78px;
+	left: 707px;
+	position: fixed;
+	z-index: 2;
 }
 
 #stone{
 	position: relative;
 	top:-922px;
-	left:21px;
-	z-index: -1;
+	left:29px;
+
 }
 
 #sep1{
 	position: relative;
 	top:-1750px;
-	left:-7px;
+	left:1px;
 
 }
