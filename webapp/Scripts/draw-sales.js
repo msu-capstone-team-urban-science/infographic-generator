@@ -251,7 +251,11 @@ function DrawCanvasPart3(c,date)
     DrawPlaid(c,0,1747,canvas.width,400,0);
 
     DrawLostProfit(c, 100, 1800, 200, 200, GetKPI(date, "Lost_Profit"));
-
+	context.font = "bold 30pt Calibri";
+	context.fillStyle = "#ffffff";
+	context.shadowColor = "#000000";
+	context.shadowBlur = 6;
+	context.fillText("Lost Profit", 140, 1800);
     DrawLostSale(c, 500, 1800, 200, 200, GetKPI(date, "Lost_Sales"));
 
 }
