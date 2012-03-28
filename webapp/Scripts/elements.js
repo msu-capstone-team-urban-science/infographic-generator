@@ -673,7 +673,7 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
                     for (j = 0; j < final_pos.length; j++) {
                         //TODO: draw number after the car reach destination
                         //ctx6.fillText(Comp_Seg_Sale_data[j][1], 215+Math.floor(Comp_Seg_Sale_data[j][1]/12)*30, 15+j*30);
-                        ctx6.clearRect(x+180 + (final_pos[j]) * 30, y+j * 30, img03.width, img03.height);
+                        //ctx6.clearRect(x+180 + (final_pos[j]) * 30, y+j * 30, img03.width, img03.height);
 
                         //ctx6.fillText(final_pos[j], 215+position*35, 15+j*30);
 
