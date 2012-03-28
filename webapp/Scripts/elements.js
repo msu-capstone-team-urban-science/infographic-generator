@@ -652,12 +652,12 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
 	    x = x/(w/700);
 	    y = y/(h/200);
         ctx6.fillStyle = "#ffffff";
-        var textSize = (img03.height - lineSpacing);
+        var textSize = (img03.height / 2) - lineSpacing;
         ctx6.font = "bold " + textSize + "pt Calibri";
 
         for (var i = 0; i < Comp_Seg_Sale_data.length; i++)
         {
-            var barWidth = Math.floor((Comp_Seg_Sale_data[i][0]/Comp_Seg_Sale_data[0][0])*(650 - textWidth - img03.width));
+            var barWidth = (Comp_Seg_Sale_data[i][0]/Comp_Seg_Sale_data[0][0])*(650 - textWidth - img03.width);
 
             ctx6.drawImage(img03, x + textWidth + barWidth, y + i * (img03.height + lineSpacing));
 
