@@ -22,12 +22,11 @@ function DrawService (c, date)
 
 
     var img = new Image();
-    img.src = 'images/dollar.png';
     img.onload = function () {
         context.drawImage(img, 690, 520);
         DrawService2(c, date);
     }
-
+	img.src = 'images/dollar.png';
 }
 
 function DrawService2 (c, date)
