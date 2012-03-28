@@ -669,7 +669,7 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
             ctx6.drawImage(img03, x + textWidth + barWidth, y + 7 + i * (img03.height + lineSpacing));
             alert ("before draw kpi value");
             // draw kpi value (broken)
-            ctx6.fillText(Comp_Seg_Sale_data[i][0], x + textWidth + barWidth + img04.width + 4, y + img03.height + i * (img03.height + lineSpacing));
+            ctx6.fillText(Comp_Seg_Sale_data[i][0], x + textWidth + barWidth + img03.width + 4, y + img03.height + i * (img03.height + lineSpacing));
             alert ("after draw kpi value");
         }
         ctx6.restore();
