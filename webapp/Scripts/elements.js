@@ -652,7 +652,7 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
 	    x = x/(w/700);
 	    y = y/(h/200);
         ctx6.fillStyle = "#ffffff";
-        ctx6.font = "bold " + img03.height + "pt Calibri";
+        ctx6.font = "bold " + img03.height - lineSpacing + "pt Calibri";
 
         for (var i = 0; i < Comp_Seg_Sale_data.length; i++)
         {
