@@ -638,12 +638,11 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
     var canvas = document.getElementById(c);
     var ctx6 = canvas.getContext("2d");
 
-    Comp_Seg_Sale_data.sort(SortCompetitiveSegmentSale);
-    //Comp_Seg_Sale_data.reverse();
+    Comp_Seg_Sale_data.sort(function(a, b){return parseInt(b[0]) - parseInt(a[0]);});
 
 
     var textWidth = 180;
-    var lineSpacing = 15;
+    var lineSpacing = 10;
     var img03 = new Image();
 
     img03.onload = function () {
@@ -652,48 +651,34 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
 	    x = x/(w/700);
 	    y = y/(h/200);
         ctx6.fillStyle = "#ffffff";
-        var textSize = img03.height - lineSpacing;
-        ctx6.font = "bold " + textSize + "pt Calibri";
+        var textSize = 12;
+        ctx6.font = "bold 12pt Calibri";
 
         for (var i = 0; i < Comp_Seg_Sale_data.length; i++)
         {
-            var barWidth = (Comp_Seg_Sale_data[i][0]/Comp_Seg_Sale_data[0][0])*(650 - textWidth - img03.width);
+            // draw dealership name
+            ctx6.fillText(Comp_Seg_Sale_data[i][1], x, y + img03.height + i * (img03.height + lineSpacing));
 
+            // calculate bar width
+            var barWidth = (parseInt(Comp_Seg_Sale_data[i][0])/parseInt(Comp_Seg_Sale_data[0][0]))*(650 - textWidth - img03.width);
+
+            // draw bar
+            ctx6.fillRect(x + textWidth, y + i * (img03.height + lineSpacing), barWidth, img03.height);
+
+            // draw car at end of bar
             ctx6.drawImage(img03, x + textWidth + barWidth, y + i * (img03.height + lineSpacing));
 
-            ctx6.fillRect(x + textWidth, y + i * (img03.height + lineSpacing), barWidth, img03.height);
-            //draw KPI_Name
-            ctx6.fillText(Comp_Seg_Sale_data[i][1], x, y + img03.height + i * (img03.height + lineSpacing));
-            //draw KPI_Data
+            // draw kpi value
             ctx6.fillText(Comp_Seg_Sale_data[i][0], x + textWidth + barWidth + 4 + img04.width, y + img03.height + i * (img03.height + lineSpacing));
 
         }
         ctx6.restore();
     }
     img03.src = 'images/car2.png';
-    //var s = setTimeout(Competitive_Segment_Sale(Comp_Seg_Sale_data),20);
 }
 
 
-// Name: Competitive_Segment_Sale_findMax
-// Author: Lok Cheung
-// Purpose: Support function for DrawCompetitiveSegmentSale
-function SortCompetitiveSegmentSale(a, b)
-{
-return parseInt(b[0]) - parseInt(a[0]);
-}
 
-
-// Name: iniStopPos
-// Author: Lok Cheung
-// Purpose: Support function for DrawCompetitiveSegmentSale
-function iniStopPos(array) {
-    var final_pos = new Array();
-    for (var i = 0; i < array.length; i++) {
-        final_pos[i] = Math.floor(array[i][1] / 12);
-    }
-    return final_pos;
-}
 
 // Name: DrawLostSale
 // Author: Lok Cheung
