@@ -91,7 +91,6 @@ function GetTrendKPI(date, kpiName) {
 		var kpi=GetKPI(tmpDate,kpiName);
 		//alert(tmpDate.getMonth());
 		//alert(kpi);
-
 		kpiArray.push([month,kpi]);
 		x++;
 	}
