@@ -639,7 +639,7 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
     var ctx6 = canvas.getContext("2d");
 
     Comp_Seg_Sale_data.sort();
-    Comp_Seg_Sale_data.reverse();
+    //Comp_Seg_Sale_data.reverse();
 
 
     var textWidth = 180;
