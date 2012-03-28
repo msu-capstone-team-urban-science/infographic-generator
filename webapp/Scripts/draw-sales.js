@@ -240,12 +240,12 @@ function DrawCanvasPart3(c,date)
 	DrawPie(c, 750, 1050, 100, 100, GetKPI(date, "Visits_Per_Customer"));
 
     var kpiData = new Array();
-    kpiData.push(["Anytown Automotive",GetKPI(date,"Competitive_Segment_Sale_Anytown_Automotive")]);
-    kpiData.push(["Jeff Williams Toyota", GetKPI(date,"Competitive_Segment_Sale_Jeff_Williams_Toyotas")]);
-    kpiData.push(["Uptown Honda",GetKPI(date,"Competitive_Segment_Sale_Uptown_Honda")]);
-    kpiData.push(["Fred Rodgers Mazda",GetKPI(date,"Competitive_Segment_Sale_Fred_Rodgers_Mazda")]);
-    kpiData.push(["Garrett Ford", GetKPI(date,"Competitive_Segment_Sale_Garrett_Ford")]);
-    kpiData.push(["Peter Lake Ford", GetKPI(date,"Competitive_Segment_Sale_Peter_Lake_Ford")]);
+    kpiData.push([GetKPI(date,"Competitive_Segment_Sale_Anytown_Automotive"), "Anytown Automotive"]);
+    kpiData.push([GetKPI(date,"Competitive_Segment_Sale_Jeff_Williams_Toyotas"),"Jeff Williams Toyota"]);
+    kpiData.push([GetKPI(date,"Competitive_Segment_Sale_Uptown_Honda"),"Uptown Honda"]);
+    kpiData.push([GetKPI(date,"Competitive_Segment_Sale_Fred_Rodgers_Mazda"),"Fred Rodgers Mazda"]);
+    kpiData.push([GetKPI(date,"Competitive_Segment_Sale_Garrett_Ford"),"Garrett Ford"]);
+    kpiData.push([GetKPI(date,"Competitive_Segment_Sale_Peter_Lake_Ford"), "Peter Lake Ford"]);
     DrawCompetitiveSegmentSale(c,300,1320,800,200,kpiData);
     DrawPlaid(c,0,1747,canvas.width,400,0);
 

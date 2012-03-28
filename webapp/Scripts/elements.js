@@ -638,7 +638,12 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
     var canvas = document.getElementById(c);
     var ctx6 = canvas.getContext("2d");
 
+    Comp_Seg_Sale_data.sort();
+    Comp_Seg_Sale_data.reverse();
 
+
+    var textWidth = 180;
+    var lineSpacing = 4;
     var img03 = new Image();
 
     img03.onload = function () {
@@ -646,41 +651,21 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
 	    ctx6.scale(w/700,h/200);
 	    x = x/(w/700);
 	    y = y/(h/200);
-        var maxPos = Math.floor(Competitive_Segment_Sale_findMax(Comp_Seg_Sale_data) / 12);
-        ctx6.fillStyle = "white";
-        ctx6.fillText(maxPos, x+650, y+15 + i * 30);
+        ctx6.fillStyle = "#ffffff";
+        ctx6.font = "bold " + img03.height + "pt Calibri";
 
-        var final_pos = iniStopPos(Comp_Seg_Sale_data);
-        var offset = 0;
-        var i = 0;
-        for (i = 0; i < Comp_Seg_Sale_data.length; i++) {
-            var position = Math.floor(Comp_Seg_Sale_data[i][1] / 12);
-            if (offset < position) {
-                offset += 0.02;
-                //ctx6.fillText(i, 200, i * 20);
-                //ctx6.drawImage(img03, 180 + offset * 25, i * 30, img03.width, img03.height);
-                ctx6.drawImage(img03, x+180 + position*25, y+i * 30, img03.width, img03.height);
+        for (var i = 0; i < Comp_Seg_Sale_data.length; i++)
+        {
+            var barWidth = Math.floor((Comp_Seg_Sale_data[i][0]/Comp_Seg_Sale_data[0][0])*(700 - textWidth - img03.width));
 
-                ctx6.fillRect(x+180, y+i * 30, position-x-180, img03.height);
-                ctx6.font = "bold 12pt Calibri";
-                //draw KPI_Name
-                ctx6.fillText(Comp_Seg_Sale_data[i][0], x+0, y+15 + i * 30);
-                //draw KPI_Data
-                ctx6.fillText(Comp_Seg_Sale_data[i][1], x+215 + position * 25, y+15 + i * 30);
+            ctx6.drawImage(img03, x + textWidth + barWidth, y + i * (img03.height + lineSpacing));
 
-                if (offset + 0.02 > maxPos) {
-                    var j = 0, offx = offset;
-                    for (j = 0; j < final_pos.length; j++) {
-                        //TODO: draw number after the car reach destination
-                        //ctx6.fillText(Comp_Seg_Sale_data[j][1], 215+Math.floor(Comp_Seg_Sale_data[j][1]/12)*30, 15+j*30);
-                        //ctx6.clearRect(x+180 + (final_pos[j]) * 30, y+j * 30, img03.width, img03.height);
+            ctx6.fillRect(x + textWidth, y + i * (img03.height + lineSpacing), barWidth, img03.height);
+            //draw KPI_Name
+            ctx6.fillText(Comp_Seg_Sale_data[i][1], x, y + img03.height + i * (img03.height + lineSpacing));
+            //draw KPI_Data
+            ctx6.fillText(Comp_Seg_Sale_data[i][0], x + textWidth + barWidth + 4, y + img03.height + i * (img03.height + lineSpacing));
 
-                        //ctx6.fillText(final_pos[j], 215+position*35, 15+j*30);
-
-                    }
-                    offset = 0;
-                }
-            }
         }
         ctx6.restore();
     }
