@@ -679,7 +679,7 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
 // Purpose: Support function for DrawCompetitiveSegmentSale
 function SortCompetitiveSegmentSale(a, b)
 {
-return b[0] - a[0];
+return parseInt(b[0]) - parseInt(a[0]);
 }
 
 
