@@ -663,7 +663,7 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
             var barWidth = (parseInt(Comp_Seg_Sale_data[i][0])/parseInt(Comp_Seg_Sale_data[0][0]))*(650 - textWidth - img03.width);
 
             // draw bar (works)
-            ctx6.fillRect(x + textWidth,y + img03.height + i * (img03.height + lineSpacing), barWidth, textSize);
+            ctx6.fillRect(x + textWidth,y + img03.height - textSize + i * (img03.height + lineSpacing), barWidth, textSize);
 
             // draw car at end of bar (broken)
             ctx6.drawImage(img03, x + textWidth + barWidth, y + 5 + i * (img03.height + lineSpacing));
