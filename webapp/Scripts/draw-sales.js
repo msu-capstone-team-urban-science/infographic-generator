@@ -15,7 +15,7 @@ function DrawSalesInfographic (c,date)
 	//    |/   | \  |  |   v v    some stuff
     
     context.fillStyle = "#ffffff";
-    context.fillRect(0, 0, canvas.width, canvas.height);
+    context.clearRect(0, 0, canvas.width, canvas.height);
 
 	// fill the top section of the background with a gradient
 	context.beginPath();
