@@ -13,7 +13,9 @@ function DrawSalesInfographic (c,date)
 	//    | |  | /  /  \  | | |
 	//    | |  |<   |--|  | | |
 	//    |/   | \  |  |   v v    some stuff
-
+    
+    context.fillStyle = "#ffffff";
+    context.fillRect(x, y, canvas.width, canvas.height);
 
 	// fill the top section of the background with a gradient
 	context.beginPath();
@@ -250,9 +252,9 @@ function DrawCanvasPart3(c,date)
 
     DrawLostProfit(c, 100, 1800, 200, 200, GetKPI(date, "Lost_Profit"));
 
-    //DrawX(c, 500,1800);
+    DrawX(c, 500,1800);
     DrawLostSale(c, 500, 1800, 200, 200, GetKPI(date, "Lost_Sales"));
-    //DrawX(c, 500,1800);
+    DrawX(c, 500,1800);
 
 }
 

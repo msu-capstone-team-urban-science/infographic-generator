@@ -719,28 +719,27 @@ function DrawLostSale(c, x, y, w, h, d) {
     var canvas = document.getElementById(c);
     var ctx = canvas.getContext("2d");
 
-    ctx.save();
-	ctx.scale(w/236,h/230);
-	x = x/(w/236);
-	y = y/(h/230);
-
-
     var img04 = new Image();
     img04.src = 'images/puzzle.png';
 	
     img04.onload = function () {
+        ctx.save();
+	    ctx.scale(w/236,h/230);
+	    x = x/(w/236);
+	    y = y/(h/230);
         ctx.drawImage(img04, x, y);
         ctx.font = "bold 34pt Calibri";
-        ctx.fillText("LOST", x+110, y+30);
-        ctx.fillText("SALES", x+97, y+70);
-        ctx.fillStyle = "white";
-        ctx.fillText("LOST", x+111, y+28);
-        ctx.fillText("SALES", x+97, y+68);
-        ctx.fillStyle = "black";
+        ctx.fillStyle = "#ffffff";
+        ctx.shadowColor = "#000000";
+        ctx.shadowBlur = 6;
+        ctx.fillText("Lost", x+10, y+38);
+        ctx.fillText("Sales", x+10, y+78);
+
         ctx.font = "bold 40pt Calibri";
         ctx.fillText(d, x+155, y+120);
+        ctx.restore();
     }
-    ctx.restore();
+
 }
 
 // Name: DrawLostProfit
