@@ -638,7 +638,7 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
     var canvas = document.getElementById(c);
     var ctx6 = canvas.getContext("2d");
 
-    Comp_Seg_Sale_data.sort();
+    Comp_Seg_Sale_data.sort(SortCompetitiveSegmentSale);
     //Comp_Seg_Sale_data.reverse();
 
 
@@ -677,14 +677,9 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
 // Name: Competitive_Segment_Sale_findMax
 // Author: Lok Cheung
 // Purpose: Support function for DrawCompetitiveSegmentSale
-function Competitive_Segment_Sale_findMax(array) {
-    var max = 0;
-    for (var i = 0; i < array.length; i++) {
-        if (array[i][1] > max) {
-            max = array[i][1];
-        }
-    }
-    return max;
+function SortCompetitiveSegmentSale(a, b)
+{
+return b[0] - a[0];
 }
 
 
