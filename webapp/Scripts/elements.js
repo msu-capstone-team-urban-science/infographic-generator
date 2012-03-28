@@ -652,11 +652,11 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
 	    x = x/(w/700);
 	    y = y/(h/200);
         ctx6.fillStyle = "#ffffff";
-        ctx6.font = "bold " + img03.height - lineSpacing + "pt Calibri";
+        ctx6.font = "bold " + (img03.height - lineSpacing) + "pt Calibri";
 
         for (var i = 0; i < Comp_Seg_Sale_data.length; i++)
         {
-            var barWidth = Math.floor((Comp_Seg_Sale_data[i][0]/Comp_Seg_Sale_data[0][0])*(700 - textWidth - img03.width));
+            var barWidth = Math.floor((Comp_Seg_Sale_data[i][0]/Comp_Seg_Sale_data[0][0])*(650 - textWidth - img03.width));
 
             ctx6.drawImage(img03, x + textWidth + barWidth, y + i * (img03.height + lineSpacing));
 
@@ -664,7 +664,7 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
             //draw KPI_Name
             ctx6.fillText(Comp_Seg_Sale_data[i][1], x, y + img03.height + i * (img03.height + lineSpacing));
             //draw KPI_Data
-            ctx6.fillText(Comp_Seg_Sale_data[i][0], x + textWidth + barWidth + 4, y + img03.height + i * (img03.height + lineSpacing));
+            ctx6.fillText(Comp_Seg_Sale_data[i][0], x + textWidth + barWidth + 4 + img04.width, y + img03.height + i * (img03.height + lineSpacing));
 
         }
         ctx6.restore();
