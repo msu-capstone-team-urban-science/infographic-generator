@@ -641,8 +641,8 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
     Comp_Seg_Sale_data.sort(function(a, b){return (parseInt(b[0]) - parseInt(a[0]));});
 
 
-    var textWidth = 180;
-    var lineSpacing = 10;
+    var textWidth = 150;
+    var lineSpacing = 5;
     var img03 = new Image();
 
     img03.onload = function () {
@@ -667,10 +667,10 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
 
             // draw car at end of bar (works)
             ctx6.drawImage(img03, x + textWidth + barWidth, y + 7 + i * (img03.height + lineSpacing));
-            alert ("before draw kpi value");
+
             // draw kpi value (broken)
             ctx6.fillText(Comp_Seg_Sale_data[i][0], x + textWidth + barWidth + img03.width + 4, y + img03.height + i * (img03.height + lineSpacing));
-            alert ("after draw kpi value");
+
         }
         ctx6.restore();
     }
