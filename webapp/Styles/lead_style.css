@@ -9,17 +9,3 @@
 	position: fixed;
 	z-index: 2;
 }
-
-#stone{
-	position: relative;
-	top:-922px;
-	left:29px;
-
-}
-
-#sep1{
-	position: relative;
-	top:-1750px;
-	left:1px;
-
-}

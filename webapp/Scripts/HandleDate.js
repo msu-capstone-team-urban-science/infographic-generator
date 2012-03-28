@@ -36,8 +36,7 @@ function changeMonth(x,whichInfo) {
 			DrawService("myCanvas",currDate);
 			break;
 		case 3:
-			//TODO: Make all of these function names the same
-			//DrawLead("myCanvas",currDate);
+			DrawLead("myCanvas",currDate);
 		default:
 			break;
 		}
