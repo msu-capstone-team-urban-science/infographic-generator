@@ -246,17 +246,18 @@ function DrawCanvasPart3(c,date)
     kpiData.push(["Garrett Ford", GetKPI(date,"Competitive_Segment_Sale_Garrett_Ford")]);
     kpiData.push(["Peter Lake Ford", GetKPI(date,"Competitive_Segment_Sale_Peter_Lake_Ford")]);
 
-    DrawCompetitiveSegmentSale(c,300,1300,800,200,kpiData);
-
-    DrawPlaid(c,0,1747,canvas.width,400,0);
-
-    DrawLostProfit(c, 100, 1800, 200, 200, GetKPI(date, "Lost_Profit"));
-	context.font = "bold 30pt Calibri";
+	context.font = "bold 19pt Calibri";
 	context.fillStyle = "#ffffff";
 	context.shadowColor = "#000000";
 	context.shadowBlur = 6;
-	context.fillText("Lost Profit", 140, 1800);
-    DrawLostSale(c, 600, 1800, 200, 200, GetKPI(date, "Lost_Sales"));
+    DrawCompetitiveSegmentSale(c,300,1300,800,200,kpiData);
+	context.fillText("Competitive Segment Sales", 350, 1300);
+    DrawPlaid(c,0,1747,canvas.width,400,0);
+
+    DrawLostProfit(c, 100, 1850, 200, 200, GetKPI(date, "Lost_Profit"));
+	context.font = "bold 30pt Calibri";
+	context.fillText("Lost Profit", 140, 1850);
+    DrawLostSale(c, 600, 1850, 200, 200, GetKPI(date, "Lost_Sales"));
 
 }
 
