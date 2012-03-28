@@ -14,103 +14,10 @@
 	<script type="text/javascript" src="Scripts/jquery.wipetouch.js"></script>
 	<script type="text/javascript" src="Scripts/draw-lead.js"></script>
 	<script type="text/javascript">
-	
-
-	window.onload = function(){
-		LoadJSON();
-		DrawLead("myCanvas",initDate());
-	};
-		/*var canvas = document.getElementById("myCanvas");
-		var context = canvas.getContext("2d");
-		context.canvas.width = window.innerWidth;
-		//context.canvas.height = window.innerHeight;
-
-		// fake kpi
-		var kpiUnique = 1831;
-		var kpiMail = 1602;
-		var kpiPhone = 687;
-		var kpiLost = 12;
-		var kpiNew = 36;
-		var kpiOld = 12;
-		var kpiAve = new Array();
-		kpiAve[0] = 50.2;
-		kpiAve[1] = 41.2;
-		var kpiClose = 2.6;
-		var kpiProspect = 1287;
-		var kpiUnopened = 206;
-		DrawUniqueCustomers("myCanvas", 200, 190);
-		DrawResponse("myCanvas", 28, 425, kpiMail, kpiPhone);
-		DrawAvgRespTime ("myCanvas", 130, 685, 5, 5, kpiAve);
-		DrawSales("myCanvas", 690, 860, kpiLost, kpiNew, kpiOld);
-		DrawCloseRate("myCanvas", 214, 1290, kpiClose);		
-		DrawProspectCount("myCanvas", 590, 1290, kpiProspect);		
-		DrawUnopenedLead("myCanvas",30,1300,kpiUnopened)
-		
-
-		//section
-
-		context.beginPath();
-		context.moveTo(33 , 310);
-		context.lineTo(770 , 310);
-		context.lineTo(770 , 1280);
-		context.lineTo(33 , 1280);
-		context.lineTo(33 , 310);
-		context.lineWidth = 2;
-		context.lineCap = "square";
-		context.strokeStyle = "#000000";
-		context.stroke();
-
-				
-		//Text
-
-		//Unique Customers
-		context.font = "40pt Calibri";
-		context.fillStyle = "#000000";
-		context.font = "30pt Calibri";
-		context.fillText("Unique Customers", 430, 180);
-		context.font = "60pt Calibri";
-		context.fillText(kpiUnique,510,250);
-
-		//Response Method
-		var x = 7;
-		var y = -240;
-		context.font = "40pt Calibri";
-		context.fillStyle = "#000000";
-		context.font = "30pt Calibri";
-		context.fillText("Response by", x + 30,y + 580);
-		context.fillText("Mail",x + 30, y + 620);
-		context.font = "60pt Calibri";
-		context.fillText(kpiMail,x + 110, y+ 650);
-
-		context.font = "40pt Calibri";
-		context.fillStyle = "#000000";
-		context.font = "30pt Calibri";
-		context.fillText("Response by", x + 550, y + 580);
-		context.fillText("Phone", x + 650, y + 620);
-		context.font = "60pt Calibri";
-		context.fillText(kpiPhone,x + 480, y + 650);
-
-		//sales
-		
-		var x = 110;
-		var y = 960;
-		
-		//
-		context.fillStyle = "#ffffff";
-		context.font = "45pt Calibri";
-		context.fillText(kpiNew, x + 30,y );
-		context.fillText(kpiOld, x + 300,y );
-		context.fillText(kpiLost, x + 590,y );
-		
-		context.fillStyle = "#000000";
-		context.font = "28pt Calibri";
-		context.fillText("Sales from Lead", x + 190,y -180);
-		context.fillText("New", x + 30,y -100);
-		context.fillText("Used", x + 295,y -100);
-		context.fillStyle = "#ffffff";
-		context.fillText("Lost", x + 590,y -100);
-	};*/
- 
+		window.onload = function(){
+			LoadJSON();
+			DrawLead("myCanvas",initDate());
+		};
         </script>
     </head>
 	<body>
@@ -122,25 +29,29 @@
 			<p id="month"></p>
 			<p id="month2"></p>
 		</div>
-		<!--<div id="back">
-			<img src="images/lead_back.png"/>
-		</div>-->
+		
 		<div id="ele">
 			<img src="images/lead_ele.png"/>
 		</div>
-		<!--<div id="stone">
-			<img src="images/lead_stone.jpg"/ width = "745px" height="400px">
-		</div>-->
 		
-		
-		<canvas id="myCanvas" width="1000" height="1500">
+		<canvas id="myCanvas" width="1000" height="2200">
 		<!-- Insert fallback content here -->
 		Sorry, your browser doesn't support canvas technology
 		</canvas>
 		
-		<!--<div id="sep1">
-			<img src="images/lead_sep.png"/>
-		</div>	-->
 	</div>
+	<script type="text/javascript">	
+		$(document).wipetouch(
+		{
+			allowDiagonal:false,
+			tapToClick: true,
+			wipeLeft: function(result) { wipeStatus("Left",result,3); },
+			wipeRight: function(result) { wipeStatus("Right",result,3);},
+			wipeUp: false,
+			wipeDown: false,
+			preventDefault: false,
+			moveX: 200,
+		});
+	</script>
 	</body>
 </html>
