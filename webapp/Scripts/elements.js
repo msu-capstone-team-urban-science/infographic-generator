@@ -661,7 +661,7 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
                 //ctx6.drawImage(img03, 180 + offset * 25, i * 30, img03.width, img03.height);
                 ctx6.drawImage(img03, x+180 + position*25, y+i * 30, img03.width, img03.height);
 
-                ctx6.fillRect(x+180 + (position - 0.9) * 25, y+i * 30, position-x, img03.height);
+                ctx6.fillRect(x+180, y+i * 30, position-x-180, img03.height);
                 ctx6.font = "bold 12pt Calibri";
                 //draw KPI_Name
                 ctx6.fillText(Comp_Seg_Sale_data[i][0], x+0, y+15 + i * 30);
