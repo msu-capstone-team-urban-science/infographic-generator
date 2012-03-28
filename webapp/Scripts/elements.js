@@ -720,7 +720,6 @@ function DrawLostSale(c, x, y, w, h, d) {
     var ctx = canvas.getContext("2d");
 
     var img04 = new Image();
-    img04.src = 'images/puzzle.png';
 	
     img04.onload = function () {
         ctx.save();
@@ -739,7 +738,7 @@ function DrawLostSale(c, x, y, w, h, d) {
         ctx.fillText(d, x+155, y+120);
         ctx.restore();
     }
-
+    img04.src = 'images/puzzle.png';
 }
 
 // Name: DrawLostProfit

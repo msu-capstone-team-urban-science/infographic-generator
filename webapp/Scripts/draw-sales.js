@@ -44,6 +44,7 @@ function DrawCanvasPart2 (c,date)
 	var canvas = document.getElementById(c);
 	var context = canvas.getContext("2d");
 	// draw circles
+    context.save();
 	var circleColor = "#ededed"
 	context.fillStyle = circleColor;
 	context.strokeStyle = circleColor;
@@ -76,7 +77,7 @@ function DrawCanvasPart2 (c,date)
 	context.moveTo(canvas.width/4, 200);
 	context.lineTo(canvas.width/2 + 290, 200);
 	context.stroke();
-
+    context.restore();
 	// draw some elements on top of the circles
 	Used_Vehicle_Sale(c, canvas.width/4-75, 135, 150, 130, [date, GetKPI(date, "Used_Vehicle_Sales")]);
 	Retail_Sale(c, canvas.width/4-75, 415, 77, 76, [date, GetKPI(date, "Retail_Sales")]);
