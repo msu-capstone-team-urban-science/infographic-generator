@@ -89,6 +89,7 @@ function DrawCanvasPart2 (c,date)
 	/*!!! you have to add 207px(height of header picture) to y !!!*/
 	//var dataArray = GetTrendKPI(date, 'Retail_Sales');
 	var offset = 100;
+	//alert(GetTrendKPI(date, 'Retail_Sales')[0][1]);
 	trendArray.push(['Retail Sale', canvas.width/4-71, 415+offset, 152, 152,GetTrendKPI(date, 'Retail_Sales'),'<p>The term Retail Sales refers to new vehicles that are registered to individuals or companies that register a small number of vehicles annually.</p>']);
 	/////trendArray.push(['Retail Sale', canvas.width/4-71, 123+offset, 152, 152,dataArray,'Description']);
 	

@@ -80,17 +80,15 @@ function GetTrendKPI(date, kpiName) {
 		x=0;
 	}
 	else{
-		x=tmpDate.getMonth()-5;
+		x=tmpDate.getMonth()-6;
 	}
 	var num=tmpDate.getMonth();
 	
 	//although x changes, tmpDate.setFullYear doesn't change properly
 	while(x<=num) {
-		tmpDate.setFullYear(tmpDate.getFullYear(),x,tmpDate.getDay());
+		tmpDate.setFullYear(yy,x,dd);
 		month=monthname[x];
 		var kpi=GetKPI(tmpDate,kpiName);
-		//alert(tmpDate.getMonth());
-		//alert(kpi);
 		kpiArray.push([month,kpi]);
 		x++;
 	}
