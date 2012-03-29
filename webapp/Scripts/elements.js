@@ -1861,13 +1861,13 @@ function DrawUniqueCustomers(c,x,y)
 		img_logo4.src = 'images/lead_edmunds.png';
 		img_hand.src = 'images/lead_hand.png';
 		context.font = "24pt Calibri";
-		context.fillText("The Number of Lead", x+350, y+115);
-		context.font = "32pt Calibri";
+		context.fillText("The Number of Lead", x+400, y-50);
+		context.font = "28pt Calibri";
 		context.fillStyle = "#000000";
-		context.fillText("Unopened", x+350, y+150);
-		context.fillText(d, x+640, y+150);
-		context.fillText("New Brand", x+350, y+190);
-		context.fillText(d2, x+640, y+190);
+		context.fillText("Unopened", x+400, y-10);
+		context.fillText(d, x+640, y+50);
+		context.fillText("New Brand", x+400, y+30);
+		context.fillText(d2, x+640, y+90);
 
 		context.restore();
 
@@ -1963,6 +1963,6 @@ function DrawUniqueCustomers(c,x,y)
 
 		cxt.fillStyle = c2;
 		cxt.font = 'bold 32px sans-serif';
-		cxt.fillText("New 3PL Lead", (border*1.5)+x,y, w);
+		cxt.fillText("New 3PL Lead", (border*1.5)+x+100,y, w);
 
 }
