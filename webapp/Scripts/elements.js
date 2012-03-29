@@ -1865,9 +1865,9 @@ function DrawUniqueCustomers(c,x,y)
 		context.font = "28pt Calibri";
 		context.fillStyle = "#000000";
 		context.fillText("Unopened", x+400, y-10);
-		context.fillText(d, x+640, y+50);
+		context.fillText(d, x+640, y-10);
 		context.fillText("New Brand", x+400, y+30);
-		context.fillText(d2, x+640, y+90);
+		context.fillText(d2, x+640, y+30);
 
 		context.restore();
 
@@ -1962,7 +1962,7 @@ function DrawUniqueCustomers(c,x,y)
 		cxt.restore();
 
 		cxt.fillStyle = c2;
-		cxt.font = 'bold 32px sans-serif';
-		cxt.fillText("New 3PL Lead", (border*1.5)+x+100,y, w);
+		cxt.font = '32px sans-serif';
+		cxt.fillText("New 3PL Lead", (border*1.5)+x+50,y, w);
 
 }
