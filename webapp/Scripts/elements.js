@@ -1860,5 +1860,5 @@ function DrawUniqueCustomers(c,x,y)
 		context.font = "32pt Calibri";
 		context.fillStyle = "#000000";
 		context.fillText("Unopened Leads", x+430, y+130);
-		context.fillTest(d, x+480, y+160);
+		context.fillText(d, x+480, y+160);
 	}
