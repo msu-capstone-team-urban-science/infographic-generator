@@ -1441,10 +1441,9 @@ function DrawUniqueCustomers(c,x,y)
 	//Author: Kevin Shreve	
 	function DrawAvgRespTime (c, x, y, w, h, d)
 	{
-		context.save();
 		var canvas = document.getElementById(c);
 		var context = canvas.getContext("2d");
-	
+		context.save();
 		context.font = "28pt Calibri";
 		context.fillStyle = "#000";
 		context.fillText("Average Response Time", x+105, y-50);
