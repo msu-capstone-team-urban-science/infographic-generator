@@ -1839,7 +1839,7 @@ function DrawUniqueCustomers(c,x,y)
 		{	
 			context.drawImage(img_logo2, x+110, y+110, img_logo2.width/2, img_logo2.height/2);
 		}
-		img_logo3.onload = function()
+		img_logo3.onload = function()  
 		{
 			context.drawImage(img_logo3, x+40, y+180, img_logo3.width/5, img_logo3.height/5);
 		}
