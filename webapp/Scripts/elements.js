@@ -1057,6 +1057,8 @@ function DrawUniqueCustomers(c,x,y)
 		var kpiTotal = kpiMail + kpiPhone;
 		var MailP = kpiMail/kpiTotal;
 		var PhoneP= kpiPhone/kpiTotal;
+		var fillW;
+		var fillH;
 		//document.write(MailP);
 		//draw mail
 
@@ -1809,7 +1811,7 @@ function DrawUniqueCustomers(c,x,y)
 		context.restore();
 	}
 	
-	function DrawUnopenedLead(c,x,y,d) {
+	function DrawUnopenedLead(c,x,y,d,d2) {
 		var canvas = document.getElementById(c);
 		var context = canvas.getContext("2d");
 		context.save();
@@ -1858,12 +1860,109 @@ function DrawUniqueCustomers(c,x,y)
 		img_logo3.src = 'images/lead_kelley.png';
 		img_logo4.src = 'images/lead_edmunds.png';
 		img_hand.src = 'images/lead_hand.png';
+		context.font = "24pt Calibri";
+		context.fillText("The Number of Lead", x+350, y+115);
 		context.font = "32pt Calibri";
 		context.fillStyle = "#000000";
-		context.fillText("Unopened Leads", x+430, y+130);
-		context.fillText(d, x+540, y+180);
+		context.fillText("Unopened", x+350, y+150);
+		context.fillText(d, x+640, y+150);
+		context.fillText("New Brand", x+350, y+190);
+		context.fillText(d2, x+640, y+190);
 
 		context.restore();
 
 
 	}
+
+	
+	function Draw3PL(c,x,y,w,h,myArray,c1,c2){
+	
+	
+		var canvas = document.getElementById(c);
+		var cxt = canvas.getContext("2d");
+		cxt.save();
+		//Adjust chart width and height
+		w=w-20; h=h-50;
+		var max = 0; //Innitialise maximum bar height to zero
+		var len=0; //Innitialise no of bars to zero
+		var c1 = "#7FFF24";
+		var c2 = "#000000";
+		sum = 0;
+		for(key in myArray)
+		{
+			if(myArray[key] > max) max = myArray[key];
+			sum += myArray[key];
+			len++;
+		}
+		var border = 4;  //Changing the border mar distort the graph
+		var bar_h = (h-border)/len;
+		var gradient = cxt.createLinearGradient(w/2, 50, w/2, h);
+		gradient.addColorStop(0, '#000');
+		gradient.addColorStop(0.1, '#eee'); 
+		gradient.addColorStop(0.5, '#fff'); 
+		gradient.addColorStop(1, '#000'); 
+		
+		max = max - border;
+		txtArea = w*0.2;
+		full = w -(border*2)-txtArea;
+		cxt.strokeStyle='#fff';
+		cxt.save();
+		
+		cxt.shadowOffsetX = border/2;
+		cxt.shadowOffsetY = border/2;
+		cxt.shadowBlur = border/2;
+		cxt.shadowColor = "black";
+		cxt.fillStyle=c1;
+		n=0;
+		for(key in myArray)
+		{
+			cxt.fillRect(border+txtArea+x,(border*2)+(bar_h*n)+y,(myArray[key]/max)*full,bar_h-border);
+			n++;
+		}
+		
+		cxt.shadowColor = "#fff";
+		n=0;
+		for(key in myArray)
+		{
+			cxt.strokeRect(border+txtArea+x,(border*2)+(bar_h*n)+y,(myArray[key]/max)*full,bar_h-border);
+			n++;
+		}
+		
+		cxt.shadowOffsetX = border/-2;
+		n=0;
+		for(key in myArray)
+		{
+			cxt.strokeRect(border+txtArea+x,(border*2)+(bar_h*n)+y,((myArray[key]/max)*full),bar_h-border);
+			n++;
+		}
+		cxt.shadowOffsetY = border/-2;
+		n=0;
+		for(key in myArray)
+		{
+			cxt.strokeRect(border+txtArea+x,(border*2)+(bar_h*n)+y,((myArray[key]/max)*full),bar_h-border);
+			n++;
+		}
+		cxt.restore();
+		
+		cxt.save();
+		cxt.font = 'bold 14px sans-serif';
+		cxt.shadowOffsetX = 1;
+		cxt.shadowOffsetY = 1;
+		cxt.shadowBlur = 1;
+		cxt.shadowColor = "white";
+		n=0;
+		for(key in myArray)
+		{
+			cxt.fillStyle=c2;
+			cxt.fillText(key, (border+10)+x, (border*2)+(bar_h*n)+(bar_h/1.8)+y,txtArea-15);
+			cxt.fillText(Math.round((myArray[key]/sum)*100*100)/100+'% ('+myArray[key]+')',  (border+10+txtArea)+x, 
+							(border*2)+(bar_h*n)+(bar_h/1.8)+y,full);
+			n++;
+		}
+		cxt.restore();
+
+		cxt.fillStyle = c2;
+		cxt.font = 'bold 20px sans-serif';
+		cxt.fillText("3P L", (border*1.5)+x,(border*2)+h+25+y, w);
+
+}

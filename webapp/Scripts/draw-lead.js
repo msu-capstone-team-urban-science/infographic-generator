@@ -49,15 +49,30 @@ function DrawLead4(c,date) {
 	var kpiClose = GetKPI(date,"Close_Rate");
 	var kpiProspect = GetKPI(date,"Prospect_Count");
 	var kpiUnopened = GetKPI(date,"Unopened_Leads");
+	var kpiNewBrand = GetKPI(date,"New_Brand_Leads");
+	var kpiNew3PL_Kelly_Blue_Book = GetKPI(date,"New_3PL_Leads_Kelly_Blue_Book");
+	var kpiNew3PL_Edmunds = GetKPI(date,"New_3PL_Edmunds");
+	var kpiNew3PL_Dealix = GetKPI(date,"New_3PL_Dealix");
+	var kpiNew3PL_Automotive = GetKPI(date,"New_3PL_Automotive.com");
+	var kpiNew3PL_Jumpstart = GetKPI(date,"New_3PL_Jumpstart");
+	
+	kpiNew3PL_Kelly_Blue_Book = parseFloat(kpiNew3PL_Kelly_Blue_Book);
+	var myArray = {
+						'Anytown Automotive':kpiNew3PL_Kelly_Blue_Book,
+						'Jeff Williams Toyota':167,
+						'Uptown Honda':105,
+						'Fred Rodgers Mazda':103,
+						'Garrett Ford':68,
+						'Peter Lake Ford':50};
 	
 	DrawUniqueCustomers("myCanvas", 200, 190);
-	DrawResponse("myCanvas", 28, 425, kpiMail, kpiPhone);
+	//DrawResponse("myCanvas", 28, 425, kpiMail, kpiPhone);
 	DrawAvgRespTime ("myCanvas", 130, 685, 5, 5, kpiAve);
 	DrawSales("myCanvas", 690, 860, kpiLost, kpiNew, kpiOld);
 	DrawCloseRate("myCanvas", 214, 1290, kpiClose);		
 	DrawProspectCount("myCanvas", 590, 1290, kpiProspect);		
-	DrawUnopenedLead("myCanvas",30,1300,kpiUnopened);
-	
+	DrawUnopenedLead("myCanvas",30,1300,kpiUnopened, kpiNewBrand);
+	Draw3PL("myCanvas",30,1700,750,300,myArray);
 	//section
 
 	context.beginPath();
