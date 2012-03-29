@@ -1851,7 +1851,6 @@ function DrawUniqueCustomers(c,x,y)
 		{
 			context.drawImage(img_hand, x+240, y-110, img_hand.width/2.7, img_hand.height/2.7);
 		}
-
 		
 		img_unopened.src = 'images/lead_open-envelope.png';
 		img_scissor.src = 'images/lead_scissor.png';
@@ -1866,4 +1865,6 @@ function DrawUniqueCustomers(c,x,y)
 		context.fillText(d, x+540, y+180);
 
 		context.restore();
+
+
 	}

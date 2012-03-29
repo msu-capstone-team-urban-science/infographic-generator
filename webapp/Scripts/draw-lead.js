@@ -58,7 +58,6 @@ function DrawLead4(c,date) {
 	DrawProspectCount("myCanvas", 590, 1290, kpiProspect);		
 	DrawUnopenedLead("myCanvas",30,1300,kpiUnopened);
 	
-	
 	//section
 
 	context.beginPath();
