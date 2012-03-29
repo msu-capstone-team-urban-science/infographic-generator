@@ -1955,14 +1955,14 @@ function DrawUniqueCustomers(c,x,y)
 		{
 			cxt.fillStyle=c2;
 			cxt.fillText(key, (border+10)+x, (border*2)+(bar_h*n)+(bar_h/1.8)+y,txtArea-15);
-			cxt.fillText(Math.round((myArray[key]/sum)*100*100)/100+'% ('+myArray[key]+')',  (border+10+txtArea)+x, 
+			cxt.fillText(myArray[key],  (border+10+txtArea)+x, 
 							(border*2)+(bar_h*n)+(bar_h/1.8)+y,full);
 			n++;
 		}
 		cxt.restore();
 
 		cxt.fillStyle = c2;
-		cxt.font = 'bold 20px sans-serif';
-		cxt.fillText("3P L", (border*1.5)+x,(border*2)+h+25+y, w);
+		cxt.font = 'bold 32px sans-serif';
+		cxt.fillText("New 3PL Lead", (border*1.5)+x,y, w);
 
 }
