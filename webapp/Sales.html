@@ -90,8 +90,11 @@
 					drawTrend(trendArray[i][5]);
 				}
 				else{
+					var sortName=new Array();
+					sortName=sortstuff(trendArray[i][5]);
+					sortName.reverse();
 					for(var j=0;j<trendArray[i][5].length;j++){
-						drawLineGraph("trendGraph",trendArray[i][5][j][2],trendArray[i][5][j][0],trendArray[i][5][j][1], j);
+						drawLineGraph("trendGraph",sortName[j],trendArray[i][5][j][0],trendArray[i][5][j][1], j);
 					}
 				}
 				//draw x, y axis
@@ -100,8 +103,8 @@
 				context.save();
 				context.beginPath();
 				context.moveTo(120,0);
-				context.lineTo(120,250);
-				context.lineTo(600,250);
+				context.lineTo(120,220);
+				context.lineTo(600,220);
 				context.strokeStyle = "black";	
 				context.stroke();
 				context.restore();
@@ -121,7 +124,7 @@
 		for(var j=0;j<data.length;j++){
 			sum+=data[j][1];
 		}
-
+		context.font = "14pt Calibri";
 		for(var i=0;i<data.length;i++)
 		{
 			context.save();
@@ -129,14 +132,15 @@
 			
 			context.moveTo(150,data[0][1]);
 			context.arc(150, data[0][1], radius, 0, 2 * Math.PI, false);
+			context.fillText(monthname[0],145,250);
 			for(var k=1;k<data.length;k++){
-				context.lineTo(k*70+150,data[k][1]);
 				context.arc(k*70+150, data[k][1], radius, 0, 2 * Math.PI, false);
-				context.fill();
+				context.fillText(monthname[k],k*70+145,250);		//draw month
+				context.lineTo(k*70+150,data[k][1]);
 			}
-			
+			context.lineWidth=4;
 			context.strokeStyle = "blue";
-			context.lineWidth=2;
+			context.lineWidth=1;
 			context.stroke();
 			context.restore();
 		}		
@@ -145,21 +149,49 @@
 	  function drawLineGraph(c, name, d, color, index){
 		var canvas = document.getElementById(c);
         var context = canvas.getContext("2d");
-		
-			context.save();
-			context.beginPath();
-			d.sort(function(a,b){
-				return a[1] - b[1];
-			});
-			context.lineTo(i*70+150,d[i][1]/3);
-			for(var i=1;i<d.length;i++){
-				context.lineTo(i*70+150,d[i][1]/3);
+		context.save();
+		context.font = "14pt Calibri";
+		context.beginPath();
+		context.arc(150, (200-d[0][1]/4), 2, 0, 2 * Math.PI, false);
+		context.fillText(monthname[0],145,250);		//draw month
+		context.lineTo(150,(200-d[0][1]/4));
+		for(var i=1;i<d.length;i++){
+			context.arc(i*70+150, (200-d[i][1]/4), 2, 0, 2 * Math.PI, false);
+			context.fillText(monthname[i],i*70+145,250);		//draw month
+			context.lineTo(i*70+150,(200-d[i][1]/4));
+		}
+		context.fillStyle = color; // text color
+		context.font = "10pt Calibri";
+		context.fillText(name, 0, index*20+10);
+		context.strokeStyle = color;
+		context.stroke();
+		context.restore();
+	  }
+	  
+	  function sortstuff(array){
+		var tmp;
+		var name;
+		var result=new Array();
+		for(var i=0;i<array.length;i++){
+			tmp=array[i][0][0][1];
+			name=array[i][2];
+			for(var j=0;j<array.length;j++){
+				if(array[j][0][0][1]<tmp){
+					if(result.indexOf(array[j][2])==-1){
+						tmp=array[j][0][0][1];
+						name=array[j][2];
+						result.push(name);
+					}
+				}
 			}
-			context.fillStyle = color; // text color
-			context.fillText(name, 0, index*20+10);
-			context.strokeStyle = color;
-			context.stroke();
-			context.restore();
+		}
+		for(var k=0;k<array.length;k++){
+			if(result.indexOf(array[k][2])==-1){
+				result.push(array[k][2]);
+			}
+		}
+		
+		return result;
 	  }
 		
 	</script>

@@ -44,6 +44,7 @@ function DrawCanvasPart2 (c,date)
 	var canvas = document.getElementById(c);
 	var context = canvas.getContext("2d");
 	// draw circles
+    context.save();
 	var circleColor = "#ededed"
 	context.fillStyle = circleColor;
 	context.strokeStyle = circleColor;
@@ -76,7 +77,7 @@ function DrawCanvasPart2 (c,date)
 	context.moveTo(canvas.width/4, 200);
 	context.lineTo(canvas.width/2 + 290, 200);
 	context.stroke();
-
+    context.restore();
 	// draw some elements on top of the circles
 	Used_Vehicle_Sale(c, canvas.width/4-75, 135, 150, 130, [date, GetKPI(date, "Used_Vehicle_Sales")]);
 	Retail_Sale(c, canvas.width/4-75, 415, 77, 76, [date, GetKPI(date, "Retail_Sales")]);
@@ -97,6 +98,7 @@ function DrawCanvasPart2 (c,date)
 
 
 	// get some text on the screen
+    context.save();
 	context.font = "bold 19pt Calibri";
 	context.fillStyle = "#ffffff";
 	context.shadowColor = "#000000";
@@ -105,8 +107,7 @@ function DrawCanvasPart2 (c,date)
 	context.fillText("Retail Sales", 189, 405);
 	context.fillText("Cost Per Sale", 723, 125);
 	context.fillText("Pump In Sale", 180, 690);
-	context.shadowBlur = 0;
-
+    context.restore();
 	// draw the pointing dude
 	var imageObj = new Image();
  
@@ -239,22 +240,27 @@ function DrawCanvasPart3(c,date)
 	DrawPie(c, 750, 1050, 100, 100, GetKPI(date, "Visits_Per_Customer"));
 
     var kpiData = new Array();
-    kpiData.push(["Anytown Automotive",GetKPI(date,"Competitive_Segment_Sale_Anytown_Automotive")]);
-    kpiData.push(["Jeff Williams Toyota", GetKPI(date,"Competitive_Segment_Sale_Jeff_Williams_Toyotas")]);
-    kpiData.push(["Uptown Honda",GetKPI(date,"Competitive_Segment_Sale_Uptown_Honda")]);
-    kpiData.push(["Fred Rodgers Mazda",GetKPI(date,"Competitive_Segment_Sale_Fred_Rodgers_Mazda")]);
-    kpiData.push(["Garrett Ford", GetKPI(date,"Competitive_Segment_Sale_Garrett_Ford")]);
-    kpiData.push(["Peter Lake Ford", GetKPI(date,"Competitive_Segment_Sale_Peter_Lake_Ford")]);
-
-    DrawCompetitiveSegmentSale(c,300,1300,800,200,kpiData);
-
+    kpiData.push([GetKPI(date,"Competitive_Segment_Sale_Anytown_Automotive"), "Anytown Automotive"]);
+    kpiData.push([GetKPI(date,"Competitive_Segment_Sale_Jeff_Williams_Toyotas"),"Jeff Williams Toyota"]);
+    kpiData.push([GetKPI(date,"Competitive_Segment_Sale_Uptown_Honda"),"Uptown Honda"]);
+    kpiData.push([GetKPI(date,"Competitive_Segment_Sale_Fred_Rodgers_Mazda"),"Fred Rodgers Mazda"]);
+    kpiData.push([GetKPI(date,"Competitive_Segment_Sale_Garrett_Ford"),"Garrett Ford"]);
+    kpiData.push([GetKPI(date,"Competitive_Segment_Sale_Peter_Lake_Ford"), "Peter Lake Ford"]);
+    DrawCompetitiveSegmentSale(c,100,1300,800,200,kpiData);
     DrawPlaid(c,0,1747,canvas.width,400,0);
 
-    DrawLostProfit(c, 100, 1800, 200, 200, GetKPI(date, "Lost_Profit"));
+    context.save();
+    context.font = "bold 19pt Calibri";
+	context.fillStyle = "#ffffff";
+	context.shadowColor = "#000000";
+	context.shadowBlur = 6;
+	context.fillText("Competitive Segment Sales", 350, 1280);
+	context.font = "bold 30pt Calibri";
+	context.fillText("Lost Profit", 140, 1850);
+    context.restore();
 
-    DrawX(c, 500,1800);
-    DrawLostSale(c, 500, 1800, 200, 200, GetKPI(date, "Lost_Sales"));
-    DrawX(c, 500,1800);
+    DrawLostProfit(c, 100, 1850, 200, 200, GetKPI(date, "Lost_Profit"));
+    DrawLostSale(c, 600, 1850, 200, 200, GetKPI(date, "Lost_Sales"));
 
 }
 

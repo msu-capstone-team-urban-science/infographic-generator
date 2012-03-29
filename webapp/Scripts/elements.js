@@ -637,80 +637,47 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
 
     var canvas = document.getElementById(c);
     var ctx6 = canvas.getContext("2d");
-	ctx6.save();
-	ctx6.scale(w/700,h/200);
-	x = x/(w/700);
-	y = y/(h/200);
 
+    Comp_Seg_Sale_data.sort(function(a, b){return (parseInt(b[0]) - parseInt(a[0]));});
+
+    var textWidth = 160;
+    var lineSpacing = 5;
     var img03 = new Image();
-    img03.src = 'images/car2.png';
+
     img03.onload = function () {
-        var maxPos = Math.floor(Competitive_Segment_Sale_findMax(Comp_Seg_Sale_data) / 12);
-        ctx6.fillStyle = "white";
-        ctx6.fillText(maxPos, x+650, y+15 + i * 30);
+	    ctx6.save();
+	    ctx6.scale(w/700,h/200);
+	    x = x/(w/700);
+	    y = y/(h/200);
+        ctx6.fillStyle = "#ffffff";
+        var textSize = 12;
+        ctx6.font = "bold 12pt Calibri";
 
-        var final_pos = iniStopPos(Comp_Seg_Sale_data);
-        var offset = 0;
-        var i = 0;
-        for (i = 0; i < Comp_Seg_Sale_data.length; i++) {
-            var position = Math.floor(Comp_Seg_Sale_data[i][1] / 12);
-            if (offset < position) {
-                offset += 0.02;
-                //ctx6.fillText(i, 200, i * 20);
-                //                ctx6.drawImage(img03, 180 + offset * 25, i * 30, img03.width, img03.height);
-                ctx6.drawImage(img03, x+180 + position*25, y+i * 30, img03.width, img03.height);
+        for (var i = 0; i < Comp_Seg_Sale_data.length; i++)
+        {
+            // draw dealership name
+            ctx6.fillText(Comp_Seg_Sale_data[i][1], x, y + img03.height + i * (img03.height + lineSpacing));
 
-                ctx6.clearRect(x+180 + (offset - 0.9) * 25, y+i * 30, img03.width, img03.height);
-                ctx6.font = "bold 12pt Calibri";
-                //draw KPI_Name
-                ctx6.fillText(Comp_Seg_Sale_data[i][0], x+0, y+15 + i * 30);
-                //draw KPI_Data
-                ctx6.fillText(Comp_Seg_Sale_data[i][1], x+215 + position * 25, y+15 + i * 30);
+            // calculate bar width
+            var barWidth = (parseInt(Comp_Seg_Sale_data[i][0])/parseInt(Comp_Seg_Sale_data[0][0]))*(650 - textWidth - img03.width);
 
-                if (offset + 0.02 > maxPos) {
-                    var j = 0, offx = offset;
-                    for (j = 0; j < final_pos.length; j++) {
-                        //TODO: draw number after the car reach destination
-                        //ctx6.fillText(Comp_Seg_Sale_data[j][1], 215+Math.floor(Comp_Seg_Sale_data[j][1]/12)*30, 15+j*30);
-                        ctx6.clearRect(x+180 + (final_pos[j]) * 30, y+j * 30, img03.width, img03.height);
+            // draw bar
+            ctx6.fillRect(x + textWidth,y + img03.height - textSize + i * (img03.height + lineSpacing), barWidth, textSize);
 
-                        //ctx6.fillText(final_pos[j], 215+position*35, 15+j*30);
+            // draw car at end of bar
+            ctx6.drawImage(img03, x + textWidth + barWidth, y + 7 + i * (img03.height + lineSpacing));
 
-                    }
-                    offset = 0;
-                }
-            }
+            // draw kpi value
+            ctx6.fillText(Comp_Seg_Sale_data[i][0], x + textWidth + barWidth + img03.width + 4, y + img03.height + i * (img03.height + lineSpacing));
+
         }
+        ctx6.restore();
     }
-    //var s = setTimeout(Competitive_Segment_Sale(Comp_Seg_Sale_data),20);
-    ctx6.restore();
+    img03.src = 'images/car2.png';
 }
 
 
-// Name: Competitive_Segment_Sale_findMax
-// Author: Lok Cheung
-// Purpose: Support function for DrawCompetitiveSegmentSale
-function Competitive_Segment_Sale_findMax(array) {
-    var max = 0;
-    for (var i = 0; i < array.length; i++) {
-        if (array[i][1] > max) {
-            max = array[i][1];
-        }
-    }
-    return max;
-}
 
-
-// Name: iniStopPos
-// Author: Lok Cheung
-// Purpose: Support function for DrawCompetitiveSegmentSale
-function iniStopPos(array) {
-    var final_pos = new Array();
-    for (var i = 0; i < array.length; i++) {
-        final_pos[i] = Math.floor(array[i][1] / 12);
-    }
-    return final_pos;
-}
 
 // Name: DrawLostSale
 // Author: Lok Cheung
@@ -720,7 +687,6 @@ function DrawLostSale(c, x, y, w, h, d) {
     var ctx = canvas.getContext("2d");
 
     var img04 = new Image();
-    img04.src = 'images/puzzle.png';
 	
     img04.onload = function () {
         ctx.save();
@@ -732,14 +698,14 @@ function DrawLostSale(c, x, y, w, h, d) {
         ctx.fillStyle = "#ffffff";
         ctx.shadowColor = "#000000";
         ctx.shadowBlur = 6;
-        ctx.fillText("Lost", x+10, y+38);
-        ctx.fillText("Sales", x+10, y+78);
+        ctx.fillText("Lost", x+120, y+38);
+        ctx.fillText("Sales", x+120, y+78);
 
         ctx.font = "bold 40pt Calibri";
         ctx.fillText(d, x+155, y+120);
         ctx.restore();
     }
-
+    img04.src = 'images/puzzle.png';
 }
 
 // Name: DrawLostProfit
@@ -930,3 +896,929 @@ function navigator_Go(url) {
     window.location.assign(url); // This technique is almost exactly the same as a full <a> page refresh, but it prevents Mobile Safari from jumping out of full-screen mode
 }
 
+//LEAD STUFF
+function DrawUniqueCustomers(c,x,y)
+	{
+		var canvas = document.getElementById(c);
+		var context = canvas.getContext("2d");
+
+		var lineWidth = 7;
+		context.save();
+		context.arc(x+170, y-50, 20, 0, 2 * Math.PI, false);
+		context.fillStyle = "#000000";
+		context.fill();
+
+		//draw man
+		context.moveTo(x + 130, y +30);
+		context.lineTo(x + 170 ,y +30);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+
+		//draw man
+		context.moveTo(x + 170, y -30);
+		context.lineTo(x + 170 ,y +30);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+
+		//draw man
+		context.moveTo(x + 170, y -20);
+		context.lineTo(x + 100 ,y -10);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+
+		// draw 
+		context.beginPath();
+		context.moveTo(x , y);
+		context.lineTo(x +100 , y);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+
+		// draw 
+		context.moveTo(x -20, y+40);
+		context.lineTo(x +120 , y+40);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+
+		// draw leg
+		context.moveTo(x +30, y);
+		context.lineTo(x +10 , y+80);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+
+		// draw legs
+		context.moveTo(x +65, y);
+		context.lineTo(x +85 , y+80);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+
+		// draw 
+
+		context.moveTo(x + 10, y);
+		context.lineTo(x + 10 , y-70);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+
+		// draw umbrella
+		context.moveTo(x -60, y-70);
+		context.lineTo(x +80 , y-70);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+
+
+		// draw umbrella
+		//context.beginPath();
+		context.moveTo(x-60, y-70);
+		context.quadraticCurveTo(x+10, y-120, x+80, y-70);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.fillStyle = "#000000";
+		context.fill();
+		context.stroke();
+
+		//draw computer
+		context.moveTo(x +50, y-10);
+		context.lineTo(x +90 , y-10);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+
+		//draw computer
+		context.moveTo(x + 50, y-10);
+		context.lineTo(x + 40 ,y-40);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+
+		//draw chair
+		context.moveTo(x + 140, y+80);
+		context.lineTo(x + 140 ,y +40);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+
+		//draw chair
+		context.moveTo(x + 180, y+80);
+		context.lineTo(x + 180 ,y -10);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+
+		//draw chair
+		context.moveTo(x + 140, y +40);
+		context.lineTo(x + 180 ,y +40);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+
+		//draw man
+		context.moveTo(x + 130, y +30);
+		context.lineTo(x + 130 ,y +80);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		context.restore();
+				
+	}
+	
+	function DrawResponse(c, x, y, kpiMail, kpiPhone)
+	{
+		var canvas = document.getElementById(c);
+		var context = canvas.getContext("2d");
+		img = new Image();
+		img.src = 'images/response.png';
+		context.fillStyle = "#8ED6FF";
+		var kpiTotal = kpiMail + kpiPhone;
+		var MailP = kpiMail/kpiTotal;
+		var PhoneP= kpiPhone/kpiTotal;
+		//document.write(MailP);
+		//draw mail
+
+		context.beginPath();
+		context.rect(x+1, y, 373, -120);
+		context.fill();
+		context.lineWidth = 1;
+		context.strokeStyle = "white";
+		context.stroke();
+
+
+		//draw rectangle in the back of the mail image
+		if(MailP <= 0.5)
+		{
+			fillW= 700 * MailP; 
+			fillH = 50;
+			MailP = 0;
+		}
+		else if(MailP > 0.5)
+		{
+			MailP = MailP-0.5;
+			fillW= 350; 
+			fillH = 50;
+		}
+		context.fillRect(x+10, y+10, fillW, fillH);
+		if(MailP > 0)
+		{
+			fillW= 700 * MailP;
+			fillH = 50;
+
+			context.fillRect(x+10,y+100, fillW, fillH);
+		}
+
+
+
+		context.fillStyle="#FFA54F";
+		context.beginPath();
+		context.rect(x+376, y, 370, -120);
+		context.fill();
+		context.lineWidth = 1;
+		context.strokeStyle = "white";
+		context.stroke();
+
+		//draw rectangle in the back of the phone image
+		if(PhoneP <= 0.5)
+		{
+			fillW= 760 * PhoneP; 
+			//fillW = 350
+			fillH = 80;
+			PhoneP = 0;
+		}
+		else if(PhoneP > 0.5)
+		{
+			PhoneP = PhoneP-0.5;
+			fillW= 720/2; 
+			fillH = 80;
+		}
+		context.fillRect(x+740, y+80, x-20-fillW, fillH);			
+		if(PhoneP > 0)
+		{
+			fillW= 720 * PhoneP;
+			fillH = 80;
+
+			context.fillRect(x+740,y+8, x-20-fillW, fillH);
+			//document.write(x+740);	
+		}					
+
+
+		img.onload = function()
+		{
+			context.drawImage(img, x, y, img.width/4.29, img.height/4.29);
+		}
+
+		
+	}
+	
+	function DrawSales(c, x, y, kpiLost, kpiNew, kpiOld)
+	{
+		var canvas = document.getElementById(c);
+		var context = canvas.getContext("2d");
+		var lineWidth = 7;
+		img1 = new Image();
+		img1.src = 'images/lead_usedcar.png';
+		img2 = new Image();
+		img2.src = 'images/lead_newcar.png';
+
+		context.beginPath();
+		context.arc(x-50, y, 20, 0, 2 * Math.PI, false);
+		context.fillStyle = "#000000";
+		context.fill();
+
+
+		
+		//draw man body
+		context.moveTo(x-50, y);
+		context.quadraticCurveTo(x - 40, y+30, x-50, y + 65);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		
+		
+		//draw man
+		context.moveTo(x -50, y + 65);
+		context.lineTo(x - 80, y + 100);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+
+
+		//draw man
+		context.moveTo(x -50, y + 65);
+		context.lineTo(x -20, y + 80);
+		context.lineTo(x -35, y + 100);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		context.moveTo(x -50, y + 40);
+		context.quadraticCurveTo(x - 60, y+20, x - 100, y+15);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		context.moveTo(x-50, y + 45);
+		context.quadraticCurveTo(x - 60, y+30, x - 100, y +30);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		//draw door
+		context.save();
+		context.beginPath();
+		context.fillStyle="#black";
+		context.beginPath();
+		context.rect(x, y-60, 80, 170);
+		context.fill();
+		
+		context.beginPath();
+		context.arc(x+15, y+20, 5, 0, 2 * Math.PI, false);
+		context.fillStyle = "#ffffff";
+		context.fill();
+		context.restore();
+		
+		
+		//draw whiteboard
+		context.beginPath();
+		context.save()
+		context.moveTo(x-410, y - 50);
+		context.lineTo(x-130, y - 50);
+		context.lineTo(x-130, y - 130);
+		context.lineTo(x-410, y - 130);
+		context.lineTo(x-410, y - 50);
+		context.moveTo(x-410, y - 43);
+		context.lineTo(x-130, y - 43);
+		context.lineWidth = lineWidth;
+		context.lineCap = "square";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		context.fillStyle = "#ffffff";
+		context.fill();
+		context.restore();
+		
+		
+		//draw marker
+		context.beginPath();
+		context.moveTo(x-240, y - 45);
+		context.lineTo(x-200, y - 45);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#ffffff";
+		context.stroke();
+		
+		
+		//draw tables
+		context.beginPath();
+		context.fillStyle="#black";
+		context.beginPath();
+		context.rect(x-300, y + 110, 100, -60);
+		context.fill();
+
+		context.beginPath();
+		context.moveTo(x-330, y + 50);
+		context.lineTo(x-170, y + 50);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		
+		context.fillStyle="#black";
+		context.beginPath();
+		context.rect(x-570, y + 110, 100, -60);
+		context.fill();
+
+		context.beginPath();
+		context.moveTo(x-600, y + 50);
+		context.lineTo(x-440, y + 50);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		//draw chairs
+		
+		context.beginPath();
+		context.moveTo(x-120, y);
+		context.lineTo(x-120, y + 110);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		context.moveTo(x-120, y + 70);
+		context.lineTo(x-160, y + 70);
+		context.lineTo(x-160, y + 110);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		context.beginPath();
+		context.moveTo(x-390, y);
+		context.lineTo(x-390, y + 110);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		context.moveTo(x-390, y + 70);
+		context.lineTo(x-430, y + 70);
+		context.lineTo(x-430, y + 110);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		context.beginPath();
+		context.moveTo(x-380, y);
+		context.lineTo(x-380, y + 110);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		context.moveTo(x-380, y + 70);
+		context.lineTo(x-340, y + 70);
+		context.lineTo(x-340, y + 110);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		context.beginPath();
+		context.moveTo(x-640, y);
+		context.lineTo(x-640, y + 110);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		context.moveTo(x-640, y + 70);
+		context.lineTo(x-600, y + 70);
+		context.lineTo(x-600, y + 110);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		
+		//draw man (big)
+		context.beginPath();
+		context.arc(x - 150, y, 20, 0, 2 * Math.PI, false);
+		context.fillStyle = "#000000";
+		context.fill();
+		
+		context.beginPath();
+		context.moveTo(x-150, y);
+		context.lineTo(x-150, y + 60);
+		context.lineTo(x-180, y + 60);
+		context.lineTo(x-180, y + 100);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		context.beginPath();
+		context.moveTo(x-150, y+40);
+		context.quadraticCurveTo(x - 210, y +50, x-150, y+10);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		
+		context.beginPath();
+		context.arc(x - 420, y, 20, 0, 2 * Math.PI, false);
+		context.fillStyle = "#000000";
+		context.fill();
+		
+		context.beginPath();
+		context.moveTo(x-420, y);
+		context.lineTo(x-420, y + 60);
+		context.lineTo(x-450, y + 60);
+		context.lineTo(x-450, y + 100);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		context.beginPath();
+		context.moveTo(x-420, y+40);
+		context.quadraticCurveTo(x - 490, y +50, x-420, y+10);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		
+		//draw man (small)
+		context.beginPath();
+		context.arc(x - 350, y, 20, 0, 2 * Math.PI, false);
+		context.fillStyle = "#000000";
+		context.fill();
+		context.beginPath();
+		
+		context.moveTo(x-350, y);
+		context.lineTo(x-350, y + 60);
+		context.lineTo(x-320, y + 60);
+		context.lineTo(x-320, y + 100);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		context.beginPath();
+		context.moveTo(x-350, y+40);
+		context.quadraticCurveTo(x - 330, y +50, x-320, y+10);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+				
+		context.beginPath();
+		context.arc(x - 610, y, 20, 0, 2 * Math.PI, false);
+		context.fillStyle = "#000000";
+		context.fill();
+		context.beginPath();
+		
+		context.moveTo(x-610, y);
+		context.lineTo(x-610, y + 60);
+		context.lineTo(x-580, y + 60);
+		context.lineTo(x-580, y + 100);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		context.beginPath();
+		context.moveTo(x-610, y+40);
+		context.quadraticCurveTo(x - 590, y +50, x-570, y+10);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		img1.onload = function()
+		{
+			context.drawImage(img1, x-295, y + 8, img1.width/4, img1.height/4);
+		}
+		
+		img2.onload = function()
+		{
+			context.drawImage(img2, x-565, y +10, img2.width/1.75, img2.height/1.75);
+		}
+		
+	}
+	
+	//DrawAvgRespTime: Infographic Element 
+	//Author: Kevin Shreve	
+	function DrawAvgRespTime (c, x, y, w, h, d)
+	{
+		var canvas = document.getElementById(c);
+		var context = canvas.getContext("2d");
+	
+		context.font = "28pt Calibri";
+		context.fillStyle = "#000";
+		context.fillText("Average Response Time", x+105, y-50);
+		context.fillText(" minutes",x+175,y-10);
+		context.font = "bold  28pt Calibri";
+		context.fillText(d,x+105,y-10);
+		DrawClockFace(c,x,y,w,h,d);
+	}
+	
+	//DrawClockDial: Draws the small nub on the side of the watch
+	//Author: Kevin Shreve
+	function DrawClockDial(c,x,y,w,h) {
+		var canvas = document.getElementById(c);
+		var ctx = canvas.getContext("2d");
+		
+		ctx.fillStyle = "C9C9C9";
+		ctx.fillRect(x+85,y-(15/2),10,15);
+		ctx.fillStyle = "#000";
+		ctx.fillRect(x+87,y-5,5,10);
+	}
+	//DrawClockFace: Draws the circles and the tick marks
+	//Author: Kevin Shreve
+	function DrawClockFace(c,x,y,w,h,d) {
+		var canvas = document.getElementById(c);
+		var ctx = canvas.getContext("2d");
+		
+		//context.font = "40pt Calibri";
+		//context.fillStyle = "#000";
+		//context.fillText("In Kevin we Trust", canvas.width/3, 50);
+		
+		DrawCircle(c,x,y,90,"#C9C9C9");
+		DrawCircle(c,x,y,70,"#FFF");
+		DrawCircle(c,x,y,65,"#C9C9C9");
+		DrawCircle(c,x,y,10,"#FFF");
+	
+		ctx.fillStyle = "#000";
+		for(var k=1;k<13;k++) {
+			ctx.save();
+			ctx.translate(x,y);
+			ctx.rotate(2*k*Math.PI/12);
+			ctx.translate(-x,-y);
+			ctx.fillRect(x-5,y-75,10,20);
+			ctx.restore();
+		}	
+		DrawHand(c,x,y,w,h,d);
+	}
+	
+	//DrawHand : Draws the minute and hour hands of the clock
+	//Author: Kevin Shreve	
+	function DrawHand(c,x,y,w,h,d) {
+		var canvas = document.getElementById(c);
+		var ctx = canvas.getContext("2d");
+		
+		var hand = new Image;
+		hand.src = 'images/watcharm.png';
+		hand.onload = function () {
+			ctx.save();
+			ctx.translate(x,y)
+			ctx.rotate( d / 2 *(Math.PI/180));
+			ctx.translate(-x,-y)
+			//hour hand
+			ctx.drawImage(hand,x-(hand.width/2),y-(hand.height/2)-30,50,60);
+			ctx.restore();
+			
+			ctx.save();
+			ctx.translate(x,y);
+			ctx.rotate( d*6*(Math.PI/180));
+			ctx.translate(-x,-y);
+			//minute hand
+			ctx.drawImage(hand,x-(hand.width/2),y-(hand.height/2)-45);	
+			ctx.restore();
+		}	
+	}
+	
+	//DrawCircle: Cirlce with color option
+	//Author: Kevin Shreve
+	function DrawCircle(c,x,y,r,color) {
+		var canvas = document.getElementById(c);
+		var context = canvas.getContext("2d");
+		var centerX = x;
+		var centerY = y;
+		var radius = r; 
+
+		context.beginPath();
+		context.arc(centerX, centerY, r, 0, 2 * Math.PI, false);
+		context.fillStyle = color;
+		context.fill();
+	}
+	
+	function DrawCloseRate(c,x,y,d) {
+		var canvas = document.getElementById(c);
+		var context = canvas.getContext("2d");
+		var lineWidth = 10;
+		
+		DrawMachine(c,x-35,y-5);
+		DrawMachine(c,x+100,y-5);
+		
+		context.font = "32pt Calibri";
+		context.fillStyle = "#000000";
+		context.fillText("Close Rate", x-70, y-230);
+		
+		
+		context.font = "24pt Calibri";
+		context.fillStyle = "#000000";
+		context.fillText(d + "%", x-17, y-150);
+		
+		//draw door
+		context.save();
+		context.beginPath();
+		context.fillStyle="#000000";
+		context.beginPath();
+		context.rect(x-180, y-175, 80, 170);
+		context.fill();
+		
+		context.beginPath();
+		context.arc(x-115, y-80, 5, 0, 2 * Math.PI, false);
+		context.fillStyle = "#ffffff";
+		context.fill();
+		context.restore();
+		
+				
+		//draw walk man
+		context.beginPath();
+		context.arc(x-50, y-140, 20, 0, 2 * Math.PI, false);
+		context.fillStyle = "#000000";
+		context.fill();
+		context.beginPath();
+		
+		context.moveTo(x-50, y - 140);
+		context.lineTo(x-50, y - 80);
+		context.lineTo(x-70, y - 40);
+		context.lineTo(x-75, y - 10);
+		context.moveTo(x-50, y - 80);
+		context.lineTo(x-45, y - 40);
+		context.lineTo(x-30, y - 10);
+		context.moveTo(x-50, y - 110);
+		context.lineTo(x-60, y - 90);
+		context.lineTo(x-75, y - 70);
+		context.moveTo(x-50, y - 110);
+		context.lineTo(x-30, y - 80);
+		context.lineTo(x-25, y - 70);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		//draw stand man
+		context.beginPath();
+		context.arc(x+150, y-150, 20, 0, 2 * Math.PI, false);
+		context.fillStyle = "#000000";
+		context.fill();
+		context.beginPath();
+		
+		context.moveTo(x+150, y - 150);
+		context.lineTo(x+150, y - 80);
+		context.lineTo(x+155, y - 40);
+		context.lineTo(x+160, y - 10);
+		context.moveTo(x+150, y - 80);
+		context.lineTo(x+145, y - 40);
+		context.lineTo(x+140, y - 10);
+		context.moveTo(x+150, y - 120);
+		context.quadraticCurveTo(x +190, y -100, x+150, y-80);
+		context.moveTo(x+150, y - 120);
+		context.quadraticCurveTo(x +110, y -100, x+120, y-80);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+	}
+	
+	function DrawMachine(c,x,y) {
+		var canvas = document.getElementById(c);
+		var context = canvas.getContext("2d");
+		var lineWidth = 3;
+		
+		context.save();
+		
+		//draw machine
+		context.beginPath();
+		context.fillStyle="#383838";
+		context.beginPath();
+		context.rect(x, y, 100, -200);
+		context.fill();
+		
+		context.beginPath();
+		context.fillStyle="#ffffff";
+		context.beginPath();
+		context.rect(x+10, y-130, 80, -60);
+		context.fill();
+
+		context.beginPath();
+		context.moveTo(x+5, y -125);
+		context.lineTo(x+95, y -125);
+		context.lineTo(x+95, y -195);
+		context.lineTo(x+5, y -195);
+		context.lineTo(x+5, y -125);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#C0C0C0";
+		context.stroke();
+		
+		context.beginPath();
+		context.fillStyle="#ffffff";
+		context.beginPath();
+		context.rect(x+10, y-60, 60, -50);
+		context.fill();
+		
+		context.beginPath();
+		context.moveTo(x+5, y -55);
+		context.lineTo(x+75, y -55);
+		context.lineTo(x+75, y -115);
+		context.lineTo(x+5, y -115);
+		context.lineTo(x+5, y -55);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#C0C0C0";
+		context.stroke();
+		context.restore();
+		
+		context.beginPath();
+		context.fillStyle="#383838";
+		context.beginPath();
+		context.rect(x+12, y-62, 16, -15);
+		context.rect(x+31, y-62, 16, -15);
+		context.rect(x+50, y-62, 16, -15);
+		context.rect(x+12, y-78, 16, -15);
+		context.rect(x+31, y-78, 16, -15);
+		context.rect(x+50, y-78, 16, -15);
+		context.rect(x+12, y-94, 16, -15);
+		context.rect(x+31, y-94, 16, -15);
+		context.rect(x+50, y-94, 16, -15);
+		context.fill();
+		
+		context.font = "12pt Calibri";
+		context.fillStyle = "#ffffff";
+		context.fillText("1", x+15, y-97);
+		context.fillText("2", x+34, y-97);
+		context.fillText("3", x+53, y-97);
+		context.fillText("4", x+15, y-80);
+		context.fillText("5", x+34, y-80);
+		context.fillText("6", x+53, y-80);
+		context.fillText("7", x+15, y-65);
+		context.fillText("8", x+34, y-65);
+		context.fillText("9", x+53, y-65);
+		
+		context.beginPath();
+		context.fillStyle="#ffffff";
+		context.beginPath();
+		context.rect(x+83, y-70, 10, -40);
+		context.fill();
+		
+		context.beginPath();
+		context.fillStyle="#C0C0C0";
+		context.beginPath();
+		context.rect(x+85, y-72, 6, -36);
+		context.fill();
+		
+		context.beginPath();
+		context.fillStyle="#ffffff";
+		context.beginPath();
+		context.rect(x+20, y-25, 50, -20);
+		context.fill();
+		
+		context.beginPath();
+		context.fillStyle="#383838";
+		context.beginPath();
+		context.rect(x+22, y-27, 46, -16);
+		context.fill();
+		
+		context.restore();
+	}
+
+	function DrawProspectCount(c,x,y,d) {
+		var canvas = document.getElementById(c);
+		var context = canvas.getContext("2d");
+		var lineWidth = 10;
+		
+		//draw tables
+		context.beginPath();
+		context.fillStyle="#000000";
+		context.beginPath();
+		context.rect(x+20, y , 130, -60);
+		context.fill();
+
+		context.beginPath();
+		context.moveTo(x, y-65);
+		context.lineTo(x+170, y-65);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		//
+		context.beginPath();
+		context.arc(x+130, y-80, 25, Math.PI,  2* Math.PI, false);
+		context.rect(x+105, y-70 , 50, -10);
+		context.fillStyle = "#000000";
+		context.fill();
+		
+		
+		context.beginPath();
+		context.moveTo(x+100, y-113);
+		context.lineTo(x+160, y-113);
+		context.lineTo(x+150, y-140);
+		context.lineTo(x+110, y-140);
+		context.lineTo(x+100, y-113);
+		context.lineWidth = lineWidth;
+		context.lineCap = "square";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		context.fillStyle = "#000000";
+		context.fill();
+		
+		
+		//draw sit man
+		context.beginPath();
+		context.arc(x+50, y-120, 20, 0, 2 * Math.PI, false);
+		context.fillStyle = "#000000";
+		context.fill();
+		context.beginPath();
+		
+		context.moveTo(x+50, y - 120);
+		context.lineTo(x+40, y - 70);
+		context.moveTo(x+48, y - 90);
+		context.quadraticCurveTo(x +90, y -45, x+50, y-110);
+		context.moveTo(x+48, y - 90);
+		context.quadraticCurveTo(x +30, y -85, x+10, y-110);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		//draw stand man
+		context.beginPath();
+		context.arc(x-45, y-140, 20, 0, 2 * Math.PI, false);
+		context.fillStyle = "#000000";
+		context.fill();
+		context.beginPath();
+		
+		context.moveTo(x-45, y - 150);
+		context.lineTo(x-45, y - 5);
+		context.moveTo(x-45, y - 70);
+		context.quadraticCurveTo(x -60, y -25, x-70, y-10);
+		context.moveTo(x-45, y - 110);
+		context.quadraticCurveTo(x -30, y -45, x-10, y-110);
+		context.moveTo(x-45, y - 110);
+		context.lineTo(x-70, y - 70);
+		context.lineWidth = lineWidth;
+		context.lineCap = "round";
+		context.strokeStyle = "#000000";
+		context.stroke();
+		
+		context.font = "32pt Calibri";
+		context.fillStyle = "#ffffff";
+		context.fillText(d, x+40, y-20);
+		
+		context.font = "32pt Calibri";
+		context.fillStyle = "#000000";
+		context.fillText("Prospect Count", x-100, y-230);
+		
+		
+	}
+	
+	function DrawUnopenedLead(c,x,y,d) {
+		var canvas = document.getElementById(c);
+		var context = canvas.getContext("2d");
+		img_unopened = new Image();
+		img_unopened.src = 'images/lead_open-envelope.png';
+		
+		
+		img_unopened.onload = function()
+		{
+			context.drawImage(img_unopened, x, y , img_unopened.width, img_unopened.height);
+		}	
+	}
