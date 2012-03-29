@@ -640,7 +640,6 @@ function DrawCompetitiveSegmentSale(c,x,y,w,h,Comp_Seg_Sale_data) {
 
     Comp_Seg_Sale_data.sort(function(a, b){return (parseInt(b[0]) - parseInt(a[0]));});
 
-
     var textWidth = 160;
     var lineSpacing = 5;
     var img03 = new Image();
