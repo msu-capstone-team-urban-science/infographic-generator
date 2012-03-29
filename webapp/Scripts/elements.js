@@ -1050,6 +1050,7 @@ function DrawUniqueCustomers(c,x,y)
 	{
 		var canvas = document.getElementById(c);
 		var context = canvas.getContext("2d");
+		context.save();
 		img = new Image();
 		img.src = 'images/response.png';
 		context.fillStyle = "#8ED6FF";
@@ -1128,7 +1129,7 @@ function DrawUniqueCustomers(c,x,y)
 		{
 			context.drawImage(img, x, y, img.width/4.29, img.height/4.29);
 		}
-
+		context.restore();
 		
 	}
 	
@@ -1136,6 +1137,7 @@ function DrawUniqueCustomers(c,x,y)
 	{
 		var canvas = document.getElementById(c);
 		var context = canvas.getContext("2d");
+		context.save();
 		var lineWidth = 7;
 		img1 = new Image();
 		img1.src = 'images/lead_usedcar.png';
@@ -1192,9 +1194,8 @@ function DrawUniqueCustomers(c,x,y)
 		context.stroke();
 		
 		//draw door
-		context.save();
 		context.beginPath();
-		context.fillStyle="#black";
+		context.fillStyle="#000000";
 		context.beginPath();
 		context.rect(x, y-60, 80, 170);
 		context.fill();
@@ -1203,12 +1204,9 @@ function DrawUniqueCustomers(c,x,y)
 		context.arc(x+15, y+20, 5, 0, 2 * Math.PI, false);
 		context.fillStyle = "#ffffff";
 		context.fill();
-		context.restore();
-		
 		
 		//draw whiteboard
 		context.beginPath();
-		context.save()
 		context.moveTo(x-410, y - 50);
 		context.lineTo(x-130, y - 50);
 		context.lineTo(x-130, y - 130);
@@ -1222,7 +1220,7 @@ function DrawUniqueCustomers(c,x,y)
 		context.stroke();
 		context.fillStyle = "#ffffff";
 		context.fill();
-		context.restore();
+
 		
 		
 		//draw marker
@@ -1237,7 +1235,7 @@ function DrawUniqueCustomers(c,x,y)
 		
 		//draw tables
 		context.beginPath();
-		context.fillStyle="#black";
+		context.fillStyle="#000000";
 		context.beginPath();
 		context.rect(x-300, y + 110, 100, -60);
 		context.fill();
@@ -1251,7 +1249,7 @@ function DrawUniqueCustomers(c,x,y)
 		context.stroke();
 		
 		
-		context.fillStyle="#black";
+		context.fillStyle="#000000";
 		context.beginPath();
 		context.rect(x-570, y + 110, 100, -60);
 		context.fill();
@@ -1436,13 +1434,14 @@ function DrawUniqueCustomers(c,x,y)
 		{
 			context.drawImage(img2, x-565, y +10, img2.width/1.75, img2.height/1.75);
 		}
-		
+		context.restore();
 	}
 	
 	//DrawAvgRespTime: Infographic Element 
 	//Author: Kevin Shreve	
 	function DrawAvgRespTime (c, x, y, w, h, d)
 	{
+		context.save();
 		var canvas = document.getElementById(c);
 		var context = canvas.getContext("2d");
 	
@@ -1453,6 +1452,7 @@ function DrawUniqueCustomers(c,x,y)
 		context.font = "bold  28pt Calibri";
 		context.fillText(d,x+105,y-10);
 		DrawClockFace(c,x,y,w,h,d);
+		context.restore();
 	}
 	
 	//DrawClockDial: Draws the small nub on the side of the watch
@@ -1539,7 +1539,7 @@ function DrawUniqueCustomers(c,x,y)
 		var canvas = document.getElementById(c);
 		var context = canvas.getContext("2d");
 		var lineWidth = 10;
-		
+		context.save();
 		DrawMachine(c,x-35,y-5);
 		DrawMachine(c,x+100,y-5);
 		
@@ -1614,7 +1614,7 @@ function DrawUniqueCustomers(c,x,y)
 		context.lineCap = "round";
 		context.strokeStyle = "#000000";
 		context.stroke();
-		
+		context.restore();
 	}
 	
 	function DrawMachine(c,x,y) {
@@ -1723,7 +1723,7 @@ function DrawUniqueCustomers(c,x,y)
 		var canvas = document.getElementById(c);
 		var context = canvas.getContext("2d");
 		var lineWidth = 10;
-		
+		context.save();
 		//draw tables
 		context.beginPath();
 		context.fillStyle="#000000";
@@ -1806,20 +1806,53 @@ function DrawUniqueCustomers(c,x,y)
 		context.font = "32pt Calibri";
 		context.fillStyle = "#000000";
 		context.fillText("Prospect Count", x-100, y-230);
-		
-		
+
+		context.restore();
 	}
 	
 	function DrawUnopenedLead(c,x,y,d) {
 		var canvas = document.getElementById(c);
 		var context = canvas.getContext("2d");
+		context.save();
+
 		img_unopened = new Image();
 		img_scissor = new Image();
 		img_logo1 = new Image();
 		img_logo2 = new Image();
 		img_logo3 = new Image();
 		img_logo4 = new Image();
-		img_hand = new Image();
+		img_hand = new Image();		
+		
+		img_unopened.onload = function()
+		{
+			context.drawImage(img_unopened, x, y , img_unopened.width/1.7, img_unopened.height/1.7);
+		}
+		img_scissor.onload = function()
+		{
+			context.drawImage(img_scissor, x+130, y-50, img_scissor.width/1.7, img_scissor.height/1.7);
+		}
+		img_logo1.onload = function()
+		{
+			context.drawImage(img_logo1, x+210, y+170, img_logo1.width/1.7, img_logo1.height/1.7);
+		}
+		img_logo2.onload = function()
+		{	
+			context.drawImage(img_logo2, x+110, y+110, img_logo2.width/2, img_logo2.height/2);
+		}
+		img_logo3.onload = function()
+		{
+			context.drawImage(img_logo3, x+40, y+180, img_logo3.width/5, img_logo3.height/5);
+		}
+		img_logo4.onload = function()
+		{
+			context.drawImage(img_logo4, x+120, y+220, img_logo4.width/1.7, img_logo4.height/1.7);
+		}
+		img_hand.onload = function()
+		{
+			context.drawImage(img_hand, x+240, y-110, img_hand.width/2.7, img_hand.height/2.7);
+		}
+
+		
 		img_unopened.src = 'images/lead_open-envelope.png';
 		img_scissor.src = 'images/lead_scissor.png';
 		img_logo1.src = 'images/lead_dealix.png';
@@ -1827,38 +1860,10 @@ function DrawUniqueCustomers(c,x,y)
 		img_logo3.src = 'images/lead_kelley.png';
 		img_logo4.src = 'images/lead_edmunds.png';
 		img_hand.src = 'images/lead_hand.png';
-		
-		
-		img_unopened.onload = function()
-		{
-			context.drawImage(img_unopened, x, y , img_unopened.width/1.7, img_unopened.height/1.7);
-			img_scissor.onload = function()
-			{
-				context.drawImage(img_scissor, x+130, y-50, img_scissor.width/1.7, img_scissor.height/1.7);
-				img_logo1.onload = function()
-				{
-					context.drawImage(img_logo1, x+210, y+170, img_logo1.width/1.7, img_logo1.height/1.7);
-					img_logo2.onload = function()
-					{	
-						context.drawImage(img_logo2, x+110, y+110, img_logo2.width/2, img_logo2.height/2);
-						img_logo3.onload = function()
-						{
-							context.drawImage(img_logo3, x+40, y+180, img_logo3.width/5, img_logo3.height/5);
-							img_logo4.onload = function()
-							{
-								context.drawImage(img_logo4, x+120, y+220, img_logo4.width/1.7, img_logo4.height/1.7);
-								img_hand.onload = function()
-								{
-									context.drawImage(img_hand, x+240, y-110, img_hand.width/2.7, img_hand.height/2.7);
-								}
-							}
-						}
-					}
-				}
-			}
-		}	
 		context.font = "32pt Calibri";
 		context.fillStyle = "#000000";
 		context.fillText("Unopened Leads", x+430, y+130);
-		context.fillTest(d, x+480, y+160);
+		context.fillText(d, x+540, y+180);
+
+		context.restore();
 	}
