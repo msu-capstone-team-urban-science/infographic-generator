@@ -52,16 +52,16 @@
 		});	
 		
 		$('#myCanvas').bind("touchstart click", function(event){
-		//	Testing for area of Retail Sale
+		//	debug for area
 		/*
 			var canvas = document.getElementById("myCanvas");
 			var context = canvas.getContext("2d");
 				context.strokeStyle ="red";
 				context.beginPath();
 				//canvas.width/2 + 202, 130+207
-				context.moveTo(canvas.width/2+202,103);
-				context.lineTo(canvas.width/2+202,123+132);
-				context.lineTo(canvas.width/2+202+192,123+132);
+				context.moveTo(100,1300);
+				context.lineTo(100,1500);
+				context.lineTo(900,1500);
 				context.stroke();
 		*/
 		//event.preventDefault();
@@ -77,6 +77,12 @@
 			if(event.pageX>trendArray[i][1] && event.pageX<(trendArray[i][1]+trendArray[i][3]) && event.pageY>trendArray[i][2] && event.pageY <(trendArray[i][2]+trendArray[i][4]))
 			{
 				event.preventDefault();
+				if(trendArray[i][0]=="Competitive Segment Sale"){
+						document.getElementById('dialog-box').style.cssText = "margin-top: 900px";
+				}
+				else{
+					document.getElementById('dialog-box').style.cssText = "margin-top: -150px";
+				}
 				popup('<table border="0" width="100%">'+
 							'<tr>'+
 							'<td><canvas id="trendGraph" height="270" width="600"></canvas></td>'+
@@ -86,8 +92,8 @@
 							'</tr>'+
 							'</table>');
 				if(trendArray[i][0]!="Pump In Sale"){
-
 					drawTrend(trendArray[i][5]);
+					
 				}
 				else{
 					var sortName=new Array();
@@ -97,6 +103,7 @@
 						drawLineGraph("trendGraph",sortName[j],trendArray[i][5][j][0],trendArray[i][5][j][1], j);
 					}
 				}
+				
 				//draw x, y axis
 				var canvas = document.getElementById("trendGraph");
 				var context = canvas.getContext("2d");

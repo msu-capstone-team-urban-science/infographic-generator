@@ -249,7 +249,9 @@ function DrawCanvasPart3(c,date)
     kpiData.push([GetKPI(date,"Competitive_Segment_Sale_Peter_Lake_Ford"), "Peter Lake Ford"]);
     DrawCompetitiveSegmentSale(c,100,1300,800,200,kpiData);
     DrawPlaid(c,0,1747,canvas.width,400,0);
-
+	var offset=100;
+	//lok
+	trendArray.push(['Competitive Segment Sale', 100, 1300+offset, 800, 200,GetTrendKPI(date, 'Competitive_Segment_Sale_Anytown_Automotive'),'<p>The amount of money spent by purchasing leads for each vehicle sold</p>']);
     context.save();
     context.font = "bold 19pt Calibri";
 	context.fillStyle = "#ffffff";
