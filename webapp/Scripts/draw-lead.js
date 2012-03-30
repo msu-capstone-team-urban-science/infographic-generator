@@ -73,16 +73,16 @@ function DrawLead4(c,date) {
 	DrawAvgRespTime ("myCanvas", 130, 685, 5, 5, kpiAve);
 	DrawSales("myCanvas", 690, 860, kpiLost, kpiNew, kpiOld);		
 	DrawUnopenedLead("myCanvas",30,1100,kpiUnopened, kpiNewBrand);
-	Draw3PL("myCanvas",375,1170,450,300,kpiNew3PL);
-	DrawCloseRate("myCanvas", 214, 2050, kpiClose);		
-	DrawProspectCount("myCanvas", 590, 2050, kpiProspect);
+	Draw3PL("myCanvas",375,1170,400,300,kpiNew3PL);
+	DrawCloseRate("myCanvas", 214, 1755, kpiClose);		
+	DrawProspectCount("myCanvas", 590, 1750, kpiProspect);
 	//section
 
 	context.beginPath();
 	context.moveTo(33 , 310);
 	context.lineTo(770 , 310);
-	context.lineTo(770 , 1280);
-	context.lineTo(33 , 1280);
+	context.lineTo(770 , 1750);
+	context.lineTo(33 , 1750);
 	context.lineTo(33 , 310);
 	context.lineWidth = 2;
 	context.lineCap = "square";
