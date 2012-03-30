@@ -18,6 +18,23 @@
 			LoadJSON();
 			DrawLead("myCanvas",initDate());
 		};
+		
+		var checkEle = function () {
+			var p = $('#ele');
+			var header = $('#header');
+			var offset = p.offset();
+			var headoff = header.offset();
+			//alert(offset.top);
+			if (offset.top > 1070){
+				$('#ele').offset({top:1070});
+			} else if (p.offset().top < 1000) {
+				$('#ele').offset({top:header.offset().top+78});
+			} else if (p.offset().top < 1070) {
+				$('#ele').offset({top:p.offset().top});
+			} 
+			
+		};
+		setInterval(checkEle, 400);
         </script>
     </head>
 	<body>
