@@ -1815,6 +1815,7 @@ function DrawUniqueCustomers(c,x,y)
 		var canvas = document.getElementById(c);
 		var context = canvas.getContext("2d");
 		context.save();
+		
 
 		img_unopened = new Image();
 		img_scissor = new Image();
@@ -1860,10 +1861,11 @@ function DrawUniqueCustomers(c,x,y)
 		img_logo3.src = 'images/lead_kelley.png';
 		img_logo4.src = 'images/lead_edmunds.png';
 		img_hand.src = 'images/lead_hand.png';
+		context.beginPath();
+		context.fillStyle = "#ffffff";
 		context.font = "24pt Calibri";
 		context.fillText("The Number of Lead", x+400, y-50);
 		context.font = "28pt Calibri";
-		context.fillStyle = "#000000";
 		context.fillText("Unopened", x+400, y-10);
 		context.fillText(d, x+640, y-10);
 		context.fillText("New Brand", x+400, y+30);
@@ -1886,7 +1888,7 @@ function DrawUniqueCustomers(c,x,y)
 		var max = 0; //Innitialise maximum bar height to zero
 		var len=0; //Innitialise no of bars to zero
 		var c1 = "#7FFF24";
-		var c2 = "#000000";
+		var c2 = "#ffffff";
 		sum = 0;
 		for(key in myArray)
 		{
@@ -1954,7 +1956,7 @@ function DrawUniqueCustomers(c,x,y)
 		for(key in myArray)
 		{
 			cxt.fillStyle=c2;
-			cxt.fillText(key, (border+10)+x, (border*2)+(bar_h*n)+(bar_h/1.8)+y,txtArea-15);
+			cxt.fillText(key, (border+10)+x-25, (border*2)+(bar_h*n)+(bar_h/1.8)+y,txtArea-15);
 			cxt.fillText(myArray[key],  (border+10+txtArea)+x, 
 							(border*2)+(bar_h*n)+(bar_h/1.8)+y,full);
 			n++;
@@ -1962,7 +1964,7 @@ function DrawUniqueCustomers(c,x,y)
 		cxt.restore();
 
 		cxt.fillStyle = c2;
-		cxt.font = '32px sans-serif';
+		cxt.font = '28pt Calibri';
 		cxt.fillText("New 3PL Lead", (border*1.5)+x+50,y, w);
 
 }

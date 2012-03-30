@@ -39,6 +39,30 @@ function DrawLead3(c,date) {
 function DrawLead4(c,date) { 
 	var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
+	var sep2 = new Image();
+	
+	sep2.onload = function () { 
+		context.drawImage(sep2,0,620);
+		DrawLead5(c,date);
+	}
+	sep2.src = 'images/lead_sep.png';
+}
+
+function DrawLead5(c,date) { 
+	var canvas = document.getElementById(c);
+    var context = canvas.getContext("2d");
+	var sep2 = new Image();
+	
+	sep2.onload = function () { 
+		context.drawImage(sep2,29,1007,745,439);
+		DrawLead6(c,date);
+	}
+	sep2.src = 'images/lead_background2.jpg';
+}
+
+function DrawLead6(c,date) { 
+	var canvas = document.getElementById(c);
+    var context = canvas.getContext("2d");
 	var kpiUnique = GetKPI(date,"Unique_Customers");
 	var kpiMail = GetKPI(date,"Response_Method_Email");
 	var kpiPhone = GetKPI(date,"Response_Method_Phone");
@@ -88,6 +112,11 @@ function DrawLead4(c,date) {
 	context.lineCap = "square";
 	context.strokeStyle = "#000000";
 	context.stroke();
+	
+
+	
+
+	
 
 			
 	//Text
