@@ -97,7 +97,7 @@ function DrawLead6(c,date) {
 	DrawAvgRespTime ("myCanvas", 130, 685, 5, 5, kpiAve);
 	DrawSales("myCanvas", 690, 860, kpiLost, kpiNew, kpiOld);		
 	DrawUnopenedLead("myCanvas",30,1100,kpiUnopened, kpiNewBrand);
-	Draw3PL("myCanvas",375,1170,400,300,kpiNew3PL);
+	Draw3PL("myCanvas",380,1170,380,300,kpiNew3PL);
 	DrawCloseRate("myCanvas", 214, 1755, kpiClose);		
 	DrawProspectCount("myCanvas", 590, 1750, kpiProspect);
 	//section
