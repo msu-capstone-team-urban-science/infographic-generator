@@ -101,7 +101,8 @@ function DrawLead6(c,date) {
 	DrawCloseRate("myCanvas", 214, 1755, kpiClose);		
 	DrawProspectCount("myCanvas", 590, 1750, kpiProspect);
 	//section
-
+	
+	context.save();
 	context.beginPath();
 	context.moveTo(33 , 310);
 	context.lineTo(770 , 310);
@@ -112,26 +113,33 @@ function DrawLead6(c,date) {
 	context.lineCap = "square";
 	context.strokeStyle = "#000000";
 	context.stroke();
+<<<<<<< HEAD
 	
 
 	
 
 	
+=======
+	context.restore();
+>>>>>>> e212c557b061789a61a58e79efe87df43d47a2ff
 
 			
 	//Text
 
 	//Unique Customers
+	context.save();
 	context.font = "40pt Calibri";
 	context.fillStyle = "#000000";
 	context.font = "30pt Calibri";
 	context.fillText("Unique Customers", 430, 180);
 	context.font = "60pt Calibri";
 	context.fillText(kpiUnique,510,250);
+	context.restore();
 
 	//Response Method
 	var x = 7;
 	var y = -240;
+	context.save();
 	context.font = "40pt Calibri";
 	context.fillStyle = "#000000";
 	context.font = "30pt Calibri";
@@ -139,7 +147,9 @@ function DrawLead6(c,date) {
 	context.fillText("Mail",x + 30, y + 620);
 	context.font = "60pt Calibri";
 	context.fillText(kpiMail,x + 110, y+ 650);
+	context.restore();
 
+	context.save();
 	context.font = "40pt Calibri";
 	context.fillStyle = "#000000";
 	context.font = "30pt Calibri";
@@ -147,6 +157,7 @@ function DrawLead6(c,date) {
 	context.fillText("Phone", x + 650, y + 620);
 	context.font = "60pt Calibri";
 	context.fillText(kpiPhone,x + 480, y + 650);
+	context.restore();
 
 	//sales
 	
@@ -154,12 +165,15 @@ function DrawLead6(c,date) {
 	var y = 960;
 	
 	//
+	context.save();
 	context.fillStyle = "#ffffff";
 	context.font = "45pt Calibri";
 	context.fillText(kpiNew, x + 30,y );
 	context.fillText(kpiOld, x + 300,y );
 	context.fillText(kpiLost, x + 590,y );
+	context.restore();
 	
+	context.save();
 	context.fillStyle = "#000000";
 	context.font = "28pt Calibri";
 	context.fillText("Sales from Lead", x + 190,y -180);
@@ -167,4 +181,5 @@ function DrawLead6(c,date) {
 	context.fillText("Used", x + 295,y -100);
 	context.fillStyle = "#ffffff";
 	context.fillText("Lost", x + 590,y -100);
+	context.restore();
 }
