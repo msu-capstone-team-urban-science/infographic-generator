@@ -51,13 +51,13 @@ function DrawLead4(c,date) {
 function DrawLead5(c,date) { 
 	var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
-	var sep2 = new Image();
+	var back2 = new Image();
 	
-	sep2.onload = function () { 
-		context.drawImage(sep2,29,1007,745,439);
+	back2.onload = function () { 
+		context.drawImage(back2,29,1007,745,439);
 		DrawLead6(c,date);
 	}
-	sep2.src = 'images/lead_background2.jpg';
+	back2.src = 'images/lead_background2.jpg';
 }
 
 function DrawLead6(c,date) { 
@@ -113,15 +113,9 @@ function DrawLead6(c,date) {
 	context.lineCap = "square";
 	context.strokeStyle = "#000000";
 	context.stroke();
-<<<<<<< HEAD
-	
 
-	
-
-	
-=======
 	context.restore();
->>>>>>> e212c557b061789a61a58e79efe87df43d47a2ff
+
 
 			
 	//Text

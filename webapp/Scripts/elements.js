@@ -1945,7 +1945,6 @@ function DrawUniqueCustomers(c,x,y)
 			n++;
 		}
 		cxt.restore();
-		
 		cxt.save();
 		cxt.font = 'bold 14px sans-serif';
 		cxt.shadowOffsetX = 1;
