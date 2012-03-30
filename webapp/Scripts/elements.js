@@ -1955,7 +1955,7 @@ function DrawUniqueCustomers(c,x,y)
 		for(key in myArray)
 		{
 			cxt.fillStyle=c2;
-			cxt.fillText(key, (border+10)+x-25, (border*2)+(bar_h*n)+(bar_h/1.8)+y,txtArea-15);
+			cxt.fillText(key, (border+10)+x-35, (border*2)+(bar_h*n)+(bar_h/1.8)+y,txtArea-15);
 			cxt.fillText(myArray[key],  (border+10+txtArea)+x, 
 							(border*2)+(bar_h*n)+(bar_h/1.8)+y,full);
 			n++;
