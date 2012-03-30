@@ -2,7 +2,7 @@ function DrawLead(c,date)
 {
 	var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
-	
+	context.save();
 	var background = new Image();
 	
 	background.onload = function () { 
@@ -10,11 +10,13 @@ function DrawLead(c,date)
 		DrawLead2(c,date);
 	}
 	background.src = 'images/lead_back.png';
+	context.restore();
 }
 
 function DrawLead2(c,date) {
 	var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
+	context.save();
 	var stone = new Image();
 	
 	stone.onload = function () { 
@@ -22,11 +24,13 @@ function DrawLead2(c,date) {
 		DrawLead3(c,date);
 	}
 	stone.src = 'images/lead_stone.jpg';
+	context.restore();
 }
 
 function DrawLead3(c,date) { 
 	var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
+	context.save();
 	var sep = new Image();
 	
 	sep.onload = function () { 
@@ -34,11 +38,13 @@ function DrawLead3(c,date) {
 		DrawLead4(c,date);
 	}
 	sep.src = 'images/lead_sep.png';
+	context.restore();
 }
 
 function DrawLead4(c,date) { 
 	var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
+	context.save();
 	var sep2 = new Image();
 	
 	sep2.onload = function () { 
@@ -46,11 +52,13 @@ function DrawLead4(c,date) {
 		DrawLead5(c,date);
 	}
 	sep2.src = 'images/lead_sep.png';
+	context.restore();
 }
 
 function DrawLead5(c,date) { 
 	var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
+	context.save();
 	var back2 = new Image();
 	
 	back2.onload = function () { 
@@ -58,6 +66,7 @@ function DrawLead5(c,date) {
 		DrawLead6(c,date);
 	}
 	back2.src = 'images/lead_background2.jpg';
+	context.restore();
 }
 
 function DrawLead6(c,date) { 
@@ -97,7 +106,7 @@ function DrawLead6(c,date) {
 	DrawAvgRespTime ("myCanvas", 130, 685, 5, 5, kpiAve);
 	DrawSales("myCanvas", 690, 860, kpiLost, kpiNew, kpiOld);		
 	DrawUnopenedLead("myCanvas",30,1100,kpiUnopened, kpiNewBrand);
-	Draw3PL("myCanvas",380,1170,380,300,kpiNew3PL);
+	Draw3PL("myCanvas",385,1170,380,300,kpiNew3PL);
 	DrawCloseRate("myCanvas", 214, 1755, kpiClose);		
 	DrawProspectCount("myCanvas", 590, 1750, kpiProspect);
 	//section
