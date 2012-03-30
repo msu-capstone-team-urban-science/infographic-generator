@@ -1964,6 +1964,6 @@ function DrawUniqueCustomers(c,x,y)
 
 		cxt.fillStyle = c2;
 		cxt.font = '28pt Calibri';
-		cxt.fillText("New 3PL Lead", (border*1.5)+x+50,y, w);
+		cxt.fillText("New 3PL Lead", (border*1.5)+x+40,y, w);
 
 }
