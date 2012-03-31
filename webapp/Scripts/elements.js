@@ -1484,7 +1484,7 @@ function DrawCloseRate(c,x,y,d) {
 	
 	context.font = "24pt Calibri";
 	context.fillStyle = "#000000";
-	context.fillText(d + "%", x-17, y-150);
+	context.fillText(d, x-19, y-150);
 	
 	//draw door
 	context.save();
