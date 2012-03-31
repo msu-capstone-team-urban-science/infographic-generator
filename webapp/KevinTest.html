@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Drawing a watch</title>
+	<script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
+    <script type="text/javascript">
+		function DrawAvgRespTime (c, x, y, w, h, d)
+        {
+			var canvas = document.getElementById(c);
+            var context = canvas.getContext("2d");
+		
+			context.font = "bold 28pt Calibri";
+            context.fillStyle = "#000";
+            context.fillText("Average Response Time", x-120, y-100);
+			context.fillText(d[1] + " minutes",x+95,y-45);
+			DrawWatchDial(c,x,y,w,h);
+			DrawWatchFace(c,x,y,w,h,d);
+		}
+		
+		function DrawWatchDial(c,x,y,w,h) {
+			var canvas = document.getElementById(c);
+            var ctx = canvas.getContext("2d");
+			
+			ctx.fillStyle = "C9C9C9";
+			ctx.fillRect(x+85,y-(15/2),10,15);
+			ctx.fillStyle = "#000";
+			ctx.fillRect(x+87,y-5,5,10);
+		}
+		
+		function DrawWatchFace(c,x,y,w,h,d) {
+			var canvas = document.getElementById(c);
+            var ctx = canvas.getContext("2d");
+			
+			//context.font = "40pt Calibri";
+            //context.fillStyle = "#000";
+            //context.fillText("In Kevin we Trust", canvas.width/3, 50);
+			
+			DrawCircle(c,x,y,90,"#C9C9C9");
+			DrawCircle(c,x,y,70,"#FFF");
+			DrawCircle(c,x,y,65,"#C9C9C9");
+			DrawCircle(c,x,y,10,"#FFF");
+		
+			ctx.fillStyle = "#000";
+			for(var k=1;k<13;k++) {
+				ctx.save();
+				ctx.translate(x,y);
+				ctx.rotate(2*k*Math.PI/12);
+				ctx.translate(-x,-y);
+				ctx.fillRect(x-5,y-75,10,20);
+				ctx.restore();
+			}	
+			DrawHand(c,x,y,w,h,d);
+		}
+		
+		function DrawHand(c,x,y,w,h,d) {
+			var canvas = document.getElementById(c);
+            var ctx = canvas.getContext("2d");
+			
+			var hand=new Image;
+			hand.src = 'images/watcharm.png';
+			hand.onload = function () {
+				ctx.save();
+				ctx.translate(x,y)
+				ctx.rotate( d[1] / 2 *(Math.PI/180));
+				ctx.translate(-x,-y)
+				//hour hand
+				ctx.drawImage(hand,x-(hand.width/2),y-(hand.height/2)-30,50,60);
+				ctx.restore();
+				
+				ctx.save();
+				ctx.translate(x,y);
+				ctx.rotate( d[1]*6*(Math.PI/180));
+				ctx.translate(-x,-y);
+				//minute hand
+				ctx.drawImage(hand,x-(hand.width/2),y-(hand.height/2)-45);	
+				ctx.restore();
+			}	
+		}
+		
+		function DrawCircle(c,x,y,r,color) {
+			var canvas = document.getElementById(c);
+            var context = canvas.getContext("2d");
+			var centerX = x;
+            var centerY = y;
+            var radius = r; 
+
+			context.beginPath();
+			context.arc(centerX, centerY, r, 0, 2 * Math.PI, false);
+			context.fillStyle = color;
+			context.fill();
+		}
+		
+		window.onload = function(){
+			var canvas = document.getElementById("myCanvas");
+            var context = canvas.getContext("2d");
+			var date = new Date;
+			//Drawing Average response time
+			DrawAvgRespTime("myCanvas", canvas.width/5, 150, canvas.width, canvas.height, [date,200]);//GetKPI(date,"Avg_Response_Time")]);
+			
+		}
+	</script>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="1300" height="1500"></canvas>
+  </body>
+  
+</html>
