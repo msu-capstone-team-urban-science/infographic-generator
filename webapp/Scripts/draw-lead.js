@@ -71,7 +71,7 @@ function DrawLead5(c,date) {
 		DrawLead6(c,date);
 	}
 	back2.src = 'images/lead_background2.jpg';
-	back3.src = 'images/lead_background3.jpg';
+	back3.src = 'images/lead_background3.jpeg';
 	context.restore();
 }
 
