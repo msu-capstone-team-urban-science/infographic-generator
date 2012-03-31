@@ -60,12 +60,17 @@ function DrawLead5(c,date) {
     var context = canvas.getContext("2d");
 	context.save();
 	var back2 = new Image();
+	var back3 = new Image();
 	
 	back2.onload = function () { 
 		context.drawImage(back2,29,1007,745,439);
 		DrawLead6(c,date);
 	}
+	back3.onload = function(){
+		context.drawImage(back3,29,1475,745,281)
+	}
 	back2.src = 'images/lead_background2.jpg';
+	back3.src = 'images/lead_background3.jpg';
 	context.restore();
 }
 
