@@ -79,7 +79,7 @@ function DrawLead5(c,date) {
 function DrawLead6(c,date) { 
 	var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
-	context.save();
+	//context.save();
 	var kpiUnique = GetKPI(date,"Unique_Customers");
 	var kpiMail = GetKPI(date,"Response_Method_Email");
 	var kpiPhone = GetKPI(date,"Response_Method_Phone");
@@ -117,7 +117,7 @@ function DrawLead6(c,date) {
 	Draw3PL("myCanvas",385,1170,380,300,kpiNew3PL);
 	DrawCloseRate("myCanvas", 214, 1755, kpiClose);		
 	DrawProspectCount("myCanvas", 590, 1750, kpiProspect);
-	context.restore();
+	//context.restore();
 	//section
 	
 	context.save();
