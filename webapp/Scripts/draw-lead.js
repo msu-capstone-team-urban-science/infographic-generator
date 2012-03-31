@@ -64,15 +64,17 @@ function DrawLead5(c,date) {
 	
 	back2.onload = function () { 
 		context.drawImage(back2,29,1007,745,439);
-		DrawLead6(c,date);
+
 	}
 	back3.onload = function(){
-		context.drawImage(back3,29,1475,745,281)
+		context.drawImage(back3,29,1475,745,281)		
+		DrawLead6(c,date);
 	}
 	back2.src = 'images/lead_background2.jpg';
 	back3.src = 'images/lead_background3.jpg';
 	context.restore();
 }
+
 
 function DrawLead6(c,date) { 
 	var canvas = document.getElementById(c);
