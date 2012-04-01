@@ -1725,10 +1725,28 @@ function DrawProspectCount(c,x,y,d) {
 	
 	context.moveTo(x-45, y - 150);
 	context.lineTo(x-45, y - 5);
+	context.lineWidth = lineWidth;
+	context.lineCap = "round";
+	context.strokeStyle = "#000000";
+	context.stroke();
+	
+	context.beginPath();
 	context.moveTo(x-45, y - 70);
 	context.quadraticCurveTo(x -60, y -25, x-70, y-10);
+	context.lineWidth = lineWidth;
+	context.lineCap = "round";
+	context.strokeStyle = "#000000";
+	context.stroke();
+	
+	context.beginPath();
 	context.moveTo(x-45, y - 110);
 	context.quadraticCurveTo(x -30, y -45, x-10, y-110);
+	context.lineWidth = lineWidth;
+	context.lineCap = "round";
+	context.strokeStyle = "#000000";
+	context.stroke();
+	
+	context.beginPath();
 	context.moveTo(x-45, y - 110);
 	context.lineTo(x-70, y - 70);
 	context.lineWidth = lineWidth;
