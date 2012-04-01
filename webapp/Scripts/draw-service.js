@@ -47,6 +47,7 @@ function DrawService2 (c, date)
     var kpiSingleVisitCustomer = GetKPI(date, "Single_Visit_Customers");
 	var kpiDealer = GetKPI(date, "Dealer_Effectiveness");
 	var kpiBrand =  GetKPI(date,"Brand_Effectiveness");
+	var kpiRecentSalesCustomer = GetKPI(date,"Recent_Sales_Customers");
 
     var month = fullMonthName[date.getMonth()];
     var year = date.getFullYear();
@@ -70,6 +71,7 @@ function DrawService2 (c, date)
     DrawPerson("myCanvas", 75, 590, 50);
     DrawPerson("myCanvas", 75, 650, 50);
     DrawPerson("myCanvas", 40, 400, 110);
+	DrawPerson("myCanvas", 540, 400, 110);
 	
 	DrawEffectiveness("myCanvas", 90, 920, date,kpiDealer,kpiBrand);
 
@@ -108,20 +110,29 @@ function DrawService2 (c, date)
 
 
     //context.fillStyle = "#8ED600";
+	
+	context.fillText(((Math.round((kpiRecentSalesCustomer/kpiInactive) * 1000)) / 10) + "%", 590, 510);
 
+    context.font = "30pt Calibri";
+    context.fillText("are Recent Sales", 540, 540);
+    context.font = "44pt Calibri";
+    context.fillText("customers", 540, 580);
+	
+	
+	var y = 140;
     context.font = "36pt Calibri";
-    context.fillText("Missing Money", canvas.width/2+40, 486);
+    context.fillText("Missing Money", canvas.width/2+40, 486+y);
     context.font = "24pt Calibri";
-    context.fillText("Labor", canvas.width/2+40, 540);
+    context.fillText("Labor", canvas.width/2+40, 540+y);
     context.font = "12pt Calibri";
-    context.fillText("Opportunity", canvas.width/2+40, 552);
+    context.fillText("Opportunity", canvas.width/2+40, 552+y);
     context.font = "36pt Calibri";
-    context.fillText("$" + kpiServiceLaborOpportunity, canvas.width/2+120, 552);
+    context.fillText("$" + kpiServiceLaborOpportunity, canvas.width/2+120, 552+y);
 
     context.font = "24pt Calibri";
-    context.fillText("Parts", canvas.width/2+40, 610);
+    context.fillText("Parts", canvas.width/2+40, 610+y);
     context.font = "12pt Calibri";
-    context.fillText("Opportunity", canvas.width/2+40, 622);
+    context.fillText("Opportunity", canvas.width/2+40, 622+y);
     context.font = "36pt Calibri";
-    context.fillText("$" + kpiServicePartsOpportunity, canvas.width/2+120, 622);
+    context.fillText("$" + kpiServicePartsOpportunity, canvas.width/2+120, 622+y);
 }
