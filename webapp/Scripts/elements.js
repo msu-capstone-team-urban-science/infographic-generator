@@ -1924,7 +1924,7 @@ function Draw3PL(c,x,y,w,h,myArray,c1,c2){
 }
 
 
-function DrawEffectiveness(c,x,y,d,b,date)
+function DrawEffectiveness(c,x,y,date,d,b)
 {
 	var canvas = document.getElementById(c);
 	var context = canvas.getContext("2d");
@@ -1936,8 +1936,7 @@ function DrawEffectiveness(c,x,y,d,b,date)
 	context.fillStyle = "#ffffff";
 	context.font = "24pt Calibri";
 	context.fillText("Effectiveness", x, y);
-		
-	context.fillText(monthname[date.getMonth()] +" "+date.getFullYear().toString().substr(2, 3), x+35, y+70);
+	context.fillText(monthname[date.getMonth()] , x+35, y+70);
 	
 	context.beginPath();
 	context.moveTo(x+20, y +50);
@@ -1946,7 +1945,8 @@ function DrawEffectiveness(c,x,y,d,b,date)
 	context.lineCap = "round";
 	context.strokeStyle = "#ffffff";
 	context.stroke();
-
+	
+	//context.fillText(monthname[d[0].getMonth()] +" "+d[0].getFullYear().toString().substr(2, 3), x+35, y+70);
 	
 	
 	context.restore();
