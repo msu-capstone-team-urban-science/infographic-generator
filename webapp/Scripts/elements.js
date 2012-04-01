@@ -853,7 +853,29 @@ function navigator_Go(url) {
 
 //LEAD INFOGRAPHIC STUFF BELOW//
 /*---------------------*/
+function DrawTable(c,x,y)
+{
+	var canvas = document.getElementById(c);
+	var context = canvas.getContext("2d");
+	context.save();
+	var lineWidth = 7;
 
+	context.beginPath();
+	context.fillStyle="#000000";
+	context.beginPath();
+	context.rect(x, y, 100, -60);
+	context.fill();
+
+	context.beginPath();
+	context.moveTo(x-30, y - 60);
+	context.lineTo(x+130, y - 60);
+	context.lineWidth = lineWidth;
+	context.lineCap = "round";
+	context.strokeStyle = "#000000";
+	context.stroke();
+	context.restore();
+
+}
 
 function DrawChairL(c,x,y)
 {
@@ -870,6 +892,7 @@ function DrawChairL(c,x,y)
 	context.strokeStyle = "#000000";
 	context.stroke();
 	
+	context.beginPath();
 	context.moveTo(x, y + 70);
 	context.lineTo(x-40, y + 70);
 	context.lineTo(x-40, y + 110);
@@ -915,8 +938,8 @@ function DrawUniqueCustomers(c,x,y) {
 
 	var lineWidth = 7;
 
-	
 	context.save();
+
 	context.beginPath();
 	context.arc(x+170, y-50, 20, 0, 2 * Math.PI, false);
 	context.fillStyle = "#000000";
@@ -1232,33 +1255,10 @@ function DrawSales(c, x, y, kpiLost, kpiNew, kpiOld)
 	
 	
 	//draw tables
-	context.beginPath();
-	context.fillStyle="#000000";
-	context.beginPath();
-	context.rect(x-300, y + 110, 100, -60);
-	context.fill();
+	DrawTable(c,x-300,y+110);
+	DrawTable(c,x-565,y+110);
 
-	context.beginPath();
-	context.moveTo(x-330, y + 50);
-	context.lineTo(x-170, y + 50);
-	context.lineWidth = lineWidth;
-	context.lineCap = "round";
-	context.strokeStyle = "#000000";
-	context.stroke();
-	
-	
-	context.fillStyle="#000000";
-	context.beginPath();
-	context.rect(x-570, y + 110, 100, -60);
-	context.fill();
 
-	context.beginPath();
-	context.moveTo(x-600, y + 50);
-	context.lineTo(x-440, y + 50);
-	context.lineWidth = lineWidth;
-	context.lineCap = "round";
-	context.strokeStyle = "#000000";
-	context.stroke();
 	
 	//draw chairs	
 	DrawChairL(c,x-125,y);
