@@ -1781,7 +1781,7 @@ function DrawUnopenedLead(c,x,y,d,d2) {
 	context.beginPath();
 	context.fillStyle = "#ffffff";
 	context.font = "24pt Calibri";
-	context.fillText("The Number of Lead", x+400, y-50);
+	context.fillText("The Number of Leads", x+400, y-50);
 	context.font = "28pt Calibri";
 	context.fillText("Unopened", x+400, y-10);
 	context.fillText(d, x+640, y-10);
@@ -1919,6 +1919,6 @@ function Draw3PL(c,x,y,w,h,myArray,c1,c2){
 
 	cxt.fillStyle = c2;
 	cxt.font = '28pt Calibri';
-	cxt.fillText("New 3PL Lead", (border*1.5)+x+40,y, w);
+	cxt.fillText("New 3PL Leads", (border*1.5)+x+40,y, w);
 
 }

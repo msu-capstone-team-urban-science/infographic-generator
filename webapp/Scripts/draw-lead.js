@@ -119,21 +119,121 @@ function DrawLead6(c,date) {
 	DrawProspectCount("myCanvas", 590, 1750, kpiProspect);
 	context.restore();
 	//section
-	/*
-	context.save();
-	context.beginPath();
-	context.moveTo(33 , 310);
-	context.lineTo(770 , 310);
-	context.lineTo(770 , 1750);
-	context.lineTo(33 , 1750);
-	context.lineTo(33 , 310);
-	context.lineWidth = 2;
-	context.lineCap = "square";
-	context.strokeStyle = "#000000";
-	context.stroke();
 
-	context.restore();
-*/
+	//context.save();
+	// //unique customers
+	// context.beginPath();
+	// context.moveTo(130 , 90);
+	// context.lineTo(130 , 280);
+	// context.lineTo(400 , 280);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //Response by Mail
+	// context.beginPath();
+	// context.moveTo(25 , 300);
+	// context.lineTo(25 , 587);
+	// context.lineTo(400 , 587);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+
+	
+	// //Response by Phone
+	// context.beginPath();
+	// context.moveTo(405 , 300);
+	// context.lineTo(405 , 587);
+	// context.lineTo(773 , 587);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //Average Response Time
+	// context.beginPath();
+	// context.moveTo(25 , 590);
+	// context.lineTo(25 , 788);
+	// context.lineTo(250 , 788);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //New Sale from Leads
+	// context.beginPath();
+	// context.moveTo(40 , 830);
+	// context.lineTo(40 , 980);
+	// context.lineTo(300 , 980);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //Used Sale from Leads
+	// context.beginPath();
+	// context.moveTo(310 , 830);
+	// context.lineTo(310 , 980);
+	// context.lineTo(580 , 980);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //Used Lost from Leads
+	// context.beginPath();
+	// context.moveTo(590 , 830);
+	// context.lineTo(590 , 980);
+	// context.lineTo(775 , 980);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //Used Unopened and New Band Leads
+	// context.beginPath();
+	// context.moveTo(420 , 1020);
+	// context.lineTo(420 , 1140);
+	// context.lineTo(775 , 1140);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //New 3PL Leads
+	// context.beginPath();
+	// context.moveTo(350 , 1145);
+	// context.lineTo(350 , 1440);
+	// context.lineTo(774 , 1440);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //Close Rate
+	// context.beginPath();
+	// context.moveTo(30 , 1480);
+	// context.lineTo(30 , 1755);
+	// context.lineTo(440 , 1755);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //Prospect Count
+	// context.beginPath();
+	// context.moveTo(470 , 1480);
+	// context.lineTo(470 , 1755);
+	// context.lineTo(770 , 1755);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+
+	// context.restore();
+
 
 			
 	//Text
