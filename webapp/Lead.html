@@ -161,6 +161,7 @@ $('#myCanvas').bind("touchstart click", function(event){
 		}		
 	}
 	//graph for pump-in sales
+	/*
 	function drawLineGraph(c, name, d, color, index, heightFactor){
 		var canvas = document.getElementById(c);
         var context = canvas.getContext("2d");
@@ -184,31 +185,7 @@ $('#myCanvas').bind("touchstart click", function(event){
 		context.stroke();
 		context.restore();
 	}
-	  
-	function sortstuff(array)  {
-		var tmp;
-		var name;
-		var result=new Array();
-		for(var i=0;i<array.length;i++)  {
-			tmp=array[i][0][0][1];
-			name=array[i][2];
-			for(var j=0;j<array.length;j++)  {
-				if(array[j][0][0][1]<tmp){
-					if(result.indexOf(array[j][2])==-1)  {
-						tmp=array[j][0][0][1];
-						name=array[j][2];
-						result.push(name);
-					}
-				}
-			}
-		}
-		for(var k=0;k<array.length;k++){
-			if(result.indexOf(array[k][2])==-1){
-				result.push(array[k][2]);
-			}
-		}
-		return result;
-	}
+	*/
         </script>
     </head>
 	<body>
@@ -229,6 +206,12 @@ $('#myCanvas').bind("touchstart click", function(event){
 		<!-- Insert fallback content here -->
 		Sorry, your browser doesn't support canvas technology
 		</canvas>
+		<div id="dialog-box">
+			<div class="dialog-content">
+				<div id="dialog-message"></div>
+				<a href="#" class="button">Close</a>
+			</div>
+		</div>
 		
 	</div>
 	<script type="text/javascript">	
