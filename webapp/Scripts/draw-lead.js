@@ -115,8 +115,11 @@ function DrawLead6(c,date) {
 	DrawSales("myCanvas", 690, 860, kpiLost, kpiNew, kpiOld);		
 	DrawUnopenedLead("myCanvas",30,1100,kpiUnopened, kpiNewBrand);
 	Draw3PL("myCanvas",385,1170,380,300,kpiNew3PL);
-	DrawCloseRate("myCanvas", 214, 1755, kpiClose);		
-	DrawProspectCount("myCanvas", 590, 1750, kpiProspect);
+	//DrawCloseRate("myCanvas", 214, 1755, kpiClose);		
+	//DrawProspectCount("myCanvas", 590, 1750, kpiProspect);
+	
+	DrawEffectiveness("myCanvas", 30, 1600, date,0.891,1.211);
+	
 	context.restore();
 	//section
 
@@ -295,3 +298,4 @@ function DrawLead6(c,date) {
 	context.fillText("Lost", x + 590,y -100);
 	context.restore();
 }
+

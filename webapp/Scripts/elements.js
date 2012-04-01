@@ -1922,3 +1922,34 @@ function Draw3PL(c,x,y,w,h,myArray,c1,c2){
 	cxt.fillText("New 3PL Leads", (border*1.5)+x+40,y, w);
 
 }
+
+
+function DrawEffectiveness(c,x,y,d,b,date)
+{
+	var canvas = document.getElementById(c);
+	var context = canvas.getContext("2d");
+	context.save();
+				
+	var lineWidth = 7;
+	
+	context.beginPath();
+	context.fillStyle = "#ffffff";
+	context.font = "24pt Calibri";
+	context.fillText("Effectiveness", x, y);
+		
+	context.fillText(monthname[date.getMonth()] +" "+date.getFullYear().toString().substr(2, 3), x+35, y+70);
+	
+	context.beginPath();
+	context.moveTo(x+20, y +50);
+	context.lineTo(x+100, y +50);
+	context.lineWidth = lineWidth;
+	context.lineCap = "round";
+	context.strokeStyle = "#ffffff";
+	context.stroke();
+
+	
+	
+	context.restore();
+
+
+}
