@@ -1,3 +1,10 @@
+//Notice from Lok
+//array that stores the name of element, x, y, width, height and data through the year
+//for every element we draw, make sure you pass the above information into the array
+//format: trendArray.push(['name-of-element', x, y, width, height,[JanData, FebData,...]]);
+//if there is a radius with no width and height, just pass the radius twice
+var trendArray=new Array();
+
 function DrawLead(c,date) 
 {
 	var canvas = document.getElementById(c);
@@ -117,23 +124,128 @@ function DrawLead6(c,date) {
 	Draw3PL("myCanvas",385,1170,380,300,kpiNew3PL);
 	DrawCloseRate("myCanvas", 214, 1755, kpiClose);		
 	DrawProspectCount("myCanvas", 590, 1750, kpiProspect);
+	
+	
 	context.restore();
 	//section
-	/*
-	context.save();
-	context.beginPath();
-	context.moveTo(33 , 310);
-	context.lineTo(770 , 310);
-	context.lineTo(770 , 1750);
-	context.lineTo(33 , 1750);
-	context.lineTo(33 , 310);
-	context.lineWidth = 2;
-	context.lineCap = "square";
-	context.strokeStyle = "#000000";
-	context.stroke();
+	var offset=100;
+	trendArray.push(['Response by Mail', ]);
+	trendArray.push(['Used Vehicle Sale', 25, 300+offset, 375, 287,GetTrendKPI(date, 'Response_Method_Email'),'<p>The number of times a dealership has contacted new leads via an email message</p>']);
 
-	context.restore();
-*/
+	//context.save();
+	// //unique customers
+	// context.beginPath();
+	// context.moveTo(130 , 90);
+	// context.lineTo(130 , 280);
+	// context.lineTo(400 , 280);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //Response by Mail
+	// context.beginPath();
+	// context.moveTo(25 , 300);
+	// context.lineTo(25 , 587);
+	// context.lineTo(400 , 587);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+
+	
+	// //Response by Phone
+	// context.beginPath();
+	// context.moveTo(405 , 300);
+	// context.lineTo(405 , 587);
+	// context.lineTo(773 , 587);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //Average Response Time
+	// context.beginPath();
+	// context.moveTo(25 , 590);
+	// context.lineTo(25 , 788);
+	// context.lineTo(250 , 788);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //New Sale from Leads
+	// context.beginPath();
+	// context.moveTo(40 , 830);
+	// context.lineTo(40 , 980);
+	// context.lineTo(300 , 980);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //Used Sale from Leads
+	// context.beginPath();
+	// context.moveTo(310 , 830);
+	// context.lineTo(310 , 980);
+	// context.lineTo(580 , 980);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //Used Lost from Leads
+	// context.beginPath();
+	// context.moveTo(590 , 830);
+	// context.lineTo(590 , 980);
+	// context.lineTo(775 , 980);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //Used Unopened and New Band Leads
+	// context.beginPath();
+	// context.moveTo(420 , 1020);
+	// context.lineTo(420 , 1140);
+	// context.lineTo(775 , 1140);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //New 3PL Leads
+	// context.beginPath();
+	// context.moveTo(350 , 1145);
+	// context.lineTo(350 , 1440);
+	// context.lineTo(774 , 1440);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //Close Rate
+	// context.beginPath();
+	// context.moveTo(30 , 1480);
+	// context.lineTo(30 , 1755);
+	// context.lineTo(440 , 1755);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //Prospect Count
+	// context.beginPath();
+	// context.moveTo(470 , 1480);
+	// context.lineTo(470 , 1755);
+	// context.lineTo(770 , 1755);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+
+	// context.restore();
+
 
 			
 	//Text
@@ -194,4 +306,37 @@ function DrawLead6(c,date) {
 	context.fillStyle = "#ffffff";
 	context.fillText("Lost", x + 590,y -100);
 	context.restore();
+}
+
+$(document).ready(function () {
+	// if user clicked on button, the overlay layer or the dialogbox, close the dialog	
+	$('#dialog-overlay, #dialog-box').bind("touchstart click", function () {		
+		$('#dialog-overlay, #dialog-box').hide();		
+		return false;
+	});
+	
+	// if user resize the window, call the same function again
+	// to make sure the overlay fills the screen and dialogbox aligned to center	
+	$(window).resize(function () {
+		
+		//only do it if the dialog box is not hidden
+		if (!$('#dialog-box').is(':hidden')) popup();		
+	});		
+});
+
+function popup(message) {
+	// get the screen height and width  
+	var maskHeight = $(document).height();  
+	var maskWidth = $(window).width();
+	
+	// calculate the values for center alignment
+	var dialogTop =  (maskHeight/3) - ($('#dialog-box').height());  
+	var dialogLeft = (maskWidth/2) - ($('#dialog-box').width()/2); 
+	
+	// assign values to the overlay and dialog box
+	$('#dialog-overlay').css({height:maskHeight, width:maskWidth}).show();
+	$('#dialog-box').css({top:dialogTop, left:dialogLeft}).show();
+	
+	// display the message
+	$('#dialog-message').html(message);	
 }

@@ -64,15 +64,20 @@
 				context.lineTo(250,1150);
 				context.stroke();
 		*/
-
+		var heightFactor;
 		for(var i=0;i <trendArray.length;i++ )
 		{
 			//check if touching the element location
 			if(event.pageX>trendArray[i][1] && event.pageX<(trendArray[i][1]+trendArray[i][3]) && event.pageY>trendArray[i][2] && event.pageY <(trendArray[i][2]+trendArray[i][4])) {
 				event.preventDefault();
-				if(trendArray[i][0]=="Competitive Segment Sale" || trendArray[i][0]=="Dealer Retention"){
+				if(trendArray[i][0]=="Competitive Segment Sale"){
 						document.getElementById('dialog-box').style.cssText = "margin-top: 900px";
-				} else {
+				}
+				else if(trendArray[i][0]=="Dealer Retention" || trendArray[i][0]=="Visits Per Customer"){
+					document.getElementById('dialog-box').style.cssText = "margin-top: 800px";
+				}else if(trendArray[i][0]=="Lost Profit" || trendArray[i][0]=="Lost Sales"){
+					document.getElementById('dialog-box').style.cssText = "margin-top: 1050px";
+				}else {
 					document.getElementById('dialog-box').style.cssText = "margin-top: -150px";
 				}
 				popup('<table border="0" width="100%">'+
@@ -83,15 +88,31 @@
 							'<td>'+trendArray[i][6]+'</td>'+
 							'</tr>'+
 							'</table>');
-				if(trendArray[i][0]!="Pump In Sale") {
-					drawTrend(trendArray[i][5]);
-				} else {
+				if(trendArray[i][0]=="Pump In Sale" || trendArray[i][0]=="Competitive Segment Sale") {
 					var sortName=new Array();
 					sortName=sortstuff(trendArray[i][5]);
 					sortName.reverse();
+					if(trendArray[i][0]=="Competitive Segment Sale")
+						heightFactor=5;
+					if(trendArray[i][0]=="Pump In Sale")
+						heightFactor=1;
 					for(var j=0;j<trendArray[i][5].length;j++)  {
-						drawLineGraph("trendGraph",sortName[j],trendArray[i][5][j][0],trendArray[i][5][j][1], j);
+						drawLineGraph("trendGraph",sortName[j],trendArray[i][5][j][0],trendArray[i][5][j][1], j,heightFactor);
 					}
+				} else {
+					if(trendArray[i][0]=="Dealer Retention" || trendArray[i][0]=="Visits Per Customer" ){
+						heightFactor=220;
+					}
+					else if (trendArray[i][0]=="Lost Profit"){
+						heightFactor=0.00022;
+					}
+					else if(trendArray[i][0]=="Lost Sales"){
+						heightFactor=0.35;
+					}
+					else{
+						heightFactor=1;
+					}
+					drawTrend(trendArray[i][5],heightFactor);
 				}
 				
 				//draw x, y axis
@@ -109,12 +130,11 @@
 		}
 	});
 	
-	function drawTrend(data) {
+	function drawTrend(data,heightFactor) {
 		var canvas = document.getElementById("trendGraph");
 		var context = canvas.getContext("2d");
 		var radius=4;
 		context.fillStyle ='#00F';
-		
 		var sum=0;
 		for(var j=0;j<data.length;j++){
 			sum+=data[j][1];
@@ -124,15 +144,15 @@
 		{
 			context.save();
 			context.beginPath();
-			context.moveTo(145,200-data[0][1]+30);
-			context.arc(145, 200-data[0][1]+30, radius, 0, 2 * Math.PI, false);
-			context.fillText(data[0][1],130,200-data[0][1]-20+30);
+			context.moveTo(145,220-data[0][1]*heightFactor+30);
+			context.arc(145, 220-data[0][1]*heightFactor+30, radius, 0, 2 * Math.PI, false);
+			context.fillText(data[0][1],130,220-data[0][1]*heightFactor-20+30);
 			context.fillText(monthname[0],145,250);
 			for(var k=1;k<data.length;k++){
-				context.arc(k*70+145, 200-data[k][1]+30, radius, 0, 2 * Math.PI, false);
+				context.arc(k*70+145, 220-data[k][1]*heightFactor+30, radius, 0, 2 * Math.PI, false);
 				context.fillText(monthname[k],k*70+145,250);		//draw month
-				context.fillText(data[k][1],k*70+130,200-data[k][1]-20+30);
-				context.lineTo(k*70+145,200-data[k][1]+30);
+				context.fillText(data[k][1],k*70+130,220-data[k][1]*heightFactor-20+30); //draw number
+				context.lineTo(k*70+145,220-data[k][1]*heightFactor+30);
 			}
 			context.lineWidth=4;
 			context.strokeStyle = "blue";
@@ -142,19 +162,21 @@
 		}		
 	}
 	//graph for pump-in sales
-	function drawLineGraph(c, name, d, color, index){
+	function drawLineGraph(c, name, d, color, index, heightFactor){
 		var canvas = document.getElementById(c);
         var context = canvas.getContext("2d");
 		context.save();
 		context.font = "14pt Calibri";
 		context.beginPath();
-		context.arc(150, (200-d[0][1]/4), 2, 0, 2 * Math.PI, false);
+		context.arc(150, (220-d[0][1]/4*heightFactor+0), 2, 0, 2 * Math.PI, false);
 		context.fillText(monthname[0],145,250);		//draw month
-		context.lineTo(150,(200-d[0][1]/4));
+		//context.fillText(d[0][1],130,220-d[0][1]*heightFactor/4-20); //draw number
+		context.lineTo(150,(220-d[0][1]/4*heightFactor+0));
 		for(var i=1;i<d.length;i++){
-			context.arc(i*70+150, (200-d[i][1]/4), 2, 0, 2 * Math.PI, false);
+			context.arc(i*70+150, (220-d[i][1]/4*heightFactor+0), 2, 0, 2 * Math.PI, false);
 			context.fillText(monthname[i],i*70+145,250);		//draw month
-			context.lineTo(i*70+150,(200-d[i][1]/4));
+			//context.fillText(d[i][1],i*70+130,220-d[i][1]/4-20); //draw number
+			context.lineTo(i*70+150,(220-d[i][1]/4*heightFactor+0));
 		}
 		context.fillStyle = color; // text color
 		context.font = "10pt Calibri";
