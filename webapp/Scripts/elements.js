@@ -1761,6 +1761,16 @@ function DrawUnopenedLead(c,x,y,d,d2) {
 	img_logo4 = new Image();
 	img_hand = new Image();		
 	
+	context.beginPath();
+	context.fillStyle = "#ffffff";
+	context.font = "24pt Calibri";
+	context.fillText("The Number of Lead", x+400, y-50);
+	context.font = "28pt Calibri";
+	context.fillText("Unopened", x+400, y-10);
+	context.fillText(d, x+640, y-10);
+	context.fillText("New Brand", x+400, y+30);
+	context.fillText(d2, x+640, y+30);
+	
 	img_unopened.onload = function()
 	{
 		context.drawImage(img_unopened, x, y , img_unopened.width/1.7, img_unopened.height/1.7);
@@ -1797,15 +1807,7 @@ function DrawUnopenedLead(c,x,y,d,d2) {
 	img_logo3.src = 'images/lead_kelley.png';
 	img_logo4.src = 'images/lead_edmunds.png';
 	img_hand.src = 'images/lead_hand.png';
-	context.beginPath();
-	context.fillStyle = "#ffffff";
-	context.font = "24pt Calibri";
-	context.fillText("The Number of Lead", x+400, y-50);
-	context.font = "28pt Calibri";
-	context.fillText("Unopened", x+400, y-10);
-	context.fillText(d, x+640, y-10);
-	context.fillText("New Brand", x+400, y+30);
-	context.fillText(d2, x+640, y+30);
+
 
 	context.restore();
 
