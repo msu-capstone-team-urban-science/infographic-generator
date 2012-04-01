@@ -68,6 +68,8 @@ function DrawService2 (c, date)
     DrawPerson("myCanvas", 75, 590, 50);
     DrawPerson("myCanvas", 75, 650, 50);
     DrawPerson("myCanvas", 40, 400, 110);
+	
+	DrawEffectiveness("myCanvas", 30, 1600, date,0.891,1.211);
 
 
 // TEXT SECTION

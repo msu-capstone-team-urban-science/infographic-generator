@@ -1931,23 +1931,50 @@ function DrawEffectiveness(c,x,y,date,d,b)
 	context.save();
 				
 	var lineWidth = 7;
+	var maxHeight = 500;
+	var bHeight = 0;
+	var dHeight = 0;
+	
+	
+	bHeight = maxHeight * (b-1);
+	dHeight = maxHeight * (d-1);
 	
 	context.beginPath();
 	context.fillStyle = "#ffffff";
 	context.font = "24pt Calibri";
 	context.fillText("Effectiveness", x, y);
-	context.fillText(monthname[date.getMonth()] , x+35, y+70);
+	context.fillText("100%" , x+640, y+15);
+	context.fillText(monthname[date.getMonth()] , x, y+30);
+	
 	
 	context.beginPath();
-	context.moveTo(x+20, y +50);
-	context.lineTo(x+100, y +50);
+	context.moveTo(x+60, y +20);
+	context.lineTo(x+700, y +20);
 	context.lineWidth = lineWidth;
 	context.lineCap = "round";
 	context.strokeStyle = "#ffffff";
 	context.stroke();
 	
-	//context.fillText(monthname[d[0].getMonth()] +" "+d[0].getFullYear().toString().substr(2, 3), x+35, y+70);
 	
+	context.beginPath();
+	context.arc(x+310, y+17-bHeight, 75, Math.PI,  2* Math.PI, false);
+	context.rect(x+235, y+17 , 150, -bHeight);
+	context.fillStyle = "#38ACEC";
+	context.fill();
+
+	context.beginPath();
+	context.arc(x+510, y+23-dHeight, 75, 0, Math.PI, false);
+	context.rect(x+435, y+23 , 150, -dHeight);
+	context.fillStyle = "#2554C7";
+	context.fill();
+
+	context.beginPath();
+	context.fillStyle = "#000000";
+	context.font = "24pt Calibri";
+	context.fillText("Brand", x+270, y-30);
+	context.fillText(Math.round(b*100)+"%", x+280, y);
+	context.fillText(Math.round(d*100)+"%", x+490, y+60);
+	context.fillText("Dealer", x+470, y+90);
 	
 	context.restore();
 
