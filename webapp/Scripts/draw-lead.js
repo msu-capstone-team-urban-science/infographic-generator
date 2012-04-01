@@ -1,3 +1,10 @@
+//Notice from Lok
+//array that stores the name of element, x, y, width, height and data through the year
+//for every element we draw, make sure you pass the above information into the array
+//format: trendArray.push(['name-of-element', x, y, width, height,[JanData, FebData,...]]);
+//if there is a radius with no width and height, just pass the radius twice
+var trendArray=new Array();
+
 function DrawLead(c,date) 
 {
 	var canvas = document.getElementById(c);
@@ -121,6 +128,9 @@ function DrawLead6(c,date) {
 	
 	context.restore();
 	//section
+	var offset=100;
+	trendArray.push(['Response by Mail', ]);
+	trendArray.push(['Used Vehicle Sale', 25, 300+offset, 375, 287,GetTrendKPI(date, 'Response_Method_Email'),'<p>The number of times a dealership has contacted new leads via an email message</p>']);
 
 	//context.save();
 	// //unique customers
