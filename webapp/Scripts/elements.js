@@ -1977,6 +1977,27 @@ function DrawEffectiveness(c,x,y,date,d,b)
 	context.fillText("Dealer", x+470, y+90);
 	
 	context.restore();
+}
 
+function talkBub(c,talkbubX,talkbubY,d) {
+	var canvas = document.getElementById(c);
+    var context = canvas.getContext("2d");
 
+	context.save();
+	context.translate(talkbubX,talkbubY);
+	context.rotate(-Math.PI/2);
+	context.translate(-talkbubX,-talkbubY);
+	DrawSection(c,talkbubX, talkbubY, 120,120, [20,d]);
+	context.restore();
+	
+	talkbubX = talkbubX+225;
+	talkbubY = talkbubY-120;
+	
+	//Draw the other half of the bubble with rounded edges
+	context.save();
+	context.translate(talkbubX,talkbubY);
+	context.rotate(Math.PI/2);
+	context.translate(-talkbubX,-talkbubY);
+	DrawSection(c,talkbubX,talkbubY, 120,120,[,d]);
+	context.restore();
 }

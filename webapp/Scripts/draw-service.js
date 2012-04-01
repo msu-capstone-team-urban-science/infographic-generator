@@ -3,7 +3,6 @@ function DrawService (c, date)
     var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
 
-
 // BACKGROUND SECTION
 
     // fill background
@@ -14,20 +13,23 @@ function DrawService (c, date)
 
     // draw sections
     DrawSection("myCanvas", 0, 311, canvas.width / 2, canvas.height, [canvas.width / 6, "#0067A5"]);
-    DrawSection("myCanvas", canvas.width / 2, 311, canvas.width / 2, canvas.height, [canvas.width / 6, "0073CF"]);
+    DrawSection("myCanvas", canvas.width / 2, 311, canvas.width / 2, canvas.height, [canvas.width / 6, "#0073CF"]);
     DrawSection("myCanvas", 0, 730, canvas.width, canvas.height, [canvas.width / 2, "#8ED6FF"]);
-    DrawSection("myCanvas", canvas.width / 2, 830, canvas.width, canvas.height, [canvas.width / 2, "#0047AB"]);
-    DrawSection("myCanvas", 0, 1100, canvas.width, canvas.height, [canvas.width / 2, "#002366"]);
-
-
+	DrawSection("myCanvas", canvas.width / 2, 1050, canvas.width, canvas.height, [canvas.width / 2, "#0047AB"]);
+    DrawSection("myCanvas", 0, 1400, canvas.width, canvas.height, [canvas.width / 2, "#002366"]);
 
     var img = new Image();
     img.onload = function () {
         context.drawImage(img, 690, 520);
         var img1 = new Image();
         img1.onload = function () {
-            context.drawImage(img1, 150, 1020);
-            DrawService2(c, date);
+            context.drawImage(img1, 150, 1520);
+			var img2 = new Image();
+			img2.onload= function () { 
+				context.drawImage(img2,750,1165);
+				DrawService2(c, date);
+			}
+			img2.src='images/Avg$.png';
         }
         img1.src = 'images/handoff.png';
     }
@@ -47,6 +49,9 @@ function DrawService2 (c, date)
     var kpiSingleVisitCustomer = GetKPI(date, "Single_Visit_Customers");
 	var kpiDealer = GetKPI(date, "Dealer_Effectiveness");
 	var kpiBrand =  GetKPI(date,"Brand_Effectiveness");
+	var kpiROCount = GetKPI(date,"RO_Count");
+	var kpiLaborOps = GetKPI(date,"Labor_Ops_Per_RO");
+	var kpiAvg$ = GetKPI(date,"Average_Money_Per_RO");
 
     var month = fullMonthName[date.getMonth()];
     var year = date.getFullYear();
@@ -124,4 +129,22 @@ function DrawService2 (c, date)
     context.fillText("Opportunity", canvas.width/2+40, 622);
     context.font = "36pt Calibri";
     context.fillText("$" + kpiServicePartsOpportunity, canvas.width/2+120, 622);
+	
+//Eric and dunn section
+	//draw talk bubble over erics head
+	talkBub(c,275,1625,"#0073CF");
+	context.font = "24pt Calibri";
+    context.fillText("RO Count", 325, 1550);
+	context.font = "22pt Calibri";
+    context.fillText(kpiROCount,355, 1590);
+	
+	context.font = "20pt Calibri";
+    context.fillText("Lapor Ops per ", 325, 1875);
+    context.fillText("Repair Order (RO)", 350, 1900);
+	context.fillText("= " +kpiLaborOps, 500,1925);
+	
+//Avg $ per RO
+	context.font = "24pt Calibri";
+    context.fillText("Average $ per Repair Order (RO)", 525, 1150);
+	context.fillText("= "+ kpiAvg$,575, 1200);	
 }
