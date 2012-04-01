@@ -863,9 +863,12 @@ function DrawUniqueCustomers(c,x,y) {
 
 	var lineWidth = 7;
 	context.save();
+	context.beginPath();
 	context.arc(x+170, y-50, 20, 0, 2 * Math.PI, false);
 	context.fillStyle = "#000000";
 	context.fill();
+	context.strokeStyle = "#000000";
+	context.stroke();
 
 	//draw man
 	context.beginPath();
