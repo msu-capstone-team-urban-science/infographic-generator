@@ -3,6 +3,7 @@ function DrawService (c, date)
     var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
 
+
 // BACKGROUND SECTION
 
     // fill background
@@ -13,16 +14,24 @@ function DrawService (c, date)
 
     // draw sections
     DrawSection("myCanvas", 0, 311, canvas.width / 2, canvas.height, [canvas.width / 6, "#0067A5"]);
+    DrawSection("myCanvas", canvas.width / 2, 311, canvas.width / 2, canvas.height, [canvas.width / 6, "0073CF"]);
     DrawSection("myCanvas", canvas.width / 2, 311, canvas.width / 2, canvas.height, [canvas.width / 6, "#0073CF"]);
     DrawSection("myCanvas", 0, 730, canvas.width, canvas.height, [canvas.width / 2, "#8ED6FF"]);
+    DrawSection("myCanvas", canvas.width / 2, 830, canvas.width, canvas.height, [canvas.width / 2, "#0047AB"]);
+    DrawSection("myCanvas", 0, 1100, canvas.width, canvas.height, [canvas.width / 2, "#002366"]);
 	DrawSection("myCanvas", canvas.width / 2, 1050, canvas.width, canvas.height, [canvas.width / 2, "#0047AB"]);
     DrawSection("myCanvas", 0, 1400, canvas.width, canvas.height, [canvas.width / 2, "#002366"]);
+
+
 
     var img = new Image();
     img.onload = function () {
         context.drawImage(img, 690, 520);
+
         var img1 = new Image();
         img1.onload = function () {
+            context.drawImage(img1, 150, 1020);
+            DrawService2(c, date);
             context.drawImage(img1, 150, 1520);
 			var img2 = new Image();
 			img2.onload= function () { 
@@ -49,6 +58,7 @@ function DrawService2 (c, date)
     var kpiSingleVisitCustomer = GetKPI(date, "Single_Visit_Customers");
 	var kpiDealer = GetKPI(date, "Dealer_Effectiveness");
 	var kpiBrand =  GetKPI(date,"Brand_Effectiveness");
+	var kpiRecentSalesCustomer = GetKPI(date,"Recent_sales_Customer");
 	var kpiROCount = GetKPI(date,"RO_Count");
 	var kpiLaborOps = GetKPI(date,"Labor_Ops_Per_RO");
 	var kpiAvg$ = GetKPI(date,"Average_Money_Per_RO");
@@ -75,6 +85,7 @@ function DrawService2 (c, date)
     DrawPerson("myCanvas", 75, 590, 50);
     DrawPerson("myCanvas", 75, 650, 50);
     DrawPerson("myCanvas", 40, 400, 110);
+	DrawPerson("myCanvas", 540, 400, 110);
 	
 	DrawEffectiveness("myCanvas", 90, 920, date,kpiDealer,kpiBrand);
 
@@ -114,21 +125,38 @@ function DrawService2 (c, date)
 
     //context.fillStyle = "#8ED600";
 
+
+
+
+
+
+
+
+
+
+
     context.font = "36pt Calibri";
     context.fillText("Missing Money", canvas.width/2+40, 486);
+
     context.font = "24pt Calibri";
     context.fillText("Labor", canvas.width/2+40, 540);
+
     context.font = "12pt Calibri";
     context.fillText("Opportunity", canvas.width/2+40, 552);
+
     context.font = "36pt Calibri";
     context.fillText("$" + kpiServiceLaborOpportunity, canvas.width/2+120, 552);
 
+
     context.font = "24pt Calibri";
     context.fillText("Parts", canvas.width/2+40, 610);
+
     context.font = "12pt Calibri";
     context.fillText("Opportunity", canvas.width/2+40, 622);
+
     context.font = "36pt Calibri";
     context.fillText("$" + kpiServicePartsOpportunity, canvas.width/2+120, 622);
+
 	
 //Eric and dunn section
 	//draw talk bubble over erics head
