@@ -45,6 +45,8 @@ function DrawService2 (c, date)
     var kpiServiceLaborOpportunity = GetKPI(date, "Service_Labor_Opportunity");
     var kpiServicePartsOpportunity = GetKPI(date, "Service_Parts_Opportunity");
     var kpiSingleVisitCustomer = GetKPI(date, "Single_Visit_Customers");
+	var kpiDealer = GetKPI(date, "Dealer_Effectiveness");
+	var kpiBrand =  GetKPI(date,"Brand_Effectiveness");
 
     var month = fullMonthName[date.getMonth()];
     var year = date.getFullYear();
@@ -69,7 +71,7 @@ function DrawService2 (c, date)
     DrawPerson("myCanvas", 75, 650, 50);
     DrawPerson("myCanvas", 40, 400, 110);
 	
-	DrawEffectiveness("myCanvas", 30, 1600, date,0.891,1.211);
+	DrawEffectiveness("myCanvas", 30, 870, date,kpiDealer,kpiBrand);
 
 
 // TEXT SECTION
