@@ -129,8 +129,7 @@ function DrawLead6(c,date) {
 	context.restore();
 	//section
 	var offset=100;
-	trendArray.push(['Response by Mail', ]);
-	trendArray.push(['Used Vehicle Sale', 25, 300+offset, 375, 287,GetTrendKPI(date, 'Response_Method_Email'),'<p>The number of times a dealership has contacted new leads via an email message</p>']);
+	trendArray.push(['Response by Mail', 25, 300+offset, 375, 287,GetTrendKPI(date, 'Response_Method_Email'),'<p>The number of times a dealership has contacted new leads via an email message</p>']);
 
 	//context.save();
 	// //unique customers
@@ -143,15 +142,15 @@ function DrawLead6(c,date) {
 	// context.strokeStyle = "#FF0000";
 	// context.stroke();
 	
-	// //Response by Mail
-	// context.beginPath();
-	// context.moveTo(25 , 300);
-	// context.lineTo(25 , 587);
-	// context.lineTo(400 , 587);
-	// context.lineWidth = 2;
-	// context.lineCap = "square";
-	// context.strokeStyle = "#FF0000";
-	// context.stroke();
+	//Response by Mail
+	context.beginPath();
+	context.moveTo(25 , 300);
+	context.lineTo(25 , 587);
+	context.lineTo(400 , 587);
+	context.lineWidth = 2;
+	context.lineCap = "square";
+	context.strokeStyle = "#FF0000";
+	context.stroke();
 
 	
 	// //Response by Phone
