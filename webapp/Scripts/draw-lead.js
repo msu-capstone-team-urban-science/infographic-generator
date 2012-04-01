@@ -60,23 +60,31 @@ function DrawLead5(c,date) {
     var context = canvas.getContext("2d");
 	context.save();
 	var back2 = new Image();
+	var back3 = new Image();
 	
 	back2.onload = function () { 
 		context.drawImage(back2,29,1007,745,439);
+
+	}
+	back3.onload = function(){
+		context.drawImage(back3,29,1475,745,281)		
 		DrawLead6(c,date);
 	}
 	back2.src = 'images/lead_background2.jpg';
+	back3.src = 'images/lead_background3.jpg';
 	context.restore();
 }
+
 
 function DrawLead6(c,date) { 
 	var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
+	context.save();
 	var kpiUnique = GetKPI(date,"Unique_Customers");
 	var kpiMail = GetKPI(date,"Response_Method_Email");
 	var kpiPhone = GetKPI(date,"Response_Method_Phone");
 	var kpiLost = GetKPI(date,"Lost_Sales_From_Leads");
-	var kpiNew = GetKPI(date,"New_Sales_from_Leads");
+	var kpiNew = GetKPI(date,"New_Sales_From_Leads");
 	var kpiOld = GetKPI(date,"Used_Sales_From_Leads");
 	var kpiAve = GetKPI(date,"Average_Response_Time");
 	var kpiClose = GetKPI(date,"Close_Rate");
@@ -109,6 +117,7 @@ function DrawLead6(c,date) {
 	Draw3PL("myCanvas",385,1170,380,300,kpiNew3PL);
 	DrawCloseRate("myCanvas", 214, 1755, kpiClose);		
 	DrawProspectCount("myCanvas", 590, 1750, kpiProspect);
+	context.restore();
 	//section
 	
 	context.save();

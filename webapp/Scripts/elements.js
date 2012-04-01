@@ -868,6 +868,7 @@ function DrawUniqueCustomers(c,x,y) {
 	context.fill();
 
 	//draw man
+	context.beginPath();
 	context.moveTo(x + 130, y +30);
 	context.lineTo(x + 170 ,y +30);
 	context.lineWidth = lineWidth;
@@ -933,6 +934,7 @@ function DrawUniqueCustomers(c,x,y) {
 	context.stroke();
 
 	// draw umbrella
+	context.beginPath();
 	context.moveTo(x -60, y-70);
 	context.lineTo(x +80 , y-70);
 	context.lineWidth = lineWidth;
@@ -993,6 +995,7 @@ function DrawUniqueCustomers(c,x,y) {
 	context.stroke();
 
 	//draw man
+	context.beginPath();
 	context.moveTo(x + 130, y +30);
 	context.lineTo(x + 130 ,y +80);
 	context.lineWidth = lineWidth;
@@ -1484,7 +1487,7 @@ function DrawCloseRate(c,x,y,d) {
 	
 	context.font = "24pt Calibri";
 	context.fillStyle = "#000000";
-	context.fillText(d + "%", x-17, y-150);
+	context.fillText(d, x-19, y-150);
 	
 	//draw door
 	context.save();
