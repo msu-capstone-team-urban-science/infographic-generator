@@ -23,7 +23,7 @@ function DrawService (c, date)
 
     var img = new Image();
     img.onload = function () {
-        context.drawImage(img, 690, 520);
+        context.drawImage(img, 690, 650);
         var img1 = new Image();
         img1.onload = function () {
             context.drawImage(img1, 150, 1020);
