@@ -17,7 +17,7 @@ function DrawService (c, date)
     DrawSection("myCanvas", canvas.width / 2, 311, canvas.width / 2, canvas.height, [canvas.width / 6, "0073CF"]);
     DrawSection("myCanvas", 0, 730, canvas.width, canvas.height, [canvas.width / 2, "#8ED6FF"]);
     DrawSection("myCanvas", canvas.width / 2, 830, canvas.width, canvas.height, [canvas.width / 2, "#0047AB"]);
-    DrawSection("myCanvas", 0, 930, canvas.width, canvas.height, [canvas.width / 2, "#002366"]);
+    DrawSection("myCanvas", 0, 1100, canvas.width, canvas.height, [canvas.width / 2, "#002366"]);
 
 
 
@@ -71,7 +71,7 @@ function DrawService2 (c, date)
     DrawPerson("myCanvas", 75, 650, 50);
     DrawPerson("myCanvas", 40, 400, 110);
 	
-	DrawEffectiveness("myCanvas", 30, 870, date,kpiDealer,kpiBrand);
+	DrawEffectiveness("myCanvas", 90, 920, date,kpiDealer,kpiBrand);
 
 
 // TEXT SECTION
