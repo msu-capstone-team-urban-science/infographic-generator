@@ -27,8 +27,7 @@ function changeMonth(x,whichInfo) {
     var newMonth = currDate.getMonth() + x;
 	if (insideDateRange(newMonth)) {
         currDate.setMonth(newMonth);
-		switch(whichInfo)
-		{
+		switch(whichInfo)  {
 		case 1:
 			DrawSalesInfographic("myCanvas",currDate);
 			break;
@@ -37,6 +36,7 @@ function changeMonth(x,whichInfo) {
 			break;
 		case 3:
 			DrawLead("myCanvas",currDate);
+			break;
 		default:
 			break;
 		}
