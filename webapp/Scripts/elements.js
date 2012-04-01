@@ -222,41 +222,41 @@ function DrawSection (c, x, y, w, h, d)
     // right side
     context.lineTo(x + w, y + pointerHeight + cornerCurveSize);
 
-    // check if pointer is too far right
-    if (pointerDistance + pointerHeight > w - cornerCurveSize)  {
-        // top right corner
-        context.quadraticCurveTo(x + w, y + pointerHeight, x + w - ((x + w - pointerDistance) / 2), y + pointerHeight);
+	// check if pointer is too far right
+	if (pointerDistance + pointerHeight > w - cornerCurveSize)  {
+		// top right corner
+		context.quadraticCurveTo(x + w, y + pointerHeight, x + w - ((x + w - pointerDistance) / 2), y + pointerHeight);
 
-        // pointer right side
-        context.quadraticCurveTo(x + pointerDistance, y + pointerHeight, x + pointerDistance, y);
-    } else {
-        // top right corner
-        context.quadraticCurveTo(x + w, y + pointerHeight, x + w - cornerCurveSize, y + pointerHeight);
+		// pointer right side
+		context.quadraticCurveTo(x + pointerDistance, y + pointerHeight, x + pointerDistance, y);
+	} else {
+		// top right corner
+		context.quadraticCurveTo(x + w, y + pointerHeight, x + w - cornerCurveSize, y + pointerHeight);
 
-        // top line right side
-        context.lineTo(x + pointerDistance + pointerHeight, y + pointerHeight);
+		// top line right side
+		context.lineTo(x + pointerDistance + pointerHeight, y + pointerHeight);
 
-        // pointer right side
-        context.quadraticCurveTo(x + pointerDistance, y + pointerHeight, x + pointerDistance, y);
-    }
+		// pointer right side
+		context.quadraticCurveTo(x + pointerDistance, y + pointerHeight, x + pointerDistance, y);
+	}
 	
-    // check if pointer is too far left
-    if (pointerDistance - pointerHeight < cornerCurveSize)   {
-        // pointer left side
-        context.quadraticCurveTo(x + pointerDistance, y + pointerHeight, x + (pointerDistance / 2), y + pointerHeight);
+	// check if pointer is too far left
+	if (pointerDistance - pointerHeight < cornerCurveSize)   {
+		// pointer left side
+		context.quadraticCurveTo(x + pointerDistance, y + pointerHeight, x + (pointerDistance / 2), y + pointerHeight);
 
-        // top left corner
-        context.quadraticCurveTo(x, y + pointerHeight, x, y + pointerHeight + cornerCurveSize);
-    }  else {
-        // pointer left side
-        context.quadraticCurveTo(x + pointerDistance, y + pointerHeight, x + pointerDistance - pointerHeight, y + pointerHeight);
+		// top left corner
+		context.quadraticCurveTo(x, y + pointerHeight, x, y + pointerHeight + cornerCurveSize);
+	}  else {
+		// pointer left side
+		context.quadraticCurveTo(x + pointerDistance, y + pointerHeight, x + pointerDistance - pointerHeight, y + pointerHeight);
 
-        // top line left side
-        context.lineTo(x + cornerCurveSize, y + pointerHeight);
+		// top line left side
+		context.lineTo(x + cornerCurveSize, y + pointerHeight);
 
-        // top left corner
-        context.quadraticCurveTo(x, y + pointerHeight, x, y + pointerHeight + cornerCurveSize);
-    }
+		// top left corner
+		context.quadraticCurveTo(x, y + pointerHeight, x, y + pointerHeight + cornerCurveSize);
+	}
 
     // end draw stuff
     context.closePath();
@@ -1920,5 +1920,27 @@ function Draw3PL(c,x,y,w,h,myArray,c1,c2){
 	cxt.fillStyle = c2;
 	cxt.font = '28pt Calibri';
 	cxt.fillText("New 3PL Lead", (border*1.5)+x+40,y, w);
+}
 
+function talkBub(c,talkbubX,talkbubY,d) {
+	var canvas = document.getElementById(c);
+    var context = canvas.getContext("2d");
+
+	context.save();
+	context.translate(talkbubX,talkbubY);
+	context.rotate(-Math.PI/2);
+	context.translate(-talkbubX,-talkbubY);
+	DrawSection("myCanvas",talkbubX, talkbubY, 120,120, [20,d]);
+	context.restore();
+	
+	talkbubX = talkbubX+225;
+	talkbubY = talkbubY-120;
+	
+	//Draw the other half of the bubble with rounded edges
+	context.save();
+	context.translate(talkbubX,talkbubY);
+	context.rotate(Math.PI/2);
+	context.translate(-talkbubX,-talkbubY);
+	DrawSection("myCanvas",talkbubX,talkbubY, 120,120,[,d]);
+	context.restore();
 }

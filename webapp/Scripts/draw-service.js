@@ -14,20 +14,24 @@ function DrawService (c, date)
 
     // draw sections
     DrawSection("myCanvas", 0, 311, canvas.width / 2, canvas.height, [canvas.width / 6, "#0067A5"]);
-    DrawSection("myCanvas", canvas.width / 2, 311, canvas.width / 2, canvas.height, [canvas.width / 6, "0073CF"]);
+    DrawSection("myCanvas", canvas.width / 2, 311, canvas.width / 2, canvas.height, [canvas.width / 6, "#0073CF"]);
     DrawSection("myCanvas", 0, 730, canvas.width, canvas.height, [canvas.width / 2, "#8ED6FF"]);
     DrawSection("myCanvas", canvas.width / 2, 830, canvas.width, canvas.height, [canvas.width / 2, "#0047AB"]);
     DrawSection("myCanvas", 0, 930, canvas.width, canvas.height, [canvas.width / 2, "#002366"]);
-
-
+	//DrawSection("myCanvas",0,1450,canvas.width,canvas.height,[0,"#8ED6FF"]);
 
     var img = new Image();
     img.onload = function () {
         context.drawImage(img, 690, 520);
         var img1 = new Image();
         img1.onload = function () {
-            context.drawImage(img1, 150, 1020);
-            DrawService2(c, date);
+            context.drawImage(img1, 50, 1020);
+			var img2 = new Image();
+			img2.onload = function () {
+				context.drawImage(img2,775,1100);
+				DrawService2(c, date);
+			}
+			img2.src= 'images/Avg$.png';
         }
         img1.src = 'images/handoff.png';
     }
@@ -45,7 +49,9 @@ function DrawService2 (c, date)
     var kpiServiceLaborOpportunity = GetKPI(date, "Service_Labor_Opportunity");
     var kpiServicePartsOpportunity = GetKPI(date, "Service_Parts_Opportunity");
     var kpiSingleVisitCustomer = GetKPI(date, "Single_Visit_Customers");
-
+	var kpiROCount = GetKPI(date,"RO_Count");
+	var kpiLaborOps = GetKPI(date,"Labor_Ops_Per_RO");
+	
     var month = fullMonthName[date.getMonth()];
     var year = date.getFullYear();
 
@@ -120,4 +126,17 @@ function DrawService2 (c, date)
     context.fillText("Opportunity", canvas.width/2+40, 622);
     context.font = "36pt Calibri";
     context.fillText("$" + kpiServicePartsOpportunity, canvas.width/2+120, 622);
+	
+	//talking bubble for eric
+	talkBub("myCanvas",175,1125,"#0073CF");
+	
+	context.font = "22pt Calibri";
+	context.fillText("RO Count", 225, 1050);
+	context.font = "36pt Calibri";
+	context.fillText(kpiROCount+100, 235,1100);
+	
+	context.font = "22pt Calibri";
+	context.fillText("Lapor Ops per RO", 275, 1375);
+	context.font = "36pt Calibri";
+	context.fillText(kpiLaborOps+120, 350,1420);	
 }
