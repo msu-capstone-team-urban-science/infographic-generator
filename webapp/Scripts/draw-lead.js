@@ -119,7 +119,7 @@ function DrawLead6(c,date) {
 	DrawProspectCount("myCanvas", 590, 1750, kpiProspect);
 	context.restore();
 	//section
-	
+	/*
 	context.save();
 	context.beginPath();
 	context.moveTo(33 , 310);
@@ -133,7 +133,7 @@ function DrawLead6(c,date) {
 	context.stroke();
 
 	context.restore();
-
+*/
 
 			
 	//Text
