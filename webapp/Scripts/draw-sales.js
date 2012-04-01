@@ -300,6 +300,5 @@ function popup(message) {
 	$('#dialog-box').css({top:dialogTop, left:dialogLeft}).show();
 	
 	// display the message
-	$('#dialog-message').html(message);
-			
+	$('#dialog-message').html(message);	
 }
