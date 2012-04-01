@@ -235,10 +235,12 @@ function DrawCanvasPart3(c,date)
 	context.fillText("r", -6, 80);
 	context.restore();
 
-
 	DrawPie(c, 150, 1050, 100, 100, GetKPI(date, "Dealer_Retention"));
     //DrawX(c, 100,1800);
 	DrawPie(c, 750, 1050, 100, 100, GetKPI(date, "Visits_Per_Customer"));
+	var offset=100;
+	
+	trendArray.push(['Dealer Retention', 150, 1050+offset, 100, 100,GetTrendKPI(date, 'Dealer_Retention'),'<p>The amount of money spent by purchasing leads for each vehicle sold</p>']);
 
     var kpiData = new Array();
     kpiData.push([GetKPI(date,"Competitive_Segment_Sale_Anytown_Automotive"), "Anytown Automotive"]);
@@ -249,7 +251,7 @@ function DrawCanvasPart3(c,date)
     kpiData.push([GetKPI(date,"Competitive_Segment_Sale_Peter_Lake_Ford"), "Peter Lake Ford"]);
     DrawCompetitiveSegmentSale(c,100,1300,800,200,kpiData);
     DrawPlaid(c,0,1747,canvas.width,400,0);
-	var offset=100;
+
 	//lok
 	trendArray.push(['Competitive Segment Sale', 100, 1300+offset, 800, 200,GetTrendKPI(date, 'Competitive_Segment_Sale_Anytown_Automotive'),'<p>The amount of money spent by purchasing leads for each vehicle sold</p>']);
     context.save();

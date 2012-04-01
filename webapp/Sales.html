@@ -130,14 +130,15 @@
 		{
 			context.save();
 			context.beginPath();
-			
-			context.moveTo(150,data[0][1]);
-			context.arc(150, data[0][1], radius, 0, 2 * Math.PI, false);
+			context.moveTo(145,200-data[0][1]+30);
+			context.arc(145, 200-data[0][1]+30, radius, 0, 2 * Math.PI, false);
+			context.fillText(data[0][1],130,200-data[0][1]-20+30);
 			context.fillText(monthname[0],145,250);
 			for(var k=1;k<data.length;k++){
-				context.arc(k*70+150, data[k][1], radius, 0, 2 * Math.PI, false);
+				context.arc(k*70+145, 200-data[k][1]+30, radius, 0, 2 * Math.PI, false);
 				context.fillText(monthname[k],k*70+145,250);		//draw month
-				context.lineTo(k*70+150,data[k][1]);
+				context.fillText(data[k][1],k*70+130,200-data[k][1]-20+30);
+				context.lineTo(k*70+145,200-data[k][1]+30);
 			}
 			context.lineWidth=4;
 			context.strokeStyle = "blue";
@@ -146,7 +147,7 @@
 			context.restore();
 		}		
 	}
-	
+	//graph for pump-in sales
 	function drawLineGraph(c, name, d, color, index){
 		var canvas = document.getElementById(c);
         var context = canvas.getContext("2d");

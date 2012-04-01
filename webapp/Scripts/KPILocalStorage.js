@@ -68,27 +68,31 @@ function GetKPI(date, kpiName) {
 }
 
 function GetTrendKPI(date, kpiName) {
-	var kpiArray = new Array(); 
+	var kpiArray = new Array();
+	var kpi;	
 	var month;
 	var x=0;
 	var yy=date.getFullYear();
 	var mm=date.getMonth();
-	var dd=date.getDay();
 	var tmpDate=new Date();
-		tmpDate.setFullYear(yy,mm,dd);
-	if(tmpDate.getMonth() < 6) {
+	tmpDate.setFullYear(yy,mm,1);
+
+	if(mm < 6) {
 		x=0;
 	}
 	else{
-		x=tmpDate.getMonth()-6;
+		x=mm-6;
 	}
-	var num=tmpDate.getMonth();
+	var num=mm;
 	
 	//although x changes, tmpDate.setFullYear doesn't change properly
 	while(x<=num) {
-		tmpDate.setFullYear(yy,x,dd);
+		tmpDate.setFullYear(yy,x,1);
 		month=monthname[x];
-		var kpi=GetKPI(tmpDate,kpiName);
+		kpi=GetKPI(tmpDate,kpiName);
+		//if(month=="Feb"){
+		//	alert("x: "+x+","+kpiName+","+kpi);
+		//}
 		kpiArray.push([month,kpi]);
 		x++;
 	}
