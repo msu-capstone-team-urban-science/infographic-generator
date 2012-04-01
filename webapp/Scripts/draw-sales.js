@@ -240,7 +240,7 @@ function DrawCanvasPart3(c,date)
 	DrawPie(c, 750, 1050, 100, 100, GetKPI(date, "Visits_Per_Customer"));
 	var offset=100;
 	
-	trendArray.push(['Dealer Retention', 150, 1050+offset, 100, 100,GetTrendKPI(date, 'Dealer_Retention'),'<p>The amount of money spent by purchasing leads for each vehicle sold</p>']);
+	trendArray.push(['Dealer Retention', 150, 1050+offset, 100, 100,GetTrendKPI(date, 'Dealer_Retention'),'<p>Retention refers to the percentage of vehicles registered in your primary market area (PMA) who have visited your dealership for Customer Pay (CP) vehicle service in the last 12 months.</p>']);
 
     var kpiData = new Array();
     kpiData.push([GetKPI(date,"Competitive_Segment_Sale_Anytown_Automotive"), "Anytown Automotive"]);

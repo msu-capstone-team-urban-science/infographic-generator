@@ -29,11 +29,15 @@
 			//size of elevator shaft is 1624px
 			//78px - 1702 px
 			
-			alert(offset.top);
-			if (offset.top > 1702) { 
+			//alert(offset.top);
+			
+			if (offset.top < 1515 ) {
+				$('#ele').offset({top:header.offset().top+78});
+			}
+			if (offset.top > 1560) { 
 				//do nothing so the elevator stops at the bottom
-			} else if (offset.top >1340) {
-				//$('#ele').offset({top:offset.top+6});
+			} else if (offset.top >764) {
+				$('#ele').offset({top:offset.top+15});
 			}
 			
 			/*if (offset.top > 1070){
@@ -44,7 +48,7 @@
 				$('#ele').offset({top:p.offset().top});
 			} */
 		};
-		setInterval(checkEle, 400);
+		//setInterval(checkEle, 400);
         </script>
     </head>
 	<body>
