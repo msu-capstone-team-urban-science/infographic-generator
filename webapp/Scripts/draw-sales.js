@@ -238,11 +238,7 @@ function DrawCanvasPart3(c,date)
 	DrawPie(c, 150, 1050, 100, 100, GetKPI(date, "Dealer_Retention"));
     //DrawX(c, 100,1800);
 	DrawPie(c, 750, 1050, 100, 100, GetKPI(date, "Visits_Per_Customer"));
-	var offset=100;
-	
-	trendArray.push(['Dealer Retention', 150, 1050+offset, 100, 100,GetTrendKPI(date, 'Dealer_Retention'),'<p>Retention refers to the percentage of vehicles registered in your primary market area (PMA) who have visited your dealership for Customer Pay (CP) vehicle service in the last 12 months.</p>']);
-
-    var kpiData = new Array();
+	var kpiData = new Array();
     kpiData.push([GetKPI(date,"Competitive_Segment_Sale_Anytown_Automotive"), "Anytown Automotive"]);
     kpiData.push([GetKPI(date,"Competitive_Segment_Sale_Jeff_Williams_Toyotas"),"Jeff Williams Toyota"]);
     kpiData.push([GetKPI(date,"Competitive_Segment_Sale_Uptown_Honda"),"Uptown Honda"]);
@@ -252,8 +248,6 @@ function DrawCanvasPart3(c,date)
     DrawCompetitiveSegmentSale(c,100,1300,800,200,kpiData);
     DrawPlaid(c,0,1747,canvas.width,400,0);
 
-	//lok
-	trendArray.push(['Competitive Segment Sale', 100, 1300+offset, 800, 200,GetTrendKPI(date, 'Competitive_Segment_Sale_Anytown_Automotive'),'<p>The amount of money spent by purchasing leads for each vehicle sold</p>']);
     context.save();
     context.font = "bold 19pt Calibri";
 	context.fillStyle = "#ffffff";
@@ -266,6 +260,16 @@ function DrawCanvasPart3(c,date)
 
     DrawLostProfit(c, 100, 1850, 200, 200, GetKPI(date, "Lost_Profit"));
     DrawLostSale(c, 600, 1850, 200, 200, GetKPI(date, "Lost_Sales"));
+	
+	var offset=100;
+	
+	trendArray.push(['Dealer Retention', 150, 1050+offset, 100, 100,GetTrendKPI(date, 'Dealer_Retention'),'<p>Retention refers to the percentage of vehicles registered in your primary market area (PMA) who have visited your dealership for Customer Pay (CP) vehicle service in the last 12 months.</p>']);
+	trendArray.push(['Visits Per Customer', 750, 1050+offset, 100, 100,GetTrendKPI(date, 'Visits_Per_Customer'),'<p>Visits per Customer shows the percentage of your customers who returned for CP vehicle service at least two or more times in the last 12 months, ending on the current month.</p>']);
+	trendArray.push(['Lost Profit', 100, 1850+offset, 200, 200,GetTrendKPI(date, 'Lost_Profit'),'<p>Lost Profit = the Lost Sales in the MyPMA times the national average Gross Profit per Vehicle plus the Lost Sales times the Lifetime Service Value. </p>']);
+	trendArray.push(['Lost Sales', 600, 1850+offset, 200, 200,GetTrendKPI(date, 'Lost_Sales'),'<p>Within a Census Tract, the Lost Sales = Sales Below Expected at the Benchmark + Insell. At the MyPMA level: Lost Sales = Gross Lost Sales + Insell. </p>']);
+	trendArray.push(['Competitive Segment Sale', 100, 1300+offset, 800, 200,[[GetTrendKPI(date, 'Competitive_Segment_Sale_Anytown_Automotive'),"#ff9b00", "Anytown Automotive"],[GetTrendKPI(date, 'Competitive_Segment_Sale_Jeff_Williams_Toyotas'),"#f54c08","Jeff Williams Toyotas"],[GetTrendKPI(date, 'Competitive_Segment_Sale_Uptown_Honda'),"#b4213f","Uptown Honda"],[GetTrendKPI(date, 'Competitive_Segment_Sale_Fred_Rodgers_Mazda'),"#69039d","Fred Rodgers Mazda"],[GetTrendKPI(date, 'Competitive_Segment_Sale_Garrett_Ford'),"#283577","Garrett Ford"],[GetTrendKPI(date, 'Competitive_Segment_Sale_Peter_Lake_Ford'),"#66a5c7","Peter Lake Ford"]],'<p>The amount of money spent by purchasing leads for each vehicle sold</p>']);
+
+    
 
 }
 
