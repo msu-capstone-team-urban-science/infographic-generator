@@ -24,17 +24,18 @@
 			var header = $('#header');
 			var offset = p.offset();
 			var headoff = header.offset();
-			//alert(offset.top);
-			if (offset.top > 1530) { 
+			
+			//elevator shaft begins at 78px
+			//size of elevator shaft is 1624px
+			//78px - 1702 px
+			
+			alert(offset.top);
+			if (offset.top > 1702) { 
 				//do nothing so the elevator stops at the bottom
 			} else if (offset.top >1340) {
-				$('#ele').offset({top:offset.top+15});
+				//$('#ele').offset({top:offset.top+6});
 			}
 			
-			if (offset.top < 1340) { 
-				$('#ele').offset({top:header.offset().top+78});
-			}
-			//if ( offset.top <
 			/*if (offset.top > 1070){
 				$('#ele').offset({top:1070});
 			} else if (p.offset().top < 1000) {
