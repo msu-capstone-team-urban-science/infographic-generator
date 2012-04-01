@@ -854,6 +854,58 @@ function navigator_Go(url) {
 //LEAD INFOGRAPHIC STUFF BELOW//
 /*---------------------*/
 
+
+function DrawChairL(c,x,y)
+{
+	var canvas = document.getElementById(c);
+	var context = canvas.getContext("2d");
+	context.save();
+	var lineWidth = 7;
+
+	context.beginPath();
+	context.moveTo(x, y);
+	context.lineTo(x, y + 110);
+	context.lineWidth = lineWidth;
+	context.lineCap = "round";
+	context.strokeStyle = "#000000";
+	context.stroke();
+	
+	context.moveTo(x, y + 70);
+	context.lineTo(x-40, y + 70);
+	context.lineTo(x-40, y + 110);
+	context.lineWidth = lineWidth;
+	context.lineCap = "round";
+	context.strokeStyle = "#000000";
+	context.stroke();
+	context.restore();
+}
+
+function DrawChairR(c,x,y)
+{
+	var canvas = document.getElementById(c);
+	var context = canvas.getContext("2d");
+	context.save();
+	var lineWidth = 7;
+
+	context.beginPath();
+	context.moveTo(x, y);
+	context.lineTo(x, y + 110);
+	context.lineWidth = lineWidth;
+	context.lineCap = "round";
+	context.strokeStyle = "#000000";
+	context.stroke();
+	
+	context.moveTo(x, y + 70);
+	context.lineTo(x+40, y + 70);
+	context.lineTo(x+40, y + 110);
+	context.lineWidth = lineWidth;
+	context.lineCap = "round";
+	context.strokeStyle = "#000000";
+	context.stroke();
+	context.restore();
+}
+
+
 // Name: Draw Unique Custmers
 // Author: Peter Chen
 // Description: Draws unique customers infographic element
@@ -862,6 +914,8 @@ function DrawUniqueCustomers(c,x,y) {
 	var context = canvas.getContext("2d");
 
 	var lineWidth = 7;
+
+	
 	context.save();
 	context.beginPath();
 	context.arc(x+170, y-50, 20, 0, 2 * Math.PI, false);
@@ -1207,69 +1261,11 @@ function DrawSales(c, x, y, kpiLost, kpiNew, kpiOld)
 	context.stroke();
 	
 	//draw chairs	
-	context.beginPath();
-	context.moveTo(x-120, y);
-	context.lineTo(x-120, y + 110);
-	context.lineWidth = lineWidth;
-	context.lineCap = "round";
-	context.strokeStyle = "#000000";
-	context.stroke();
-	
-	context.moveTo(x-120, y + 70);
-	context.lineTo(x-160, y + 70);
-	context.lineTo(x-160, y + 110);
-	context.lineWidth = lineWidth;
-	context.lineCap = "round";
-	context.strokeStyle = "#000000";
-	context.stroke();
-	
-	context.beginPath();
-	context.moveTo(x-390, y);
-	context.lineTo(x-390, y + 110);
-	context.lineWidth = lineWidth;
-	context.lineCap = "round";
-	context.strokeStyle = "#000000";
-	context.stroke();
-	
-	context.moveTo(x-390, y + 70);
-	context.lineTo(x-430, y + 70);
-	context.lineTo(x-430, y + 110);
-	context.lineWidth = lineWidth;
-	context.lineCap = "round";
-	context.strokeStyle = "#000000";
-	context.stroke();
-	
-	context.beginPath();
-	context.moveTo(x-380, y);
-	context.lineTo(x-380, y + 110);
-	context.lineWidth = lineWidth;
-	context.lineCap = "round";
-	context.strokeStyle = "#000000";
-	context.stroke();
-	
-	context.moveTo(x-380, y + 70);
-	context.lineTo(x-340, y + 70);
-	context.lineTo(x-340, y + 110);
-	context.lineWidth = lineWidth;
-	context.lineCap = "round";
-	context.strokeStyle = "#000000";
-	context.stroke();
-	
-	context.beginPath();
-	context.moveTo(x-640, y);
-	context.lineTo(x-640, y + 110);
-	context.lineWidth = lineWidth;
-	context.lineCap = "round";
-	context.strokeStyle = "#000000";
-	context.stroke();
-	
-	context.moveTo(x-640, y + 70);
-	context.lineTo(x-600, y + 70);
-	context.lineTo(x-600, y + 110);
-	context.lineWidth = lineWidth;
-	context.lineCap = "round";
-	context.strokeStyle = "#000000";
-	context.stroke();
+	DrawChairL(c,x-125,y);
+	DrawChairL(c,x-395,y);
+	DrawChairR(c,x-635,y);
+	DrawChairR(c,x-375,y);
+
 	
 	
 	//draw man (big)
