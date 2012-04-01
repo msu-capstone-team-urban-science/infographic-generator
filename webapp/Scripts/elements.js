@@ -1931,7 +1931,7 @@ function DrawEffectiveness(c,x,y,date,d,b)
 	context.save();
 				
 	var lineWidth = 7;
-	var maxHeight = 500;
+	var maxHeight = 200;
 	var bHeight = 0;
 	var dHeight = 0;
 	
@@ -1959,13 +1959,13 @@ function DrawEffectiveness(c,x,y,date,d,b)
 	context.beginPath();
 	context.arc(x+310, y+17-bHeight, 75, Math.PI,  2* Math.PI, false);
 	context.rect(x+235, y+17 , 150, -bHeight);
-	context.fillStyle = "#38ACEC";
+	context.fillStyle = "#2554C7";
 	context.fill();
 
 	context.beginPath();
 	context.arc(x+510, y+23-dHeight, 75, 0, Math.PI, false);
 	context.rect(x+435, y+23 , 150, -dHeight);
-	context.fillStyle = "#2554C7";
+	context.fillStyle = "#38ACEC";
 	context.fill();
 
 	context.beginPath();
