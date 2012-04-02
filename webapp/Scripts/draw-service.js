@@ -1,3 +1,10 @@
+//Notice from Lok
+//array that stores the name of element, x, y, width, height and data through the year
+//for every element we draw, make sure you pass the above information into the array
+//format: trendArray.push(['name-of-element', x, y, width, height,[JanData, FebData,...]]);
+//if there is a radius with no width and height, just pass the radius twice
+var trendArray=new Array();
+
 function DrawService (c, date)
 {
     var canvas = document.getElementById(c);
@@ -172,115 +179,51 @@ function DrawService2 (c, date)
     context.fillText("Average $ per Repair Order (RO)", 525, 1150);
 	context.fillText("= "+ kpiAvg$,575, 1200);	
 	
-	//position section
-	// //Active Customer
-	// context.beginPath();
-	// context.moveTo(50 , 80);
-	// context.lineTo(50 , 350);
-	// context.lineTo(474 , 350);
-	// context.lineWidth = 2;
-	// context.lineCap = "square";
-	// context.strokeStyle = "#FF0000";
-	// context.stroke();
+	//push positions of elements into array
+	var offset=100;
+	trendArray.push(['Active Customers', 50, 80+offset, 424, 270,GetTrendKPI(date, 'Active_Customers'),'<p>An Active Customer is one who returned to your dealership for CP vehicle service at least once in the past 12 months.</p>']);
+	trendArray.push(['Inactive Customers', 490, 80+offset, 384, 270,GetTrendKPI(date, 'Inactive_Customers'),'<p>An Inactive Customer is a person who resides in your PMA that owns a vehicle sold either by your dealership or another non-PMA (Your Brand) dealer but DID NOT return for CP vehicle service in the past 12 months.</p>']);
+	trendArray.push(['Recent Sales Customers', 520, 380+offset, 334, 210,GetTrendKPI(date, 'Recent_Sales_Customers'),'<p>A Recent Customer is one who purchased a vehicle from your dealership and DID NOT return for CP vehicle service in the past 12 months.</p>']);
+	trendArray.push(['Single Visit Customers', 30, 380+offset, 434, 200,GetTrendKPI(date, 'Single_Visit_Customers'),'<p>A Single Visit Customer is an Active Customer who has only returned for CP vehicle service one time in the past 12 months.</p>']);
+	trendArray.push(['Service Labor Opportunity', 530, 590+offset, 534, 110,GetTrendKPI(date, 'Service_Labor_Opportunity'),'<p>Labor Opportunity is the potential revenue that your dealership may possibly generate from the cost of labor by getting your Inactive Customers to come in at least one time for CP vehicle service</p>']);
+	trendArray.push(['Service Parts Opportunity', 530, 710+offset, 534, 80,GetTrendKPI(date, 'Service_Parts_Opportunity'),'<p>Labor Opportunity is the potential revenue that your dealership may possibly generate from the cost of labor by getting your Inactive Customers to come in at least one time for CP vehicle service</p>']);
+	trendArray.push(['Dealer Effectiveness', 520, 940+offset, 280, 150,GetTrendKPI(date, 'Dealer_Effectiveness'),'<p>Dealer Effectiveness is defined as a dealer\'s nationwide sales compared to the Expected at the Benchmark in that dealer\'s PMA. The formula: Dealer Effectiveness = ((Dealer National Sales) / (Expected @ Benchmark in the PMA)) X 100. </p>']);
+	trendArray.push(['Brand Effectiveness', 320, 800+offset, 180, 140,GetTrendKPI(date, 'Brand_Effectiveness'),'<p>Brand Effectiveness is defined as brand sales made by any dealer in the PMA compared to the Expected at the Benchmark. The formula: Brand Effectiveness = ((Brand Sales in the PMA) / (Expected @ Benchmark in the PMA)) X 100.</p>']);
+	trendArray.push(['Average Money Per RO', 520, 1120+offset, 410, 330,GetTrendKPI(date, 'Average_Money_Per_RO'),'<p>Average $ per RO shows your Average CP dollar value spent on each of your ROs for a rolling 12 months, ending on the current month</p>']);
+	trendArray.push(['RO Count', 280, 1480+offset, 290, 170,GetTrendKPI(date, 'RO_Count'),'<p>RO Count shows the number of Repair Orders (RO) your dealership has accumulated in the last 12 months, ending on the current month.</p>']);
+	trendArray.push(['Labor Ops Per RO', 280, 1800+offset, 290, 150,GetTrendKPI(date, 'Labor_Ops_Per_RO'),'<p>The average number of Labor Operations peformed within each RO</p>']);
+
+}
+
+$(document).ready(function () {
+	// if user clicked on button, the overlay layer or the dialogbox, close the dialog	
+	$('#dialog-overlay, #dialog-box').bind("touchstart click", function () {		
+		$('#dialog-overlay, #dialog-box').hide();		
+		return false;
+	});
 	
-	// //Inactive Customer
-	// context.beginPath();
-	// context.moveTo(490 , 80);
-	// context.lineTo(490 , 350);
-	// context.lineTo(874 , 350);
-	// context.lineWidth = 2;
-	// context.lineCap = "square";
-	// context.strokeStyle = "#FF0000";
-	// context.stroke();
+	// if user resize the window, call the same function again
+	// to make sure the overlay fills the screen and dialogbox aligned to center	
+	$(window).resize(function () {
+		
+		//only do it if the dialog box is not hidden
+		if (!$('#dialog-box').is(':hidden')) popup();		
+	});		
+});
+
+function popup(message) {
+	// get the screen height and width  
+	var maskHeight = $(document).height();  
+	var maskWidth = $(window).width();
 	
-	// //Recent Sales Customers
-	// context.beginPath();
-	// context.moveTo(520 , 380);
-	// context.lineTo(520 , 590);
-	// context.lineTo(854 , 590);
-	// context.lineWidth = 2;
-	// context.lineCap = "square";
-	// context.strokeStyle = "#FF0000";
-	// context.stroke();
+	// calculate the values for center alignment
+	var dialogTop =  (maskHeight/3) - ($('#dialog-box').height());  
+	var dialogLeft = (maskWidth/2) - ($('#dialog-box').width()/2); 
 	
-	// //Single Visit Customer
-	// context.beginPath();
-	// context.moveTo(30 , 380);
-	// context.lineTo(30 , 580);
-	// context.lineTo(474 , 580);
-	// context.lineWidth = 2;
-	// context.lineCap = "square";
-	// context.strokeStyle = "#FF0000";
-	// context.stroke();
+	// assign values to the overlay and dialog box
+	$('#dialog-overlay').css({height:maskHeight, width:maskWidth}).show();
+	$('#dialog-box').css({top:dialogTop, left:dialogLeft}).show();
 	
-	// //Service Labor Opportunity
-	// context.beginPath();
-	// context.moveTo(530 , 590);
-	// context.lineTo(530 , 700);
-	// context.lineTo(874 , 700);
-	// context.lineWidth = 2;
-	// context.lineCap = "square";
-	// context.strokeStyle = "#FF0000";
-	// context.stroke();
-	
-	
-	// //Service Parts Opportunity
-	// context.beginPath();
-	// context.moveTo(530 , 710);
-	// context.lineTo(530 , 790);
-	// context.lineTo(874 , 790);
-	// context.lineWidth = 2;
-	// context.lineCap = "square";
-	// context.strokeStyle = "#FF0000";
-	// context.stroke();
-	
-	// //Dealer Effectiveness 
-	// context.beginPath();
-	// context.moveTo(520 , 940);
-	// context.lineTo(520 , 1090);
-	// context.lineTo(800 , 1090);
-	// context.lineWidth = 2;
-	// context.lineCap = "square";
-	// context.strokeStyle = "#FF0000";
-	// context.stroke();
-	
-	// //Brand Effectiveness 
-	// context.beginPath();
-	// context.moveTo(320 , 800);
-	// context.lineTo(320 , 940);
-	// context.lineTo(500 , 940);
-	// context.lineWidth = 2;
-	// context.lineCap = "square";
-	// context.strokeStyle = "#FF0000";
-	// context.stroke();
-	
-	// //Average $ per Repair Order (RO) 
-	// context.beginPath();
-	// context.moveTo(520 , 1120);
-	// context.lineTo(520 , 1450);
-	// context.lineTo(930 , 1450);
-	// context.lineWidth = 2;
-	// context.lineCap = "square";
-	// context.strokeStyle = "#FF0000";
-	// context.stroke();
-	
-	// //RO Count 
-	// context.beginPath();
-	// context.moveTo(280 , 1480);
-	// context.lineTo(280 , 1650);
-	// context.lineTo(570 , 1650);
-	// context.lineWidth = 2;
-	// context.lineCap = "square";
-	// context.strokeStyle = "#FF0000";
-	// context.stroke();
-	
-	// //Labor Ops per Repair Order (RO) 
-	// context.beginPath();
-	// context.moveTo(280 , 1800);
-	// context.lineTo(280 , 1950);
-	// context.lineTo(570 , 1950);
-	// context.lineWidth = 2;
-	// context.lineCap = "square";
-	// context.strokeStyle = "#FF0000";
-	// context.stroke();
+	// display the message
+	$('#dialog-message').html(message);	
 }

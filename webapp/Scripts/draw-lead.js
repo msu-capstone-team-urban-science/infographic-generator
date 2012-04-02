@@ -127,7 +127,7 @@ function DrawLead6(c,date) {
 	
 	
 	context.restore();
-	//section
+	//push elements into array
 	var offset=100;
 	trendArray.push(['Unique Customers', 130, 90+offset, 270, 190,GetTrendKPI(date, 'Unique_Customers'),'<p>The number of unique customers who have submitted leads</p>']);
 	trendArray.push(['Response by Mail', 25, 300+offset, 375, 287,GetTrendKPI(date, 'Response_Method_Email'),'<p>The number of times a dealership has contacted new leads via an email message</p>']);
@@ -140,33 +140,9 @@ function DrawLead6(c,date) {
 	trendArray.push(['New 3PL Leads', 350, 1145+offset, 424, 295,[[GetTrendKPI(date, 'New_3PL_Leads_Kelly_Blue_Book'),"#ff9b00","Kelly Blue Book"],[GetTrendKPI(date, 'New_3PL_Leads_Edmunds'),"#f54c08","Edmunds"],[GetTrendKPI(date, 'New_3PL_Leads_Dealix'),"#b4213f","Dealix"],[GetTrendKPI(date, 'New_3PL_Leads_Automotive.com'),"#69039d","Automotive.com"],[GetTrendKPI(date, 'New_3PL_Leads_Jumpstart'),"#283577","Jumpstart"]],'<p>Unopened Leads: The number of leads that have not been contacted by a dealership</p><p>The number of new leads received from a 3rd party internet site (e.g. - kbb.com)</p>']);
 	trendArray.push(['Close Rate', 30, 1480+offset, 410, 275,GetTrendKPI(date, 'Close_Rate'),'<p>The percentage of customers who have bought a vehicle from online leads</p>']);
 	trendArray.push(['Prospect Count', 470, 1480+offset, 300, 275,GetTrendKPI(date, 'Prospect_Count'),'<p>Prospects are potential sales customers provided by your manufacturer and Urban Science</p>']);
-
-	
-	// //Prospect Count
-	context.beginPath();
-	context.moveTo(470 , 1480);
-	context.lineTo(470 , 1755);
-	context.lineTo(770 , 1755);
-	context.lineWidth = 2;
-	context.lineCap = "square";
-	context.strokeStyle = "#FF0000";
-	context.stroke();
-
-	context.restore();
-
-
 			
 	//Text
 
-	//Unique Customers
-	context.save();
-	context.font = "40pt Calibri";
-	context.fillStyle = "#000000";
-	context.font = "30pt Calibri";
-	context.fillText("Unique Customers", 430, 180);
-	context.font = "60pt Calibri";
-	context.fillText(kpiUnique,510,250);
-	context.restore();
 
 	//Response Method
 	var x = 7;
