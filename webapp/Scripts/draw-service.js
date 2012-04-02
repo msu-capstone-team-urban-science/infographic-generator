@@ -171,4 +171,116 @@ function DrawService2 (c, date)
 	context.font = "24pt Calibri";
     context.fillText("Average $ per Repair Order (RO)", 525, 1150);
 	context.fillText("= "+ kpiAvg$,575, 1200);	
+	
+	//position section
+	// //Active Customer
+	// context.beginPath();
+	// context.moveTo(50 , 80);
+	// context.lineTo(50 , 350);
+	// context.lineTo(474 , 350);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //Inactive Customer
+	// context.beginPath();
+	// context.moveTo(490 , 80);
+	// context.lineTo(490 , 350);
+	// context.lineTo(874 , 350);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //Recent Sales Customers
+	// context.beginPath();
+	// context.moveTo(520 , 380);
+	// context.lineTo(520 , 590);
+	// context.lineTo(854 , 590);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //Single Visit Customer
+	// context.beginPath();
+	// context.moveTo(30 , 380);
+	// context.lineTo(30 , 580);
+	// context.lineTo(474 , 580);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //Service Labor Opportunity
+	// context.beginPath();
+	// context.moveTo(530 , 590);
+	// context.lineTo(530 , 700);
+	// context.lineTo(874 , 700);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	
+	// //Service Parts Opportunity
+	// context.beginPath();
+	// context.moveTo(530 , 710);
+	// context.lineTo(530 , 790);
+	// context.lineTo(874 , 790);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //Dealer Effectiveness 
+	// context.beginPath();
+	// context.moveTo(520 , 940);
+	// context.lineTo(520 , 1090);
+	// context.lineTo(800 , 1090);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //Brand Effectiveness 
+	// context.beginPath();
+	// context.moveTo(320 , 800);
+	// context.lineTo(320 , 940);
+	// context.lineTo(500 , 940);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //Average $ per Repair Order (RO) 
+	// context.beginPath();
+	// context.moveTo(520 , 1120);
+	// context.lineTo(520 , 1450);
+	// context.lineTo(930 , 1450);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //RO Count 
+	// context.beginPath();
+	// context.moveTo(280 , 1480);
+	// context.lineTo(280 , 1650);
+	// context.lineTo(570 , 1650);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
+	
+	// //Lapor Ops per Repair Order (RO) 
+	// context.beginPath();
+	// context.moveTo(280 , 1800);
+	// context.lineTo(280 , 1950);
+	// context.lineTo(570 , 1950);
+	// context.lineWidth = 2;
+	// context.lineCap = "square";
+	// context.strokeStyle = "#FF0000";
+	// context.stroke();
 }
