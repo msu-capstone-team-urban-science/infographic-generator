@@ -126,7 +126,7 @@ function DrawService2 (c, date)
 
 
 	context.font = "55pt Calibri";
-	context.fillText(((Math.round((kpiRecentSalesCustomer/kpiInactive) * 1000)) / 10) + "%", 590, 510);
+	context.fillText(((Math.round((kpiRecentSalesCustomers/kpiInactive) * 1000)) / 10) + "%", 590, 510);
 
     context.font = "30pt Calibri";
     context.fillText("are Recent Sales", 540, 540);
