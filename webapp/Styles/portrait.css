@@ -2,7 +2,7 @@ body {
 	background-color : #FFF1230;
 	background-image:url("../images/main_bk_pt.png");
 	background-repeat: no-repeat;
-	background-size: 770px 1010px;
+	background-size: 777px 1010px;
 	background-attachment:fixed;
 }
 
@@ -10,9 +10,4 @@ body {
 	position:absolute;
 	left: 80px;
 	top:200px;
-}
-
-#myCanvas { 
-	width: 768px;
-	height: 1024px;
 }

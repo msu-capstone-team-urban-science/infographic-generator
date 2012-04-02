@@ -137,48 +137,22 @@ function DrawLead6(c,date) {
 	trendArray.push(['Used Sales From Leads', 310, 830+offset, 270, 150,GetTrendKPI(date, 'Used_Sales_From_Leads'),'<p>The number of used vehicles purchased that can be linked to an online lead</p>']);
 	trendArray.push(['Lost Sales From Leads', 590, 830+offset, 185, 150,GetTrendKPI(date, 'Lost_Sales_From_Leads'),'<p>The number of customer who submitted a lead to your dealership but purchased from another same brand dealership</p>']);
 	trendArray.push(['Number of Leads', 420, 1020+offset, 355, 120,[[GetTrendKPI(date, 'Unopened_Leads'),"#ff9b00","Unopened Leads"],[GetTrendKPI(date, 'New_Brand_Leads'),"#f54c08","New Brand Leads"]],'<p>Unopened Leads: The number of leads that have not been contacted by a dealership</p><p>New Brand Leads: The number of new leads received from a brand-owned internet site (e.g. - VW.com)</p>']);
+	trendArray.push(['New 3PL Leads', 350, 1145+offset, 424, 295,[[GetTrendKPI(date, 'New_3PL_Leads_Kelly_Blue_Book'),"#ff9b00","Kelly Blue Book"],[GetTrendKPI(date, 'New_3PL_Leads_Edmunds'),"#f54c08","Edmunds"],[GetTrendKPI(date, 'New_3PL_Leads_Dealix'),"#b4213f","Dealix"],[GetTrendKPI(date, 'New_3PL_Leads_Automotive.com'),"#69039d","Automotive.com"],[GetTrendKPI(date, 'New_3PL_Leads_Jumpstart'),"#283577","Jumpstart"]],'<p>Unopened Leads: The number of leads that have not been contacted by a dealership</p><p>The number of new leads received from a 3rd party internet site (e.g. - kbb.com)</p>']);
+	trendArray.push(['Close Rate', 30, 1480+offset, 410, 275,GetTrendKPI(date, 'Close_Rate'),'<p>The percentage of customers who have bought a vehicle from online leads</p>']);
+	trendArray.push(['Prospect Count', 470, 1480+offset, 300, 275,GetTrendKPI(date, 'Prospect_Count'),'<p>Prospects are potential sales customers provided by your manufacturer and Urban Science</p>']);
+
 	
-	// //Used Unopened and New Band Leads
+	// //Prospect Count
 	context.beginPath();
-	context.moveTo(420 , 1020);
-	context.lineTo(420 , 1140);
-	context.lineTo(775 , 1140);
+	context.moveTo(470 , 1480);
+	context.lineTo(470 , 1755);
+	context.lineTo(770 , 1755);
 	context.lineWidth = 2;
 	context.lineCap = "square";
 	context.strokeStyle = "#FF0000";
 	context.stroke();
-	
-	// //New 3PL Leads
-	// context.beginPath();
-	// context.moveTo(350 , 1145);
-	// context.lineTo(350 , 1440);
-	// context.lineTo(774 , 1440);
-	// context.lineWidth = 2;
-	// context.lineCap = "square";
-	// context.strokeStyle = "#FF0000";
-	// context.stroke();
-	
-	// //Close Rate
-	// context.beginPath();
-	// context.moveTo(30 , 1480);
-	// context.lineTo(30 , 1755);
-	// context.lineTo(440 , 1755);
-	// context.lineWidth = 2;
-	// context.lineCap = "square";
-	// context.strokeStyle = "#FF0000";
-	// context.stroke();
-	
-	// //Prospect Count
-	// context.beginPath();
-	// context.moveTo(470 , 1480);
-	// context.lineTo(470 , 1755);
-	// context.lineTo(770 , 1755);
-	// context.lineWidth = 2;
-	// context.lineCap = "square";
-	// context.strokeStyle = "#FF0000";
-	// context.stroke();
 
-	// context.restore();
+	context.restore();
 
 
 			

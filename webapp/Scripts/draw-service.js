@@ -163,7 +163,7 @@ function DrawService2 (c, date)
     context.fillText(kpiROCount,355, 1590);
 	
 	context.font = "20pt Calibri";
-    context.fillText("Lapor Ops per ", 325, 1875);
+    context.fillText("Labor Ops per ", 325, 1875);
     context.fillText("Repair Order (RO)", 350, 1900);
 	context.fillText("= " +kpiLaborOps, 500,1925);
 	
@@ -274,7 +274,7 @@ function DrawService2 (c, date)
 	// context.strokeStyle = "#FF0000";
 	// context.stroke();
 	
-	// //Lapor Ops per Repair Order (RO) 
+	// //Labor Ops per Repair Order (RO) 
 	// context.beginPath();
 	// context.moveTo(280 , 1800);
 	// context.lineTo(280 , 1950);

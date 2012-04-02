@@ -49,34 +49,6 @@
 			} */
 		};
 		//setInterval(checkEle, 400);
-	
-	
-	//graph for pump-in sales
-	/*
-	function drawLineGraph(c, name, d, color, index, heightFactor){
-		var canvas = document.getElementById(c);
-        var context = canvas.getContext("2d");
-		context.save();
-		context.font = "14pt Calibri";
-		context.beginPath();
-		context.arc(150, (220-d[0][1]/4*heightFactor+0), 2, 0, 2 * Math.PI, false);
-		context.fillText(monthname[0],145,250);		//draw month
-		//context.fillText(d[0][1],130,220-d[0][1]*heightFactor/4-20); //draw number
-		context.lineTo(150,(220-d[0][1]/4*heightFactor+0));
-		for(var i=1;i<d.length;i++){
-			context.arc(i*70+150, (220-d[i][1]/4*heightFactor+0), 2, 0, 2 * Math.PI, false);
-			context.fillText(monthname[i],i*70+145,250);		//draw month
-			//context.fillText(d[i][1],i*70+130,220-d[i][1]/4-20); //draw number
-			context.lineTo(i*70+150,(220-d[i][1]/4*heightFactor+0));
-		}
-		context.fillStyle = color; // text color
-		context.font = "10pt Calibri";
-		context.fillText(name, 0, index*20+10);
-		context.strokeStyle = color;
-		context.stroke();
-		context.restore();
-	}
-	*/
         </script>
     </head>
 	<body>
@@ -125,6 +97,13 @@
 				//check if touching the element location
 				if(event.pageX>trendArray[i][1] && event.pageX<(trendArray[i][1]+trendArray[i][3]) && event.pageY>trendArray[i][2] && event.pageY <(trendArray[i][2]+trendArray[i][4])) {
 					event.preventDefault();
+					//y position of the dialog box
+					if(trendArray[i][0]=="Number of Leads" || trendArray[i][0]=="New 3PL Leads" || trendArray[i][0]=="Close Rate" || trendArray[i][0]=="Prospect Count"){
+							document.getElementById('dialog-box').style.cssText = "margin-top: 800px";
+					}
+					else{
+						document.getElementById('dialog-box').style.cssText = "margin-top: 200px";
+					}
 					popup('<table border="0" width="100%">'+
 								'<tr>'+
 								'<td><canvas id="trendGraph" height="270" width="600"></canvas></td>'+
@@ -137,10 +116,15 @@
 						if(trendArray[i][0]=="Number of Leads"){
 							heightFactor=0.3;
 							for(var j=0;j<trendArray[i][5].length;j++)  {
-								drawLineGraph("trendGraph",trendArray[i][5][j][2],trendArray[i][5][j][0],trendArray[i][5][j][1], j,heightFactor);
+								drawLineGraph("trendGraph",trendArray[i][5][j][2],trendArray[i][5][j][0],trendArray[i][5][j][1], j,heightFactor,true);
+							}
+						}else if(trendArray[i][0]=="New 3PL Leads"){
+							heightFactor=2.5;
+							for(var j=0;j<trendArray[i][5].length;j++)  {
+								drawLineGraph("trendGraph",trendArray[i][5][j][2],trendArray[i][5][j][0],trendArray[i][5][j][1], j,heightFactor,false);
 							}
 						}else{
-							if(trendArray[i][0]=="Response by Mail" || trendArray[i][0]=="Unique Customers"){
+							if(trendArray[i][0]=="Response by Mail" || trendArray[i][0]=="Unique Customers" || trendArray[i][0]=="Prospect Count"){
 								heightFactor=0.1;
 							}
 							if(trendArray[i][0]=="Response by Phone"){
@@ -148,6 +132,9 @@
 							}
 							if(trendArray[i][0]=="New Sales From Leads" || trendArray[i][0]=="Used Sales From Leads" || trendArray[i][0]=="Lost Sales From Leads"){
 								heightFactor=5;
+							}
+							if(trendArray[i][0]=="Close Rate"){
+								heightFactor=2200;
 							}
 							drawTrend(trendArray[i][5],heightFactor);
 						}
@@ -199,7 +186,7 @@
 			}		
 		}
 		
-		function drawLineGraph(c, name, d, color, index, heightFactor){
+		function drawLineGraph(c, name, d, color, index, heightFactor, withNum){
 			var canvas = document.getElementById(c);
 			var context = canvas.getContext("2d");
 			context.save();
@@ -207,12 +194,14 @@
 			context.beginPath();
 			context.arc(150, (220-d[0][1]/4*heightFactor), 2, 0, 2 * Math.PI, false);
 			context.fillText(monthname[0],145,250);		//draw month
-			context.fillText(d[0][1],150,220-d[0][1]/4*heightFactor); //draw number
+			if(withNum==true)
+				context.fillText(d[0][1],130,220-d[0][1]/4*heightFactor-20); //draw number
 			context.lineTo(150,(220-d[0][1]/4*heightFactor));
 			for(var i=1;i<d.length;i++){
 				context.arc(i*70+150, (220-d[i][1]/4*heightFactor), 2, 0, 2 * Math.PI, false);
 				context.fillText(monthname[i],i*70+145,250);		//draw month
-				context.fillText(d[i][1],i*70+150,220-d[i][1]/4*heightFactor); //draw number
+				if(withNum==true)
+					context.fillText(d[i][1],i*70+130,220-d[i][1]/4*heightFactor-20); //draw number
 				context.lineTo(i*70+150,(220-d[i][1]/4*heightFactor));
 			}
 			context.fillStyle = color; // text color
