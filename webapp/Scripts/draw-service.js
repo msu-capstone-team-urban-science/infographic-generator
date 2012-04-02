@@ -19,18 +19,14 @@ function DrawService (c, date)
     DrawSection("myCanvas", 0, 730, canvas.width, canvas.height, [canvas.width / 2, "#8ED6FF"]);
     DrawSection("myCanvas", canvas.width / 2, 830, canvas.width, canvas.height, [canvas.width / 2, "#0047AB"]);
     DrawSection("myCanvas", 0, 1100, canvas.width, canvas.height, [canvas.width / 2, "#002366"]);
-	DrawSection("myCanvas", canvas.width / 2, 1050, canvas.width, canvas.height, [canvas.width / 2, "#0047AB"]);
+	DrawSection("myCanvas", canvas.width / 2, 1000, canvas.width, canvas.height, [canvas.width / 2, "#0047AB"]);
     DrawSection("myCanvas", 0, 1400, canvas.width, canvas.height, [canvas.width / 2, "#002366"]);
-
-
 
     var img = new Image();
     img.onload = function () {
         context.drawImage(img, 690, 520);
-
         var img1 = new Image();
         img1.onload = function () {
-            context.drawImage(img1, 150, 1020);
             DrawService2(c, date);
             context.drawImage(img1, 150, 1520);
 			var img2 = new Image();
