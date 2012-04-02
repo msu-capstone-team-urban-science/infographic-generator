@@ -54,7 +54,7 @@ function DrawService2 (c, date)
     var kpiSingleVisitCustomer = GetKPI(date, "Single_Visit_Customers");
 	var kpiDealer = GetKPI(date, "Dealer_Effectiveness");
 	var kpiBrand =  GetKPI(date,"Brand_Effectiveness");
-	var kpiRecentSalesCustomers = GetKPI(date,"Recent_sales_Customers");
+	var kpiRecentSalesCustomers = GetKPI(date,"Recent_Sales_Customers");
 	var kpiROCount = GetKPI(date,"RO_Count");
 	var kpiLaborOps = GetKPI(date,"Labor_Ops_Per_RO");
 	var kpiAvg$ = GetKPI(date,"Average_Money_Per_RO");
@@ -126,7 +126,7 @@ function DrawService2 (c, date)
 
 
 	context.font = "55pt Calibri";
-	context.fillText(((Math.round((kpiRecentSalesCustomer/kpiInactive) * 1000)) / 10) + "%", 590, 510);
+	context.fillText(((Math.round((kpiRecentSalesCustomers/kpiInactive) * 1000)) / 10) + "%", 590, 510);
 
     context.font = "30pt Calibri";
     context.fillText("are Recent Sales", 540, 540);
