@@ -24,7 +24,7 @@ function DrawService (c, date)
 
     var img = new Image();
     img.onload = function () {
-        context.drawImage(img, 690, 520);
+        context.drawImage(img, 690, 560);
         var img1 = new Image();
         img1.onload = function () {
             DrawService2(c, date);
@@ -54,7 +54,7 @@ function DrawService2 (c, date)
     var kpiSingleVisitCustomer = GetKPI(date, "Single_Visit_Customers");
 	var kpiDealer = GetKPI(date, "Dealer_Effectiveness");
 	var kpiBrand =  GetKPI(date,"Brand_Effectiveness");
-	var kpiRecentSalesCustomer = GetKPI(date,"Recent_sales_Customer");
+	var kpiRecentSalesCustomers = GetKPI(date,"Recent_sales_Customers");
 	var kpiROCount = GetKPI(date,"RO_Count");
 	var kpiLaborOps = GetKPI(date,"Labor_Ops_Per_RO");
 	var kpiAvg$ = GetKPI(date,"Average_Money_Per_RO");
