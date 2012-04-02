@@ -125,33 +125,33 @@ function DrawService2 (c, date)
 
 
 
+	context.font = "55pt Calibri";
+	context.fillText(((Math.round((kpiRecentSalesCustomer/kpiInactive) * 1000)) / 10) + "%", 590, 510);
+
+    context.font = "30pt Calibri";
+    context.fillText("are Recent Sales", 540, 540);
+    context.font = "44pt Calibri";
+    context.fillText("customers", 540, 580);
 
 
 
 
-
-
+	var y = 140;
     context.font = "36pt Calibri";
-    context.fillText("Missing Money", canvas.width/2+40, 486);
+    context.fillText("Missing Money", canvas.width/2+40, 486+y);
+    context.font = "24pt Calibri";
+    context.fillText("Labor", canvas.width/2+40, 540+y);
+    context.font = "12pt Calibri";
+    context.fillText("Opportunity", canvas.width/2+40, 552+y);
+    context.font = "36pt Calibri";
+    context.fillText("$" + kpiServiceLaborOpportunity, canvas.width/2+120, 552+y);
 
     context.font = "24pt Calibri";
-    context.fillText("Labor", canvas.width/2+40, 540);
-
+    context.fillText("Parts", canvas.width/2+40, 610+y);
     context.font = "12pt Calibri";
-    context.fillText("Opportunity", canvas.width/2+40, 552);
-
+    context.fillText("Opportunity", canvas.width/2+40, 622+y);
     context.font = "36pt Calibri";
-    context.fillText("$" + kpiServiceLaborOpportunity, canvas.width/2+120, 552);
-
-
-    context.font = "24pt Calibri";
-    context.fillText("Parts", canvas.width/2+40, 610);
-
-    context.font = "12pt Calibri";
-    context.fillText("Opportunity", canvas.width/2+40, 622);
-
-    context.font = "36pt Calibri";
-    context.fillText("$" + kpiServicePartsOpportunity, canvas.width/2+120, 622);
+    context.fillText("$" + kpiServicePartsOpportunity, canvas.width/2+120, 622+y);
 
 	
 //Eric and dunn section
