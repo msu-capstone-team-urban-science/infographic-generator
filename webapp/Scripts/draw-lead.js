@@ -129,89 +129,24 @@ function DrawLead6(c,date) {
 	context.restore();
 	//section
 	var offset=100;
+	trendArray.push(['Unique Customers', 130, 90+offset, 270, 190,GetTrendKPI(date, 'Unique_Customers'),'<p>The number of unique customers who have submitted leads</p>']);
 	trendArray.push(['Response by Mail', 25, 300+offset, 375, 287,GetTrendKPI(date, 'Response_Method_Email'),'<p>The number of times a dealership has contacted new leads via an email message</p>']);
-
-	//context.save();
-	// //unique customers
-	// context.beginPath();
-	// context.moveTo(130 , 90);
-	// context.lineTo(130 , 280);
-	// context.lineTo(400 , 280);
-	// context.lineWidth = 2;
-	// context.lineCap = "square";
-	// context.strokeStyle = "#FF0000";
-	// context.stroke();
+	trendArray.push(['Response by Phone', 405, 300+offset, 368, 287,GetTrendKPI(date, 'Response_Method_Phone'),'<p>The number of times a dealership has contacted new leads via a phone call</p>']);
+	trendArray.push(['Average Response Time', 25, 590+offset, 225, 198,GetTrendKPI(date, 'Average_Response_Time'),'<p>The average number of minutes from the time a dealership receives a lead to the time the customer is contacted</p>']);
+	trendArray.push(['New Sales From Leads', 40, 830+offset, 260, 150,GetTrendKPI(date, 'New_Sales_From_Leads'),'<p>The number of new vehicles puchased that can be linked to an online lead</p>']);
+	trendArray.push(['Used Sales From Leads', 310, 830+offset, 270, 150,GetTrendKPI(date, 'Used_Sales_From_Leads'),'<p>The number of used vehicles purchased that can be linked to an online lead</p>']);
+	trendArray.push(['Lost Sales From Leads', 590, 830+offset, 185, 150,GetTrendKPI(date, 'Lost_Sales_From_Leads'),'<p>The number of customer who submitted a lead to your dealership but purchased from another same brand dealership</p>']);
+	trendArray.push(['Number of Leads', 420, 1020+offset, 355, 120,[[GetTrendKPI(date, 'Unopened_Leads'),"#ff9b00","Unopened Leads"],[GetTrendKPI(date, 'New_Brand_Leads'),"#f54c08","New Brand Leads"]],'<p>Unopened Leads: The number of leads that have not been contacted by a dealership</p><p>New Brand Leads: The number of new leads received from a brand-owned internet site (e.g. - VW.com)</p>']);
 	
-	//Response by Mail
+	// //Used Unopened and New Band Leads
 	context.beginPath();
-	context.moveTo(25 , 300);
-	context.lineTo(25 , 587);
-	context.lineTo(400 , 587);
+	context.moveTo(420 , 1020);
+	context.lineTo(420 , 1140);
+	context.lineTo(775 , 1140);
 	context.lineWidth = 2;
 	context.lineCap = "square";
 	context.strokeStyle = "#FF0000";
 	context.stroke();
-
-	
-	// //Response by Phone
-	// context.beginPath();
-	// context.moveTo(405 , 300);
-	// context.lineTo(405 , 587);
-	// context.lineTo(773 , 587);
-	// context.lineWidth = 2;
-	// context.lineCap = "square";
-	// context.strokeStyle = "#FF0000";
-	// context.stroke();
-	
-	// //Average Response Time
-	// context.beginPath();
-	// context.moveTo(25 , 590);
-	// context.lineTo(25 , 788);
-	// context.lineTo(250 , 788);
-	// context.lineWidth = 2;
-	// context.lineCap = "square";
-	// context.strokeStyle = "#FF0000";
-	// context.stroke();
-	
-	// //New Sale from Leads
-	// context.beginPath();
-	// context.moveTo(40 , 830);
-	// context.lineTo(40 , 980);
-	// context.lineTo(300 , 980);
-	// context.lineWidth = 2;
-	// context.lineCap = "square";
-	// context.strokeStyle = "#FF0000";
-	// context.stroke();
-	
-	// //Used Sale from Leads
-	// context.beginPath();
-	// context.moveTo(310 , 830);
-	// context.lineTo(310 , 980);
-	// context.lineTo(580 , 980);
-	// context.lineWidth = 2;
-	// context.lineCap = "square";
-	// context.strokeStyle = "#FF0000";
-	// context.stroke();
-	
-	// //Used Lost from Leads
-	// context.beginPath();
-	// context.moveTo(590 , 830);
-	// context.lineTo(590 , 980);
-	// context.lineTo(775 , 980);
-	// context.lineWidth = 2;
-	// context.lineCap = "square";
-	// context.strokeStyle = "#FF0000";
-	// context.stroke();
-	
-	// //Used Unopened and New Band Leads
-	// context.beginPath();
-	// context.moveTo(420 , 1020);
-	// context.lineTo(420 , 1140);
-	// context.lineTo(775 , 1140);
-	// context.lineWidth = 2;
-	// context.lineCap = "square";
-	// context.strokeStyle = "#FF0000";
-	// context.stroke();
 	
 	// //New 3PL Leads
 	// context.beginPath();

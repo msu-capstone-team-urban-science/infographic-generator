@@ -45,8 +45,8 @@
 	
 	background:#eee;
 	/* styling of the dialog box, i have a fixed dimension for this demo */ 
-	margin-top:-150px;
-	margin-left: 150px;
+	margin-top:200px;
+	margin-left: 25px;
 	width:750px; 
 	height:400px;
 	

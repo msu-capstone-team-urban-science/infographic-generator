@@ -49,84 +49,8 @@
 			} */
 		};
 		//setInterval(checkEle, 400);
-		
-	$('#myCanvas').bind("touchstart click", function(event){
-		//	debug for area
-		/*
-			var canvas = document.getElementById("myCanvas");
-			var context = canvas.getContext("2d");
-				context.strokeStyle ="red";
-				context.beginPath();
-				//canvas.width/2 + 202, 130+207
-				context.moveTo(150,1050);
-				context.lineTo(150,1150);
-				context.lineTo(250,1150);
-				context.stroke();
-		*/
-		alert("touchhhh");
-		var heightFactor;
-		for(var i=0;i <trendArray.length;i++ )
-		{
-			//check if touching the element location
-			if(event.pageX>trendArray[i][1] && event.pageX<(trendArray[i][1]+trendArray[i][3]) && event.pageY>trendArray[i][2] && event.pageY <(trendArray[i][2]+trendArray[i][4])) {
-				event.preventDefault();
-				popup('<table border="0" width="100%">'+
-							'<tr>'+
-							'<td><canvas id="trendGraph" height="270" width="600"></canvas></td>'+
-							'</tr>'+
-							'<tr>'+
-							'<td>'+trendArray[i][6]+'</td>'+
-							'</tr>'+
-							'</table>');
-					drawTrend(trendArray[i][5],heightFactor);
-				}
-				
-				//draw x, y axis
-				var canvas = document.getElementById("trendGraph");
-				var context = canvas.getContext("2d");
-				context.save();
-				context.beginPath();
-				context.moveTo(120,0);
-				context.lineTo(120,220);
-				context.lineTo(600,220);
-				context.strokeStyle = "black";	
-				context.stroke();
-				context.restore();
-			}	
-		}
-	});
 	
-	function drawTrend(data,heightFactor) {
-		var canvas = document.getElementById("trendGraph");
-		var context = canvas.getContext("2d");
-		var radius=4;
-		context.fillStyle ='#00F';
-		var sum=0;
-		for(var j=0;j<data.length;j++){
-			sum+=data[j][1];
-		}
-		context.font = "14pt Calibri";
-		for(var i=0;i<data.length;i++)
-		{
-			context.save();
-			context.beginPath();
-			context.moveTo(145,220-data[0][1]*heightFactor+30);
-			context.arc(145, 220-data[0][1]*heightFactor+30, radius, 0, 2 * Math.PI, false);
-			context.fillText(data[0][1],130,220-data[0][1]*heightFactor-20+30);
-			context.fillText(monthname[0],145,250);
-			for(var k=1;k<data.length;k++){
-				context.arc(k*70+145, 220-data[k][1]*heightFactor+30, radius, 0, 2 * Math.PI, false);
-				context.fillText(monthname[k],k*70+145,250);		//draw month
-				context.fillText(data[k][1],k*70+130,220-data[k][1]*heightFactor-20+30); //draw number
-				context.lineTo(k*70+145,220-data[k][1]*heightFactor+30);
-			}
-			context.lineWidth=4;
-			context.strokeStyle = "blue";
-			context.lineWidth=1;
-			context.stroke();
-			context.restore();
-		}		
-	}
+	
 	//graph for pump-in sales
 	/*
 	function drawLineGraph(c, name, d, color, index, heightFactor){
@@ -193,6 +117,111 @@
 			preventDefault: false,
 			moveX: 200,
 		});
+
+		$('#myCanvas').bind("touchstart click", function(event){
+			var heightFactor=1;
+			for(var i=0;i <trendArray.length;i++ )
+			{
+				//check if touching the element location
+				if(event.pageX>trendArray[i][1] && event.pageX<(trendArray[i][1]+trendArray[i][3]) && event.pageY>trendArray[i][2] && event.pageY <(trendArray[i][2]+trendArray[i][4])) {
+					event.preventDefault();
+					popup('<table border="0" width="100%">'+
+								'<tr>'+
+								'<td><canvas id="trendGraph" height="270" width="600"></canvas></td>'+
+								'</tr>'+
+								'<tr>'+
+								'<td>'+trendArray[i][6]+'</td>'+
+								'</tr>'+
+								'</table>');
+
+						if(trendArray[i][0]=="Number of Leads"){
+							heightFactor=0.3;
+							for(var j=0;j<trendArray[i][5].length;j++)  {
+								drawLineGraph("trendGraph",trendArray[i][5][j][2],trendArray[i][5][j][0],trendArray[i][5][j][1], j,heightFactor);
+							}
+						}else{
+							if(trendArray[i][0]=="Response by Mail" || trendArray[i][0]=="Unique Customers"){
+								heightFactor=0.1;
+							}
+							if(trendArray[i][0]=="Response by Phone"){
+								heightFactor=0.2;
+							}
+							if(trendArray[i][0]=="New Sales From Leads" || trendArray[i][0]=="Used Sales From Leads" || trendArray[i][0]=="Lost Sales From Leads"){
+								heightFactor=5;
+							}
+							drawTrend(trendArray[i][5],heightFactor);
+						}
+					
+					//draw x, y axis
+					var canvas = document.getElementById("trendGraph");
+					var context = canvas.getContext("2d");
+					context.save();
+					context.beginPath();
+					context.moveTo(120,0);
+					context.lineTo(120,220);
+					context.lineTo(600,220);
+					context.strokeStyle = "black";	
+					context.stroke();
+					context.restore();
+				}	
+			}
+		});
+	
+		function drawTrend(data,heightFactor) {
+			var canvas = document.getElementById("trendGraph");
+			var context = canvas.getContext("2d");
+			var radius=4;
+			context.fillStyle ='#00F';
+			var sum=0;
+			for(var j=0;j<data.length;j++){
+				sum+=data[j][1];
+			}
+			context.font = "14pt Calibri";
+			for(var i=0;i<data.length;i++)
+			{
+				context.save();
+				context.beginPath();
+				context.moveTo(150,220-data[0][1]*heightFactor+30);
+				context.arc(150, 220-data[0][1]*heightFactor+30, radius, 0, 2 * Math.PI, false);
+				context.fillText(data[0][1],142,220-data[0][1]*heightFactor-20+30);
+				context.fillText(monthname[0],140,250);
+				for(var k=1;k<data.length;k++){
+					context.arc(k*70+150, 220-data[k][1]*heightFactor+30, radius, 0, 2 * Math.PI, false);
+					context.fillText(monthname[k],k*70+142,250);		//draw month
+					context.fillText(data[k][1],k*70+140,220-data[k][1]*heightFactor-20+30); //draw number
+					context.lineTo(k*70+150,220-data[k][1]*heightFactor+30);
+				}
+				context.lineWidth=4;
+				context.strokeStyle = "blue";
+				context.lineWidth=1;
+				context.stroke();
+				context.restore();
+			}		
+		}
+		
+		function drawLineGraph(c, name, d, color, index, heightFactor){
+			var canvas = document.getElementById(c);
+			var context = canvas.getContext("2d");
+			context.save();
+			context.font = "14pt Calibri";
+			context.beginPath();
+			context.arc(150, (220-d[0][1]/4*heightFactor), 2, 0, 2 * Math.PI, false);
+			context.fillText(monthname[0],145,250);		//draw month
+			context.fillText(d[0][1],150,220-d[0][1]/4*heightFactor); //draw number
+			context.lineTo(150,(220-d[0][1]/4*heightFactor));
+			for(var i=1;i<d.length;i++){
+				context.arc(i*70+150, (220-d[i][1]/4*heightFactor), 2, 0, 2 * Math.PI, false);
+				context.fillText(monthname[i],i*70+145,250);		//draw month
+				context.fillText(d[i][1],i*70+150,220-d[i][1]/4*heightFactor); //draw number
+				context.lineTo(i*70+150,(220-d[i][1]/4*heightFactor));
+			}
+			context.fillStyle = color; // text color
+			context.font = "10pt Calibri";
+			context.fillText(name, 0, index*20+10);
+			context.strokeStyle = color;
+			context.stroke();
+			context.restore();
+		}
 	</script>
 	</body>
 </html>
