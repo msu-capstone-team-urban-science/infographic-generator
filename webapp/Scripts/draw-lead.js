@@ -143,6 +143,17 @@ function DrawLead6(c,date) {
 			
 	//Text
 
+	//kpiUnique
+	var x = 0;
+	var y = 0;
+	context.save();
+	context.font = "32pt Calibri";
+	context.fillStyle = "#000000";
+	context.fillText("Unique Customers", x + 430,y + 180);
+	context.font = "38pt Calibri";
+	context.fillText(kpiUnique,x + 490, y+ 230);
+	context.restore();
+	
 
 	//Response Method
 	var x = 7;
