@@ -168,12 +168,12 @@ function DrawService2 (c, date)
 	
 	context.font = "20pt Calibri";
     context.fillText("Labor Ops per ", 225, 1500);
-    context.fillText("Repair Order (RO)", 250, 1525);
+    context.fillText("Repair Order ", 280, 1525);
 	context.fillText("= " +kpiLaborOps, 400,1550);
 	
 //Avg $ per RO
 	context.font = "24pt Calibri";
-    context.fillText("Average $ per Repair Order (RO)", 525, 1100);
+    context.fillText("Average $ per Repair Order ", 525, 1100);
 	context.fillText("= "+ kpiAvg$,575, 1150);	
 	
 	//push positions of elements into array
@@ -187,7 +187,7 @@ function DrawService2 (c, date)
 	trendArray.push(['Dealer Effectiveness', 520, 900+offset, 170, 120,GetTrendKPI(date, 'Dealer_Effectiveness'),'<p>Dealer Effectiveness is defined as a dealer\'s nationwide sales compared to the Expected at the Benchmark in that dealer\'s PMA. The formula: Dealer Effectiveness = ((Dealer National Sales) / (Expected @ Benchmark in the PMA)) X 100. </p>']);
 	trendArray.push(['Brand Effectiveness', 320, 800+offset, 180, 140,GetTrendKPI(date, 'Brand_Effectiveness'),'<p>Brand Effectiveness is defined as brand sales made by any dealer in the PMA compared to the Expected at the Benchmark. The formula: Brand Effectiveness = ((Brand Sales in the PMA) / (Expected @ Benchmark in the PMA)) X 100.</p>']);
 	trendArray.push(['Average Money Per RO', 520, 1070+offset, 440, 90,GetTrendKPI(date, 'Average_Money_Per_RO'),'<p>Average $ per RO shows your Average CP dollar value spent on each of your ROs for a rolling 12 months, ending on the current month</p>']);
-	trendArray.push(['RO Count', 200, 1130+offset, 170, 120,GetTrendKPI(date, 'RO_Count'),'<p>RO Count shows the number of Repair Orders (RO) your dealership has accumulated in the last 12 months, ending on the current month.</p>']);
+	trendArray.push(['RO Count', 200, 1130+offset, 170, 120,GetTrendKPI(date, 'RO_Count'),'<p>RO Count shows the number of Repair Orders your dealership has accumulated in the last 12 months, ending on the current month.</p>']);
 	trendArray.push(['Labor Ops Per RO', 200, 1480+offset, 290, 100,GetTrendKPI(date, 'Labor_Ops_Per_RO'),'<p>The average number of Labor Operations peformed within each RO</p>']);
 }
 

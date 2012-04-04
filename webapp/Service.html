@@ -60,7 +60,9 @@
 						if(trendArray[i][0]=="Average Money Per RO" || trendArray[i][0]=="RO Count" || trendArray[i][0]=="Labor Ops Per RO"){
 								document.getElementById('dialog-box').style.cssText = "margin-top: 870px";
 						}
-						else{
+						else if(trendArray[i][0]=="Dealer Effectiveness" || trendArray[i][0]=="Brand Effectiveness"){
+							document.getElementById('dialog-box').style.cssText = "margin-top: 650px";
+						}else{
 							document.getElementById('dialog-box').style.cssText = "margin-top: 200px";
 						}
 						popup('<table border="0" width="100%">'+
