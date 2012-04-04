@@ -1975,7 +1975,7 @@ function DrawEffectiveness(c,x,y,date,d,b)
 	context.fillText(Math.round(b*100)+"%", x+280, y);
 	context.fillText(Math.round(d*100)+"%", x+490, y+60);
 	context.fillText("Dealer", x+470, y+90);
-	
+	 
 	context.restore();
 }
 
