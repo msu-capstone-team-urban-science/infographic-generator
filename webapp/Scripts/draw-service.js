@@ -20,11 +20,9 @@ function DrawService (c, date)
     context.fill();
 
     // draw sections
-    DrawSection("myCanvas", 0, 311, canvas.width / 2, canvas.height, [canvas.width / 6, "#0067A5"]);
-    DrawSection("myCanvas", canvas.width / 2, 311, canvas.width / 2, canvas.height, [canvas.width / 6, "0073CF"]);
-    DrawSection("myCanvas", canvas.width / 2, 311, canvas.width / 2, canvas.height, [canvas.width / 6, "#0073CF"]);
-    DrawSection("myCanvas", 0, 730, canvas.width, canvas.height, [canvas.width / 2, "#8ED6FF"]);
-    DrawSection("myCanvas", canvas.width / 2, 830, canvas.width, canvas.height, [canvas.width / 2, "#0047AB"]);
+    DrawSection("myCanvas", 0, 311, canvas.width / 2, canvas.height, [canvas.width / 6, "#0067A5"]); // top left
+    DrawSection("myCanvas", canvas.width / 2, 311, canvas.width / 2, canvas.height, [canvas.width / 6, "#0073CF"]); // top right
+    DrawSection("myCanvas", 0, 730, canvas.width, canvas.height, [canvas.width / 2, "#8ED6FF"]); // light blue in middle
     DrawSection("myCanvas", 0, 1100, canvas.width, canvas.height, [canvas.width / 2, "#002366"]);
 	DrawSection("myCanvas", canvas.width / 2, 1000, canvas.width, canvas.height, [canvas.width / 2, "#0047AB"]);
     DrawSection("myCanvas", 0, 1400, canvas.width, canvas.height, [canvas.width / 2, "#002366"]);
@@ -34,11 +32,10 @@ function DrawService (c, date)
         context.drawImage(img, 690, 560);
         var img1 = new Image();
         img1.onload = function () {
-            DrawService2(c, date);
-            context.drawImage(img1, 150, 1520);
+            context.drawImage(img1, 50, 1144);
 			var img2 = new Image();
 			img2.onload= function () { 
-				context.drawImage(img2,750,1165);
+				context.drawImage(img2,750,1115);
 				DrawService2(c, date);
 			}
 			img2.src='images/Avg$.png';
@@ -90,7 +87,7 @@ function DrawService2 (c, date)
     DrawPerson("myCanvas", 40, 400, 110);
 	DrawPerson("myCanvas", 540, 400, 110);
 	
-	DrawEffectiveness("myCanvas", 90, 920, date,kpiDealer,kpiBrand);
+	DrawEffectiveness("myCanvas", 90, 890, date,kpiDealer,kpiBrand);
 
 
 // TEXT SECTION
@@ -163,21 +160,21 @@ function DrawService2 (c, date)
 	
 //Eric and dunn section
 	//draw talk bubble over erics head
-	talkBub(c,275,1625,"#0073CF");
+	talkBub(c,175,1250,"#0073CF");
 	context.font = "24pt Calibri";
-    context.fillText("RO Count", 325, 1550);
+    context.fillText("RO Count", 225, 1175);
 	context.font = "22pt Calibri";
-    context.fillText(kpiROCount,355, 1590);
+    context.fillText(kpiROCount,255, 1215);
 	
 	context.font = "20pt Calibri";
-    context.fillText("Labor Ops per ", 325, 1875);
-    context.fillText("Repair Order (RO)", 350, 1900);
-	context.fillText("= " +kpiLaborOps, 500,1925);
+    context.fillText("Labor Ops per ", 225, 1500);
+    context.fillText("Repair Order (RO)", 250, 1525);
+	context.fillText("= " +kpiLaborOps, 400,1550);
 	
 //Avg $ per RO
 	context.font = "24pt Calibri";
-    context.fillText("Average $ per Repair Order (RO)", 525, 1150);
-	context.fillText("= "+ kpiAvg$,575, 1200);	
+    context.fillText("Average $ per Repair Order (RO)", 525, 1100);
+	context.fillText("= "+ kpiAvg$,575, 1150);	
 	
 	//push positions of elements into array
 	var offset=100;
