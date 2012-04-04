@@ -1480,7 +1480,7 @@ function DrawCloseRate(c,x,y,d) {
 	DrawMachine(c,x+100,y-5);
 	
 	context.font = "32pt Calibri";
-	context.fillStyle = "#000000";
+	context.fillStyle = "#FFFFFF";
 	context.fillText("Close Rate", x-70, y-230);
 	
 	
@@ -1758,7 +1758,7 @@ function DrawProspectCount(c,x,y,d) {
 	context.fillText(d, x+40, y-20);
 	
 	context.font = "32pt Calibri";
-	context.fillStyle = "#000000";
+	context.fillStyle = "#FFFFFF";
 	context.fillText("Prospect Count", x-100, y-230);
 
 	context.restore();
