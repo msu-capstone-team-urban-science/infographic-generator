@@ -184,12 +184,11 @@ function DrawService2 (c, date)
 	trendArray.push(['Single Visit Customers', 30, 380+offset, 434, 200,GetTrendKPI(date, 'Single_Visit_Customers'),'<p>A Single Visit Customer is an Active Customer who has only returned for CP vehicle service one time in the past 12 months.</p>']);
 	trendArray.push(['Service Labor Opportunity', 530, 590+offset, 534, 110,GetTrendKPI(date, 'Service_Labor_Opportunity'),'<p>Labor Opportunity is the potential revenue that your dealership may possibly generate from the cost of labor by getting your Inactive Customers to come in at least one time for CP vehicle service</p>']);
 	trendArray.push(['Service Parts Opportunity', 530, 710+offset, 534, 80,GetTrendKPI(date, 'Service_Parts_Opportunity'),'<p>Labor Opportunity is the potential revenue that your dealership may possibly generate from the cost of labor by getting your Inactive Customers to come in at least one time for CP vehicle service</p>']);
-	trendArray.push(['Dealer Effectiveness', 520, 940+offset, 280, 150,GetTrendKPI(date, 'Dealer_Effectiveness'),'<p>Dealer Effectiveness is defined as a dealer\'s nationwide sales compared to the Expected at the Benchmark in that dealer\'s PMA. The formula: Dealer Effectiveness = ((Dealer National Sales) / (Expected @ Benchmark in the PMA)) X 100. </p>']);
+	trendArray.push(['Dealer Effectiveness', 520, 900+offset, 170, 120,GetTrendKPI(date, 'Dealer_Effectiveness'),'<p>Dealer Effectiveness is defined as a dealer\'s nationwide sales compared to the Expected at the Benchmark in that dealer\'s PMA. The formula: Dealer Effectiveness = ((Dealer National Sales) / (Expected @ Benchmark in the PMA)) X 100. </p>']);
 	trendArray.push(['Brand Effectiveness', 320, 800+offset, 180, 140,GetTrendKPI(date, 'Brand_Effectiveness'),'<p>Brand Effectiveness is defined as brand sales made by any dealer in the PMA compared to the Expected at the Benchmark. The formula: Brand Effectiveness = ((Brand Sales in the PMA) / (Expected @ Benchmark in the PMA)) X 100.</p>']);
-	trendArray.push(['Average Money Per RO', 520, 1120+offset, 410, 330,GetTrendKPI(date, 'Average_Money_Per_RO'),'<p>Average $ per RO shows your Average CP dollar value spent on each of your ROs for a rolling 12 months, ending on the current month</p>']);
-	trendArray.push(['RO Count', 280, 1480+offset, 290, 170,GetTrendKPI(date, 'RO_Count'),'<p>RO Count shows the number of Repair Orders (RO) your dealership has accumulated in the last 12 months, ending on the current month.</p>']);
-	trendArray.push(['Labor Ops Per RO', 280, 1800+offset, 290, 150,GetTrendKPI(date, 'Labor_Ops_Per_RO'),'<p>The average number of Labor Operations peformed within each RO</p>']);
-
+	trendArray.push(['Average Money Per RO', 520, 1070+offset, 440, 90,GetTrendKPI(date, 'Average_Money_Per_RO'),'<p>Average $ per RO shows your Average CP dollar value spent on each of your ROs for a rolling 12 months, ending on the current month</p>']);
+	trendArray.push(['RO Count', 200, 1130+offset, 170, 120,GetTrendKPI(date, 'RO_Count'),'<p>RO Count shows the number of Repair Orders (RO) your dealership has accumulated in the last 12 months, ending on the current month.</p>']);
+	trendArray.push(['Labor Ops Per RO', 200, 1480+offset, 290, 100,GetTrendKPI(date, 'Labor_Ops_Per_RO'),'<p>The average number of Labor Operations peformed within each RO</p>']);
 }
 
 $(document).ready(function () {
