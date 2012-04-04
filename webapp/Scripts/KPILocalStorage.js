@@ -45,6 +45,7 @@ function SearchKPIByDate(date) {
             if (FormatDate(value.KPI_Date).getFullYear() == date.getFullYear()) {
                 var dataPoint = new Array(2);
                 dataPoint[0] = value.KPI_Name;
+                //dataPoint[1] = addCommas(value.KPI_Value);
                 dataPoint[1] = value.KPI_Value;
                 returnArr.push(dataPoint);
             }
@@ -97,4 +98,18 @@ function GetTrendKPI(date, kpiName) {
 		x++;
 	}
 	return kpiArray;
+}
+
+
+function addCommas(nStr)
+{
+	nStr += '';
+	x = nStr.split('.');
+	x1 = x[0];
+	x2 = x.length > 1 ? '.' + x[1] : '';
+	var rgx = /(\d+)(\d{3})/;
+	while (rgx.test(x1)) {
+		x1 = x1.replace(rgx, '$1' + ',' + '$2');
+	}
+	return x1 + x2;
 }
