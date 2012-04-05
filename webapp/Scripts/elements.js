@@ -29,7 +29,7 @@ function Retail_Sale(c, x, y, w, h, d) {
         //draw text
         ctx.font = "bold 28pt Calibri";
         ctx.fillText(monthname[date.getMonth()], x+51, y+135);
-        ctx.fillText(d[1], x+47, y+37);
+        ctx.fillText(addCommas(d[1]), x+47, y+37);
     }
     ctx.restore();
 }
@@ -72,7 +72,7 @@ function Used_Vehicle_Sale(c, x, y, w, h, d) {
     //date
     ctx.fillText(monthname[d[0].getMonth()] +" "+d[0].getFullYear().toString().substr(2, 3), x+35, y+70);
     //data
-    ctx.fillText(d[1], x+60, y+110);
+    ctx.fillText(addCommas(d[1]), x+60, y+110);
     ctx.restore();
 }
 
@@ -118,7 +118,7 @@ function Cost_Per_Sale(c, x, y, w, h, d) {
         ctx.font = "bold 28pt MarkerFelt-Thin";
         ctx.fillText(monthname[d[0].getMonth()], x+65, y+117);
         ctx.font = "bold 38pt MarkerFelt-Thin";
-        ctx.fillText(d[1], x+65, y+75);
+        ctx.fillText(addCommas(d[1]), x+65, y+75);
     }
     ctx.restore();
 }
@@ -674,7 +674,7 @@ function DrawLostSale(c, x, y, w, h, d) {
         ctx.fillText("Sales", x+120, y+78);
 
         ctx.font = "bold 40pt Calibri";
-        ctx.fillText(d, x+155, y+120);
+        ctx.fillText(addCommas(d), x+155, y+120);
         ctx.restore();
     }
     img04.src = 'images/puzzle.png';
@@ -751,7 +751,7 @@ function DrawLostProfit(c,x,y,w,h,d) {
     // Draw the text exclamation point
     context.font = "40px Arial";
     context.fillStyle = "red";	
-    context.fillText("$" + d, x+190, y+100);
+    context.fillText("$" + addCommas(d), x+190, y+100);
 
     context.textAlign = "center";
     context.textBaseline = "middle";
@@ -1486,7 +1486,7 @@ function DrawCloseRate(c,x,y,d) {
 	
 	context.font = "24pt Calibri";
 	context.fillStyle = "#000000";
-	context.fillText(d, x-19, y-150);
+	context.fillText(d*100+"%", x-19, y-150);
 	
 	//draw door
 	context.save();
@@ -2000,4 +2000,17 @@ function talkBub(c,talkbubX,talkbubY,d) {
 	context.translate(-talkbubX,-talkbubY);
 	DrawSection(c,talkbubX,talkbubY, 120,120,[,d]);
 	context.restore();
+}
+
+function addCommas(nStr)
+{
+	nStr += '';
+	x = nStr.split('.');
+	x1 = x[0];
+	x2 = x.length > 1 ? '.' + x[1] : '';
+	var rgx = /(\d+)(\d{3})/;
+	while (rgx.test(x1)) {
+		x1 = x1.replace(rgx, '$1' + ',' + '$2');
+	}
+	return x1 + x2;
 }

@@ -53,13 +53,13 @@ function DrawService2 (c, date)
     // kpi
     var kpiActive = GetKPI(date, "Active_Customers");
     var kpiInactive = GetKPI(date, "Inactive_Customers");
-    var kpiServiceLaborOpportunity = GetKPI(date, "Service_Labor_Opportunity");
-    var kpiServicePartsOpportunity = GetKPI(date, "Service_Parts_Opportunity");
+    var kpiServiceLaborOpportunity = addCommas(GetKPI(date, "Service_Labor_Opportunity"));
+    var kpiServicePartsOpportunity = addCommas(GetKPI(date, "Service_Parts_Opportunity"));
     var kpiSingleVisitCustomer = GetKPI(date, "Single_Visit_Customers");
 	var kpiDealer = GetKPI(date, "Dealer_Effectiveness");
 	var kpiBrand =  GetKPI(date,"Brand_Effectiveness");
 	var kpiRecentSalesCustomers = GetKPI(date,"Recent_Sales_Customers");
-	var kpiROCount = GetKPI(date,"RO_Count");
+	var kpiROCount = addCommas(GetKPI(date,"RO_Count"));
 	var kpiLaborOps = GetKPI(date,"Labor_Ops_Per_RO");
 	var kpiAvg$ = GetKPI(date,"Average_Money_Per_RO");
 
@@ -98,13 +98,13 @@ function DrawService2 (c, date)
     context.fillText("Active", canvas.width/6+123, 250);
     context.fillText("Customers", canvas.width/6+80, 270);
     context.font = "40pt Calibri";
-    context.fillText(kpiActive, canvas.width/6+189, 270);
+    context.fillText(addCommas(kpiActive), canvas.width/6+189, 270);
 
     context.font = "20pt Calibri";
     context.fillText("Inactive", canvas.width*4/6+108, 250);
     context.fillText("Customers", canvas.width*4/6+80, 270);
     context.font = "40pt Calibri";
-    context.fillText(kpiInactive, canvas.width*4/6+189, 270);
+    context.fillText(addCommas(kpiInactive), canvas.width*4/6+189, 270);
 
     context.font = "55pt Calibri";
 
