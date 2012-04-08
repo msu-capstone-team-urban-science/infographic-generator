@@ -1770,7 +1770,7 @@ function DrawUnopenedLead(c,x,y,d,d2) {
 	context.save();
 	
 
-	img= new Image();
+	img_unopened= new Image();
 
 	
 	context.beginPath();
@@ -1783,12 +1783,12 @@ function DrawUnopenedLead(c,x,y,d,d2) {
 	context.fillText("New Brand", x+400, y+30);
 	context.fillText(d2, x+640, y+30);
 	
-	img.onload = function()
+	img_unopened.onload = function()
 	{
-		context.drawImage(img, x, y-100 , img.width/1.4, img.height/1.4);
+		context.drawImage(img_unopened, x, y-100 , img_unopened.width/1.4, img_unopened.height/1.4);
 	}
 
-	img.src = 'images/lead_Unopened.png';
+	img_unopened.src = 'images/lead_Unopened.png';
 	context.restore();
 
 
