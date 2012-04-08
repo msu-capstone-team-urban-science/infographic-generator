@@ -1770,13 +1770,8 @@ function DrawUnopenedLead(c,x,y,d,d2) {
 	context.save();
 	
 
-	img_unopened = new Image();
-	img_scissor = new Image();
-	img_logo1 = new Image();
-	img_logo2 = new Image();
-	img_logo3 = new Image();
-	img_logo4 = new Image();
-	img_hand = new Image();		
+	img= new Image();
+
 	
 	context.beginPath();
 	context.fillStyle = "#ffffff";
@@ -1788,42 +1783,14 @@ function DrawUnopenedLead(c,x,y,d,d2) {
 	context.fillText("New Brand", x+400, y+30);
 	context.fillText(d2, x+640, y+30);
 	
-	img_unopened.onload = function()
+	img.onload = function()
 	{
-		context.drawImage(img_unopened, x, y , img_unopened.width/1.7, img_unopened.height/1.7);
+		context.drawImage(img, x, y-100 , img.width/1.4, img.height/1.4);
 	}
-	img_scissor.onload = function()
-	{
-		context.drawImage(img_scissor, x+130, y-50, img_scissor.width/1.7, img_scissor.height/1.7);
-	}
-	img_logo1.onload = function()
-	{
-		context.drawImage(img_logo1, x+210, y+170, img_logo1.width/1.7, img_logo1.height/1.7);
-	}
-	img_logo2.onload = function()
-	{	
-		context.drawImage(img_logo2, x+110, y+110, img_logo2.width/2, img_logo2.height/2);
-	}
-	img_logo3.onload = function()  
-	{
-		context.drawImage(img_logo3, x+40, y+180, img_logo3.width/5, img_logo3.height/5);
-	}
-	img_logo4.onload = function()
-	{
-		context.drawImage(img_logo4, x+120, y+220, img_logo4.width/1.7, img_logo4.height/1.7);
-	}
-	img_hand.onload = function()
-	{
-		context.drawImage(img_hand, x+240, y-110, img_hand.width/2.7, img_hand.height/2.7);
-	}
-	
-	img_unopened.src = 'images/lead_open-envelope.png';
-	img_scissor.src = 'images/lead_scissor.png';
-	img_logo1.src = 'images/lead_dealix.png';
-	img_logo2.src = 'images/lead_vw.png';
-	img_logo3.src = 'images/lead_kelley.png';
-	img_logo4.src = 'images/lead_edmunds.png';
-	img_hand.src = 'images/lead_hand.png';
+
+	img.src = 'images/lead_Unopened.png';
+
+
 
 
 	context.restore();
