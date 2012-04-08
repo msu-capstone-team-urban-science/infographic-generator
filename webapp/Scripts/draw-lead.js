@@ -71,7 +71,6 @@ function DrawLead5(c,date) {
 	
 	back2.onload = function () { 
 		context.drawImage(back2,29,1007,745,439);
-
 	}
 	back3.onload = function(){
 		context.drawImage(back3,29,1475,745,281)		
