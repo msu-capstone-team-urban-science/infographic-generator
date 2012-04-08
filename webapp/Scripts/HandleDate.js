@@ -10,21 +10,37 @@ function initDate() {
 	return currDate;
 }
 function GetFullMonth(todate,b) {
-
     document.getElementById('month').innerHTML = fullMonthName[todate.getMonth()] +" '"+ todate.getFullYear().toString().substr(2,3);
     if (b) {
         document.getElementById('month2').innerHTML = fullMonthName[todate.getMonth()-b] +" '"+ todate.getFullYear().toString().substr(2,3);
     }
 }
 
-function changeMonth(x) {
+function wiggle() {
+	$("#month").animate({ "left": "-=10px" }, 100);
+	$("#month").animate({ "left": "+=20px" }, 100);
+	$("#month").animate({ "left": "-=20px" }, 100);
+	$("#month").animate({ "left": "+=10px" }, 100);
+}
+
+function changeMonth(x,whichInfo) {
     var newMonth = currDate.getMonth() + x;
-    if (insideDateRange(newMonth)) {
+	if (insideDateRange(newMonth)) {
         currDate.setMonth(newMonth);
-		DrawSalesInfographic("myCanvas",currDate);
-		//DrawService("myCanvas",currDate);
+		switch(whichInfo)  {
+		case 1:
+			DrawSalesInfographic("myCanvas",currDate);
+			break;
+		case 2:
+			DrawService("myCanvas",currDate);
+			break;
+		case 3:
+			DrawLead("myCanvas",currDate);
+			break;
+		default:
+			break;
+		}
 		GetFullMonth(currDate,x);
-        //GetFullMonth(currDate, 0);
         if (x < 0) {
 			$("#month").animate({ "left": "-850px" }, 0);
             $("#month2").animate({ "left": "635px" }, 0);
@@ -36,7 +52,9 @@ function changeMonth(x) {
             $("#month2").animate({ "left": "-=1200px" }, 1000);
             $("#month").animate({ "left": "-=1485px" }, 1200);
         }       
-    }
+    } else {
+		wiggle();
+	}
 }
 
 //check if it is within our range, and then return true or false based on those values.
@@ -52,7 +70,7 @@ function insideDateRange(month) {
     //[FirstMonth, FirstYear, LastMonth, LastYear]
     if ((tempDate.getFullYear() <= dR[3]) && (tempDate.getFullYear() >= dR[1])) {
         if ((tempDate.getMonth() <= dR[2]) && (tempDate.getMonth() >= dR[0])) {
-            bool = 1;
+			bool = 1;
         }
     } else {
         bool = 0;
@@ -86,11 +104,11 @@ function dateRange() {
     return [FirstMonth, FirstYear, LastMonth, LastYear];
 }
 
-function wipeStatus(dir,result) {
+function wipeStatus(dir,result,whichInfographic) {
     if (dir == "Right") {
-        changeMonth(-1);
+        changeMonth(-1,whichInfographic);
     }
-    if (dir == "Left") {        
-        changeMonth(1);
+    if (dir == "Left") {  
+        changeMonth(1,whichInfographic);
     }
 }

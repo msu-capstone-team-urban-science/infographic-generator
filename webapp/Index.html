@@ -14,7 +14,7 @@
 		<script type="text/javascript" src="Scripts/jquery.event.drag-2.0.js"></script>
 		<script type="text/javascript" src="Scripts/elements.js"></script><script type="text/javascript" src="Scripts/jquery.event.drop-2.0.js"></script>
 		<script type="text/javascript">
-			
+			var currentWidth;
 			var orient = "";
 		    var updateLayout = function () {
 		        if (window.innerWidth != currentWidth) {
@@ -22,15 +22,16 @@
 		            
 		            if (currentWidth == 320) {
 		                orient = "portrait";
+						//document.getElementById('banner').src="images/branding-portrait.png";
 		            }
 		            else {
 		                orient = "landscape";
+						//document.getElementById('banner').src="images/branding-landscape.png";
 		            }
 		            document.body.setAttribute("orient", orient);
 		            window.scrollTo(0, 1);
 		        }
 		    };
-		    iPhone.DomLoad(updateLayout);
 		    setInterval(updateLayout, 400);
 		</script>
 		<script type="text/javascript">
@@ -83,16 +84,15 @@
     <div id="mpage">		
 		<div id="main">
 			<ul>
-				<li><span><a href="javascript:navigator_Go('Sales.html');"><img src="images/icon_sale.png" alt=""></a>Sale</span></li>
-				<li><span><a href="javascript:navigator_Go('Service.html');"><img src="images/icon_service.png" alt=""></a>Service</span></li>
-				<li><span><a href="javascript:navigator_Go('Lead.html');"><img src="images/icon_lead.png" alt=""></a>Lead</span></li>
+				<li><span><a href="javascript:navigator_Go('Sales.html');"><img src="images/icon_sale.png" alt=""></a><div class="pageName">Sales</div></span></li>
+				<li><span><a href="javascript:navigator_Go('Service.html');"><img src="images/icon_service.png" alt=""></a><div class="pageName">Service</div></span></li>
+				<li><span><a href="javascript:navigator_Go('Lead.html');"><img src="images/icon_lead.png" alt=""></a><div class="pageName">Lead</div></span></li>
 			</ul>
             <address></address>
 			
 		</div>
-		<canvas id="myCanvas" width="1024" height="768">Canvas not supported on your device.</canvas>
+		<!--<canvas id="myCanvas" width="1024" height="768">Canvas not supported on your device.</canvas>-->
 	</div>
-<img src="images/branding-landscape.png" style="position:absolute;top:0px;left:0px;width:1030px;"/>
 </body>
 </html>
 

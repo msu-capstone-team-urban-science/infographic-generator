@@ -7,7 +7,7 @@
 		<script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
 		<script type="text/javascript" src="Scripts/elements.js"></script>
 		<script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
-		<script type="text/javascript" src="Scripts/draw-new-sales.js"></script>
+		<script type="text/javascript" src="Scripts/draw-sales.js"></script>
 		<script type="text/javascript" src="Scripts/jquery.wipetouch.js"></script>
         <script>
             window.onload = function(){
@@ -22,12 +22,14 @@
 		<div id="main">
 			<div id="header">
 				<img src="images/header.jpg">
-				<a href="index.html"><img id="hButton" src="images/homeButton.png"></a>
+				<a href="javascript:navigator_Go('Index.html');" id="hButton"><img src="images/homeButton2.png"></a>
 				<p id="category">Sales</p>
 				<p id="month"></p>
 				<p id="month2"></p>
 			</div>
 			<canvas id="myCanvas" width="1000" height="2200">
+			<!-- Insert fallback content here -->
+			Sorry, your browser doesn't support canvas technology
 			</canvas>
 			<!--fixed later <div id="dialog-overlay"></div>-->
 			<div id="dialog-box">
@@ -43,8 +45,8 @@
 		{
 			allowDiagonal:false,
 			tapToClick: true,
-			wipeLeft: function(result) { wipeStatus("Left",result); },
-			wipeRight: function(result) { wipeStatus("Right",result);},
+			wipeLeft: function(result) { wipeStatus("Left",result,1); },
+			wipeRight: function(result) { wipeStatus("Right",result,1);},
             wipeUp: false,
             wipeDown: false,
             preventDefault: false,
@@ -52,62 +54,164 @@
 		});	
 		
 		$('#myCanvas').bind("touchstart click", function(event){
-		//	Testing for area of Retail Sale
+		//	debug for area
 		/*
 			var canvas = document.getElementById("myCanvas");
 			var context = canvas.getContext("2d");
 				context.strokeStyle ="red";
 				context.beginPath();
 				//canvas.width/2 + 202, 130+207
-				context.moveTo(canvas.width/2+202,103);
-				context.lineTo(canvas.width/2+202,123+132);
-				context.lineTo(canvas.width/2+202+192,123+132);
+				context.moveTo(150,1050);
+				context.lineTo(150,1150);
+				context.lineTo(250,1150);
 				context.stroke();
 		*/
-		//event.preventDefault();
-		//http://stackoverflow.com/questions/4780837/is-there-an-equivalent-to-e-pagex-position-for-touchstart-event-as-there-is-fo
-		//alert("X: "+event.originalEvent.touches[0].pageX);
-		//$('#status').html('X: '+event.pageX);
-
+		var heightFactor;
 		for(var i=0;i <trendArray.length;i++ )
 		{
 			//check if touching the element location
-			if(event.originalEvent.touches[0].pageX>trendArray[i][1] && event.originalEvent.touches[0].pageX<(trendArray[i][1]+trendArray[i][3]) && event.originalEvent.touches[0].pageY>trendArray[i][2] && event.originalEvent.touches[0].pageY <(trendArray[i][2]+trendArray[i][4]))
-			{
+			if(event.pageX>trendArray[i][1] && event.pageX<(trendArray[i][1]+trendArray[i][3]) && event.pageY>trendArray[i][2] && event.pageY <(trendArray[i][2]+trendArray[i][4])) {
 				event.preventDefault();
+				if(trendArray[i][0]=="Competitive Segment Sale"){
+						document.getElementById('dialog-box').style.cssText = "margin-top: 900px";
+				}
+				else if(trendArray[i][0]=="Dealer Retention" || trendArray[i][0]=="Visits Per Customer"){
+					document.getElementById('dialog-box').style.cssText = "margin-top: 800px";
+				}else if(trendArray[i][0]=="Lost Profit" || trendArray[i][0]=="Lost Sales"){
+					document.getElementById('dialog-box').style.cssText = "margin-top: 1050px";
+				}else {
+					document.getElementById('dialog-box').style.cssText = "margin-top: -150px";
+				}
 				popup('<table border="0" width="100%">'+
 							'<tr>'+
-							'<td width="40%">'+trendArray[i][6]+'</td>'+
-							'<td width="60%"><canvas id=trendGraph></canvas></td>'+
+							'<td><canvas id="trendGraph" height="270" width="600"></canvas></td>'+
+							'</tr>'+
+							'<tr>'+
+							'<td>'+trendArray[i][6]+'</td>'+
 							'</tr>'+
 							'</table>');
-				drawTrend(trendArray[i][5]);
+				if(trendArray[i][0]=="Pump In Sale" || trendArray[i][0]=="Competitive Segment Sale") {
+					var sortName=new Array();
+					sortName=sortstuff(trendArray[i][5]);
+					sortName.reverse();
+					if(trendArray[i][0]=="Competitive Segment Sale")
+						heightFactor=5;
+					if(trendArray[i][0]=="Pump In Sale")
+						heightFactor=1;
+					for(var j=0;j<trendArray[i][5].length;j++)  {
+						drawLineGraph("trendGraph",sortName[j],trendArray[i][5][j][0],trendArray[i][5][j][1], j,heightFactor);
+					}
+				} else {
+					if(trendArray[i][0]=="Dealer Retention" || trendArray[i][0]=="Visits Per Customer" ){
+						heightFactor=220;
+					}
+					else if (trendArray[i][0]=="Lost Profit"){
+						heightFactor=0.00022;
+					}
+					else if(trendArray[i][0]=="Lost Sales"){
+						heightFactor=0.35;
+					}
+					else{
+						heightFactor=1;
+					}
+					drawTrend(trendArray[i][5],heightFactor);
+				}
 				
-			}
-		
-			/*
-			//for mouse click on computer
-			if(event.pageX>trendArray[i][1] && event.pageX<(trendArray[i][1]+trendArray[i][3]) && event.pageY>trendArray[i][2] && event.pageY <(trendArray[i][2]+trendArray[i][4]))
-			{
-				popup('<p>hiiiiii</p>');
-			}
-			*/
+				//draw x, y axis
+				var canvas = document.getElementById("trendGraph");
+				var context = canvas.getContext("2d");
+				context.save();
+				context.beginPath();
+				context.moveTo(120,0);
+				context.lineTo(120,220);
+				context.lineTo(600,220);
+				context.strokeStyle = "black";	
+				context.stroke();
+				context.restore();
+			}	
 		}
-
 	});
 	
-	function drawTrend(data) {
+	function drawTrend(data,heightFactor) {
 		var canvas = document.getElementById("trendGraph");
-		var ctx = canvas.getContext("2d");
-		ctx.fillStyle ='#00F';
-		i=0;
-		for(i=0;i<data.length;i++)
+		var context = canvas.getContext("2d");
+		var radius=4;
+		context.fillStyle ='#00F';
+		var sum=0;
+		for(var j=0;j<data.length;j++){
+			sum+=data[j][1];
+		}
+		context.font = "14pt Calibri";
+		for(var i=0;i<data.length;i++)
 		{
-			ctx.fillRect(15+i*30, 30+(100-data[i][1]), 20, data[i][1]);
-			ctx.fillText(data[i][0], 10+i*30, 150);
+			context.save();
+			context.beginPath();
+			context.moveTo(145,220-data[0][1]*heightFactor+30);
+			context.arc(145, 220-data[0][1]*heightFactor+30, radius, 0, 2 * Math.PI, false);
+			context.fillText(data[0][1],130,220-data[0][1]*heightFactor-20+30);
+			context.fillText(monthname[0],145,250);
+			for(var k=1;k<data.length;k++){
+				context.arc(k*70+145, 220-data[k][1]*heightFactor+30, radius, 0, 2 * Math.PI, false);
+				context.fillText(monthname[k],k*70+145,250);		//draw month
+				context.fillText(data[k][1],k*70+130,220-data[k][1]*heightFactor-20+30); //draw number
+				context.lineTo(k*70+145,220-data[k][1]*heightFactor+30);
+			}
+			context.lineWidth=4;
+			context.strokeStyle = "blue";
+			context.lineWidth=1;
+			context.stroke();
+			context.restore();
 		}		
 	}
-		
+	//graph for pump-in sales && Competitive Segment Sale
+	function drawLineGraph(c, name, d, color, index, heightFactor){
+		var canvas = document.getElementById(c);
+        var context = canvas.getContext("2d");
+		context.save();
+		context.font = "14pt Calibri";
+		context.beginPath();
+		context.arc(150, (220-d[0][1]/4*heightFactor+0), 2, 0, 2 * Math.PI, false);
+		context.fillText(monthname[0],145,250);		//draw month
+		//context.fillText(d[0][1],130,220-d[0][1]*heightFactor/4-20); //draw number
+		context.lineTo(150,(220-d[0][1]/4*heightFactor+0));
+		for(var i=1;i<d.length;i++){
+			context.arc(i*70+150, (220-d[i][1]/4*heightFactor+0), 2, 0, 2 * Math.PI, false);
+			context.fillText(monthname[i],i*70+145,250);		//draw month
+			//context.fillText(d[i][1],i*70+130,220-d[i][1]/4-20); //draw number
+			context.lineTo(i*70+150,(220-d[i][1]/4*heightFactor+0));
+		}
+		context.fillStyle = color; // text color
+		context.font = "10pt Calibri";
+		context.fillText(name, 0, index*20+10);
+		context.strokeStyle = color;
+		context.stroke();
+		context.restore();
+	}
+	  
+	function sortstuff(array)  {
+		var tmp;
+		var name;
+		var result=new Array();
+		for(var i=0;i<array.length;i++)  {
+			tmp=array[i][0][0][1];
+			name=array[i][2];
+			for(var j=0;j<array.length;j++)  {
+				if(array[j][0][0][1]<tmp){
+					if(result.indexOf(array[j][2])==-1)  {
+						tmp=array[j][0][0][1];
+						name=array[j][2];
+						result.push(name);
+					}
+				}
+			}
+		}
+		for(var k=0;k<array.length;k++){
+			if(result.indexOf(array[k][2])==-1){
+				result.push(array[k][2]);
+			}
+		}
+		return result;
+	}
 	</script>
     </body>
 </html>

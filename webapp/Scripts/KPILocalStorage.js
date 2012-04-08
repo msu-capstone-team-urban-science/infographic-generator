@@ -4,11 +4,11 @@
 *************************/
 function LoadJSON() {
     var store = new Storage();
-    $.getJSON("KPI_Handler.ashx", function (item) {
-        $.each(item, function (i, kpi) {
-            store.set(kpi.record_number, kpi);
-        });
-    });
+	$.getJSON("KPI_Handler.ashx", function (item) {
+		$.each(item, function (i, kpi) {
+			store.set(kpi.record_number, kpi);
+		});
+	});
 }
 
 //Helper function so that we can get/set easily on the local storage
@@ -45,6 +45,7 @@ function SearchKPIByDate(date) {
             if (FormatDate(value.KPI_Date).getFullYear() == date.getFullYear()) {
                 var dataPoint = new Array(2);
                 dataPoint[0] = value.KPI_Name;
+                //dataPoint[1] = addCommas(value.KPI_Value);
                 dataPoint[1] = value.KPI_Value;
                 returnArr.push(dataPoint);
             }
@@ -68,30 +69,31 @@ function GetKPI(date, kpiName) {
 }
 
 function GetTrendKPI(date, kpiName) {
-	var kpiArray = new Array(); 
+	var kpiArray = new Array();
+	var kpi;	
 	var month;
 	var x=0;
 	var yy=date.getFullYear();
 	var mm=date.getMonth();
-	var dd=date.getDay();
 	var tmpDate=new Date();
-		tmpDate.setFullYear(yy,mm,dd);
-	if(tmpDate.getMonth() < 6) {
+	tmpDate.setFullYear(yy,mm,1);
+
+	if(mm < 6) {
 		x=0;
 	}
 	else{
-		x=tmpDate.getMonth()-6;
+		x=mm-6;
 	}
-	var num=tmpDate.getMonth();
+	var num=mm;
 	
 	//although x changes, tmpDate.setFullYear doesn't change properly
 	while(x<=num) {
-		tmpDate.setFullYear(tmpDate.getFullYear(),x,tmpDate.getDay());
+		tmpDate.setFullYear(yy,x,1);
 		month=monthname[x];
-		var kpi=GetKPI(tmpDate,kpiName);
-		//alert(tmpDate.getMonth());
-		//alert(kpi);
-
+		kpi=GetKPI(tmpDate,kpiName);
+		//if(month=="Feb"){
+		//	alert("x: "+x+","+kpiName+","+kpi);
+		//}
 		kpiArray.push([month,kpi]);
 		x++;
 	}

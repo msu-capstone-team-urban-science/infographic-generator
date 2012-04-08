@@ -4,16 +4,14 @@
 		<script type="text/javascript" src="Scripts/HandleDate.js"></script>
 		<script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
 		<script type="text/javascript" src="Scripts/elements.js"></script>
-		<script type="text/javascript" src="Scripts/draw-service.js"></script>
 		<script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
 		<script type="text/javascript" src="Scripts/jquery.wipetouch.js"></script>
+		<script type="text/javascript" src="Scripts/draw-service.js"></script>
         <script>
-
             window.onload = function(){
-                DrawService ("myCanvas", initDate());
-            };
-			
-			
+				LoadJSON();
+                DrawService("myCanvas", initDate());
+            };	
         </script>
 		<link rel="stylesheet" type="text/css" href="Styles/service.css" />
 		<link rel="stylesheet" type="text/css" href="Styles/header.css" />
@@ -22,12 +20,21 @@
 		<div id="main">
 			<div id="header">
 				<img src="images/header.jpg">
-				<a href="index.html"><img id="hButton" src="images/home_button.png"></a>
+				<a href="javascript:navigator_Go('Index.html');" id="hButton"><img src="images/homeButton2.png"></a>
 				<p id="category">Service</p>
 				<p id="month"></p>
 				<p id="month2"></p>
 			</div>
-			<canvas id="myCanvas" width="1000" height="1500"></canvas>
+			<canvas id="myCanvas" width="1000" height="1593">
+			<!-- Insert fallback content here -->
+			Sorry, your browser doesn't support canvas technology
+			</canvas>
+			<div id="dialog-box">
+				<div class="dialog-content">
+					<div id="dialog-message"></div>
+					<a href="#" class="button">Close</a>
+				</div>
+			</div>
 		</div>
 		
 		<script type="text/javascript">	
@@ -35,17 +42,130 @@
 			{
 				allowDiagonal:false,
 				tapToClick: true,
-				wipeLeft: function() { wipeStatus("Left"); },
-				wipeRight: function() { wipeStatus("Right");},
+				wipeLeft: function(result) { wipeStatus("Left",result,2); },
+				wipeRight: function(result) { wipeStatus("Right",result,2);},
 				wipeUp: false,
 				wipeDown: false,
 				preventDefault: false,
 				moveX: 200,
-			});	
-			
-			
-			//$(document).click(function() { wipeStatus("Left"); })
+			});
+			$('#myCanvas').bind("touchstart click", function(event){
+				var heightFactor=1;
+				for(var i=0;i <trendArray.length;i++ )
+				{
+					//check if touching the element location
+					if(event.pageX>trendArray[i][1] && event.pageX<(trendArray[i][1]+trendArray[i][3]) && event.pageY>trendArray[i][2] && event.pageY <(trendArray[i][2]+trendArray[i][4])) {
+						event.preventDefault();
+						//TO-DO y position of the dialog box
+						if(trendArray[i][0]=="Average Money Per RO" || trendArray[i][0]=="RO Count" || trendArray[i][0]=="Labor Ops Per RO"){
+								document.getElementById('dialog-box').style.cssText = "margin-top: 870px";
+						}
+						else if(trendArray[i][0]=="Dealer Effectiveness" || trendArray[i][0]=="Brand Effectiveness"){
+							document.getElementById('dialog-box').style.cssText = "margin-top: 650px";
+						}else{
+							document.getElementById('dialog-box').style.cssText = "margin-top: 200px";
+						}
+						popup('<table border="0" width="100%">'+
+									'<tr>'+
+									'<td><canvas id="trendGraph" height="270" width="600"></canvas></td>'+
+									'</tr>'+
+									'<tr>'+
+									'<td>'+trendArray[i][6]+'</td>'+
+									'</tr>'+
+									'</table>');
+
+							if(trendArray[i][0]=="Active Customers" || trendArray[i][0]=="Inactive Customers" || trendArray[i][0]=="RO Count"){
+								heightFactor=0.1;
+							}
+							if(trendArray[i][0]=="Recent Sales Customers"){
+								heightFactor=1;
+							}
+							if(trendArray[i][0]=="Single Visit Customers"){
+								heightFactor=0.2;
+							}
+							if(trendArray[i][0]=="Service Labor Opportunity" || trendArray[i][0]=="Service Parts Opportunity"){
+								heightFactor=0.0007;
+							}
+							if(trendArray[i][0]=="Dealer Effectiveness" || trendArray[i][0]=="Brand Effectiveness"){
+								heightFactor=100;
+							}
+							if(trendArray[i][0]=="Labor Ops Per RO"){
+								heightFactor=45;
+							}
+							drawTrend(trendArray[i][5],heightFactor);
+						
+						//draw x, y axis
+						var canvas = document.getElementById("trendGraph");
+						var context = canvas.getContext("2d");
+						context.save();
+						context.beginPath();
+						context.moveTo(120,0);
+						context.lineTo(120,220);
+						context.lineTo(600,220);
+						context.strokeStyle = "black";	
+						context.stroke();
+						context.restore();
+					}	
+				}
+			});
 		
+			function drawTrend(data,heightFactor) {
+				var canvas = document.getElementById("trendGraph");
+				var context = canvas.getContext("2d");
+				var radius=4;
+				context.fillStyle ='#00F';
+				var sum=0;
+				for(var j=0;j<data.length;j++){
+					sum+=data[j][1];
+				}
+				context.font = "14pt Calibri";
+				for(var i=0;i<data.length;i++)
+				{
+					context.save();
+					context.beginPath();
+					context.moveTo(150,220-data[0][1]*heightFactor+30);
+					context.arc(150, 220-data[0][1]*heightFactor+30, radius, 0, 2 * Math.PI, false);
+					context.fillText(data[0][1],142,220-data[0][1]*heightFactor-20+30);
+					context.fillText(monthname[0],140,250);
+					for(var k=1;k<data.length;k++){
+						context.arc(k*70+150, 220-data[k][1]*heightFactor+30, radius, 0, 2 * Math.PI, false);
+						context.fillText(monthname[k],k*70+142,250);		//draw month
+						context.fillText(data[k][1],k*70+140,220-data[k][1]*heightFactor-20+30); //draw number
+						context.lineTo(k*70+150,220-data[k][1]*heightFactor+30);
+					}
+					context.lineWidth=4;
+					context.strokeStyle = "blue";
+					context.lineWidth=1;
+					context.stroke();
+					context.restore();
+				}		
+			}
+			
+			function drawLineGraph(c, name, d, color, index, heightFactor, withNum){
+				var canvas = document.getElementById(c);
+				var context = canvas.getContext("2d");
+				context.save();
+				context.font = "14pt Calibri";
+				context.beginPath();
+				context.arc(150, (220-d[0][1]/4*heightFactor), 2, 0, 2 * Math.PI, false);
+				context.fillText(monthname[0],145,250);		//draw month
+				if(withNum==true)
+					context.fillText(d[0][1],130,220-d[0][1]/4*heightFactor-20); //draw number
+				context.lineTo(150,(220-d[0][1]/4*heightFactor));
+				for(var i=1;i<d.length;i++){
+					context.arc(i*70+150, (220-d[i][1]/4*heightFactor), 2, 0, 2 * Math.PI, false);
+					context.fillText(monthname[i],i*70+145,250);		//draw month
+					if(withNum==true)
+						context.fillText(d[i][1],i*70+130,220-d[i][1]/4*heightFactor-20); //draw number
+					context.lineTo(i*70+150,(220-d[i][1]/4*heightFactor));
+				}
+				context.fillStyle = color; // text color
+				context.font = "10pt Calibri";
+				context.fillText(name, 0, index*20+10);
+				context.strokeStyle = color;
+				context.stroke();
+				context.restore();
+			}
 		</script>
     </body>
 </html>
