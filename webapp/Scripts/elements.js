@@ -1789,10 +1789,6 @@ function DrawUnopenedLead(c,x,y,d,d2) {
 	}
 
 	img.src = 'images/lead_Unopened.png';
-
-
-
-
 	context.restore();
 
 
