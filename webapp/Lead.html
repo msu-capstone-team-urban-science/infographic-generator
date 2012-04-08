@@ -11,7 +11,8 @@
 	<script type="text/javascript" src="Scripts/elements.js"></script>
 	<script type="text/javascript" src="Scripts/draw-service.js"></script>
 	<script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
-	<script type="text/javascript" src="Scripts/jquery.wipetouch.js"></script>
+	<script type="text/javascript" src="Scripts/jquery.mobile-1.0.1.min.js"></script>
+	<!--<script type="text/javascript" src="Scripts/jquery.wipetouch.js"></script>-->
 	<script type="text/javascript" src="Scripts/draw-lead.js"></script>
 	<script type="text/javascript">
 		window.onload = function(){
@@ -78,7 +79,7 @@
 		
 	</div>
 	<script type="text/javascript">	
-		$(document).wipetouch(
+		/*$(document).wipetouch(
 		{
 			allowDiagonal:false,
 			tapToClick: true,
@@ -88,7 +89,16 @@
 			wipeDown: false,
 			preventDefault: false,
 			moveX: 200,
+		});*/
+		
+		$("#myCanvas").swiperight(function(result) {
+			wipeStatus("Right",result,3);
 		});
+		
+		$("#myCanvas").swipeleft(function(result) {
+			wipeStatus("Left",result,3);
+		});
+		
 
 		$('#myCanvas').bind("touchstart click", function(event){
 			var heightFactor=1;
