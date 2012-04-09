@@ -6,7 +6,6 @@
 		<script type="text/javascript" src="Scripts/elements.js"></script>
 		<script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
 		<script type="text/javascript" src="Scripts/jquery.mobile-1.0.1.min.js"></script>
-		<!--<script type="text/javascript" src="Scripts/jquery.wipetouch.js"></script>-->
 		<script type="text/javascript" src="Scripts/draw-service.js"></script>
         <script>
             window.onload = function(){
@@ -14,6 +13,7 @@
                 DrawService("myCanvas", initDate());
             };	
         </script>
+		<link rel="stylesheet" type="text/css" href="Styles/jquery.mobile-1.0.1.css" />
 		<link rel="stylesheet" type="text/css" href="Styles/service.css" />
 		<link rel="stylesheet" type="text/css" href="Styles/header.css" />
     </head>
@@ -39,29 +39,12 @@
 		</div>
 		
 		<script type="text/javascript">	
-			/*$(document).wipetouch(
-			{
-				allowDiagonal:false,
-				tapToClick: true,
-				wipeLeft: function(result) { wipeStatus("Left",result,2); },
-				wipeRight: function(result) { wipeStatus("Right",result,2);},
-				wipeUp: false,
-				wipeDown: false,
-				preventDefault: false,
-				moveX: 200,
-			});*/
 			$("#myCanvas").swiperight(function(result) {
-				wipeStatus("Right",result,2);
-				$.mobile.changePage(
-					showLoadMsg:false;
-				);
+				wipeStatus("Right",result,2)
 			});
 			
 			$("#myCanvas").swipeleft(function(result) {
 				wipeStatus("Left",result,2);
-				$.mobile.changePage(
-					showLoadMsg:false;
-				);
 			});
 		
 			

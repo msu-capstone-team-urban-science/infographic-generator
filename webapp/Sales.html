@@ -6,16 +6,16 @@
 		<script type="text/javascript" src="Scripts/HandleDate.js"></script>
 		<script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
 		<script type="text/javascript" src="Scripts/elements.js"></script>
-		<script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
-		<script type="text/javascript" src="Scripts/jquery.mobile-1.0.1.min.js"></script>
 		<script type="text/javascript" src="Scripts/draw-sales.js"></script>
-		<!--<script type="text/javascript" src="Scripts/jquery.wipetouch.js"></script>-->
+		<script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="Scripts/jquery.mobile-1.0.1.js"></script>
         <script>
             window.onload = function(){
                 LoadJSON();
 				DrawSalesInfographic("myCanvas",initDate());
             }
         </script>
+		<!--<link rel="stylesheet" type="text/css" href="Styles/jquery.mobile-1.0.1.css" />-->
 		<link rel="stylesheet" type="text/css" href="Styles/sales-one-canvas_style.css" />
 		<link rel="stylesheet" type="text/css" href="Styles/header.css" />
     </head>
@@ -41,31 +41,13 @@
 			</div>
 		</div>
 		
-	<script type="text/javascript">		
-		/*$(document).wipetouch(
-		{
-			allowDiagonal:false,
-			tapToClick: true,
-			wipeLeft: function(result) { wipeStatus("Left",result,1); },
-			wipeRight: function(result) { wipeStatus("Right",result,1);},
-            wipeUp: false,
-            wipeDown: false,
-            preventDefault: false,
-            moveX: 200,
-		});*/
-		
+	<script type="text/javascript">				
 		$("#myCanvas").swiperight(function(result) {
 			wipeStatus("Right",result,1);
-			$.mobile.changePage(
-				showLoadMsg:false;
-			);
 		});
 		
 		$("#myCanvas").swipeleft(function(result) {
 			wipeStatus("Left",result,1);
-			$.mobile.changePage(
-				showLoadMsg:false;
-			);
 		});
 		
 		$('#myCanvas').bind("touchstart click", function(event){
