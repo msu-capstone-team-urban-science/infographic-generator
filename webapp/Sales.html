@@ -42,11 +42,13 @@
 		</div>
 		
 	<script type="text/javascript">				
-		$("#myCanvas").swiperight(function(result) {
+		$("#myCanvas").swiperight(function(event, result) {
+			event.stopImmediatePropagation();
 			wipeStatus("Right",result,1);
 		});
 		
-		$("#myCanvas").swipeleft(function(result) {
+		$("#myCanvas").swipeleft(function(event, result) {
+			event.stopImmediatePropagation();
 			wipeStatus("Left",result,1);
 		});
 		
