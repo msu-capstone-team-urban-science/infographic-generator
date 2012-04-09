@@ -984,9 +984,9 @@ a.ui-link-inherit {
 
 /* loading icon */
 .ui-icon-loading {
-	background-image: url(images/ajax-loader.png);
-	width: 40px;
-	height: 40px;
+	background-image: url(../images/ajax-loader.png);
+	width: 0px;
+	height: 0px;
 	-moz-border-radius: 20px;
 	-webkit-border-radius: 20px;
 	border-radius: 20px;
