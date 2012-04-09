@@ -5,7 +5,7 @@
 		<script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
 		<script type="text/javascript" src="Scripts/elements.js"></script>
 		<script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
-		<script type="text/javascript" src="Scripts/jquery.mobile-1.0.1.min.js"></script>
+		<script type="text/javascript" src="Scripts/jquery.mobile-1.0.1.js"></script>
 		<script type="text/javascript" src="Scripts/draw-service.js"></script>
         <script>
             window.onload = function(){
@@ -39,13 +39,15 @@
 		</div>
 		
 		<script type="text/javascript">	
-			$("#myCanvas").swiperight(function(result) {
-				wipeStatus("Right",result,2)
-			});
-			
-			$("#myCanvas").swipeleft(function(result) {
-				wipeStatus("Left",result,2);
-			});
+			$("#myCanvas").swiperight(function(event, result) {
+			event.stopImmediatePropagation();
+			wipeStatus("Right",result,2);
+		});
+		
+		$("#myCanvas").swipeleft(function(event, result) {
+			event.stopImmediatePropagation();
+			wipeStatus("Left",result,2);
+		});
 		
 			
 			$('#myCanvas').bind("touchstart click", function(event){

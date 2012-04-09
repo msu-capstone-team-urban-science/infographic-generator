@@ -3,16 +3,15 @@
 <html>
 <head>
 
+<link rel="stylesheet" type="text/css" href="Styles/jquery.mobile-1.0.1.css" />
 <link rel="stylesheet" type="text/css" href="Styles/header.css" />
-<link href="styles/lead_style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="styles/lead_style.css" />
 <title>Infographics Generator</title>
 	<script type="text/javascript" src="Scripts/HandleDate.js"></script>
 	<script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
 	<script type="text/javascript" src="Scripts/elements.js"></script>
-	<script type="text/javascript" src="Scripts/draw-service.js"></script>
 	<script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
-	<script type="text/javascript" src="Scripts/jquery.mobile-1.0.1.min.js"></script>
-	<!--<script type="text/javascript" src="Scripts/jquery.wipetouch.js"></script>-->
+	<script type="text/javascript" src="Scripts/jquery.mobile-1.0.1.js"></script>
 	<script type="text/javascript" src="Scripts/draw-lead.js"></script>
 	<script type="text/javascript">
 		window.onload = function(){
@@ -78,24 +77,14 @@
 		</div>
 		
 	</div>
-	<script type="text/javascript">	
-		/*$(document).wipetouch(
-		{
-			allowDiagonal:false,
-			tapToClick: true,
-			wipeLeft: function(result) { wipeStatus("Left",result,3); },
-			wipeRight: function(result) { wipeStatus("Right",result,3);},
-			wipeUp: false,
-			wipeDown: false,
-			preventDefault: false,
-			moveX: 200,
-		});*/
-		
-		$("#myCanvas").swiperight(function(result) {
+	<script type="text/javascript">		
+		$("#myCanvas").swiperight(function(event, result) {
+			event.stopImmediatePropagation();
 			wipeStatus("Right",result,3);
 		});
 		
-		$("#myCanvas").swipeleft(function(result) {
+		$("#myCanvas").swipeleft(function(event, result) {
+			event.stopImmediatePropagation();
 			wipeStatus("Left",result,3);
 		});
 		
