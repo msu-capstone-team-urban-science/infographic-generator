@@ -56,10 +56,16 @@
 		
 		$("#myCanvas").swiperight(function(result) {
 			wipeStatus("Right",result,1);
+			$.mobile.changePage(
+				showLoadMsg:false;
+			);
 		});
 		
 		$("#myCanvas").swipeleft(function(result) {
 			wipeStatus("Left",result,1);
+			$.mobile.changePage(
+				showLoadMsg:false;
+			);
 		});
 		
 		$('#myCanvas').bind("touchstart click", function(event){
