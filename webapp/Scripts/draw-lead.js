@@ -7,6 +7,7 @@ var trendArray=new Array();
 
 function DrawLead(c,date) 
 {
+//Draw the main background
 	var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
 	context.save();
@@ -21,6 +22,8 @@ function DrawLead(c,date)
 }
 
 function DrawLead2(c,date) {
+
+//draw the first section background
 	var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
 	context.save();
@@ -35,6 +38,8 @@ function DrawLead2(c,date) {
 }
 
 function DrawLead3(c,date) { 
+
+//draw the separator 
 	var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
 	context.save();
@@ -49,6 +54,7 @@ function DrawLead3(c,date) {
 }
 
 function DrawLead4(c,date) { 
+//Draw another separator 
 	var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
 	context.save();
@@ -63,6 +69,7 @@ function DrawLead4(c,date) {
 }
 
 function DrawLead5(c,date) { 
+//Draw the second and third section background
 	var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
 	context.save();
@@ -86,6 +93,8 @@ function DrawLead6(c,date) {
 	var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
 	context.save();
+	
+	//Kpi
 	var kpiUnique = addCommas(GetKPI(date,"Unique_Customers"));
 	var kpiMail = GetKPI(date,"Response_Method_Email");
 	var kpiPhone = GetKPI(date,"Response_Method_Phone");
@@ -102,7 +111,6 @@ function DrawLead6(c,date) {
 	var kpiNew3PL_Dealix = GetKPI(date,"New_3PL_Leads_Dealix");
 	var kpiNew3PL_Automotive = GetKPI(date,"New_3PL_Leads_Automotive.com");
 	var kpiNew3PL_Jumpstart = GetKPI(date,"New_3PL_Leads_Jumpstart");
-	
 	kpiNew3PL_Kelly_Blue_Book = parseFloat(kpiNew3PL_Kelly_Blue_Book);
 	kpiNew3PL_Edmunds = parseFloat(kpiNew3PL_Edmunds);
 	kpiNew3PL_Dealix = parseFloat(kpiNew3PL_Dealix);
@@ -114,7 +122,8 @@ function DrawLead6(c,date) {
 						'Dealix':kpiNew3PL_Dealix,
 						'Automotive':kpiNew3PL_Automotive,
 						'Jumpstart':kpiNew3PL_Jumpstart};
-	
+						
+	//Draw Lead elements
 	DrawUniqueCustomers("myCanvas", 200, 190);
 	DrawResponse("myCanvas", 28, 425, kpiMail, kpiPhone);
 	DrawAvgRespTime ("myCanvas", 130, 685, kpiAve);
@@ -123,7 +132,6 @@ function DrawLead6(c,date) {
 	Draw3PL("myCanvas",385,1170,380,300,kpiNew3PL);
 	DrawCloseRate("myCanvas", 214, 1755, kpiClose);		
 	DrawProspectCount("myCanvas", 590, 1750, kpiProspect);
-	
 	
 	context.restore();
 	//push elements into array
@@ -180,12 +188,10 @@ function DrawLead6(c,date) {
 	context.fillText(kpiPhone,x + 480, y + 650);
 	context.restore();
 
-	//sales
-	
+	//sales from lead
 	var x = 110;
 	var y = 960;
-	
-	//
+
 	context.save();
 	context.fillStyle = "#ffffff";
 	context.font = "45pt Calibri";
