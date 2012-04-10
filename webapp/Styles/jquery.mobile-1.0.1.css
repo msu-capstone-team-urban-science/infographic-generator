@@ -42,15 +42,15 @@
 }
 
 .ui-bar-a .ui-link:hover {
-	color: #2489CE /*{a-bar-link-hover}*/;
+	color: #fff /*{a-bar-link-hover}*/;
 }
 
 .ui-bar-a .ui-link:active {
-	color: #2489CE /*{a-bar-link-active}*/;
+	color: #fff /*{a-bar-link-active}*/;
 }
 
 .ui-bar-a .ui-link:visited {
-    color: #2489CE /*{a-bar-link-visited}*/;
+    color: #fff /*{a-bar-link-visited}*/;
 }
 .ui-body-a,
 .ui-dialog.ui-overlay-a {
@@ -78,20 +78,20 @@
 }
 
 .ui-body-a .ui-link {
-	color: #2489CE /*{a-body-link-color}*/;
+	color: #fff /*{a-body-link-color}*/;
 	font-weight: bold;
 }
 
 .ui-body-a .ui-link:hover {
-	color: #2489CE /*{a-body-link-hover}*/;
+	color: #fff /*{a-body-link-hover}*/;
 }
 
 .ui-body-a .ui-link:active {
-	color: #2489CE /*{a-body-link-active}*/;
+	color: #fff /*{a-body-link-active}*/;
 }
 
 .ui-body-a .ui-link:visited {
-    color: #2489CE /*{a-body-link-visited}*/;
+    color: #fff /*{a-body-link-visited}*/;
 }
 
 .ui-btn-up-a {
@@ -218,20 +218,20 @@
 }
 
 .ui-body-b .ui-link {
-	color: #2489CE /*{b-body-link-color}*/;
+	color: #fff /*{b-body-link-color}*/;
 	font-weight: bold;
 }
 
 .ui-body-b .ui-link:hover {
-	color: #2489CE /*{b-body-link-hover}*/;
+	color: #fff /*{b-body-link-hover}*/;
 }
 
 .ui-body-b .ui-link:active {
-	color: #2489CE /*{b-body-link-active}*/;
+	color: #fff /*{b-body-link-active}*/;
 }
 
 .ui-body-b .ui-link:visited {
-    color: #2489CE /*{b-body-link-visited}*/;
+    color: #fff /*{b-body-link-visited}*/;
 }
 
 .ui-btn-up-b {
@@ -316,15 +316,15 @@
 }
 
 .ui-bar-c .ui-link:hover {
-	color: #2489CE /*{c-bar-link-hover}*/;
+	color: #fff /*{c-bar-link-hover}*/;
 }
 
 .ui-bar-c .ui-link:active {
-	color: #2489CE /*{c-bar-link-active}*/;
+	color: #fff /*{c-bar-link-active}*/;
 }
 
 .ui-bar-c .ui-link:visited {
-    color: #2489CE /*{c-bar-link-visited}*/;
+    color: #fff /*{c-bar-link-visited}*/;
 }
 
 .ui-bar-c,
@@ -360,20 +360,20 @@
 }
 
 .ui-body-c .ui-link {
-	color: #2489CE /*{c-body-link-color}*/;
+	color: #fff /*{c-body-link-color}*/;
 	font-weight: bold;
 }
 
 .ui-body-c .ui-link:hover {
-	color: #2489CE /*{c-body-link-hover}*/;
+	color: #fff /*{c-body-link-hover}*/;
 }
 
 .ui-body-c .ui-link:active {
-	color: #2489CE /*{c-body-link-active}*/;
+	color: #fff /*{c-body-link-active}*/;
 }
 
 .ui-body-c .ui-link:visited {
-    color: #2489CE /*{c-body-link-visited}*/;
+    color: #fff /*{c-body-link-visited}*/;
 }
 
 .ui-btn-up-c {
@@ -460,20 +460,20 @@
 	color: 	#333333 /*{d-bar-color}*/;
 }
 .ui-bar-d .ui-link {
-	color: #2489CE /*{d-bar-link-color}*/;
+	color: #fff /*{d-bar-link-color}*/;
 	font-weight: bold;
 }
 
 .ui-bar-d .ui-link:hover {
-	color: #2489CE /*{d-bar-link-hover}*/;
+	color: #fff /*{d-bar-link-hover}*/;
 }
 
 .ui-bar-d .ui-link:active {
-	color: #2489CE /*{d-bar-link-active}*/;
+	color: #fff /*{d-bar-link-active}*/;
 }
 
 .ui-bar-d .ui-link:visited {
-    color: #2489CE /*{d-bar-link-visited}*/;
+    color: #fff /*{d-bar-link-visited}*/;
 }
 
 .ui-body-d,
@@ -502,20 +502,20 @@
 }
 
 .ui-body-d .ui-link {
-	color: #2489CE /*{d-body-link-color}*/;
+	color: #fff /*{d-body-link-color}*/;
 	font-weight: bold;
 }
 
 .ui-body-d .ui-link:hover {
-	color: #2489CE /*{d-body-link-hover}*/;
+	color: #fff /*{d-body-link-hover}*/;
 }
 
 .ui-body-d .ui-link:active {
-	color: #2489CE /*{d-body-link-active}*/;
+	color: #fff /*{d-body-link-active}*/;
 }
 
 .ui-body-d .ui-link:visited {
-    color: #2489CE /*{d-body-link-visited}*/;
+    color: #fff /*{d-body-link-visited}*/;
 }
 
 .ui-btn-up-d {
@@ -601,20 +601,20 @@
 	color: 	#333333 /*{e-bar-color}*/;
 }
 .ui-bar-e .ui-link {
-	color: #2489CE /*{e-bar-link-color}*/;
+	color: #fff /*{e-bar-link-color}*/;
 	font-weight: bold;
 }
 
 .ui-bar-e .ui-link:hover {
-	color: #2489CE /*{e-bar-link-hover}*/;
+	color: #fff /*{e-bar-link-hover}*/;
 }
 
 .ui-bar-e .ui-link:active {
-	color: #2489CE /*{e-bar-link-active}*/;
+	color: #fff /*{e-bar-link-active}*/;
 }
 
 .ui-bar-e .ui-link:visited {
-    color: #2489CE /*{e-bar-link-visited}*/;
+    color: #fff /*{e-bar-link-visited}*/;
 }
 
 .ui-body-e,
@@ -642,20 +642,20 @@
 }
 
 .ui-body-e .ui-link {
-	color: #2489CE /*{e-body-link-color}*/;
+	color: #fff /*{e-body-link-color}*/;
 	font-weight: bold;
 }
 
 .ui-body-e .ui-link:hover {
-	color: #2489CE /*{e-body-link-hover}*/;
+	color: #fff /*{e-body-link-hover}*/;
 }
 
 .ui-body-e .ui-link:active {
-	color: #2489CE /*{e-body-link-active}*/;
+	color: #fff /*{e-body-link-active}*/;
 }
 
 .ui-body-e .ui-link:visited {
-    color: #2489CE /*{e-body-link-visited}*/;
+    color: #fff /*{e-body-link-visited}*/;
 }
 
 .ui-btn-up-e {

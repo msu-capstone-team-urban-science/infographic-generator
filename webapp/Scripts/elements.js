@@ -1098,6 +1098,8 @@ function DrawResponse(c, x, y, kpiMail, kpiPhone)  {
 	context.save();
 	img = new Image();
 	context.fillStyle = "#8ED6FF";
+	//kpiMail = 1000;
+	//kpiPhone = 1200;
 	var kpiTotal = kpiMail + kpiPhone;
 	var MailP = kpiMail/kpiTotal;
 	var PhoneP= kpiPhone/kpiTotal;

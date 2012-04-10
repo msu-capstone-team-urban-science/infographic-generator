@@ -87,8 +87,8 @@ function DrawLead6(c,date) {
     var context = canvas.getContext("2d");
 	context.save();
 	var kpiUnique = addCommas(GetKPI(date,"Unique_Customers"));
-	var kpiMail = addCommas(GetKPI(date,"Response_Method_Email"));
-	var kpiPhone = addCommas(GetKPI(date,"Response_Method_Phone"));
+	var kpiMail = GetKPI(date,"Response_Method_Email");
+	var kpiPhone = GetKPI(date,"Response_Method_Phone");
 	var kpiLost = GetKPI(date,"Lost_Sales_From_Leads");
 	var kpiNew = GetKPI(date,"New_Sales_From_Leads");
 	var kpiOld = GetKPI(date,"Used_Sales_From_Leads");
@@ -149,12 +149,15 @@ function DrawLead6(c,date) {
 	context.font = "32pt Calibri";
 	context.fillStyle = "#000000";
 	context.fillText("Unique Customers", x + 430,y + 180);
-	context.font = "38pt Calibri";
-	context.fillText(kpiUnique,x + 490, y+ 230);
+	context.font = "48pt Calibri";
+	context.fillText(kpiUnique,x + 520, y+ 250);
 	context.restore();
 	
 
 	//Response Method
+	var kpiMail = addCommas(GetKPI(date,"Response_Method_Email"));
+	var kpiPhone = addCommas(GetKPI(date,"Response_Method_Phone"));
+	
 	var x = 7;
 	var y = -240;
 	context.save();
