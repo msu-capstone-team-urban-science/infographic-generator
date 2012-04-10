@@ -237,3 +237,78 @@ function popup(message) {
 	// display the message
 	$('#dialog-message').html(message);	
 }
+
+$("#myCanvas").swiperight(function(event, result) {
+			event.stopImmediatePropagation();
+			wipeStatus("Right",result,3);
+		});
+		
+		$("#myCanvas").swipeleft(function(event, result) {
+			event.stopImmediatePropagation();
+			wipeStatus("Left",result,3);
+});
+
+
+$('#myCanvas').bind("touchstart click", function(event){
+	var heightFactor=1;
+	for(var i=0;i <trendArray.length;i++ )
+	{
+		//check if touching the element location
+		if(event.pageX>trendArray[i][1] && event.pageX<(trendArray[i][1]+trendArray[i][3]) && event.pageY>trendArray[i][2] && event.pageY <(trendArray[i][2]+trendArray[i][4])) {
+			event.preventDefault();
+			//y position of the dialog box
+			if(trendArray[i][0]=="Number of Leads" || trendArray[i][0]=="New 3PL Leads" || trendArray[i][0]=="Close Rate" || trendArray[i][0]=="Prospect Count"){
+					document.getElementById('dialog-box').style.cssText = "margin-top: 800px";
+			}
+			else{
+				document.getElementById('dialog-box').style.cssText = "margin-top: 200px";
+			}
+			popup('<table border="0" width="100%">'+
+						'<tr>'+
+						'<td><canvas id="trendGraph" height="270" width="600"></canvas></td>'+
+						'</tr>'+
+						'<tr>'+
+						'<td>'+trendArray[i][6]+'</td>'+
+						'</tr>'+
+						'</table>');
+
+				if(trendArray[i][0]=="Number of Leads"){
+					heightFactor=0.3;
+					for(var j=0;j<trendArray[i][5].length;j++)  {
+						drawLineGraph("trendGraph",trendArray[i][5][j][2],trendArray[i][5][j][0],trendArray[i][5][j][1], j,heightFactor,true);
+					}
+				}else if(trendArray[i][0]=="New 3PL Leads"){
+					heightFactor=2.5;
+					for(var j=0;j<trendArray[i][5].length;j++)  {
+						drawLineGraph("trendGraph",trendArray[i][5][j][2],trendArray[i][5][j][0],trendArray[i][5][j][1], j,heightFactor,false);
+					}
+				}else{
+					if(trendArray[i][0]=="Response by Mail" || trendArray[i][0]=="Unique Customers" || trendArray[i][0]=="Prospect Count"){
+						heightFactor=0.1;
+					}
+					if(trendArray[i][0]=="Response by Phone"){
+						heightFactor=0.2;
+					}
+					if(trendArray[i][0]=="New Sales From Leads" || trendArray[i][0]=="Used Sales From Leads" || trendArray[i][0]=="Lost Sales From Leads"){
+						heightFactor=5;
+					}
+					if(trendArray[i][0]=="Close Rate"){
+						heightFactor=2200;
+					}
+					drawTrend(trendArray[i][5],heightFactor);
+				}
+			
+			//draw x, y axis
+			var canvas = document.getElementById("trendGraph");
+			var context = canvas.getContext("2d");
+			context.save();
+			context.beginPath();
+			context.moveTo(120,0);
+			context.lineTo(120,220);
+			context.lineTo(600,220);
+			context.strokeStyle = "black";	
+			context.stroke();
+			context.restore();
+		}	
+	}
+});
