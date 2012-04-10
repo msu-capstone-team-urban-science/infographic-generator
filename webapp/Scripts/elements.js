@@ -1,6 +1,8 @@
 // Name: Retail_Sale
-// Author: 
+// Author:
 // Description: Creates the retail sale infographic element
+
+
 function Retail_Sale(c, x, y, w, h, d) {
     // d = [date, display value]
     var date = d[0];
@@ -123,13 +125,14 @@ function Cost_Per_Sale(c, x, y, w, h, d) {
     ctx.restore();
 }
 
-// Name: Pump_In_Sale
-// Author: Louis Bodnar
+// Name:        Pump_In_Sales
+// Author:      Louis Bodnar
+// Purpose:     Uses quadratic curves to draw a colorful figure with labeled sections.  Each section's height is relative to its weighted value.
+// Arguments:   Pump_In_Sale(canvas_name, x_position, y_position, width, height, data);
+// Data format: [[value, label, color], ... ]
+// Example:     Pump_In_Sale("myCanvas", 0, 0, 300, 100, [ [53, "Detroit Sales", "#ff0000"], [13, "Chicago Sales", "#9933dd"] ]);
 function Pump_In_Sale(c, x, y, w, h, d) {
-	//clearCanvas(c);
-    // BUG: bottom most text may extend over max defined width. if last
-    // piece of data is small, allow some extra room on the canvas for
-    // slightly overextended text.
+
 
     var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");

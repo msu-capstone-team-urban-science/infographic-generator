@@ -14,7 +14,7 @@
 
 .ui-bar-a {
 	border: 1px solid 		#2A2A2A /*{a-bar-border}*/;
-	background: 			#111111 /*{a-bar-background-color}*/;
+	background: 			#fff /*{a-bar-background-color}*/;
 	color: 					#ffffff /*{a-bar-color}*/;
 	font-weight: bold;
 	text-shadow: 0 /*{a-bar-shadow-x}*/ -1px /*{a-bar-shadow-y}*/ 1px /*{a-bar-shadow-radius}*/ #000000 /*{a-bar-shadow-color}*/;
@@ -37,7 +37,7 @@
 }
 
 .ui-bar-a .ui-link {
-	color: #7cc4e7 /*{a-bar-link-color}*/;
+	color: #fff /*{a-bar-link-color}*/;
 	font-weight: bold;
 }
 
@@ -54,8 +54,8 @@
 }
 .ui-body-a,
 .ui-dialog.ui-overlay-a {
-	border: 1px solid 		#2A2A2A /*{a-body-border}*/;
-	background: 			#222222 /*{a-body-background-color}*/;
+	border: 1px solid 		#fff /*{a-body-border}*/;
+	background: 			#fff /*{a-body-background-color}*/;
 	color: 					#fff /*{a-body-color}*/;
 	 text-shadow: 0 /*{a-body-shadow-x}*/ 1px /*{a-body-shadow-y}*/ 0 /*{a-body-shadow-radius}*/ #000 /*{a-body-shadow-color}*/;
 	font-weight: normal;
@@ -984,9 +984,9 @@ a.ui-link-inherit {
 
 /* loading icon */
 .ui-icon-loading {
-	background-image: url(images/ajax-loader.png);
-	width: 40px;
-	height: 40px;
+	background-image: url(../images/ajax-loader.png);
+	width: 0px;
+	height: 0px;
 	-moz-border-radius: 20px;
 	-webkit-border-radius: 20px;
 	border-radius: 20px;
@@ -1152,7 +1152,7 @@ body.ui-mobile-viewport,
 div.ui-mobile-viewport { overflow-x: hidden; }
 
 /* "page" containers - full-screen views, one should always be in view post-pageload */
-.ui-mobile [data-role=page], .ui-mobile [data-role=dialog], .ui-page { top: 0; left: 0; width: 100%; min-height: 100%; position: absolute; display: none; border: 0; }
+.ui-mobile [data-role=page], .ui-mobile [data-role=dialog], .ui-page { top: 0; left: 0; width: 0%; min-height: 0%; position: absolute; display: none; border: 0; }
 .ui-mobile .ui-page-active { display: block; overflow: visible; }
 
 /* on ios4, setting focus on the page element causes flashing during transitions when there is an outline, so we turn off outlines */
