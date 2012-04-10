@@ -205,6 +205,8 @@ function DrawLead6(c,date) {
 	context.restore();
 }
 
+// Author:      Lok Cheung
+// Purpose:		Listen for the user to touch the screen
 $(document).ready(function () {
 	// if user clicked on button, the overlay layer or the dialogbox, close the dialog	
 	$('#dialog-overlay, #dialog-box').bind("touchstart click", function () {		
