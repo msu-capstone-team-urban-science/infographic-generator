@@ -951,9 +951,9 @@ function DrawChairR(c,x,y)
 }
 
 
-// Name: Draw Unique Custmers
-// Author: Peter Chen
-// Purpose: Draws unique customers infographic element
+// Name: 		Draw Unique Custmers
+// Author: 		Peter Chen
+// Purpose: 	Draws unique customers infographic element
 // Arguments:   DrawUniqueCustomers(canvas_name, x_position, y_position);
 // Data format: 
 // Example:     DrawUniqueCustomers("myCanvas", 0, 0);
@@ -1111,9 +1111,9 @@ function DrawUniqueCustomers(c,x,y) {
 	context.restore();			
 }
 	
-// Name: Draw Response
-// Author: Peter Chen 
-// Purpose: Response infographic elements, both phone and email 
+// Name: 		Draw Response
+// Author: 		Peter Chen 
+// Purpose: 	Response infographic elements, both phone and email 
 // Arguments:   DrawResponse(canvas_name, x_position, y_position, Response_by_Mail_data, Response_by_Phone_data);
 // Data format: value
 // Example:     DrawResponse("myCanvas", 0, 0, 1000, 1200);
@@ -1187,9 +1187,9 @@ function DrawResponse(c, x, y, kpiMail, kpiPhone)  {
 	
 }
 	
-// Name: Draw Sales
-// Author: Peter Chen 
-// Purpose: Sales from lead infographic elements; new, used, and lost 
+// Name: 		Draw Sales
+// Author: 		Peter Chen 
+// Purpose: 	Sales from lead infographic elements; new, used, and lost 
 // Arguments:   DrawSales(canvas_name, x_position, y_position, Sales_from_Lead_Lost_data, Sales_from_Lead_New_data, Sales_from_Lead_Used_data);
 // Data format: value
 // Example:     DrawSales("myCanvas", 0, 0, 1000, 1200, 200);
@@ -1504,9 +1504,9 @@ function DrawCircle(c,x,y,r,color) {
 	context.fill();
 }
 
-// Name: Draw Close Rate
-// Author: Peter Chen 
-// Purpose: Close Rate infographic elements
+// Name:		Draw Close Rate
+// Author: 		Peter Chen 
+// Purpose: 	Close Rate infographic elements
 // Arguments:   DrawCloseRate(canvas_name, x_position, y_position, Close_Rate_data);
 // Data format: value
 // Example:     DrawCloseRate("myCanvas", 0, 0, 1000);
@@ -1592,9 +1592,9 @@ function DrawCloseRate(c,x,y,d) {
 	context.restore();
 }
 
-// Name: Draw Machine
-// Author: Peter Chen 
-// Purpose: ATM machine infographic elements
+// Name: 		Draw Machine
+// Author: 		Peter Chen 
+// Purpose: 	ATM machine infographic elements
 // Arguments:   DrawMachine(canvas_name, x_position, y_position);
 // Data format: 
 // Example:     DrawMachine("myCanvas", 0, 0);
@@ -1700,9 +1700,9 @@ function DrawMachine(c,x,y) {
 	context.restore();
 }
 
-// Name: Draw Prospect Count
-// Author: Peter Chen 
-// Purpose: Prospect Count infographic elements
+// Name: 		Draw Prospect Count
+// Author: 		Peter Chen 
+// Purpose: 	Prospect Count infographic elements
 // Arguments:   DrawProspectCount(canvas_name, x_position, y_position, data);
 // Data format: value
 // Example:     DrawProspectCount("myCanvas", 0, 0, 1000);
@@ -1815,9 +1815,9 @@ function DrawProspectCount(c,x,y,d) {
 	context.restore();
 }
 
-// Name: Draw unopned and new brand lead
-// Author: Peter Chen 
-// Purpose: Unopened and new brand lead infographic elements
+// Name: 		Draw unopned and new brand lead
+// Author: 		Peter Chen 
+// Purpose: 	Unopened and new brand lead infographic elements
 // Arguments:   DrawUnopenedLead(canvas_name, x_position, y_position, unopened_data, new_data);
 // Data format: value
 // Example:     DrawUnopenedLead("myCanvas", 0, 0, 1000, 1200);
@@ -1848,9 +1848,9 @@ function DrawUnopenedLead(c,x,y,d,d2) {
 
 }
 
-// Name: Draw New 3PL Lead
-// Author: Peter Chen 
-// Purpose: New 3PL Lead infographic elements
+// Name: 		Draw New 3PL Lead
+// Author: 		Peter Chen 
+// Purpose: 	New 3PL Lead infographic elements
 // Arguments:   Draw3PL(canvas_name, x_position, y_position, width, height, new_3PL_data);
 // Data format: value
 // Example:     Draw3PL("myCanvas", 0, 0, 400, 400, 1000);
@@ -1945,9 +1945,9 @@ function Draw3PL(c,x,y,w,h,myArray){
 
 }
 
-// Name: DrawEffectiveness
-// Author: Peter Chen 
-// Purpose: New 3PL Lead infographic elements
+// Name: 		DrawEffectiveness
+// Author: 		Peter Chen 
+// Purpose: 	New 3PL Lead infographic elements
 // Arguments:   DrawEffectiveness(canvas_name, x_position, y_position, date, Dealer_data, Brand_data);
 // Data format: value
 // Example:     DrawEffectiveness("myCanvas", 0, 0, 01/01/2012, 400, 1000);
