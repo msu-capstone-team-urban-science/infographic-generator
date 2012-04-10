@@ -856,6 +856,13 @@ function navigator_Go(url) {
 
 //LEAD INFOGRAPHIC STUFF BELOW//
 /*---------------------*/
+
+// Name:        DrawTable
+// Author:      Peter Chen
+// Purpose:     Draw Table
+// Arguments:   DrawTable(canvas_name, x_position, y_position);
+// Data format: 
+// Example:     DrawTable("myCanvas", 0, 0);
 function DrawTable(c,x,y)
 {
 	var canvas = document.getElementById(c);
@@ -880,6 +887,12 @@ function DrawTable(c,x,y)
 
 }
 
+// Name:        DrawChairL
+// Author:      Peter Chen
+// Purpose:     Draw chair (toward to the left)
+// Arguments:   DrawChairL(canvas_name, x_position, y_position);
+// Data format: 
+// Example:     DrawChairL("myCanvas", 0, 0);
 function DrawChairL(c,x,y)
 {
 	var canvas = document.getElementById(c);
@@ -906,6 +919,12 @@ function DrawChairL(c,x,y)
 	context.restore();
 }
 
+// Name:        DrawChairR
+// Author:      Peter Chen
+// Purpose:     Draw chair (toward to the right)
+// Arguments:   DrawChairR(canvas_name, x_position, y_position);
+// Data format: 
+// Example:     DrawChairR("myCanvas", 0, 0);
 function DrawChairR(c,x,y)
 {
 	var canvas = document.getElementById(c);
@@ -934,7 +953,10 @@ function DrawChairR(c,x,y)
 
 // Name: Draw Unique Custmers
 // Author: Peter Chen
-// Description: Draws unique customers infographic element
+// Purpose: Draws unique customers infographic element
+// Arguments:   DrawUniqueCustomers(canvas_name, x_position, y_position);
+// Data format: 
+// Example:     DrawUniqueCustomers("myCanvas", 0, 0);
 function DrawUniqueCustomers(c,x,y) {
 	var canvas = document.getElementById(c);
 	var context = canvas.getContext("2d");
@@ -1091,22 +1113,21 @@ function DrawUniqueCustomers(c,x,y) {
 	
 // Name: Draw Response
 // Author: Peter Chen 
-// Description: Response infographic elements, both phone and email 
+// Purpose: Response infographic elements, both phone and email 
+// Arguments:   DrawResponse(canvas_name, x_position, y_position, Response_by_Mail_data, Response_by_Phone_data);
+// Data format: value
+// Example:     DrawResponse("myCanvas", 0, 0, 1000, 1200);
 function DrawResponse(c, x, y, kpiMail, kpiPhone)  {
 	var canvas = document.getElementById(c);
 	var context = canvas.getContext("2d");
 	context.save();
 	img = new Image();
 	context.fillStyle = "#8ED6FF";
-	//kpiMail = 1000;
-	//kpiPhone = 1200;
 	var kpiTotal = kpiMail + kpiPhone;
 	var MailP = kpiMail/kpiTotal;
 	var PhoneP= kpiPhone/kpiTotal;
 	var fillW;
 	var fillH;
-	//document.write(MailP);
-	//draw mail
 
 	context.beginPath();
 	context.rect(x+1, y, 373, -120);
@@ -1166,6 +1187,12 @@ function DrawResponse(c, x, y, kpiMail, kpiPhone)  {
 	
 }
 	
+// Name: Draw Sales
+// Author: Peter Chen 
+// Purpose: Sales from lead infographic elements; new, used, and lost 
+// Arguments:   DrawSales(canvas_name, x_position, y_position, Sales_from_Lead_Lost_data, Sales_from_Lead_New_data, Sales_from_Lead_Used_data);
+// Data format: value
+// Example:     DrawSales("myCanvas", 0, 0, 1000, 1200, 200);
 function DrawSales(c, x, y, kpiLost, kpiNew, kpiOld)
 {
 	var canvas = document.getElementById(c);
@@ -1476,6 +1503,12 @@ function DrawCircle(c,x,y,r,color) {
 	context.fill();
 }
 
+// Name: Draw Close Rate
+// Author: Peter Chen 
+// Purpose: Close Rate infographic elements
+// Arguments:   DrawCloseRate(canvas_name, x_position, y_position, Close_Rate_data);
+// Data format: value
+// Example:     DrawCloseRate("myCanvas", 0, 0, 1000);
 function DrawCloseRate(c,x,y,d) {
 	var canvas = document.getElementById(c);
 	var context = canvas.getContext("2d");
@@ -1558,6 +1591,12 @@ function DrawCloseRate(c,x,y,d) {
 	context.restore();
 }
 
+// Name: Draw Machine
+// Author: Peter Chen 
+// Purpose: ATM machine infographic elements
+// Arguments:   DrawMachine(canvas_name, x_position, y_position);
+// Data format: 
+// Example:     DrawMachine("myCanvas", 0, 0);
 function DrawMachine(c,x,y) {
 	var canvas = document.getElementById(c);
 	var context = canvas.getContext("2d");
@@ -1660,6 +1699,12 @@ function DrawMachine(c,x,y) {
 	context.restore();
 }
 
+// Name: Draw Prospect Count
+// Author: Peter Chen 
+// Purpose: Prospect Count infographic elements
+// Arguments:   DrawProspectCount(canvas_name, x_position, y_position, data);
+// Data format: value
+// Example:     DrawProspectCount("myCanvas", 0, 0, 1000);
 function DrawProspectCount(c,x,y,d) {
 	var canvas = document.getElementById(c);
 	var context = canvas.getContext("2d");
@@ -1769,15 +1814,18 @@ function DrawProspectCount(c,x,y,d) {
 	context.restore();
 }
 
+// Name: Draw unopned and new brand lead
+// Author: Peter Chen 
+// Purpose: Unopened and new brand lead infographic elements
+// Arguments:   DrawUnopenedLead(canvas_name, x_position, y_position, unopened_data, new_data);
+// Data format: value
+// Example:     DrawUnopenedLead("myCanvas", 0, 0, 1000, 1200);
 function DrawUnopenedLead(c,x,y,d,d2) {
 	var canvas = document.getElementById(c);
 	var context = canvas.getContext("2d");
 	context.save();
-	
-
 	img_unopened= new Image();
 
-	
 	context.beginPath();
 	context.fillStyle = "#ffffff";
 	context.font = "24pt Calibri";
