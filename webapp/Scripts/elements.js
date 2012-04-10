@@ -1848,8 +1848,13 @@ function DrawUnopenedLead(c,x,y,d,d2) {
 
 }
 
-
-function Draw3PL(c,x,y,w,h,myArray,c1,c2){
+// Name: Draw New 3PL Lead
+// Author: Peter Chen 
+// Purpose: New 3PL Lead infographic elements
+// Arguments:   Draw3PL(canvas_name, x_position, y_position, width, height, new_3PL_data);
+// Data format: value
+// Example:     Draw3PL("myCanvas", 0, 0, 400, 400, 1000);
+function Draw3PL(c,x,y,w,h,myArray){
 
 
 	var canvas = document.getElementById(c);
@@ -1940,7 +1945,12 @@ function Draw3PL(c,x,y,w,h,myArray,c1,c2){
 
 }
 
-
+// Name: DrawEffectiveness
+// Author: Peter Chen 
+// Purpose: New 3PL Lead infographic elements
+// Arguments:   DrawEffectiveness(canvas_name, x_position, y_position, date, Dealer_data, Brand_data);
+// Data format: value
+// Example:     DrawEffectiveness("myCanvas", 0, 0, 01/01/2012, 400, 1000);
 function DrawEffectiveness(c,x,y,date,d,b)
 {
 	var canvas = document.getElementById(c);
@@ -1951,7 +1961,6 @@ function DrawEffectiveness(c,x,y,date,d,b)
 	var maxHeight = 200;
 	var bHeight = 0;
 	var dHeight = 0;
-	
 	
 	bHeight = maxHeight * (b-1);
 	dHeight = maxHeight * (d-1);
