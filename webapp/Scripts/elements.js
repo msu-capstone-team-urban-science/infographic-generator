@@ -1379,8 +1379,8 @@ function DrawSales(c, x, y, kpiLost, kpiNew, kpiOld)
 	
 //DrawAvgRespTime: Infographic Element 
 //Author: Kevin Shreve	
-function DrawAvgRespTime (c, x, y, w, h, d)
-{
+//Usage: DrawAvgRespTime("myCanvas",0,100,60);
+function DrawAvgRespTime (c, x, y, d) {
 	var canvas = document.getElementById(c);
 	var context = canvas.getContext("2d");
 	context.save();
@@ -1390,13 +1390,14 @@ function DrawAvgRespTime (c, x, y, w, h, d)
 	context.fillText(" minutes",x+175,y-10);
 	context.font = "bold  28pt Calibri";
 	context.fillText(d,x+105,y-10);
-	DrawClockFace(c,x,y,w,h,d);
+	DrawClockFace(c,x,y,d);
 	context.restore();
 }
 
 //DrawClockDial: Draws the small nub on the side of the watch
 //Author: Kevin Shreve
-function DrawClockDial(c,x,y,w,h) {
+//Helper function for placing the nub on the sie of Average Response Time
+function DrawClockDial(c,x,y) {
 	var canvas = document.getElementById(c);
 	var ctx = canvas.getContext("2d");
 	
@@ -1407,14 +1408,11 @@ function DrawClockDial(c,x,y,w,h) {
 }
 //DrawClockFace: Draws the circles and the tick marks
 //Author: Kevin Shreve
-function DrawClockFace(c,x,y,w,h,d) {
+//Helper function for average respone time, to draw the background of the watch
+function DrawClockFace(c,x,y,d) {
 	var canvas = document.getElementById(c);
 	var ctx = canvas.getContext("2d");
-	
-	//context.font = "40pt Calibri";
-	//context.fillStyle = "#000";
-	//context.fillText("In Kevin we Trust", canvas.width/3, 50);
-	
+		
 	DrawCircle(c,x,y,90,"#C9C9C9");
 	DrawCircle(c,x,y,70,"#FFF");
 	DrawCircle(c,x,y,65,"#C9C9C9");
@@ -1429,12 +1427,14 @@ function DrawClockFace(c,x,y,w,h,d) {
 		ctx.fillRect(x-5,y-75,10,20);
 		ctx.restore();
 	}	
-	DrawHand(c,x,y,w,h,d);
+	DrawHand(c,x,y,d);
 }
 
 //DrawHand : Draws the minute and hour hands of the clock
 //Author: Kevin Shreve	
-function DrawHand(c,x,y,w,h,d) {
+//Helper function for average response time, to be able to position the arms of 
+//the clock without messing with context of everything else.
+function DrawHand(c,x,y,d) {
 	var canvas = document.getElementById(c);
 	var ctx = canvas.getContext("2d");
 	
@@ -1461,6 +1461,7 @@ function DrawHand(c,x,y,w,h,d) {
 
 //DrawCircle: Cirlce with color option
 //Author: Kevin Shreve
+//Usage: DrawCircle("myCanvas",0,100,5,"#FFF");
 function DrawCircle(c,x,y,r,color) {
 	var canvas = document.getElementById(c);
 	var context = canvas.getContext("2d");

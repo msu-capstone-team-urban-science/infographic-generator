@@ -117,7 +117,7 @@ function DrawLead6(c,date) {
 	
 	DrawUniqueCustomers("myCanvas", 200, 190);
 	DrawResponse("myCanvas", 28, 425, kpiMail, kpiPhone);
-	DrawAvgRespTime ("myCanvas", 130, 685, 5, 5, kpiAve);
+	DrawAvgRespTime ("myCanvas", 130, 685, kpiAve);
 	DrawSales("myCanvas", 690, 860, kpiLost, kpiNew, kpiOld);		
 	DrawUnopenedLead("myCanvas",30,1100,kpiUnopened, kpiNewBrand);
 	Draw3PL("myCanvas",385,1170,380,300,kpiNew3PL);
