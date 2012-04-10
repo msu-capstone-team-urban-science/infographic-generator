@@ -1,7 +1,6 @@
 var monthname = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
 var fullMonthName = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
 var currDate;
-var changing = false;
 
 function initDate() {
 	if(!currDate) {
@@ -25,49 +24,40 @@ function wiggle() {
 }
 
 function changeMonth(x,whichInfo) {
-	if(!changing){
-		changing = true;
-		var newMonth = currDate.getMonth() + x;
-		if (insideDateRange(newMonth)) {
-			currDate.setMonth(newMonth);
-			switch(whichInfo)  {
-				case 1:
-					DrawSalesInfographic("myCanvas",currDate);
-					break;
-				case 2:
-					DrawService("myCanvas",currDate);
-					break;
-				case 3:
-					DrawLead("myCanvas",currDate);
-					break;
-				default:
-					break;
-			}
-			GetFullMonth(currDate,x);
-			if (x < 0) {
-			//Swiping Right
-			//Month starts at 635px
-				//$(".text").animate({ top:0 }, 5000, function() { alert("Animation Complete"); });
-				//$("#month").animate({ top:0 }, 5000, function() { alert("Animation Complete"); });
-				//$("#month").animate({ "right": "850px" }, 100, function(){ alert("animation compelete"); });
-				
-				$("#month").animate({ "left": "-850px" }, 0);
-				$("#month2").animate({ "left": "635px" }, 0);
-				$("#month2").animate({ "left": "+=635px" }, 1200);
-				$("#month").animate({ "left": "+=1485px" }, 1000);
-				changing=false;
-			} else {
-			//Swiping Left
-				$("#month").animate({ "left": "2120px" }, 0);
-				$("#month2").animate({ "left": "635px" }, 0);
-				$("#month2").animate({ "left": "-=1200px" }, 1000);
-				$("#month").animate({ "left": "-=1485px" }, 1200);
-				changing=false;
-			}       
-		} else {
-			wiggle();
-			changing=false;
+	var newMonth = currDate.getMonth() + x;
+	if (insideDateRange(newMonth)) {
+		currDate.setMonth(newMonth);
+		switch(whichInfo)  {
+			case 1:
+				DrawSalesInfographic("myCanvas",currDate);
+				break;
+			case 2:
+				DrawService("myCanvas",currDate);
+				break;
+			case 3:
+				DrawLead("myCanvas",currDate);
+				break;
+			default:
+				break;
 		}
+		GetFullMonth(currDate,x);
+		if (x < 0) {
+		//Swiping Right
+		//635px
+		//Month starts at 570px
+			$("#month").animate({ "left": "-850px" }, 0);
+			$("#month2").animate({ "left": "570px" }, 0);
+			$("#month2").animate({ "left": "+=570px" }, 1200);
+			$("#month").animate({ "left": "+=1420px" }, 1000);
+		} else {
+		//Swiping Left
+			$("#month").animate({ "left": "2120px" }, 0);
+			$("#month2").animate({ "left": "570px" }, 0);
+			$("#month2").animate({ "left": "-=1200px" }, 1000);
+			$("#month").animate({ "left": "-=1550px" }, 1200);
+		}       
+	} else {
+		wiggle();
 	}
 }
 
