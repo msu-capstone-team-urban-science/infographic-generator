@@ -308,3 +308,77 @@ function popup(message) {
 	// display the message
 	$('#dialog-message').html(message);	
 }
+
+$("#myCanvas").swiperight(function(event, result) {
+			event.stopImmediatePropagation();
+			wipeStatus("Right",result,1);
+});
+		
+$("#myCanvas").swipeleft(function(event, result) {
+	event.stopImmediatePropagation();
+	wipeStatus("Left",result,1);
+});
+
+$('#myCanvas').bind("touchstart click", function(event){
+	var heightFactor;
+	for(var i=0;i <trendArray.length;i++ )
+	{
+		//check if touching the element location
+		if(event.pageX>trendArray[i][1] && event.pageX<(trendArray[i][1]+trendArray[i][3]) && event.pageY>trendArray[i][2] && event.pageY <(trendArray[i][2]+trendArray[i][4])) {
+			event.preventDefault();
+			if(trendArray[i][0]=="Competitive Segment Sale"){
+					document.getElementById('dialog-box').style.cssText = "margin-top: 900px";
+			}
+			else if(trendArray[i][0]=="Dealer Retention" || trendArray[i][0]=="Visits Per Customer"){
+				document.getElementById('dialog-box').style.cssText = "margin-top: 800px";
+			}  else if(trendArray[i][0]=="Lost Profit" || trendArray[i][0]=="Lost Sales"){
+				document.getElementById('dialog-box').style.cssText = "margin-top: 1050px";
+			}  else {
+				document.getElementById('dialog-box').style.cssText = "margin-top: -150px";
+			}
+			popup('<table border="0" width="100%">'+
+						'<tr>'+
+						'<td><canvas id="trendGraph" height="270" width="600"></canvas></td>'+
+						'</tr>'+
+						'<tr>'+
+						'<td>'+trendArray[i][6]+'</td>'+
+						'</tr>'+
+						'</table>');
+			if(trendArray[i][0]=="Pump In Sale" || trendArray[i][0]=="Competitive Segment Sale") {
+				if(trendArray[i][0]=="Competitive Segment Sale")
+					heightFactor=5;
+				if(trendArray[i][0]=="Pump In Sale")
+					heightFactor=1;
+				for(var j=0;j<trendArray[i][5].length;j++)  {
+					drawLineGraph("trendGraph",trendArray[i][5][j][2],trendArray[i][5][j][0],trendArray[i][5][j][1], j,heightFactor);
+				}
+			} else {
+				if(trendArray[i][0]=="Dealer Retention" || trendArray[i][0]=="Visits Per Customer" ){
+					heightFactor=220;
+				}
+				else if (trendArray[i][0]=="Lost Profit"){
+					heightFactor=0.00022;
+				}
+				else if(trendArray[i][0]=="Lost Sales"){
+					heightFactor=0.35;
+				}
+				else{
+					heightFactor=1;
+				}
+				drawTrend(trendArray[i][5],heightFactor);
+			}
+			
+			//draw x, y axis
+			var canvas = document.getElementById("trendGraph");
+			var context = canvas.getContext("2d");
+			context.save();
+			context.beginPath();
+			context.moveTo(120,0);
+			context.lineTo(120,220);
+			context.lineTo(600,220);
+			context.strokeStyle = "black";	
+			context.stroke();
+			context.restore();
+		}	
+	}
+});

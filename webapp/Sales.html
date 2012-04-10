@@ -7,7 +7,6 @@
 		<script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
 		<script type="text/javascript" src="Scripts/elements.js"></script>
 		<script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
-		<script type="text/javascript" src="Scripts/draw-sales.js"></script>
 		<script type="text/javascript" src="Scripts/jquery.mobile-1.0.1.js"></script>
         <script>
             window.onload = function(){
@@ -29,8 +28,8 @@
 				<p id="month2"></p>
 			</div>
 			<canvas id="myCanvas" width="1000" height="2200">
-			<!-- Insert fallback content here -->
-			Sorry, your browser doesn't support canvas technology
+				<!-- Insert fallback content here -->
+				Sorry, your browser doesn't support canvas technology
 			</canvas>
 			<!--fixed later <div id="dialog-overlay"></div>-->
 			<div id="dialog-box">
@@ -40,165 +39,7 @@
 				</div>
 			</div>
 		</div>
-		
-	<script type="text/javascript">				
-		$("#myCanvas").swiperight(function(event, result) {
-			event.stopImmediatePropagation();
-			wipeStatus("Right",result,1);
-		});
-		
-		$("#myCanvas").swipeleft(function(event, result) {
-			event.stopImmediatePropagation();
-			wipeStatus("Left",result,1);
-		});
-		
-		$('#myCanvas').bind("touchstart click", function(event){
-			var heightFactor;
-			for(var i=0;i <trendArray.length;i++ )
-			{
-				//check if touching the element location
-				if(event.pageX>trendArray[i][1] && event.pageX<(trendArray[i][1]+trendArray[i][3]) && event.pageY>trendArray[i][2] && event.pageY <(trendArray[i][2]+trendArray[i][4])) {
-					event.preventDefault();
-					if(trendArray[i][0]=="Competitive Segment Sale"){
-							document.getElementById('dialog-box').style.cssText = "margin-top: 900px";
-					}
-					else if(trendArray[i][0]=="Dealer Retention" || trendArray[i][0]=="Visits Per Customer"){
-						document.getElementById('dialog-box').style.cssText = "margin-top: 800px";
-					}  else if(trendArray[i][0]=="Lost Profit" || trendArray[i][0]=="Lost Sales"){
-						document.getElementById('dialog-box').style.cssText = "margin-top: 1050px";
-					}  else {
-						document.getElementById('dialog-box').style.cssText = "margin-top: -150px";
-					}
-					popup('<table border="0" width="100%">'+
-								'<tr>'+
-								'<td><canvas id="trendGraph" height="270" width="600"></canvas></td>'+
-								'</tr>'+
-								'<tr>'+
-								'<td>'+trendArray[i][6]+'</td>'+
-								'</tr>'+
-								'</table>');
-					if(trendArray[i][0]=="Pump In Sale" || trendArray[i][0]=="Competitive Segment Sale") {
-						var sortName=new Array();
-						sortName=sortstuff(trendArray[i][5]);
-						sortName.reverse();
-						if(trendArray[i][0]=="Competitive Segment Sale")
-							heightFactor=5;
-						if(trendArray[i][0]=="Pump In Sale")
-							heightFactor=1;
-						for(var j=0;j<trendArray[i][5].length;j++)  {
-							drawLineGraph("trendGraph",sortName[j],trendArray[i][5][j][0],trendArray[i][5][j][1], j,heightFactor);
-						}
-					} else {
-						if(trendArray[i][0]=="Dealer Retention" || trendArray[i][0]=="Visits Per Customer" ){
-							heightFactor=220;
-						}
-						else if (trendArray[i][0]=="Lost Profit"){
-							heightFactor=0.00022;
-						}
-						else if(trendArray[i][0]=="Lost Sales"){
-							heightFactor=0.35;
-						}
-						else{
-							heightFactor=1;
-						}
-						drawTrend(trendArray[i][5],heightFactor);
-					}
-					
-					//draw x, y axis
-					var canvas = document.getElementById("trendGraph");
-					var context = canvas.getContext("2d");
-					context.save();
-					context.beginPath();
-					context.moveTo(120,0);
-					context.lineTo(120,220);
-					context.lineTo(600,220);
-					context.strokeStyle = "black";	
-					context.stroke();
-					context.restore();
-				}	
-			}
-		});
-	
-	function drawTrend(data,heightFactor) {
-		var canvas = document.getElementById("trendGraph");
-		var context = canvas.getContext("2d");
-		var radius=4;
-		context.fillStyle ='#00F';
-		var sum=0;
-		for(var j=0;j<data.length;j++){
-			sum+=data[j][1];
-		}
-		context.font = "14pt Calibri";
-		for(var i=0;i<data.length;i++)
-		{
-			context.save();
-			context.beginPath();
-			context.moveTo(145,220-data[0][1]*heightFactor+30);
-			context.arc(145, 220-data[0][1]*heightFactor+30, radius, 0, 2 * Math.PI, false);
-			context.fillText(data[0][1],130,220-data[0][1]*heightFactor-20+30);
-			context.fillText(monthname[0],145,250);
-			for(var k=1;k<data.length;k++){
-				context.arc(k*70+145, 220-data[k][1]*heightFactor+30, radius, 0, 2 * Math.PI, false);
-				context.fillText(monthname[k],k*70+145,250);		//draw month
-				context.fillText(data[k][1],k*70+130,220-data[k][1]*heightFactor-20+30); //draw number
-				context.lineTo(k*70+145,220-data[k][1]*heightFactor+30);
-			}
-			context.lineWidth=4;
-			context.strokeStyle = "blue";
-			context.lineWidth=1;
-			context.stroke();
-			context.restore();
-		}		
-	}
-	//graph for pump-in sales && Competitive Segment Sale
-	function drawLineGraph(c, name, d, color, index, heightFactor){
-		var canvas = document.getElementById(c);
-        var context = canvas.getContext("2d");
-		context.save();
-		context.font = "14pt Calibri";
-		context.beginPath();
-		context.arc(150, (220-d[0][1]/4*heightFactor+0), 2, 0, 2 * Math.PI, false);
-		context.fillText(monthname[0],145,250);		//draw month
-		//context.fillText(d[0][1],130,220-d[0][1]*heightFactor/4-20); //draw number
-		context.lineTo(150,(220-d[0][1]/4*heightFactor+0));
-		for(var i=1;i<d.length;i++){
-			context.arc(i*70+150, (220-d[i][1]/4*heightFactor+0), 2, 0, 2 * Math.PI, false);
-			context.fillText(monthname[i],i*70+145,250);		//draw month
-			//context.fillText(d[i][1],i*70+130,220-d[i][1]/4-20); //draw number
-			context.lineTo(i*70+150,(220-d[i][1]/4*heightFactor+0));
-		}
-		context.fillStyle = color; // text color
-		context.font = "10pt Calibri";
-		context.fillText(name, 0, index*20+10);
-		context.strokeStyle = color;
-		context.stroke();
-		context.restore();
-	}
-	  
-	function sortstuff(array)  {
-		var tmp;
-		var name;
-		var result=new Array();
-		for(var i=0;i<array.length;i++)  {
-			tmp=array[i][0][0][1];
-			name=array[i][2];
-			for(var j=0;j<array.length;j++)  {
-				if(array[j][0][0][1]<tmp){
-					if(result.indexOf(array[j][2])==-1)  {
-						tmp=array[j][0][0][1];
-						name=array[j][2];
-						result.push(name);
-					}
-				}
-			}
-		}
-		for(var k=0;k<array.length;k++){
-			if(result.indexOf(array[k][2])==-1){
-				result.push(array[k][2]);
-			}
-		}
-		return result;
-	}
-	</script>
+		<script type="text/javascript" src="Scripts/drill-down-display.js"></script>
+		<script type="text/javascript" src="Scripts/draw-sales.js"></script>
     </body>
 </html>
