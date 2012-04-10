@@ -1,0 +1,358 @@
+\documentclass[11pt,a4paper,oneside]{article}
+\usepackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[section]{placeins}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=RoyalBlue,
+    filecolor=RoyalBlue,
+    linkcolor=RoyalBlue,
+    urlcolor=RoyalBlue
+}
+\usepackage[all]{hypcap}
+\pagestyle{fancyplain}
+
+\begin{document}
+\lhead{Infographic Generator}
+\rhead{Project Plan}
+\begin{titlepage}
+
+
+
+\begin{center}
+
+\includegraphics[width=1\textwidth]{images/sponsor-logo.png}\\[1cm]    
+
+{ \huge \bfseries Infographic Generator}\\[0.4cm]
+{ \large \bfseries Project Plan}\\[0.4cm]
+
+Louis Bodnar\\
+Peter Chen\\
+Lok Cheung\\
+Kevin Shreve\\
+
+
+
+\vfill
+
+{\large \today}
+
+\end{center}
+
+\end{titlepage}
+
+\tableofcontents
+
+\newpage
+
+\listoffigures
+
+\newpage
+
+\section{Executive Summary}
+
+
+Over three decades ago, a professor at Wayne State University took on a challenge because Cadillac called it unsolvable.  That man was Jim Anderson.  His computer-generated dot maps gave Cadillac's marketing department a competitive advantage by allowing them to easily visualize dealership locations across the nation.  Jim began using the power of computers to analyze these networks of dealerships and started a company that specialized in the planning and management of these networks.  Thus, Urban Science was born.\\
+
+
+Urban Science is now an international company, headquartered in Detroit, Michigan.  They assist nearly every original equipment manufacturer (OEM) in over 60 countries.  Our job is to design a web application to show OEMs monthly performance data on vehicle sales, lead management, and service for their primary market area.  OEMs use this performance data to adjust spending to maximize their market potential.  The appeal of our web application is its ease of use, and visual appeal.\\
+
+
+In today's world, the display of information is an evolving art.  Yesterday's solution was clipart and spreadsheets, but that is no longer enough.  We require a more impactful approach to delivering a point.  The modern solution is an informaiton graphic or infographic.  An infographic is a graphical display that quickly conveys data that would otherwise require a lengthy explanation.  Modern infographics use clever design schemes and cartoon charecters to keep the viewer interested and to show relationships in the data.\\
+
+
+Our web application uses a brand new type of infographic that is designed to update dynamically.  It uses information directly from Urban Science to generate graphics that reflect the most up-to-date monthly data.  The web application also provides the ability to view previous months to allow OEMs to refrence historical data.\\
+
+
+\section{Functional Specifications}
+
+\subsection {Web Application}
+ - uses local storage
+
+
+\subsubsection {Main Menu}
+ - has lazy suzan style interface
+ - 
+
+\subsubsection {Infographic Display Page}
+ - has navigation buttons
+ - has infographic
+
+
+\subsection {Web Backend}
+ - has database
+ - outputs json
+
+
+
+features: 
+   - infographics
+   - months
+   - menu
+   - dynamicness
+
+
+The web application is focus of project is to create a new and creative experience for the KPI data. The user interface will be very simple, allowing for on the fly use by those giving presentations or demonstrating the product to clients. When a client sees this unique display of information they will assuredly choose Urban Science to help them with their strategy.\\
+
+
+
+
+\section{Design Specifications}
+
+\subsection{Overview}
+% TODO replace default graph
+
+The general interface is based on a Lazy Susan like menu. A user can swipe the screen to rotate the icons, and just touch on anyone of them to select a category. The program will trigger the infographic generator depending on the category that was selected. The infographic generator will then grab the preloaded data from the xml file and display with a default graph. Then user can select different style of infographic to display the information as they need.\\
+
+\begin{figure}[!]
+\caption{Use Case Diagram}
+\includegraphics[width=1\textwidth]{images/Capstone_-_Use_Case_Diagram.png}\\   
+\end{figure}
+
+
+\subsection{System Architecture}
+
+The infographic application is comprised of two major components: a web application/user interface and a backend database. Users are assumed to use safari browser on iPad. The web host then displays the menu screen. Data will be pulled until specific category is selected. When a category is selected, the program will pull up all the required data from the server. Depending on the style of infographic, data will be displayed in different form.\\
+
+\subsection{User Interface}
+
+Figure~\ref{mockup-main-menu} shows the screen mockup for our prototype.  The main page will be displayed in lazy Suzan style that allows the user to scroll through the icons to the right or left.  The infographic for the current category will be shown when the icon is clicked on.\\
+
+
+Figure~\ref{mockup-infographic-display-1}, Figure~\ref{mockup-infographic-display-2}, and Figure~\ref{mockup-infographic-display-3} show a sample infographic depiction.  If you want to view data for another month, you can just swipe left and right to change the time frame.  If you want to go back to the main menu page, just click on the top right corner’s menu button.\\
+
+
+\begin{figure}[!]
+\caption{Main Menu Mockup\label{mockup-main-menu}}
+\includegraphics[width=1\textwidth]{images/screen.jpg}\\
+\end{figure}
+
+
+\begin{figure}[!]
+\caption{Infographic Display Mockup\label{mockup-infographic-display-1}}
+\includegraphics[width=1\textwidth]{images/screen5.jpg}\\
+\end{figure}
+
+\begin{figure}[!]
+\caption{Infographic Display Mockup\label{mockup-infographic-display-2}}
+\includegraphics[width=1\textwidth]{images/screen3.jpg}\\
+\end{figure}
+
+\begin{figure}[!]
+\caption{Infographic Display Mockup\label{mockup-infographic-display-3}}
+\includegraphics[width=1\textwidth]{images/screen4.jpg}\\
+\end{figure}
+
+\section{Technical Specifications}
+
+The infographic generator will produce infographics suitable for display in a browser with support for HTML5 and JavaScript.\\
+
+
+Each infographic will be based off of KPI data returned from a Microsoft SQL database.  The server will use an asp.net script to query the database and return the information to the client device.  The client device will integrate this data with predefined infographic scripts written in a combination of HTML5 and JavaScript to generate the infographic.\\
+
+
+An infographic framework consisting of the server side database query script and a client side JavaScript library will be used to assist in the creation of infographics.  The JavaScript library will contain functions to create reusable animations and artwork based off values obtained from the database query script.\\
+
+
+The interface for viewing infographics will be written in HTML5 and JavaScript.  It will use jQuery to support swipe events on the iPad for scrolling left and right in the menus.  The menus will be populated with items read from an XML file.  Only the front most item (the item with the greatest cascading style sheet z-index) in the menu will be selectable.  The front most item will change to the item on its immediate left if swiped right and vice-versa if swiped left.\\
+
+
+The main menu will be used to select a category.  Once the category has been selected, the contents screen will change to show the infographic for the selected category.  The user will have the ability to return to the main menu while viewing an infographic.  This functionality will be provided by a button located on each infographic display page but not as part of the main menu.\\
+
+\begin{figure}[!]
+\caption{Sequence Diagram}
+\includegraphics[width=1\textwidth]{images/Capstone_-_Sequence_Diagram.png}\\
+\end{figure}
+
+
+\begin{figure}[!]
+\caption{Class Diagram}
+\includegraphics[width=1\textwidth]{images/Capstone_-_Class_Diagram.png}\\
+\end{figure}
+
+
+\section{Schedule}
+
+\subsection{Week 1 (January 9, 2012)}
+\begin{itemize}
+\item Had our first conference call with our customer
+\item Set up weekly conference calls with our customer
+\item Set up regular team meetings to meet twice a week
+\item Installed virtual machines
+\end{itemize}
+
+
+\subsection{Week 2 (January 16, 2012)}
+\begin{itemize}
+\item Started UML diagrams
+\item Installed Windows Server 2008 R2
+\item Installed IIS 7
+\item Installed ASP.NET
+\item Installed Microsoft SQL Server
+\item Talked with our customer about interface mockups
+\end{itemize}
+
+\subsection{Week 3 (January 23, 2012)}
+\begin{itemize}
+\item Completed more UML diagrams
+\item First draft of project-plan
+\item Installed Visual Studio 2010
+\item Created screen mockups
+\item Created sample infographic elements
+\end{itemize}
+
+\subsection{Milestone: Status Reports}
+\begin{itemize}
+\item Gave report to class
+\end{itemize}
+
+\subsection{Week 4 (January 30, 2012)}
+\begin{itemize}
+\item Created infographic elements using actual KPI data
+\item Wrote website to showcase infographics
+\item Decided to work on sales infographic first
+\end{itemize}
+
+\subsection{Milestone: Project Plan Presentation}
+\begin{itemize}
+\item Gave presentation in class
+\end{itemize}
+
+\subsection{Week 5 (February 6, 2012)}
+\begin{itemize}
+\item Presented project plan to class
+\item Changed from using XML to JSON for pulling database information
+\item Have roundabout working with several images for infographic selector buttons
+\item Successfully pulled data from a SQL database using ASP.NET
+\end{itemize}
+
+\subsection{Week 6 (February 13, 2012)}
+\begin{itemize}
+\item Sales infographic exists in basic form
+\item Added background image to main menu
+\end{itemize}
+
+\subsection{Week 7 (February 20, 2012)}
+\begin{itemize}
+\item Infographics now use values from database
+\item Rewrote pump in sales infographic
+\item Practiced Alpha Demonstration
+\end{itemize}
+
+\subsection{Milestone: Alpha Demonstrations}
+\begin{itemize}
+\item Demonstrated software to Urban Science for first time
+\item Recieved usefull feedback from Urban Science
+\end{itemize}
+
+\subsection{Week 8 (February 27, 2012)}
+\begin{itemize}
+\item Planning for betas
+\item Created mockups of service and lead management infographics
+\end{itemize}
+
+\subsection{Week 9 (March 12, 2012)}
+\begin{itemize}
+\item Added service infographic to website
+\item Fixed bugs with swiping
+\item Local storage now refreshes with website
+\end{itemize}
+
+\subsection{Week 10 (March 19, 2012)}
+\begin{itemize}
+\item TODO: update project plan
+\item TODO: project video
+\item TODO: add branding to website (msu / cse / capstone / urban science / our names)
+\item TODO: clean up code
+\item TODO: write documentation for functions
+\item TODO: implement drill down menu
+\item TODO: finish service and lead management infographics
+\end{itemize}
+
+\subsection{Week 11 (March 26, 2012)}
+\begin{itemize}
+\item more of the same
+\end{itemize}
+
+\subsection{Milestone: Beta Demonstrations}
+\begin{itemize}
+\item Has not occured
+\end{itemize}
+
+\subsection{Week 12 (April 2, 2012)}
+\begin{itemize}
+\item more of the same
+\end{itemize}
+
+\subsection{Week 13 (April 9, 2012)}
+\begin{itemize}
+\item more of the same
+\end{itemize}
+
+\subsection{Week 14 (April 16, 2012)}
+\begin{itemize}
+\item more of the same
+\end{itemize}
+
+\subsection{Week 15 (April 23, 2012)}
+\begin{itemize}
+\item more of the same
+\end{itemize}
+
+\subsection{Milestone: Projet Video}
+\begin{itemize}
+\item Has not occured
+\end{itemize}
+
+\subsection{Milestone: All Deliverables}
+\begin{itemize}
+\item Has not occured
+\end{itemize}
+
+\subsection{Milestone: Design Day}
+\begin{itemize}
+\item Has not occured
+\end{itemize}
+
+
+
+
+\section{Risks}
+
+\subsection{Languages}
+
+\begin{itemize}
+\item Risk: Unfamiliar with ASP.NET and HTML5 
+\item Mitigation: Read online tutorials, books, and documentation
+\end{itemize}
+
+
+\subsection{Ambiguous Requirements}
+
+\begin{itemize}
+\item Risk: Customer gave broad requirements
+\item Mitigation: Help customer find focus by using mockups and eliciting information
+\end{itemize}
+
+
+\subsection{Scheduling}
+
+\begin{itemize}
+\item Risk: Not much free time overlap between our schedules
+\item Mitigation: Keep everybody up-to-date with emails and plan ahead
+\end{itemize}
+
+
+\subsection{Art}
+
+\begin{itemize}
+\item Risk: Little artistic experience in our group
+\item Mitigation: Brainstorm and find inspiration from the artwork used in popular applications
+\end{itemize}
+
+
+
+
+\end{document}
