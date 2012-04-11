@@ -683,8 +683,12 @@ function DrawLostSale(c, x, y, w, h, d) {
     img04.src = 'images/puzzle.png';
 }
 
-// Name: DrawLostProfit
-// Author: Peter Chen
+// Name: 		DrawLostProfit
+// Author: 		Peter Chen
+// Purpose:     Draw Lost Proffit infographic element
+// Arguments:   DrawLostProfit(canvas_name, x_position, y_position, width, height, data);
+// Data format: value
+// Example:     DrawLostProfit("myCanvas", 0, 0, 100, 100, 1000);
 function DrawLostProfit(c,x,y,w,h,d) {
 	//clearCanvas(c);
     var canvas = document.getElementById(c);
@@ -964,7 +968,6 @@ function DrawUniqueCustomers(c,x,y) {
 	var lineWidth = 7;
 
 	context.save();
-
 	context.beginPath();
 	context.arc(x+170, y-50, 20, 0, 2 * Math.PI, false);
 	context.fillStyle = "#000000";
