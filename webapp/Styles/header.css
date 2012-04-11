@@ -24,7 +24,7 @@
 #category{
 	position:absolute;
 	top:-60px;
-	left:380px;
+	left:340px;
 	font-size:70px;
 	color: white;
 }
@@ -32,7 +32,7 @@
 #month{
 	position:absolute;
 	top:-60px;
-	left: 635px;
+	left: 570px;
 	font-size:70px;
 	color: white;
 }
@@ -40,7 +40,7 @@
 #month2{
 	position:absolute;
 	top:-60px;
-	left: 635px;
+	left: 570px;
 	font-size:70px;
 	color: white;
 }
