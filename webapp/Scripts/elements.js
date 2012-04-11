@@ -968,6 +968,7 @@ function DrawUniqueCustomers(c,x,y) {
 	var lineWidth = 7;
 
 	context.save();
+	//draw man's head
 	context.beginPath();
 	context.arc(x+170, y-50, 20, 0, 2 * Math.PI, false);
 	context.fillStyle = "#000000";
@@ -1000,7 +1001,7 @@ function DrawUniqueCustomers(c,x,y) {
 	context.strokeStyle = "#000000";
 	context.stroke();
 
-	// draw 
+	// draw Table
 	context.beginPath();
 	context.moveTo(x , y);
 	context.lineTo(x +100 , y);
@@ -1009,7 +1010,7 @@ function DrawUniqueCustomers(c,x,y) {
 	context.strokeStyle = "#000000";
 	context.stroke();
 
-	// draw 
+	// draw Table
 	context.moveTo(x -20, y+40);
 	context.lineTo(x +120 , y+40);
 	context.lineWidth = lineWidth;
@@ -1017,7 +1018,7 @@ function DrawUniqueCustomers(c,x,y) {
 	context.strokeStyle = "#000000";
 	context.stroke();
 
-	// draw leg
+	// draw table's leg
 	context.moveTo(x +30, y);
 	context.lineTo(x +10 , y+80);
 	context.lineWidth = lineWidth;
@@ -1025,7 +1026,7 @@ function DrawUniqueCustomers(c,x,y) {
 	context.strokeStyle = "#000000";
 	context.stroke();
 
-	// draw legs
+	// draw table's legs
 	context.moveTo(x +65, y);
 	context.lineTo(x +85 , y+80);
 	context.lineWidth = lineWidth;
@@ -1033,7 +1034,7 @@ function DrawUniqueCustomers(c,x,y) {
 	context.strokeStyle = "#000000";
 	context.stroke();
 
-	// draw 
+	// draw umbrella
 	context.moveTo(x + 10, y);
 	context.lineTo(x + 10 , y-70);
 	context.lineWidth = lineWidth;
@@ -1052,7 +1053,6 @@ function DrawUniqueCustomers(c,x,y) {
 
 
 	// draw umbrella
-	//context.beginPath();
 	context.moveTo(x-60, y-70);
 	context.quadraticCurveTo(x+10, y-120, x+80, y-70);
 	context.lineWidth = lineWidth;
@@ -1102,7 +1102,7 @@ function DrawUniqueCustomers(c,x,y) {
 	context.strokeStyle = "#000000";
 	context.stroke();
 
-	//draw man
+	//draw man's leg
 	context.beginPath();
 	context.moveTo(x + 130, y +30);
 	context.lineTo(x + 130 ,y +80);
@@ -1126,6 +1126,7 @@ function DrawResponse(c, x, y, kpiMail, kpiPhone)  {
 	context.save();
 	img = new Image();
 	context.fillStyle = "#8ED6FF";
+	//find out the percentage between Mail and Phone
 	var kpiTotal = kpiMail + kpiPhone;
 	var MailP = kpiMail/kpiTotal;
 	var PhoneP= kpiPhone/kpiTotal;
@@ -1181,6 +1182,7 @@ function DrawResponse(c, x, y, kpiMail, kpiPhone)  {
 		context.fillRect(x+740,y+8, x-20-fillW, fillH);
 	}					
 	
+	//load the response.png
 	img.onload = function()
 	{
 		context.drawImage(img, x, y, img.width/4.29, img.height/4.29);
@@ -1207,6 +1209,7 @@ function DrawSales(c, x, y, kpiLost, kpiNew, kpiOld)
 	img2 = new Image();
 	img2.src = 'images/lead_newcar.png';
 
+	//draw man's head
 	context.beginPath();
 	context.arc(x-50, y, 20, 0, 2 * Math.PI, false);
 	context.fillStyle = "#000000";
@@ -1397,6 +1400,7 @@ function DrawSales(c, x, y, kpiLost, kpiNew, kpiOld)
 	context.strokeStyle = "#000000";
 	context.stroke();
 	
+	//load two cars' images
 	img1.onload = function()
 	{
 		context.drawImage(img1, x-295, y + 8, img1.width/4, img1.height/4);
@@ -1518,6 +1522,7 @@ function DrawCloseRate(c,x,y,d) {
 	var context = canvas.getContext("2d");
 	var lineWidth = 10;
 	context.save();
+	//draw ATM machine
 	DrawMachine(c,x-35,y-5);
 	DrawMachine(c,x+100,y-5);
 	
@@ -1545,7 +1550,7 @@ function DrawCloseRate(c,x,y,d) {
 	context.restore();
 	
 			
-	//draw walk man
+	//draw walking man
 	context.beginPath();
 	context.arc(x-50, y-140, 20, 0, 2 * Math.PI, false);
 	context.fillStyle = "#000000";
@@ -1664,6 +1669,7 @@ function DrawMachine(c,x,y) {
 	context.rect(x+50, y-94, 16, -15);
 	context.fill();
 	
+	//write numbers
 	context.font = "12pt Calibri";
 	context.fillStyle = "#ffffff";
 	context.fillText("1", x+15, y-97);
@@ -1807,6 +1813,7 @@ function DrawProspectCount(c,x,y,d) {
 	context.strokeStyle = "#000000";
 	context.stroke();
 	
+	//write text
 	context.font = "32pt Calibri";
 	context.fillStyle = "#ffffff";
 	context.fillText(d, x+40, y-20);
@@ -1829,7 +1836,7 @@ function DrawUnopenedLead(c,x,y,d,d2) {
 	var context = canvas.getContext("2d");
 	context.save();
 	img_unopened= new Image();
-
+	//write text
 	context.beginPath();
 	context.fillStyle = "#ffffff";
 	context.font = "24pt Calibri";
@@ -1839,7 +1846,7 @@ function DrawUnopenedLead(c,x,y,d,d2) {
 	context.fillText(d, x+640, y-10);
 	context.fillText("New Brand", x+400, y+30);
 	context.fillText(d2, x+640, y+30);
-	
+	//load image
 	img_unopened.onload = function()
 	{
 		context.drawImage(img_unopened, x, y-100 , img_unopened.width/1.4, img_unopened.height/1.4);
@@ -1858,8 +1865,6 @@ function DrawUnopenedLead(c,x,y,d,d2) {
 // Data format: value
 // Example:     Draw3PL("myCanvas", 0, 0, 400, 400, 1000);
 function Draw3PL(c,x,y,w,h,myArray){
-
-
 	var canvas = document.getElementById(c);
 	var cxt = canvas.getContext("2d");
 	cxt.save();
@@ -1967,7 +1972,7 @@ function DrawEffectiveness(c,x,y,date,d,b)
 	
 	bHeight = maxHeight * (b-1);
 	dHeight = maxHeight * (d-1);
-	
+	//write text
 	context.beginPath();
 	context.fillStyle = "#ffffff";
 	context.font = "24pt Calibri";

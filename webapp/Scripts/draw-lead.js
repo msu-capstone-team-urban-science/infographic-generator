@@ -156,9 +156,9 @@ function DrawLead6(c,date) {
 	context.save();
 	context.font = "32pt Calibri";
 	context.fillStyle = "#000000";
-	context.fillText("Unique Customers", x + 430,y + 180);
+	context.fillText("Unique Customers", x + 430,y + 192);
 	context.font = "48pt Calibri";
-	context.fillText(kpiUnique,x + 520, y+ 250);
+	context.fillText(kpiUnique,x + 520, y+ 272);
 	context.restore();
 	
 
