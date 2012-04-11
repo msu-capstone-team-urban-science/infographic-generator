@@ -43,7 +43,7 @@ function changeMonth(x,whichInfo) {
 		GetFullMonth(currDate,x);
 		if (x < 0) {
 		//Swiping Right
-		//635px
+
 		//Month starts at 570px
 			$("#month").animate({ "left": "-850px" }, 0);
 			$("#month2").animate({ "left": "570px" }, 0);
