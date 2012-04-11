@@ -292,23 +292,6 @@ $(document).ready(function () {
 	});		
 });
 
-function popup(message) {
-	// get the screen height and width  
-	var maskHeight = $(document).height();  
-	var maskWidth = $(window).width();
-	
-	// calculate the values for center alignment
-	var dialogTop =  (maskHeight/3) - ($('#dialog-box').height());  
-	var dialogLeft = (maskWidth/2) - ($('#dialog-box').width()/2); 
-	
-	// assign values to the overlay and dialog box
-	$('#dialog-overlay').css({height:maskHeight, width:maskWidth}).show();
-	$('#dialog-box').css({top:dialogTop, left:dialogLeft}).show();
-	
-	// display the message
-	$('#dialog-message').html(message);	
-}
-
 $("#myCanvas").swiperight(function(event, result) {
 			event.stopImmediatePropagation();
 			wipeStatus("Right",result,1);
@@ -320,7 +303,7 @@ $("#myCanvas").swipeleft(function(event, result) {
 });
 
 $('#myCanvas').bind("touchstart click", function(event){
-	var heightFactor;
+	var heightFactor=1;
 	for(var i=0;i <trendArray.length;i++ )
 	{
 		//check if touching the element location
@@ -344,11 +327,10 @@ $('#myCanvas').bind("touchstart click", function(event){
 						'<td>'+trendArray[i][6]+'</td>'+
 						'</tr>'+
 						'</table>');
+			//changing the height factor of each element
 			if(trendArray[i][0]=="Pump In Sale" || trendArray[i][0]=="Competitive Segment Sale") {
 				if(trendArray[i][0]=="Competitive Segment Sale")
 					heightFactor=5;
-				if(trendArray[i][0]=="Pump In Sale")
-					heightFactor=1;
 				for(var j=0;j<trendArray[i][5].length;j++)  {
 					drawLineGraph("trendGraph",trendArray[i][5][j][2],trendArray[i][5][j][0],trendArray[i][5][j][1], j,heightFactor);
 				}
@@ -368,7 +350,7 @@ $('#myCanvas').bind("touchstart click", function(event){
 				drawTrend(trendArray[i][5],heightFactor);
 			}
 			
-			//draw x, y axis
+			//draw x, y axis of the chart
 			var canvas = document.getElementById("trendGraph");
 			var context = canvas.getContext("2d");
 			context.save();
