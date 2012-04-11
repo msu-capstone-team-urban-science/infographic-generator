@@ -211,6 +211,8 @@ function DrawLead6(c,date) {
 	context.restore();
 }
 
+// Author:      Lok Cheung
+// Purpose:		Listen for the user to click or touch the screen, then draw the drill down display
 $(document).ready(function () {
 	// if user clicked on button, the overlay layer or the dialogbox, close the dialog	
 	$('#dialog-overlay, #dialog-box').bind("touchstart click", function () {		
@@ -227,6 +229,10 @@ $(document).ready(function () {
 	});		
 });
 
+// Name:        popup
+// Author:      Lok Cheung
+// Purpose:     Uses quadratic curves to draw a colorful figure with labeled sections.  Each section's height is relative to its weighted value.
+// Arguments:   Pump_In_Sale(html_message);
 function popup(message) {
 	// get the screen height and width  
 	var maskHeight = $(document).height();  
@@ -247,9 +253,9 @@ function popup(message) {
 $("#myCanvas").swiperight(function(event, result) {
 			event.stopImmediatePropagation();
 			wipeStatus("Right",result,3);
-		});
+});
 		
-		$("#myCanvas").swipeleft(function(event, result) {
+$("#myCanvas").swipeleft(function(event, result) {
 			event.stopImmediatePropagation();
 			wipeStatus("Left",result,3);
 });
