@@ -267,12 +267,12 @@ $('#myCanvas').bind("touchstart click", function(event){
 			if(trendArray[i][0]=="Number of Leads"){
 				heightFactor=0.3;
 				for(var j=0;j<trendArray[i][5].length;j++)  {
-					drawLineGraph("trendGraph",trendArray[i][5][j][2],trendArray[i][5][j][0],trendArray[i][5][j][1], j,heightFactor,true);
+					drawTrendMul("trendGraph",trendArray[i][5][j][2],trendArray[i][5][j][0],trendArray[i][5][j][1], j,heightFactor,true);
 				}
 			}else if(trendArray[i][0]=="New 3PL Leads"){
 				heightFactor=2.5;
 				for(var j=0;j<trendArray[i][5].length;j++)  {
-					drawLineGraph("trendGraph",trendArray[i][5][j][2],trendArray[i][5][j][0],trendArray[i][5][j][1], j,heightFactor,false);
+					drawTrendMul("trendGraph",trendArray[i][5][j][2],trendArray[i][5][j][0],trendArray[i][5][j][1], j,heightFactor,false);
 				}
 			}else{
 				if(trendArray[i][0]=="Response by Mail" || trendArray[i][0]=="Unique Customers" || trendArray[i][0]=="Prospect Count"){

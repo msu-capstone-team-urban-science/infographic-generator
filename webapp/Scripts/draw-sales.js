@@ -302,13 +302,16 @@ $("#myCanvas").swipeleft(function(event, result) {
 	wipeStatus("Left",result,1);
 });
 
+// Author:      Lok Cheung
+// Purpose:		Listen for the user to click or touch the elements on the canvas, then call the popup function
 $('#myCanvas').bind("touchstart click", function(event){
 	var heightFactor=1;
 	for(var i=0;i <trendArray.length;i++ )
 	{
-		//check if touching the element location
+		//check if user is touching the area within the element
 		if(event.pageX>trendArray[i][1] && event.pageX<(trendArray[i][1]+trendArray[i][3]) && event.pageY>trendArray[i][2] && event.pageY <(trendArray[i][2]+trendArray[i][4])) {
 			event.preventDefault();
+			//change the y position of the dialog box according to which element is touched
 			if(trendArray[i][0]=="Competitive Segment Sale"){
 					document.getElementById('dialog-box').style.cssText = "margin-top: 900px";
 			}
@@ -332,7 +335,7 @@ $('#myCanvas').bind("touchstart click", function(event){
 				if(trendArray[i][0]=="Competitive Segment Sale")
 					heightFactor=5;
 				for(var j=0;j<trendArray[i][5].length;j++)  {
-					drawLineGraph("trendGraph",trendArray[i][5][j][2],trendArray[i][5][j][0],trendArray[i][5][j][1], j,heightFactor);
+					drawTrendMul("trendGraph",trendArray[i][5][j][2],trendArray[i][5][j][0],trendArray[i][5][j][1], j,heightFactor);
 				}
 			} else {
 				if(trendArray[i][0]=="Dealer Retention" || trendArray[i][0]=="Visits Per Customer" ){
