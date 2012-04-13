@@ -292,23 +292,6 @@ $(document).ready(function () {
 	});		
 });
 
-function popup(message) {
-	// get the screen height and width  
-	var maskHeight = $(document).height();  
-	var maskWidth = $(window).width();
-	
-	// calculate the values for center alignment
-	var dialogTop =  (maskHeight/3) - ($('#dialog-box').height());  
-	var dialogLeft = (maskWidth/2) - ($('#dialog-box').width()/2); 
-	
-	// assign values to the overlay and dialog box
-	$('#dialog-overlay').css({height:maskHeight, width:maskWidth}).show();
-	$('#dialog-box').css({top:dialogTop, left:dialogLeft}).show();
-	
-	// display the message
-	$('#dialog-message').html(message);	
-}
-
 $("#myCanvas").swiperight(function(event, result) {
 			event.stopImmediatePropagation();
 			wipeStatus("Right",result,1);
@@ -319,13 +302,16 @@ $("#myCanvas").swipeleft(function(event, result) {
 	wipeStatus("Left",result,1);
 });
 
+// Author:      Lok Cheung
+// Purpose:		Listen for the user to click or touch the elements on the canvas, then call the popup function
 $('#myCanvas').bind("touchstart click", function(event){
-	var heightFactor;
+	var heightFactor=1;
 	for(var i=0;i <trendArray.length;i++ )
 	{
-		//check if touching the element location
+		//check if user is touching the area within the element
 		if(event.pageX>trendArray[i][1] && event.pageX<(trendArray[i][1]+trendArray[i][3]) && event.pageY>trendArray[i][2] && event.pageY <(trendArray[i][2]+trendArray[i][4])) {
 			event.preventDefault();
+			//change the y position of the dialog box according to which element is touched
 			if(trendArray[i][0]=="Competitive Segment Sale"){
 					document.getElementById('dialog-box').style.cssText = "margin-top: 900px";
 			}
@@ -344,13 +330,12 @@ $('#myCanvas').bind("touchstart click", function(event){
 						'<td>'+trendArray[i][6]+'</td>'+
 						'</tr>'+
 						'</table>');
+			//changing the height factor of each element
 			if(trendArray[i][0]=="Pump In Sale" || trendArray[i][0]=="Competitive Segment Sale") {
 				if(trendArray[i][0]=="Competitive Segment Sale")
 					heightFactor=5;
-				if(trendArray[i][0]=="Pump In Sale")
-					heightFactor=1;
 				for(var j=0;j<trendArray[i][5].length;j++)  {
-					drawLineGraph("trendGraph",trendArray[i][5][j][2],trendArray[i][5][j][0],trendArray[i][5][j][1], j,heightFactor);
+					drawTrendMul("trendGraph",trendArray[i][5][j][2],trendArray[i][5][j][0],trendArray[i][5][j][1], j,heightFactor);
 				}
 			} else {
 				if(trendArray[i][0]=="Dealer Retention" || trendArray[i][0]=="Visits Per Customer" ){
@@ -368,7 +353,7 @@ $('#myCanvas').bind("touchstart click", function(event){
 				drawTrend(trendArray[i][5],heightFactor);
 			}
 			
-			//draw x, y axis
+			//draw x, y axis of the chart
 			var canvas = document.getElementById("trendGraph");
 			var context = canvas.getContext("2d");
 			context.save();

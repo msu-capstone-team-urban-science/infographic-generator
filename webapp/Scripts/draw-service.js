@@ -214,24 +214,6 @@ $(document).ready(function () {
 	});		
 });
 
-function popup(message) {
-	// get the screen height and width  
-	var maskHeight = $(document).height();  
-	var maskWidth = $(window).width();
-	
-	// calculate the values for center alignment
-	var dialogTop =  (maskHeight/3) - ($('#dialog-box').height());  
-	var dialogLeft = (maskWidth/2) - ($('#dialog-box').width()/2); 
-	
-	// assign values to the overlay and dialog box
-	$('#dialog-overlay').css({height:maskHeight, width:maskWidth}).show();
-	$('#dialog-box').css({top:dialogTop, left:dialogLeft}).show();
-	
-	// display the message
-	$('#dialog-message').html(message);	
-}
-
-
 $("#myCanvas").swiperight(function(event, result) {
 event.stopImmediatePropagation();
 wipeStatus("Right",result,2);
@@ -242,15 +224,16 @@ event.stopImmediatePropagation();
 wipeStatus("Left",result,2);
 });
 
-
+// Author:      Lok Cheung
+// Purpose:		Listen for the user to click or touch the elements on the canvas, then call the popup function
 $('#myCanvas').bind("touchstart click", function(event){
 	var heightFactor=1;
 	for(var i=0;i <trendArray.length;i++ )
 	{
-		//check if touching the element location
+		//check if user is touching the area within the element
 		if(event.pageX>trendArray[i][1] && event.pageX<(trendArray[i][1]+trendArray[i][3]) && event.pageY>trendArray[i][2] && event.pageY <(trendArray[i][2]+trendArray[i][4])) {
 			event.preventDefault();
-			//TO-DO y position of the dialog box
+			//change the y position of the dialog box according to which element is touched
 			if(trendArray[i][0]=="Average Money Per RO" || trendArray[i][0]=="RO Count" || trendArray[i][0]=="Labor Ops Per RO"){
 					document.getElementById('dialog-box').style.cssText = "margin-top: 870px";
 			}
@@ -267,28 +250,28 @@ $('#myCanvas').bind("touchstart click", function(event){
 						'<td>'+trendArray[i][6]+'</td>'+
 						'</tr>'+
 						'</table>');
-
-				if(trendArray[i][0]=="Active Customers" || trendArray[i][0]=="Inactive Customers" || trendArray[i][0]=="RO Count"){
-					heightFactor=0.1;
-				}
-				if(trendArray[i][0]=="Recent Sales Customers"){
-					heightFactor=1;
-				}
-				if(trendArray[i][0]=="Single Visit Customers"){
-					heightFactor=0.2;
-				}
-				if(trendArray[i][0]=="Service Labor Opportunity" || trendArray[i][0]=="Service Parts Opportunity"){
-					heightFactor=0.0007;
-				}
-				if(trendArray[i][0]=="Dealer Effectiveness" || trendArray[i][0]=="Brand Effectiveness"){
-					heightFactor=100;
-				}
-				if(trendArray[i][0]=="Labor Ops Per RO"){
-					heightFactor=45;
-				}
-				drawTrend(trendArray[i][5],heightFactor);
+			//changing the height factor of each element
+			if(trendArray[i][0]=="Active Customers" || trendArray[i][0]=="Inactive Customers" || trendArray[i][0]=="RO Count"){
+				heightFactor=0.1;
+			}
+			if(trendArray[i][0]=="Recent Sales Customers"){
+				heightFactor=1;
+			}
+			if(trendArray[i][0]=="Single Visit Customers"){
+				heightFactor=0.2;
+			}
+			if(trendArray[i][0]=="Service Labor Opportunity" || trendArray[i][0]=="Service Parts Opportunity"){
+				heightFactor=0.0007;
+			}
+			if(trendArray[i][0]=="Dealer Effectiveness" || trendArray[i][0]=="Brand Effectiveness"){
+				heightFactor=100;
+			}
+			if(trendArray[i][0]=="Labor Ops Per RO"){
+				heightFactor=45;
+			}
+			drawTrend(trendArray[i][5],heightFactor);
 			
-			//draw x, y axis
+			//draw x, y axis of the chart
 			var canvas = document.getElementById("trendGraph");
 			var context = canvas.getContext("2d");
 			context.save();

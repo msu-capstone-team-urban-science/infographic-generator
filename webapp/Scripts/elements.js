@@ -683,8 +683,12 @@ function DrawLostSale(c, x, y, w, h, d) {
     img04.src = 'images/puzzle.png';
 }
 
-// Name: DrawLostProfit
-// Author: Peter Chen
+// Name: 		DrawLostProfit
+// Author: 		Peter Chen
+// Purpose:     Draw Lost Proffit infographic element
+// Arguments:   DrawLostProfit(canvas_name, x_position, y_position, width, height, data);
+// Data format: value
+// Example:     DrawLostProfit("myCanvas", 0, 0, 100, 100, 1000);
 function DrawLostProfit(c,x,y,w,h,d) {
 	//clearCanvas(c);
     var canvas = document.getElementById(c);
@@ -856,6 +860,13 @@ function navigator_Go(url) {
 
 //LEAD INFOGRAPHIC STUFF BELOW//
 /*---------------------*/
+
+// Name:        DrawTable
+// Author:      Peter Chen
+// Purpose:     Draw Table
+// Arguments:   DrawTable(canvas_name, x_position, y_position);
+// Data format: 
+// Example:     DrawTable("myCanvas", 0, 0);
 function DrawTable(c,x,y)
 {
 	var canvas = document.getElementById(c);
@@ -880,6 +891,12 @@ function DrawTable(c,x,y)
 
 }
 
+// Name:        DrawChairL
+// Author:      Peter Chen
+// Purpose:     Draw chair (toward to the left)
+// Arguments:   DrawChairL(canvas_name, x_position, y_position);
+// Data format: 
+// Example:     DrawChairL("myCanvas", 0, 0);
 function DrawChairL(c,x,y)
 {
 	var canvas = document.getElementById(c);
@@ -906,6 +923,12 @@ function DrawChairL(c,x,y)
 	context.restore();
 }
 
+// Name:        DrawChairR
+// Author:      Peter Chen
+// Purpose:     Draw chair (toward to the right)
+// Arguments:   DrawChairR(canvas_name, x_position, y_position);
+// Data format: 
+// Example:     DrawChairR("myCanvas", 0, 0);
 function DrawChairR(c,x,y)
 {
 	var canvas = document.getElementById(c);
@@ -932,9 +955,12 @@ function DrawChairR(c,x,y)
 }
 
 
-// Name: Draw Unique Custmers
-// Author: Peter Chen
-// Description: Draws unique customers infographic element
+// Name: 		Draw Unique Custmers
+// Author: 		Peter Chen
+// Purpose: 	Draws unique customers infographic element
+// Arguments:   DrawUniqueCustomers(canvas_name, x_position, y_position);
+// Data format: 
+// Example:     DrawUniqueCustomers("myCanvas", 0, 0);
 function DrawUniqueCustomers(c,x,y) {
 	var canvas = document.getElementById(c);
 	var context = canvas.getContext("2d");
@@ -942,7 +968,7 @@ function DrawUniqueCustomers(c,x,y) {
 	var lineWidth = 7;
 
 	context.save();
-
+	//draw man's head
 	context.beginPath();
 	context.arc(x+170, y-50, 20, 0, 2 * Math.PI, false);
 	context.fillStyle = "#000000";
@@ -975,7 +1001,7 @@ function DrawUniqueCustomers(c,x,y) {
 	context.strokeStyle = "#000000";
 	context.stroke();
 
-	// draw 
+	// draw Table
 	context.beginPath();
 	context.moveTo(x , y);
 	context.lineTo(x +100 , y);
@@ -984,7 +1010,7 @@ function DrawUniqueCustomers(c,x,y) {
 	context.strokeStyle = "#000000";
 	context.stroke();
 
-	// draw 
+	// draw Table
 	context.moveTo(x -20, y+40);
 	context.lineTo(x +120 , y+40);
 	context.lineWidth = lineWidth;
@@ -992,7 +1018,7 @@ function DrawUniqueCustomers(c,x,y) {
 	context.strokeStyle = "#000000";
 	context.stroke();
 
-	// draw leg
+	// draw table's leg
 	context.moveTo(x +30, y);
 	context.lineTo(x +10 , y+80);
 	context.lineWidth = lineWidth;
@@ -1000,7 +1026,7 @@ function DrawUniqueCustomers(c,x,y) {
 	context.strokeStyle = "#000000";
 	context.stroke();
 
-	// draw legs
+	// draw table's legs
 	context.moveTo(x +65, y);
 	context.lineTo(x +85 , y+80);
 	context.lineWidth = lineWidth;
@@ -1008,7 +1034,7 @@ function DrawUniqueCustomers(c,x,y) {
 	context.strokeStyle = "#000000";
 	context.stroke();
 
-	// draw 
+	// draw umbrella
 	context.moveTo(x + 10, y);
 	context.lineTo(x + 10 , y-70);
 	context.lineWidth = lineWidth;
@@ -1027,7 +1053,6 @@ function DrawUniqueCustomers(c,x,y) {
 
 
 	// draw umbrella
-	//context.beginPath();
 	context.moveTo(x-60, y-70);
 	context.quadraticCurveTo(x+10, y-120, x+80, y-70);
 	context.lineWidth = lineWidth;
@@ -1077,7 +1102,7 @@ function DrawUniqueCustomers(c,x,y) {
 	context.strokeStyle = "#000000";
 	context.stroke();
 
-	//draw man
+	//draw man's leg
 	context.beginPath();
 	context.moveTo(x + 130, y +30);
 	context.lineTo(x + 130 ,y +80);
@@ -1089,24 +1114,24 @@ function DrawUniqueCustomers(c,x,y) {
 	context.restore();			
 }
 	
-// Name: Draw Response
-// Author: Peter Chen 
-// Description: Response infographic elements, both phone and email 
+// Name: 		Draw Response
+// Author: 		Peter Chen 
+// Purpose: 	Response infographic elements, both phone and email 
+// Arguments:   DrawResponse(canvas_name, x_position, y_position, Response_by_Mail_data, Response_by_Phone_data);
+// Data format: value
+// Example:     DrawResponse("myCanvas", 0, 0, 1000, 1200);
 function DrawResponse(c, x, y, kpiMail, kpiPhone)  {
 	var canvas = document.getElementById(c);
 	var context = canvas.getContext("2d");
 	context.save();
 	img = new Image();
 	context.fillStyle = "#8ED6FF";
-	//kpiMail = 1000;
-	//kpiPhone = 1200;
+	//find out the percentage between Mail and Phone
 	var kpiTotal = kpiMail + kpiPhone;
 	var MailP = kpiMail/kpiTotal;
 	var PhoneP= kpiPhone/kpiTotal;
 	var fillW;
 	var fillH;
-	//document.write(MailP);
-	//draw mail
 
 	context.beginPath();
 	context.rect(x+1, y, 373, -120);
@@ -1157,6 +1182,7 @@ function DrawResponse(c, x, y, kpiMail, kpiPhone)  {
 		context.fillRect(x+740,y+8, x-20-fillW, fillH);
 	}					
 	
+	//load the response.png
 	img.onload = function()
 	{
 		context.drawImage(img, x, y, img.width/4.29, img.height/4.29);
@@ -1166,6 +1192,12 @@ function DrawResponse(c, x, y, kpiMail, kpiPhone)  {
 	
 }
 	
+// Name: 		Draw Sales
+// Author: 		Peter Chen 
+// Purpose: 	Sales from lead infographic elements; new, used, and lost 
+// Arguments:   DrawSales(canvas_name, x_position, y_position, Sales_from_Lead_Lost_data, Sales_from_Lead_New_data, Sales_from_Lead_Used_data);
+// Data format: value
+// Example:     DrawSales("myCanvas", 0, 0, 1000, 1200, 200);
 function DrawSales(c, x, y, kpiLost, kpiNew, kpiOld)
 {
 	var canvas = document.getElementById(c);
@@ -1177,6 +1209,7 @@ function DrawSales(c, x, y, kpiLost, kpiNew, kpiOld)
 	img2 = new Image();
 	img2.src = 'images/lead_newcar.png';
 
+	//draw man's head
 	context.beginPath();
 	context.arc(x-50, y, 20, 0, 2 * Math.PI, false);
 	context.fillStyle = "#000000";
@@ -1367,6 +1400,7 @@ function DrawSales(c, x, y, kpiLost, kpiNew, kpiOld)
 	context.strokeStyle = "#000000";
 	context.stroke();
 	
+	//load two cars' images
 	img1.onload = function()
 	{
 		context.drawImage(img1, x-295, y + 8, img1.width/4, img1.height/4);
@@ -1477,11 +1511,18 @@ function DrawCircle(c,x,y,r,color) {
 	context.fill();
 }
 
+// Name:		Draw Close Rate
+// Author: 		Peter Chen 
+// Purpose: 	Close Rate infographic elements
+// Arguments:   DrawCloseRate(canvas_name, x_position, y_position, Close_Rate_data);
+// Data format: value
+// Example:     DrawCloseRate("myCanvas", 0, 0, 1000);
 function DrawCloseRate(c,x,y,d) {
 	var canvas = document.getElementById(c);
 	var context = canvas.getContext("2d");
 	var lineWidth = 10;
 	context.save();
+	//draw ATM machine
 	DrawMachine(c,x-35,y-5);
 	DrawMachine(c,x+100,y-5);
 	
@@ -1509,7 +1550,7 @@ function DrawCloseRate(c,x,y,d) {
 	context.restore();
 	
 			
-	//draw walk man
+	//draw walking man
 	context.beginPath();
 	context.arc(x-50, y-140, 20, 0, 2 * Math.PI, false);
 	context.fillStyle = "#000000";
@@ -1559,6 +1600,12 @@ function DrawCloseRate(c,x,y,d) {
 	context.restore();
 }
 
+// Name: 		Draw Machine
+// Author: 		Peter Chen 
+// Purpose: 	ATM machine infographic elements
+// Arguments:   DrawMachine(canvas_name, x_position, y_position);
+// Data format: 
+// Example:     DrawMachine("myCanvas", 0, 0);
 function DrawMachine(c,x,y) {
 	var canvas = document.getElementById(c);
 	var context = canvas.getContext("2d");
@@ -1622,6 +1669,7 @@ function DrawMachine(c,x,y) {
 	context.rect(x+50, y-94, 16, -15);
 	context.fill();
 	
+	//write numbers
 	context.font = "12pt Calibri";
 	context.fillStyle = "#ffffff";
 	context.fillText("1", x+15, y-97);
@@ -1661,6 +1709,12 @@ function DrawMachine(c,x,y) {
 	context.restore();
 }
 
+// Name: 		Draw Prospect Count
+// Author: 		Peter Chen 
+// Purpose: 	Prospect Count infographic elements
+// Arguments:   DrawProspectCount(canvas_name, x_position, y_position, data);
+// Data format: value
+// Example:     DrawProspectCount("myCanvas", 0, 0, 1000);
 function DrawProspectCount(c,x,y,d) {
 	var canvas = document.getElementById(c);
 	var context = canvas.getContext("2d");
@@ -1759,6 +1813,7 @@ function DrawProspectCount(c,x,y,d) {
 	context.strokeStyle = "#000000";
 	context.stroke();
 	
+	//write text
 	context.font = "32pt Calibri";
 	context.fillStyle = "#ffffff";
 	context.fillText(d, x+40, y-20);
@@ -1770,15 +1825,18 @@ function DrawProspectCount(c,x,y,d) {
 	context.restore();
 }
 
+// Name: 		Draw unopned and new brand lead
+// Author: 		Peter Chen 
+// Purpose: 	Unopened and new brand lead infographic elements
+// Arguments:   DrawUnopenedLead(canvas_name, x_position, y_position, unopened_data, new_data);
+// Data format: value
+// Example:     DrawUnopenedLead("myCanvas", 0, 0, 1000, 1200);
 function DrawUnopenedLead(c,x,y,d,d2) {
 	var canvas = document.getElementById(c);
 	var context = canvas.getContext("2d");
 	context.save();
-	
-
 	img_unopened= new Image();
-
-	
+	//write text
 	context.beginPath();
 	context.fillStyle = "#ffffff";
 	context.font = "24pt Calibri";
@@ -1788,7 +1846,7 @@ function DrawUnopenedLead(c,x,y,d,d2) {
 	context.fillText(d, x+640, y-10);
 	context.fillText("New Brand", x+400, y+30);
 	context.fillText(d2, x+640, y+30);
-	
+	//load image
 	img_unopened.onload = function()
 	{
 		context.drawImage(img_unopened, x, y-100 , img_unopened.width/1.4, img_unopened.height/1.4);
@@ -1800,10 +1858,13 @@ function DrawUnopenedLead(c,x,y,d,d2) {
 
 }
 
-
-function Draw3PL(c,x,y,w,h,myArray,c1,c2){
-
-
+// Name: 		Draw New 3PL Lead
+// Author: 		Peter Chen 
+// Purpose: 	New 3PL Lead infographic elements
+// Arguments:   Draw3PL(canvas_name, x_position, y_position, width, height, new_3PL_data);
+// Data format: value
+// Example:     Draw3PL("myCanvas", 0, 0, 400, 400, 1000);
+function Draw3PL(c,x,y,w,h,myArray){
 	var canvas = document.getElementById(c);
 	var cxt = canvas.getContext("2d");
 	cxt.save();
@@ -1892,7 +1953,12 @@ function Draw3PL(c,x,y,w,h,myArray,c1,c2){
 
 }
 
-
+// Name: 		DrawEffectiveness
+// Author: 		Peter Chen 
+// Purpose: 	New 3PL Lead infographic elements
+// Arguments:   DrawEffectiveness(canvas_name, x_position, y_position, date, Dealer_data, Brand_data);
+// Data format: value
+// Example:     DrawEffectiveness("myCanvas", 0, 0, 01/01/2012, 400, 1000);
 function DrawEffectiveness(c,x,y,date,d,b)
 {
 	var canvas = document.getElementById(c);
@@ -1904,10 +1970,9 @@ function DrawEffectiveness(c,x,y,date,d,b)
 	var bHeight = 0;
 	var dHeight = 0;
 	
-	
 	bHeight = maxHeight * (b-1);
 	dHeight = maxHeight * (d-1);
-	
+	//write text
 	context.beginPath();
 	context.fillStyle = "#ffffff";
 	context.font = "24pt Calibri";

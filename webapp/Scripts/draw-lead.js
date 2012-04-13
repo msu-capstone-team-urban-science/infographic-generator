@@ -7,6 +7,7 @@ var trendArray=new Array();
 
 function DrawLead(c,date) 
 {
+//Draw the main background
 	var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
 	context.save();
@@ -21,6 +22,8 @@ function DrawLead(c,date)
 }
 
 function DrawLead2(c,date) {
+
+//draw the first section background
 	var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
 	context.save();
@@ -35,6 +38,8 @@ function DrawLead2(c,date) {
 }
 
 function DrawLead3(c,date) { 
+
+//draw the separator 
 	var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
 	context.save();
@@ -49,6 +54,7 @@ function DrawLead3(c,date) {
 }
 
 function DrawLead4(c,date) { 
+//Draw another separator 
 	var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
 	context.save();
@@ -63,6 +69,7 @@ function DrawLead4(c,date) {
 }
 
 function DrawLead5(c,date) { 
+//Draw the second and third section background
 	var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
 	context.save();
@@ -86,6 +93,8 @@ function DrawLead6(c,date) {
 	var canvas = document.getElementById(c);
     var context = canvas.getContext("2d");
 	context.save();
+	
+	//Kpi
 	var kpiUnique = addCommas(GetKPI(date,"Unique_Customers"));
 	var kpiMail = GetKPI(date,"Response_Method_Email");
 	var kpiPhone = GetKPI(date,"Response_Method_Phone");
@@ -102,7 +111,6 @@ function DrawLead6(c,date) {
 	var kpiNew3PL_Dealix = GetKPI(date,"New_3PL_Leads_Dealix");
 	var kpiNew3PL_Automotive = GetKPI(date,"New_3PL_Leads_Automotive.com");
 	var kpiNew3PL_Jumpstart = GetKPI(date,"New_3PL_Leads_Jumpstart");
-	
 	kpiNew3PL_Kelly_Blue_Book = parseFloat(kpiNew3PL_Kelly_Blue_Book);
 	kpiNew3PL_Edmunds = parseFloat(kpiNew3PL_Edmunds);
 	kpiNew3PL_Dealix = parseFloat(kpiNew3PL_Dealix);
@@ -114,7 +122,8 @@ function DrawLead6(c,date) {
 						'Dealix':kpiNew3PL_Dealix,
 						'Automotive':kpiNew3PL_Automotive,
 						'Jumpstart':kpiNew3PL_Jumpstart};
-	
+						
+	//Draw Lead elements
 	DrawUniqueCustomers("myCanvas", 200, 190);
 	DrawResponse("myCanvas", 28, 425, kpiMail, kpiPhone);
 	DrawAvgRespTime ("myCanvas", 130, 685, kpiAve);
@@ -123,7 +132,6 @@ function DrawLead6(c,date) {
 	Draw3PL("myCanvas",385,1170,380,300,kpiNew3PL);
 	DrawCloseRate("myCanvas", 214, 1755, kpiClose);		
 	DrawProspectCount("myCanvas", 590, 1750, kpiProspect);
-	
 	
 	context.restore();
 	//push elements into array
@@ -148,9 +156,9 @@ function DrawLead6(c,date) {
 	context.save();
 	context.font = "32pt Calibri";
 	context.fillStyle = "#000000";
-	context.fillText("Unique Customers", x + 430,y + 180);
+	context.fillText("Unique Customers", x + 430,y + 192);
 	context.font = "48pt Calibri";
-	context.fillText(kpiUnique,x + 520, y+ 250);
+	context.fillText(kpiUnique,x + 520, y+ 272);
 	context.restore();
 	
 
@@ -180,12 +188,10 @@ function DrawLead6(c,date) {
 	context.fillText(kpiPhone,x + 480, y + 650);
 	context.restore();
 
-	//sales
-	
+	//sales from lead
 	var x = 110;
 	var y = 960;
-	
-	//
+
 	context.save();
 	context.fillStyle = "#ffffff";
 	context.font = "45pt Calibri";
@@ -205,6 +211,8 @@ function DrawLead6(c,date) {
 	context.restore();
 }
 
+// Author:      Lok Cheung
+// Purpose:		Listen for the user to click or touch the drill down display, then close it
 $(document).ready(function () {
 	// if user clicked on button, the overlay layer or the dialogbox, close the dialog	
 	$('#dialog-overlay, #dialog-box').bind("touchstart click", function () {		
@@ -221,42 +229,26 @@ $(document).ready(function () {
 	});		
 });
 
-function popup(message) {
-	// get the screen height and width  
-	var maskHeight = $(document).height();  
-	var maskWidth = $(window).width();
-	
-	// calculate the values for center alignment
-	var dialogTop =  (maskHeight/3) - ($('#dialog-box').height());  
-	var dialogLeft = (maskWidth/2) - ($('#dialog-box').width()/2); 
-	
-	// assign values to the overlay and dialog box
-	$('#dialog-overlay').css({height:maskHeight, width:maskWidth}).show();
-	$('#dialog-box').css({top:dialogTop, left:dialogLeft}).show();
-	
-	// display the message
-	$('#dialog-message').html(message);	
-}
-
 $("#myCanvas").swiperight(function(event, result) {
 			event.stopImmediatePropagation();
 			wipeStatus("Right",result,3);
-		});
+});
 		
-		$("#myCanvas").swipeleft(function(event, result) {
+$("#myCanvas").swipeleft(function(event, result) {
 			event.stopImmediatePropagation();
 			wipeStatus("Left",result,3);
 });
 
-
+// Author:      Lok Cheung
+// Purpose:		Listen for the user to click or touch the elements on the canvas, then call the popup function
 $('#myCanvas').bind("touchstart click", function(event){
 	var heightFactor=1;
 	for(var i=0;i <trendArray.length;i++ )
 	{
-		//check if touching the element location
+		//check if user is touching the area within the element
 		if(event.pageX>trendArray[i][1] && event.pageX<(trendArray[i][1]+trendArray[i][3]) && event.pageY>trendArray[i][2] && event.pageY <(trendArray[i][2]+trendArray[i][4])) {
 			event.preventDefault();
-			//y position of the dialog box
+			//change the y position of the dialog box according to which element is touched
 			if(trendArray[i][0]=="Number of Leads" || trendArray[i][0]=="New 3PL Leads" || trendArray[i][0]=="Close Rate" || trendArray[i][0]=="Prospect Count"){
 					document.getElementById('dialog-box').style.cssText = "margin-top: 800px";
 			}
@@ -271,34 +263,34 @@ $('#myCanvas').bind("touchstart click", function(event){
 						'<td>'+trendArray[i][6]+'</td>'+
 						'</tr>'+
 						'</table>');
-
-				if(trendArray[i][0]=="Number of Leads"){
-					heightFactor=0.3;
-					for(var j=0;j<trendArray[i][5].length;j++)  {
-						drawLineGraph("trendGraph",trendArray[i][5][j][2],trendArray[i][5][j][0],trendArray[i][5][j][1], j,heightFactor,true);
-					}
-				}else if(trendArray[i][0]=="New 3PL Leads"){
-					heightFactor=2.5;
-					for(var j=0;j<trendArray[i][5].length;j++)  {
-						drawLineGraph("trendGraph",trendArray[i][5][j][2],trendArray[i][5][j][0],trendArray[i][5][j][1], j,heightFactor,false);
-					}
-				}else{
-					if(trendArray[i][0]=="Response by Mail" || trendArray[i][0]=="Unique Customers" || trendArray[i][0]=="Prospect Count"){
-						heightFactor=0.1;
-					}
-					if(trendArray[i][0]=="Response by Phone"){
-						heightFactor=0.2;
-					}
-					if(trendArray[i][0]=="New Sales From Leads" || trendArray[i][0]=="Used Sales From Leads" || trendArray[i][0]=="Lost Sales From Leads"){
-						heightFactor=5;
-					}
-					if(trendArray[i][0]=="Close Rate"){
-						heightFactor=2200;
-					}
-					drawTrend(trendArray[i][5],heightFactor);
+			//changing the height factor of each element
+			if(trendArray[i][0]=="Number of Leads"){
+				heightFactor=0.3;
+				for(var j=0;j<trendArray[i][5].length;j++)  {
+					drawTrendMul("trendGraph",trendArray[i][5][j][2],trendArray[i][5][j][0],trendArray[i][5][j][1], j,heightFactor,true);
 				}
+			}else if(trendArray[i][0]=="New 3PL Leads"){
+				heightFactor=2.5;
+				for(var j=0;j<trendArray[i][5].length;j++)  {
+					drawTrendMul("trendGraph",trendArray[i][5][j][2],trendArray[i][5][j][0],trendArray[i][5][j][1], j,heightFactor,false);
+				}
+			}else{
+				if(trendArray[i][0]=="Response by Mail" || trendArray[i][0]=="Unique Customers" || trendArray[i][0]=="Prospect Count"){
+					heightFactor=0.1;
+				}
+				if(trendArray[i][0]=="Response by Phone"){
+					heightFactor=0.2;
+				}
+				if(trendArray[i][0]=="New Sales From Leads" || trendArray[i][0]=="Used Sales From Leads" || trendArray[i][0]=="Lost Sales From Leads"){
+					heightFactor=5;
+				}
+				if(trendArray[i][0]=="Close Rate"){
+					heightFactor=2200;
+				}
+				drawTrend(trendArray[i][5],heightFactor);
+			}
 			
-			//draw x, y axis
+			//draw x, y axis of the chart
 			var canvas = document.getElementById("trendGraph");
 			var context = canvas.getContext("2d");
 			context.save();

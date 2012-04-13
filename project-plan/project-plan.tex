@@ -34,7 +34,6 @@ Lok Cheung\\
 Kevin Shreve\\
 
 
-
 \vfill
 
 {\large \today}
@@ -47,26 +46,33 @@ Kevin Shreve\\
 
 \newpage
 
-\listoffigures
+%\listoffigures
 
-\newpage
+%\newpage
 
 \section{Executive Summary}
 
 
-Over three decades ago, a professor at Wayne State University took on a challenge because Cadillac called it unsolvable.  That professor was Jim Anderson.  His computer-generated dot maps gave Cadillac's marketing department a competitive advantage by allowing them to easily visualize dealership locations across the nation.  Jim began using the power of computers to analyze these networks of dealerships and started a company that specialized in the planning and management of these networks.  Thus, Urban Science was born.\\
+Over three decades ago, a professor at Wayne State University took on a challenge that Cadillac deemed unsolvable. That professor was Jim Anderson. His computer-generated dot maps gave Cadillac's marketing department a competitive advantage by allowing them to easily visualize dealership locations across the nation. Jim began using the power of computers to analyze these networks of dealerships and started a company that specialized in the planning and management of these networks. Thus, Urban Science was born.\\
 
 
-Urban Science is now an international company, headquartered in Detroit, Michigan.  They assist nearly every original equipment manufacturer (OEM) in over 60 countries.  Our job is to design a web application to show OEMs monthly performance data on vehicle sales, lead management, and service for their primary market area.  OEMs use this performance data to adjust spending to maximize their market potential.  The appeal of our web application is its ease of use, and visual appeal.\\
+Urban Science is now an international company, headquartered in Detroit, Michigan. They assist nearly every original equipment manufacturer (OEM) in over 60 countries. Our job is to design a web application to show OEMs monthly performance data on vehicle sales, lead management, and service for their primary market area. OEMs use this performance data to adjust spending to maximize their market potential. The appeal of our web application is its ease of use, and visual appeal.\\
 
 
-In today's world, the display of information is an evolving art.  Yesterday's solution was clipart and spreadsheets, but that is no longer enough.  We require a more impactful approach to delivering a point.  The modern solution is an information graphic or infographic.  An infographic is a graphical display that quickly conveys data that would otherwise require a lengthy explanation.  Modern infographics use clever design schemes and cartoon charecters to keep the viewer interested while showing relationships in the data.\\
+In today's world, the display of information is an evolving art. Yesterday's solution was clipart and spreadsheets, but that is no longer enough. We require a more engaging approach to delivering a point. The modern solution is an information graphic or infographic. An infographic is a graphical display that quickly conveys data that would otherwise require a lengthy explanation. Modern infographics use clever design schemes and cartoon charecters to keep the viewer interested while showing relationships in the data.\\
 
 
-Our web application uses a brand new flavor of infographic that is designed to update dynamically.  It uses information directly from Urban Science to generate graphics that reflect the most up-to-date monthly data.  The web application also provides the ability to view previous months to allow OEMs to refrence historical data.\\
-
+Our web application uses a brand new flavor of infographic that is designed to update dynamically. It uses information directly from Urban Science to generate graphics that reflect the most up-to-date monthly data. The web application also provides the ability to view previous months to allow OEMs to refrence historical data.\\
 
 \section{Functional Specifications}
+
+
+The purpose of our infographics generator is to creatively display information on the iPad.  It will simplistically convey performance data to the manager of a dealership or original equipment manufacturer (OEM).  The main page allows users to select an infographic by swiping through a menu.  Each infographic communicates with a database to ensure it is being displayed with the most current data available.  Users have the ability to change the month of the data being displayed by swiping their fingers across the infographic.  They can also press on any of the data to see a detailed description of the data and a trend chart to show how it has changed over the last six months.
+
+\subsubsection {Main Menu}
+ - has lazy suzan style interface
+ - 
+
 
 \subsection {Web Application}
  - uses local storage
@@ -149,21 +155,21 @@ show a sample infographic depiction.  If you want to view data for another month
 
 \section{Technical Specifications}
 
-The infographics generator produces infographics suitable for display on the iPad 2 running the Safari browser.\\
+The infographics generator produces infographics suitable for display on the iPad 2 using the Safari browser.\\
 
-The Index.html page in our webapp contains the infographic selector menu.  The infographic selector menu is used to select an infographic.  The infographics available to choose from include: Sales, Service, and Lead Management.  The selector interface has three icons, each representing an infographic, arranged in a horizontally elongated ellipse.  Upon a swipe in the left direction, the icons rotate clockwise following the elliptical path.  Likewise, the icons rotate counter clockwise upon a swipe in the right direction.  This creates the illusion that the icons are rotating on an invisible lazy suzan. By swiping, the user feels that they are rotating the invisible lazy suzan.  Upon pressing the front most icon, Safari navigates to the corresponding infographic's page.\\
-
-
-The infographic display page contains a floating image called the header.  The header spans the width of the page and always remains at the top of the page.  The header has a button on the left hand side which, if pressed, navigates back to the infographic selector menu.  On the right side of the header exists text displaying the current month and year of the data which the infographic is displaying.  The infographic is located immediately beneath the header and spans the entire width of the page.  If the infographic is swiped left, the next month's data is displayed.  If swiped right, the previous month's data is displayed.  If no data exists for the month attempting to be displayed, the current date is not changed.\\
+The Index.html page in our webapp contains the infographic selector menu. The infographic selector menu is used to browse all available infographics. The infographics available to choose from include: Sales, Service, and Lead Management. The selector interface has three icons, each representing an infographic, arranged in a horizontally elongated ellipse. A swipe in the left direction causes the icons to rotate clockwise following the elliptical path. Likewise, the icons rotate counter clockwise when swiped in the right direction. This creates the illusion that the icons are rotating on an invisible lazy suzan. By swiping, the user feels that they are causing the invisible lazy suzan to rotate. Upon pressing the front most icon, Safari navigates to the corresponding infographic's page.\\
 
 
-Each infographic displays multiple KPI data.  The data is obtained from a Microsoft SQL database.  The server hosting the infographics generator uses an ASP.NET script (KPI\_Handler.ashx) to query the database for all available KPI data, serializes the data, and returns the data to the client device in JavaScript Object Notation (JSON).  The client device then parses this data using a JavaScript function (found in Scripts/KPILocalStorage.js) and adds the data to its local storage.\\
+The infographic display page contains a floating image called the header. The header spans the width of the page and remains at the top of the page when the user scrolls. The header has a button on the left hand side which, if pressed, navigates back to the infographic selector menu. The right side of the header has text displaying the month and year of the data being displayed. The infographic is located immediately beneath the header and spans the entire width of the page. If the infographic is swiped left, the next month's data is displayed. If swiped right, the previous month's data is displayed. If no data exists for the month attempting to be displayed, the current date is not changed.\\
 
 
-An infographic is comprised of multiple infographic elements. An infographic element is a visual representation of KPI data, responsible for displaying one or more KPI data.  Each infographic element is drawn on an HTML5 canvas using JavaScript functions found in the common element file (Scripts/elements.js) or the infographic specific file (ex: Scripts/draw-service.js).  The common element file is a way to centralize the JavaScript functions that are used to draw the elements in the infographics.  The infographic specific files both call functions from the common element file and have their own JavaScript functions to draw the infographic.  It also calls functions to retrieve specific KPI values from local storage.  Both of these files are included in the HTML file which contains the HTML5 canvas that these functions draw on.\\
+Each infographic displays multiple key performance indicators (KPI) data. The data is obtained from a Microsoft SQL database. The server hosting the infographics generator uses an ASP.NET script (KPI\_Handler.ashx) to query the database for all available KPI data, serializes the data, and returns the data to the client device in JavaScript Object Notation (JSON). The client device then parses this data using a JavaScript function (found in Scripts/KPILocalStorage.js) and adds the data to local storage.\\
 
 
-A drill down display is shown in the center of the screen if an infographic element is pressed.  A drill down display gives an explanation of the KPI that was pressed and shows a trend chart of the KPI over the last 6 months (ending in the current month) or the maximum number of months available, whichever number is smaller.\\
+An infographic element is a visual representation of KPI data, responsible for displaying one or more KPI data. An infographic is comprised of multiple infographic elements. Each infographic element is drawn on an HTML5 canvas using JavaScript functions found in one of the three infographic drawing files (draw-sales.js, draw-service.js, draw-lead.js) or the common element file (elements.js). The common element file is used to centralize the generic JavaScript functions that are used to draw the elements in the infographics. The infographic specific files call functions from the common element file and have their own JavaScript functions to draw the infographic. They also calls functions to retrieve specific KPI values from local storage.\\
+
+
+A drill down display is shown in the center of the screen if an infographic element is tapped. The drill down display gives an brief description of the KPI that was tapped and shows a trend chart of the KPI over the last 6 months (ending in the current month) or the maximum number of months available, whichever number is smaller.\\
 
 
 
@@ -330,7 +336,6 @@ A drill down display is shown in the center of the screen if an infographic elem
 
 
 
-
 \section{Remaining tasks}
 \begin{itemize}
 \item clean up code
@@ -339,55 +344,6 @@ A drill down display is shown in the center of the screen if an infographic elem
 \item rename /webapp/images/Avg\$.png because of potential problems with having a dollar sign in the filename
 \item make close rate a percentage
 \end{itemize}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%%% removed because i don't see this section in most other final project plans %%%
-%\section{Risks}
-
-%\subsection{Languages}
-
-%\begin{itemize}
-%\item Risk: Unfamiliar with ASP.NET and HTML5 
-%\item Mitigation: Read online tutorials, books, and documentation
-%\end{itemize}
-
-
-%\subsection{Ambiguous Requirements}
-
-%\begin{itemize}
-%\item Risk: Customer gave broad requirements
-%\item Mitigation: Help customer find focus by using mockups and eliciting information
-%\end{itemize}
-
-
-%\subsection{Scheduling}
-
-%\begin{itemize}
-%\item Risk: Not much free time overlap between our schedules
-%\item Mitigation: Keep everybody up-to-date with emails and plan ahead
-%\end{itemize}
-
-
-%\subsection{Art}
-
-%\begin{itemize}
-%\item Risk: Little artistic experience in our group
-%\item Mitigation: Brainstorm and find inspiration from the artwork used in popular applications
-%\end{itemize}
 
 
 \end{document}
