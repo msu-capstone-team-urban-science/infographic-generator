@@ -64,14 +64,14 @@ In today's world, the display of information is an evolving art. Yesterday's sol
 
 Our web application uses a brand new flavor of infographic that is designed to update dynamically. It uses information directly from Urban Science to generate graphics that reflect the most up-to-date monthly data. The web application also provides the ability to view previous months to allow OEMs to refrence historical data.\\
 
+\newpage
+
 \section{Functional Specifications}
 
 
 The purpose of our infographics generator is to creatively display information on the iPad.  It will simplistically convey performance data to the manager of a dealership or original equipment manufacturer (OEM).  The main page allows users to select an infographic by swiping through a menu.  Each infographic communicates with a database to ensure it is being displayed with the most current data available.  Users have the ability to change the month of the data being displayed by swiping their fingers across the infographic.  They can also press on any of the data to see a detailed description of the data and a trend chart to show how it has changed over the last six months.
 
-\subsubsection {Main Menu}
- - has lazy suzan style interface
- - 
+
 
 
 \subsection {Web Application}
@@ -104,54 +104,51 @@ The web application is focus of project is to create a new and creative experien
 
 
 
+\newpage
 
 \section{Design Specifications}
 
 \subsection{Overview}
 % TODO replace default graph
 
-The general interface is based on a Lazy Susan like menu. A user can swipe the screen to rotate the icons, and just touch on anyone of them to select a category. The program will trigger the infographics generator depending on the category that was selected. The infographics generator will then grab the preloaded data from the xml file and display with a default graph. Then user can select different style of infographic to display the information as they need.\\
+The general interface is based on a Lazy Susan style menu. A user can swipe the screen to rotate the icons, and just touch on any one of them to select a category. The program will trigger the infographics generator depending on the category that was selected. The infographics generator will then grab the preloaded data from the xml file and display with a default graph. Then user can select different style of infographic to display the information as they need.\\
 
-\begin{figure}[!]
-\caption{Use Case Diagram}
+
 \includegraphics[width=1\textwidth]{images/Capstone_-_Use_Case_Diagram.png}\\   
-\end{figure}
 
 
 \subsection{System Architecture}
 
 The infographic application is comprised of two major components: a web application/user interface and a backend database. Users are assumed to use safari browser on iPad. The web host then displays the menu screen. Data will be pulled until specific category is selected. When a category is selected, the program will pull up all the required data from the server. Depending on the style of infographic, data will be displayed in different form.\\
 
+\includegraphics[width=1\textwidth]{images/Capstone_-_System_Architecture_Diagram.png}\\   
+
+\subsubsection {Main Menu}
+This pic shows the screen mockup for our prototype.  The main page will be displayed in lazy Suzan style that allows the user to scroll through the icons to the right or left.  The infographic for the current category will be shown when the icon is clicked on.\\
+
+\includegraphics[width=.5\textwidth]{images/switcheroo.png}\\
+
 \subsection{User Interface}
 
-%Figure~\ref{mockup-main-menu} 
-shows the screen mockup for our prototype.  The main page will be displayed in lazy Suzan style that allows the user to scroll through the icons to the right or left.  The infographic for the current category will be shown when the icon is clicked on.\\
 
 
-%Figure~\ref{mockup-infographic-display-1}, Figure~\ref{mockup-infographic-display-2}, and Figure~\ref{mockup-infographic-display-3} 
 show a sample infographic depiction.  If you want to view data for another month, you can just swipe left and right to change the time frame.  If you want to go back to the main menu page, just click on the top right corner’s menu button.\\
 
+\includegraphics[width=1\textwidth]{images/main-menu.png}\\
 
-%\begin{figure}[!]
-%\caption{Main Menu Mockup\label{mockup-main-menu}}
-\includegraphics[width=1\textwidth]{images/screen.jpg}\\
-%\end{figure}
 
 
 %\begin{figure}[!]
 %\caption{Infographic Display Mockup\label{mockup-infographic-display-1}}
-\includegraphics[width=1\textwidth]{images/screen5.jpg}\\
+\includegraphics[width=.7\textwidth]{images/labels.png}\\
 %\end{figure}
 
 %\begin{figure}[!]
 %\caption{Infographic Display Mockup\label{mockup-infographic-display-2}}
-\includegraphics[width=1\textwidth]{images/screen3.jpg}\\
+\includegraphics[width=.5\textwidth]{images/fun.png}\\
 %\end{figure}
 
-%\begin{figure}[!]
-%\caption{Infographic Display Mockup\label{mockup-infographic-display-3}}
-\includegraphics[width=1\textwidth]{images/screen4.jpg}\\
-%\end{figure}
+\newpage
 
 \section{Technical Specifications}
 
@@ -185,6 +182,7 @@ A drill down display is shown in the center of the screen if an infographic elem
 \includegraphics[width=1\textwidth]{images/Capstone_-_Class_Diagram.png}\\
 \end{figure}
 
+\newpage
 
 \section{Schedule}
 
