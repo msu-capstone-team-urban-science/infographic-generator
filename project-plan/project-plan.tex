@@ -119,34 +119,27 @@ The general interface is based on a Lazy Susan style menu. A user can swipe the 
 
 \subsection{System Architecture}
 
-The infographic application is comprised of two major components: a web application/user interface and a backend database. Users are assumed to use safari browser on iPad. The web host then displays the menu screen. Data will be pulled until specific category is selected. When a category is selected, the program will pull up all the required data from the server. Depending on the style of infographic, data will be displayed in different form.\\
+The infographic application is comprised of two major components: a web application and a database. Safari displays the menu screen. When an infographic is selected, data will be pulled from the database and kept in local storage so it can be used to generate the infographic.\\
 
 \includegraphics[width=1\textwidth]{images/Capstone_-_System_Architecture_Diagram.png}\\   
 
-\subsubsection {Main Menu}
-This pic shows the screen mockup for our prototype.  The main page will be displayed in lazy Suzan style that allows the user to scroll through the icons to the right or left.  The infographic for the current category will be shown when the icon is clicked on.\\
+\subsection {Main Menu}
+This image shows the swiping action that is used to rotate the icons.  Below it is a screenshot of the main menu.  The menu is displayed in a lazy Suzan style to allow the user to scroll through the icons.  The corresponding infographic display page is shown when the icon is clicked.\\
 
-\includegraphics[width=.5\textwidth]{images/switcheroo.png}\\
-
-\subsection{User Interface}
-
-
-
-show a sample infographic depiction.  If you want to view data for another month, you can just swipe left and right to change the time frame.  If you want to go back to the main menu page, just click on the top right corner’s menu button.\\
+\includegraphics[width=.4\textwidth]{images/switcheroo.png}\\
 
 \includegraphics[width=1\textwidth]{images/main-menu.png}\\
 
+\subsection{Infographic Page}
+
+This is how the display page looks for the sales infographic.  The current month is displayed at the top right next to the menu button.  The menu button navigates back to the menu screen.  Swiping left and right increases and decreases the month.  Pressing a KPI data brings up additional information.\\
+
+\includegraphics[width=1\textwidth]{images/labels.png}\\
 
 
-%\begin{figure}[!]
-%\caption{Infographic Display Mockup\label{mockup-infographic-display-1}}
-\includegraphics[width=.7\textwidth]{images/labels.png}\\
-%\end{figure}
+\subsection{Drill Down Display}
+\includegraphics[width=.6\textwidth]{images/fun.png}\\
 
-%\begin{figure}[!]
-%\caption{Infographic Display Mockup\label{mockup-infographic-display-2}}
-\includegraphics[width=.5\textwidth]{images/fun.png}\\
-%\end{figure}
 
 \newpage
 
@@ -169,18 +162,6 @@ An infographic element is a visual representation of KPI data, responsible for d
 A drill down display is shown in the center of the screen if an infographic element is tapped. The drill down display gives an brief description of the KPI that was tapped and shows a trend chart of the KPI over the last 6 months (ending in the current month) or the maximum number of months available, whichever number is smaller.\\
 
 
-
-
-\begin{figure}[!]
-\caption{Sequence Diagram}
-\includegraphics[width=1\textwidth]{images/Capstone_-_Sequence_Diagram.png}\\
-\end{figure}
-
-
-\begin{figure}[!]
-\caption{Class Diagram}
-\includegraphics[width=1\textwidth]{images/Capstone_-_Class_Diagram.png}\\
-\end{figure}
 
 \newpage
 
