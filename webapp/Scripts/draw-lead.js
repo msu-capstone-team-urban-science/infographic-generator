@@ -233,7 +233,7 @@ var checkEle = function () {
 				$('#ele').offset({top:header.offset().top+78});
 				//$('#ele').offset({top:offset.top-10});
 			}
-			else if (offset.top >764 && offset.top <= 1525) {
+			else if (offset.top >764 && offset.top <= 1520) {
 				$('#ele').offset({top:offset.top+10});
 			}
 			else if (offset.top > 1520) { 
