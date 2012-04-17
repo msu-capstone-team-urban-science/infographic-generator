@@ -1,8 +1,6 @@
 // Name: Retail_Sale
-// Author:
+// Author: Lok Cheung, Louis Bodnar
 // Description: Creates the retail sale infographic element
-
-
 function Retail_Sale(c, x, y, w, h, d) {
     // d = [date, display value]
     var date = d[0];
@@ -17,10 +15,14 @@ function Retail_Sale(c, x, y, w, h, d) {
 
     //draw rectangle in the back of the image
     //x,y, width, height
-    var fillHeight = (d[1]) / -4;
-    if (fillHeight < -70) {
+	var fillHeight = -(d[1]%70);
+    //var fillHeight = (d[1]) / -4;
+    if (fillHeight == 0) {
         fillHeight = -70;
     }
+	else if(fillHeight > -50){
+		fillHeight += -40;
+	}
     ctx.fillStyle = "white";
     ctx.fillRect(x+25, y+110, 110, -70);
     ctx.fillStyle = "#EEEE00";
@@ -37,7 +39,7 @@ function Retail_Sale(c, x, y, w, h, d) {
 }
 
 // Name: Used_Vehicle_Sale
-// Author: 
+// Author: Lok Cheung
 // Description: Creates the used vehicle sales infographic element
 function Used_Vehicle_Sale(c, x, y, w, h, d) {
     var canvas = document.getElementById(c);
@@ -79,7 +81,7 @@ function Used_Vehicle_Sale(c, x, y, w, h, d) {
 }
 
 // Usage: Context.roundRect(x,y,w,h,r)
-// Author: 
+// Author: Lok Cheung
 // Description: This function draw the rectangle with round corner
 //  parameter: x, y: position of the left top corner
 //  w, h: width, height
@@ -98,7 +100,7 @@ CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
 }
 
 // Name: Cost Per Sale
-// Author: 
+// Author: Lok Cheung
 // Description: Draws the cost per sale infographic element
 function Cost_Per_Sale(c, x, y, w, h, d) {
     var canvas = document.getElementById(c);
