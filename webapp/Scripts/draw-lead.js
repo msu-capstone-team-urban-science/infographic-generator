@@ -226,19 +226,25 @@ var checkEle = function () {
 			//alert(offset.top);
 			
 			//alert(headoff.top);
-			if (offset.top < 79) {
-				$('#ele').offset({top:header.offset().top+78});
-			}
-			else if (offset.top >= 79 && offset.top <=764 ) {
+			if (offset.top <=764 ) {
 				$('#ele').offset({top:header.offset().top+78});
 				//$('#ele').offset({top:offset.top-10});
 			}
-			else if (offset.top >764 && offset.top <= 1520) {
+			else if (offset.top >764 && offset.top < 1530) {
 				$('#ele').offset({top:offset.top+10});
 			}
-			else if (offset.top > 1520) { 
+			else if (offset.top >= 1530) { 
 				//do nothing so the elevator stops at the bottom
-				$('#ele').offset({top:header.offset().top+230});
+				//alert(offset.top - header.offset().top);
+				//alert(offset.top);
+				if(offset.top - header.offset().top > 740)
+				{
+					$('#ele').offset({top:header.offset().top+743});
+				}
+				else
+				{
+					$('#ele').offset({top:header.offset().top+185});
+				}
 			} 
 			
 			/*if (offset.top > 1070){
