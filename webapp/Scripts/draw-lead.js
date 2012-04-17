@@ -214,35 +214,42 @@ function DrawLead6(c,date) {
 // Author:      Peter Chen
 // Purpose:		Positioning the elevator image
 var checkEle = function () {
-	var p = $('#ele');
-	var header = $('#header');
-	var offset = p.offset();
-	var headoff = header.offset();
-	
-	//elevator shaft begins at 78px
-	//size of elevator shaft is 1624px
-	//78px - 1702 px
-	
-	//alert(offset.top);
-	
-	if (offset.top < 1515 ) {
-		$('#ele').offset({top:header.offset().top+78});
-	}
-	if (offset.top > 1560) { 
-		//do nothing so the elevator stops at the bottom
-	} else if (offset.top >764) {
-		$('#ele').offset({top:offset.top+15});
-	}
-	
-	/*if (offset.top > 1070){
-		$('#ele').offset({top:1070});
-	} else if (p.offset().top < 1000) {
-		$('#ele').offset({top:header.offset().top+78});
-	} else if (p.offset().top < 1070) {
-		$('#ele').offset({top:p.offset().top});
-	} */
-};
-//setInterval(checkEle, 400);
+			var p = $('#ele');
+			var header = $('#header');
+			var offset = p.offset();
+			var headoff = header.offset();
+			
+			//elevator shaft begins at 78px
+			//size of elevator shaft is 1624px
+			//78px - 1702 px
+			
+			//alert(offset.top);
+			
+			//alert(headoff.top);
+			if (offset.top < 79) {
+				$('#ele').offset({top:header.offset().top+78});
+			}
+			else if (offset.top >= 79 && offset.top <=764 ) {
+				$('#ele').offset({top:header.offset().top+78});
+				//$('#ele').offset({top:offset.top-10});
+			}
+			else if (offset.top >764 && offset.top <= 1525) {
+				$('#ele').offset({top:offset.top+10});
+			}
+			else if (offset.top > 1520) { 
+				//do nothing so the elevator stops at the bottom
+				$('#ele').offset({top:header.offset().top+490});
+			} 
+			
+			/*if (offset.top > 1070){
+				$('#ele').offset({top:1070});
+			} else if (p.offset().top < 1000) {
+				$('#ele').offset({top:header.offset().top+78});
+			} else if (p.offset().top < 1070) {
+				$('#ele').offset({top:p.offset().top});
+			} */
+		};
+		setInterval(checkEle, 400);
 
 // Author:      Lok Cheung
 // Purpose:		Listen for the user to click or touch the drill down display, then close it
