@@ -1,83 +1,18 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="viewport" content="width=device-width" />
 <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
 <head runat="server">
-    <title>Infographics Generator Home Page</title>
-        <link rel="stylesheet" media="all and (orientation:portrait)" href="Styles/portrait.css">
+		<link rel="stylesheet" media="all and (orientation:portrait)" href="Styles/portrait.css">
 		<link rel="stylesheet" media="all and (orientation:landscape)" href="Styles/landscape.css">
-		<link href="Styles/index.css" rel="stylesheet" type="text/css" />
-
+		<link rel="stylesheet" type="text/css"  href="Styles/index.css"/>
+		<title>Infographics Generator Home Page</title>
 		<script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
 		<script type="text/javascript" src="Scripts/jquery.roundabout.js"></script>
 		<script type="text/javascript" src="Scripts/jquery.event.drag-2.0.js"></script>
-		<script type="text/javascript" src="Scripts/elements.js"></script><script type="text/javascript" src="Scripts/jquery.event.drop-2.0.js"></script>
-		<script type="text/javascript">
-			var currentWidth;
-			var orient = "";
-		    var updateLayout = function () {
-		        if (window.innerWidth != currentWidth) {
-		            currentWidth = window.innerWidth;
-		            
-		            if (currentWidth == 320) {
-		                orient = "portrait";
-						//document.getElementById('banner').src="images/branding-portrait.png";
-		            }
-		            else {
-		                orient = "landscape";
-						//document.getElementById('banner').src="images/branding-landscape.png";
-		            }
-		            document.body.setAttribute("orient", orient);
-		            window.scrollTo(0, 1);
-		        }
-		    };
-		    setInterval(updateLayout, 400);
-		</script>
-		<script type="text/javascript">
-		    $(document).ready(function () {
-				$('ul').roundabout({
-					minScale: 0.6,
-					reflect: true,
-					enableDrag: true,
-					tilt: -3
-				});
-			});
-
-            function navigator_Go(url) {
-                window.location.assign(url); // This technique is almost exactly the same as a full <a> page refresh, but it prevents Mobile Safari from jumping out of full-screen mode
-            }
-			
-			window.onload = function(){
-				/*
-                var canvas = document.getElementById("myCanvas");
-                var context = canvas.getContext("2d");
-
-				context.fillStyle = "#FFF";
-				if(orient == "landscape") { 
-					context.fillRect(canvas.width/3.5,canvas.height-(canvas.height/4)-45,canvas.width/1.5,180);
-					//function DrawStripes(c, x, y, w, h, d) 
-					DrawStripes("myCanvas",canvas.width/3.5,canvas.height-(canvas.height/4)-45,canvas.width/1.5,180,"#dddddd");
-					
-					context.font = "bold 32pt Calibri";
-					context.fillStyle = "#65B133";
-					context.fillText("Team Urban Science - Spring 2012", canvas.width/3.5, canvas.height-(canvas.height/4));
-					context.fillText("CSE498: The Capstone Experience", canvas.width/3.5, canvas.height-(canvas.height/4)+60);
-					context.fillText("Michigan State University", canvas.width/3.5, canvas.height-(canvas.height/4)+120);
-
-                    
-				} else {
-					context.fillRect(canvas.width/2.5,canvas.height-(canvas.height/4)-45,canvas.width/1.8,180);
-					DrawStripes("myCanvas",canvas.width/2.5,canvas.height-(canvas.height/4)-45,canvas.width/1.8,180,"#dddddd");
-					
-					context.font = "bold 28pt Calibri";
-					context.fillStyle = "#65B133";
-					context.fillText("Team Urban Science - Spring 2012", canvas.width/2.5, canvas.height-(canvas.height/4));
-					context.fillText("CSE498: The Capstone Experience", canvas.width/2.5, canvas.height-(canvas.height/4)+60);
-					context.fillText("Michigan State University", canvas.width/2.5, canvas.height-(canvas.height/4)+120);
-				}*/
-			}
-		</script>
+		<script type="text/javascript" src="Scripts/elements.js"></script>
+		<script type="text/javascript" src="Scripts/index.js"></script>
 	</head>
 <body>
 
@@ -91,7 +26,6 @@
             <address></address>
 			
 		</div>
-		<!--<canvas id="myCanvas" width="1024" height="768">Canvas not supported on your device.</canvas>-->
 	</div>
 </body>
 </html>
