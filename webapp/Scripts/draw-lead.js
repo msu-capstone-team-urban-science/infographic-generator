@@ -238,7 +238,7 @@ var checkEle = function () {
 			}
 			else if (offset.top > 1520) { 
 				//do nothing so the elevator stops at the bottom
-				$('#ele').offset({top:header.offset().top+490});
+				$('#ele').offset({top:header.offset().top+230});
 			} 
 			
 			/*if (offset.top > 1070){
