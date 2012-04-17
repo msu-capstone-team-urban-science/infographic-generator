@@ -1,4 +1,4 @@
-// Name: Retail_Sale
+// Name: Retail_Sale 
 // Author: Lok Cheung, Louis Bodnar
 // Description: Creates the retail sale infographic element
 function Retail_Sale(c, x, y, w, h, d) {
