@@ -5,6 +5,7 @@
 
 <link rel="stylesheet" type="text/css" href="Styles/jquery.mobile-1.0.1.css" />
 <link rel="stylesheet" type="text/css" href="Styles/header.css" />
+<link rel="stylesheet" type="text/css" href="Styles/drill_down.css" />
 <link rel="stylesheet" type="text/css" href="styles/lead_style.css" />
 <title>Infographics Generator</title>
 	<script type="text/javascript" src="Scripts/HandleDate.js"></script>
@@ -17,37 +18,7 @@
 			LoadJSON();
 			DrawLead("myCanvas",initDate());
 		};
-		var checkEle = function () {
-			var p = $('#ele');
-			var header = $('#header');
-			var offset = p.offset();
-			var headoff = header.offset();
-			
-			//elevator shaft begins at 78px
-			//size of elevator shaft is 1624px
-			//78px - 1702 px
-			
-			//alert(offset.top);
-			
-			if (offset.top < 1515 ) {
-				$('#ele').offset({top:header.offset().top+78});
-			}
-			if (offset.top > 1560) { 
-				//do nothing so the elevator stops at the bottom
-			} else if (offset.top >764) {
-				$('#ele').offset({top:offset.top+15});
-			}
-			
-			/*if (offset.top > 1070){
-				$('#ele').offset({top:1070});
-			} else if (p.offset().top < 1000) {
-				$('#ele').offset({top:header.offset().top+78});
-			} else if (p.offset().top < 1070) {
-				$('#ele').offset({top:p.offset().top});
-			} */
-		};
-		//setInterval(checkEle, 400);
-        </script>
+    </script>
     </head>
 	<body>
 	<div id="main">
@@ -64,8 +35,8 @@
 		</div>
 		
 		<canvas id="myCanvas" width="1000" height="1900">
-		<!-- Insert fallback content here -->
-		Sorry, your browser doesn't support canvas technology
+			<!-- Insert fallback content here -->
+			Sorry, your browser doesn't support canvas technology
 		</canvas>
 		<div id="dialog-box">
 			<div class="dialog-content">

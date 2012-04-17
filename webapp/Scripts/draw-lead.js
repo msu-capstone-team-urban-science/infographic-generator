@@ -211,6 +211,39 @@ function DrawLead6(c,date) {
 	context.restore();
 }
 
+// Author:      Peter Chen
+// Purpose:		Positioning the elevator image
+var checkEle = function () {
+	var p = $('#ele');
+	var header = $('#header');
+	var offset = p.offset();
+	var headoff = header.offset();
+	
+	//elevator shaft begins at 78px
+	//size of elevator shaft is 1624px
+	//78px - 1702 px
+	
+	//alert(offset.top);
+	
+	if (offset.top < 1515 ) {
+		$('#ele').offset({top:header.offset().top+78});
+	}
+	if (offset.top > 1560) { 
+		//do nothing so the elevator stops at the bottom
+	} else if (offset.top >764) {
+		$('#ele').offset({top:offset.top+15});
+	}
+	
+	/*if (offset.top > 1070){
+		$('#ele').offset({top:1070});
+	} else if (p.offset().top < 1000) {
+		$('#ele').offset({top:header.offset().top+78});
+	} else if (p.offset().top < 1070) {
+		$('#ele').offset({top:p.offset().top});
+	} */
+};
+//setInterval(checkEle, 400);
+
 // Author:      Lok Cheung
 // Purpose:		Listen for the user to click or touch the drill down display, then close it
 $(document).ready(function () {
@@ -248,13 +281,7 @@ $('#myCanvas').bind("touchstart click", function(event){
 		//check if user is touching the area within the element
 		if(event.pageX>trendArray[i][1] && event.pageX<(trendArray[i][1]+trendArray[i][3]) && event.pageY>trendArray[i][2] && event.pageY <(trendArray[i][2]+trendArray[i][4])) {
 			event.preventDefault();
-			//change the y position of the dialog box according to which element is touched
-			if(trendArray[i][0]=="Number of Leads" || trendArray[i][0]=="New 3PL Leads" || trendArray[i][0]=="Close Rate" || trendArray[i][0]=="Prospect Count"){
-					document.getElementById('dialog-box').style.cssText = "margin-top: 800px";
-			}
-			else{
-				document.getElementById('dialog-box').style.cssText = "margin-top: 200px";
-			}
+			document.getElementById('dialog-box').style.cssText = "margin-top: 100px";
 			popup('<table border="0" width="100%">'+
 						'<tr>'+
 						'<td><canvas id="trendGraph" height="270" width="600"></canvas></td>'+

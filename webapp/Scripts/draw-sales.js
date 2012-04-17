@@ -310,17 +310,6 @@ $('#myCanvas').bind("touchstart click", function(event){
 		//check if user is touching the area within the element
 		if(event.pageX>trendArray[i][1] && event.pageX<(trendArray[i][1]+trendArray[i][3]) && event.pageY>trendArray[i][2] && event.pageY <(trendArray[i][2]+trendArray[i][4])) {
 			event.preventDefault();
-			//change the y position of the dialog box according to which element is touched
-			if(trendArray[i][0]=="Competitive Segment Sale"){
-					document.getElementById('dialog-box').style.cssText = "margin-top: 900px";
-			}
-			else if(trendArray[i][0]=="Dealer Retention" || trendArray[i][0]=="Visits Per Customer"){
-				document.getElementById('dialog-box').style.cssText = "margin-top: 800px";
-			}  else if(trendArray[i][0]=="Lost Profit" || trendArray[i][0]=="Lost Sales"){
-				document.getElementById('dialog-box').style.cssText = "margin-top: 1050px";
-			}  else {
-				document.getElementById('dialog-box').style.cssText = "margin-top: -150px";
-			}
 			popup('<table border="0" width="100%">'+
 						'<tr>'+
 						'<td><canvas id="trendGraph" height="270" width="600"></canvas></td>'+
