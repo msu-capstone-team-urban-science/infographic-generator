@@ -236,7 +236,7 @@ $('#myCanvas').bind("touchstart click", function(event){
 			document.getElementById('dialog-box').style.cssText = "margin-top: 100px";
 			popup('<table border="0" width="100%">'+
 						'<tr>'+
-						'<td><canvas id="trendGraph" height="270" width="600"></canvas></td>'+
+						'<td><canvas id="trendGraph" height="300" width="600"></canvas></td>'+
 						'</tr>'+
 						'<tr>'+
 						'<td>'+trendArray[i][6]+'</td>'+
@@ -266,11 +266,18 @@ $('#myCanvas').bind("touchstart click", function(event){
 			//draw x, y axis of the chart
 			var canvas = document.getElementById("trendGraph");
 			var context = canvas.getContext("2d");
+			
+			context.save();
+			context.font = "28pt Calibri";
+			context.fillStyle = "#0000ff"; // text color
+			context.fillText(trendArray[i][0], 170, 30);
+			context.restore();
+			
 			context.save();
 			context.beginPath();
-			context.moveTo(120,0);
-			context.lineTo(120,220);
-			context.lineTo(600,220);
+			context.moveTo(120,40);
+			context.lineTo(120,260);
+			context.lineTo(600,260);
 			context.strokeStyle = "black";	
 			context.stroke();
 			context.restore();
