@@ -223,9 +223,6 @@ var checkEle = function () {
 			//size of elevator shaft is 1624px
 			//78px - 1702 px
 			
-			//alert(offset.top);
-			
-			//alert(headoff.top);
 			if (offset.top <=764 ) {
 				$('#ele').offset({top:header.offset().top+78});
 				//$('#ele').offset({top:offset.top-10});
@@ -235,16 +232,27 @@ var checkEle = function () {
 			}
 			else if (offset.top >= 1530) { 
 				//do nothing so the elevator stops at the bottom
+				var currentWidth = window.innerWidth;
+
 				//alert(offset.top - header.offset().top);
-				//alert(offset.top);
-				if(offset.top - header.offset().top > 740)
-				{
-					$('#ele').offset({top:header.offset().top+743});
+				if (currentWidth != 1000 && (offset.top - header.offset().top > 750)) {
+					$('#ele').offset({top:header.offset().top+268});
+					//document.getElementById('banner').src="images/branding-portrait.png";
 				}
 				else
 				{
-					$('#ele').offset({top:header.offset().top+185});
+					$('#ele').offset({top:1530});
 				}
+
+
+				// if(offset.top - header.offset().top > 740)
+				// {
+					// $('#ele').offset({top:header.offset().top+743});
+				// }
+				// else
+				// {
+					// $('#ele').offset({top:header.offset().top+185});
+				// }
 			} 
 			
 			/*if (offset.top > 1070){
@@ -256,6 +264,7 @@ var checkEle = function () {
 			} */
 		};
 		setInterval(checkEle, 400);
+
 
 // Author:      Lok Cheung
 // Purpose:		Listen for the user to click or touch the drill down display, then close it
