@@ -1,25 +1,22 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="viewport" content="width=device-width; maximum-scale=1.0233">
-
-<link rel="stylesheet" type="text/css" href="Styles/jquery.mobile-1.0.1.css" />
-<link rel="stylesheet" type="text/css" href="Styles/header.css" />
-<link rel="stylesheet" type="text/css" href="Styles/drill_down.css" />
-<link rel="stylesheet" type="text/css" href="styles/lead_style.css" />
-<title>Infographics Generator - Lead Management</title>
-	<script type="text/javascript" src="Scripts/HandleDate.js"></script>
-	<script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
-	<script type="text/javascript" src="Scripts/elements.js"></script>
-	<script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
-	<script type="text/javascript" src="Scripts/jquery.mobile-1.0.1.js"></script>	
-	<script type="text/javascript">
-		window.onload = function(){
-			LoadJSON();
-			DrawLead("myCanvas",initDate());
-		};
-    </script>
+	<head>
+		<link rel="stylesheet" type="text/css" href="Styles/jquery.mobile-1.0.1.css" />
+		<link rel="stylesheet" type="text/css" href="Styles/header.css" />
+		<link rel="stylesheet" type="text/css" href="Styles/drill_down.css" />
+		<link rel="stylesheet" type="text/css" href="styles/lead_style.css" />
+		<title>Infographics Generator - Lead Management</title>
+		<script type="text/javascript" src="Scripts/HandleDate.js"></script>
+		<script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
+		<script type="text/javascript" src="Scripts/elements.js"></script>
+		<script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="Scripts/jquery.mobile-1.0.1.js"></script>	
+		<script type="text/javascript">
+			window.onload = function(){
+				LoadJSON();
+				DrawLead("myCanvas",initDate());
+			};
+		</script>
     </head>
 	<body>
 	<div id="main">
