@@ -214,31 +214,19 @@ function DrawLead6(c,date) {
 // Author:      Peter Chen
 // Purpose:		Positioning the elevator image
 var checkEle = function () {
-			var p = $('#ele');
-			var header = $('#header');
-			var offset = p.offset();
-			var headoff = header.offset();
-			
-			if (offset.top <=764 ) {
-				$('#ele').offset({top:header.offset().top+78});
-			}
-			else if (offset.top >764 && offset.top < 1530) {
-				$('#ele').offset({top:offset.top+10});
-			}
-			else if (offset.top >= 1530) { 
-				//do nothing so the elevator stops at the bottom
-				var currentWidth = window.innerWidth;
-				if (currentWidth != 1000 && (offset.top - header.offset().top > 750)) {
-					$('#ele').offset({top:header.offset().top+268});
-				}
-				else
-				{
-					$('#ele').offset({top:1530});
-				}
-			} 
-		};
-		setInterval(checkEle, 400);
-
+	var p = $('#ele');
+	var header = $('#header');
+	var offset = p.offset();
+	
+	if (offset.top <=764 ) {
+		$('#ele').offset({top:header.offset().top+78});
+	} else if (offset.top >764 && offset.top < 1530) {
+		$('#ele').offset({top:offset.top+10});
+	} else if (offset.top >= 1530) { 
+			$('#ele').offset({top:1530});
+	} 
+};
+setInterval(checkEle, 400);
 
 // Author:      Lok Cheung
 // Purpose:		Listen for the user to click or touch the drill down display, then close it
@@ -277,7 +265,7 @@ $('#myCanvas').bind("touchstart click", function(event){
 		//check if user is touching the area within the element
 		if(event.pageX>trendArray[i][1] && event.pageX<(trendArray[i][1]+trendArray[i][3]) && event.pageY>trendArray[i][2] && event.pageY <(trendArray[i][2]+trendArray[i][4])) {
 			event.preventDefault();
-			document.getElementById('dialog-box').style.cssText = "margin-top: 100px";
+			document.getElementById('dialog-box').style.cssText = "margin-top: -30px";
 			popup('<table border="0" width="100%">'+
 						'<tr>'+
 						'<td><canvas id="trendGraph" height="300" width="600"></canvas></td>'+
