@@ -219,13 +219,8 @@ var checkEle = function () {
 			var offset = p.offset();
 			var headoff = header.offset();
 			
-			//elevator shaft begins at 78px
-			//size of elevator shaft is 1624px
-			//78px - 1702 px
-			
 			if (offset.top <=764 ) {
 				$('#ele').offset({top:header.offset().top+78});
-				//$('#ele').offset({top:offset.top-10});
 			}
 			else if (offset.top >764 && offset.top < 1530) {
 				$('#ele').offset({top:offset.top+10});
@@ -233,35 +228,14 @@ var checkEle = function () {
 			else if (offset.top >= 1530) { 
 				//do nothing so the elevator stops at the bottom
 				var currentWidth = window.innerWidth;
-
-				//alert(offset.top - header.offset().top);
 				if (currentWidth != 1000 && (offset.top - header.offset().top > 750)) {
 					$('#ele').offset({top:header.offset().top+268});
-					//document.getElementById('banner').src="images/branding-portrait.png";
 				}
 				else
 				{
 					$('#ele').offset({top:1530});
 				}
-
-
-				// if(offset.top - header.offset().top > 740)
-				// {
-					// $('#ele').offset({top:header.offset().top+743});
-				// }
-				// else
-				// {
-					// $('#ele').offset({top:header.offset().top+185});
-				// }
 			} 
-			
-			/*if (offset.top > 1070){
-				$('#ele').offset({top:1070});
-			} else if (p.offset().top < 1000) {
-				$('#ele').offset({top:header.offset().top+78});
-			} else if (p.offset().top < 1070) {
-				$('#ele').offset({top:p.offset().top});
-			} */
 		};
 		setInterval(checkEle, 400);
 
