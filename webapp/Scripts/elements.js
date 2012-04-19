@@ -17,7 +17,7 @@ function Retail_Sale(c, x, y, w, h, d) {
     //x,y, width, height
 	var fillHeight = -(d[1]%70);
     //var fillHeight = (d[1]) / -4;
-    if (fillHeight == 0) {
+    if (fillHeight == 0 && d[1]>70) {
         fillHeight = -70;
     }
 	else if(fillHeight > -50){
