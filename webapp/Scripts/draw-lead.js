@@ -211,6 +211,23 @@ function DrawLead6(c,date) {
 	context.restore();
 }
 
+// Author:      Peter Chen
+// Purpose:		Positioning the elevator image
+var checkEle = function () {
+	var p = $('#ele');
+	var header = $('#header');
+	var offset = p.offset();
+	
+	if (offset.top <=764 ) {
+		$('#ele').offset({top:header.offset().top+78});
+	} else if (offset.top >764 && offset.top < 1530) {
+		$('#ele').offset({top:offset.top+10});
+	} else if (offset.top >= 1530) { 
+			$('#ele').offset({top:1530});
+	} 
+};
+setInterval(checkEle, 400);
+
 // Author:      Lok Cheung
 // Purpose:		Listen for the user to click or touch the drill down display, then close it
 $(document).ready(function () {
@@ -248,16 +265,10 @@ $('#myCanvas').bind("touchstart click", function(event){
 		//check if user is touching the area within the element
 		if(event.pageX>trendArray[i][1] && event.pageX<(trendArray[i][1]+trendArray[i][3]) && event.pageY>trendArray[i][2] && event.pageY <(trendArray[i][2]+trendArray[i][4])) {
 			event.preventDefault();
-			//change the y position of the dialog box according to which element is touched
-			if(trendArray[i][0]=="Number of Leads" || trendArray[i][0]=="New 3PL Leads" || trendArray[i][0]=="Close Rate" || trendArray[i][0]=="Prospect Count"){
-					document.getElementById('dialog-box').style.cssText = "margin-top: 800px";
-			}
-			else{
-				document.getElementById('dialog-box').style.cssText = "margin-top: 200px";
-			}
+			document.getElementById('dialog-box').style.cssText = "margin-top: -30px";
 			popup('<table border="0" width="100%">'+
 						'<tr>'+
-						'<td><canvas id="trendGraph" height="270" width="600"></canvas></td>'+
+						'<td><canvas id="trendGraph" height="300" width="600"></canvas></td>'+
 						'</tr>'+
 						'<tr>'+
 						'<td>'+trendArray[i][6]+'</td>'+
@@ -293,11 +304,18 @@ $('#myCanvas').bind("touchstart click", function(event){
 			//draw x, y axis of the chart
 			var canvas = document.getElementById("trendGraph");
 			var context = canvas.getContext("2d");
+
+			context.save();
+			context.font = "28pt Calibri";
+			context.fillStyle = "#0000ff"; // text color
+			context.fillText(trendArray[i][0], 170, 30);
+			context.restore();
+			
 			context.save();
 			context.beginPath();
-			context.moveTo(120,0);
-			context.lineTo(120,220);
-			context.lineTo(600,220);
+			context.moveTo(120,40);
+			context.lineTo(120,220+40);
+			context.lineTo(600,220+40);
 			context.strokeStyle = "black";	
 			context.stroke();
 			context.restore();

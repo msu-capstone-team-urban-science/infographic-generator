@@ -1,0 +1,15 @@
+#back {
+	top: -300px;
+	z-index: -2;
+}
+
+#ele{
+	top: 78px;
+	left: 707px;
+	position: fixed;
+	z-index: 1;
+}
+
+#category{
+	left:320px;
+}

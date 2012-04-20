@@ -68,6 +68,10 @@ function GetKPI(date, kpiName) {
     return kpiData;
 }
 
+// Name: GetTrendKPI
+// Author: Kevin Shreve, Lok Cheung
+// Description: Get data of a KPI over months
+// Remarks: this function does not deal with data for over a year
 function GetTrendKPI(date, kpiName) {
 	var kpiArray = new Array();
 	var kpi;	
@@ -85,15 +89,11 @@ function GetTrendKPI(date, kpiName) {
 		x=mm-6;
 	}
 	var num=mm;
-	
-	//although x changes, tmpDate.setFullYear doesn't change properly
+
 	while(x<=num) {
 		tmpDate.setFullYear(yy,x,1);
 		month=monthname[x];
 		kpi=GetKPI(tmpDate,kpiName);
-		//if(month=="Feb"){
-		//	alert("x: "+x+","+kpiName+","+kpi);
-		//}
 		kpiArray.push([month,kpi]);
 		x++;
 	}

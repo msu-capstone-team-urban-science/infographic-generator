@@ -39,15 +39,15 @@ function drawTrend(data,heightFactor) {
 	{
 		context.save();
 		context.beginPath();
-		context.moveTo(150,220-data[0][1]*heightFactor+30);
-		context.arc(150, 220-data[0][1]*heightFactor+30, radius, 0, 2 * Math.PI, false);
-		context.fillText(data[0][1],142,220-data[0][1]*heightFactor-20+30);
-		context.fillText(monthname[0],140,250);
+		context.moveTo(150,220-data[0][1]*heightFactor+60);
+		context.arc(150, 220-data[0][1]*heightFactor+60, radius, 0, 2 * Math.PI, false);
+		context.fillText(data[0][1],142,220-data[0][1]*heightFactor-20+60);
+		context.fillText(monthname[0],140,250+30);
 		for(var k=1;k<data.length;k++){
-			context.arc(k*70+150, 220-data[k][1]*heightFactor+30, radius, 0, 2 * Math.PI, false);
-			context.fillText(monthname[k],k*70+142,250);		//draw month
-			context.fillText(data[k][1],k*70+140,220-data[k][1]*heightFactor-20+30); //draw number
-			context.lineTo(k*70+150,220-data[k][1]*heightFactor+30);
+			context.arc(k*70+150, 220-data[k][1]*heightFactor+60, radius, 0, 2 * Math.PI, false);
+			context.fillText(monthname[k],k*70+142,250+30);		//draw month
+			context.fillText(data[k][1],k*70+140,220-data[k][1]*heightFactor-20+60); //draw number
+			context.lineTo(k*70+150,220-data[k][1]*heightFactor+60);
 		}
 		context.lineWidth=4;
 		context.strokeStyle = "blue";
@@ -68,23 +68,24 @@ function drawTrendMul(c, name, d, color, index, heightFactor, withNum){
 	context.save();
 	context.font = "14pt Calibri";
 	context.beginPath();
-	context.arc(150, (220-d[0][1]/4*heightFactor), 2, 0, 2 * Math.PI, false);
-	context.fillText(monthname[0],145,250);		//draw month
+	context.arc(150, (220-d[0][1]/4*heightFactor)+30, 2, 0, 2 * Math.PI, false);
+	context.fillStyle = "#0000ff"; // text color
+	context.fillText(monthname[0],145,250+30);		//draw month
 	//draw the chart with a number on top of each data if withNum is true
 	if(withNum==true){
-		context.fillText(d[0][1],130,220-d[0][1]/4*heightFactor-20); //draw number
+		context.fillText(d[0][1],130,220-d[0][1]/4*heightFactor-20+30); //draw number
 	}
-	context.lineTo(150,(220-d[0][1]/4*heightFactor));
+	context.lineTo(150,(220-d[0][1]/4*heightFactor)+30);
 	for(var i=1;i<d.length;i++){
-		context.arc(i*70+150, (220-d[i][1]/4*heightFactor), 2, 0, 2 * Math.PI, false);
-		context.fillText(monthname[i],i*70+145,250);		//draw month
+		context.arc(i*70+150, (220-d[i][1]/4*heightFactor)+30, 2, 0, 2 * Math.PI, false);
+		context.fillText(monthname[i],i*70+145,250+30);		//draw month
 		if(withNum==true)
-			context.fillText(d[i][1],i*70+130,220-d[i][1]/4*heightFactor-20); //draw number
-		context.lineTo(i*70+150,(220-d[i][1]/4*heightFactor));
+			context.fillText(d[i][1],i*70+130,220-d[i][1]/4*heightFactor-20+30); //draw number
+		context.lineTo(i*70+150,(220-d[i][1]/4*heightFactor)+30);
 	}
 	context.fillStyle = color; // text color
 	context.font = "10pt Calibri";
-	context.fillText(name, 0, index*20+10);
+	context.fillText(name, 0, index*20+10+30);
 	context.strokeStyle = color;
 	context.stroke();
 	context.restore();

@@ -233,18 +233,10 @@ $('#myCanvas').bind("touchstart click", function(event){
 		//check if user is touching the area within the element
 		if(event.pageX>trendArray[i][1] && event.pageX<(trendArray[i][1]+trendArray[i][3]) && event.pageY>trendArray[i][2] && event.pageY <(trendArray[i][2]+trendArray[i][4])) {
 			event.preventDefault();
-			//change the y position of the dialog box according to which element is touched
-			if(trendArray[i][0]=="Average Money Per RO" || trendArray[i][0]=="RO Count" || trendArray[i][0]=="Labor Ops Per RO"){
-					document.getElementById('dialog-box').style.cssText = "margin-top: 870px";
-			}
-			else if(trendArray[i][0]=="Dealer Effectiveness" || trendArray[i][0]=="Brand Effectiveness"){
-				document.getElementById('dialog-box').style.cssText = "margin-top: 650px";
-			}else{
-				document.getElementById('dialog-box').style.cssText = "margin-top: 200px";
-			}
+			document.getElementById('dialog-box').style.cssText = "margin-top: 50px";
 			popup('<table border="0" width="100%">'+
 						'<tr>'+
-						'<td><canvas id="trendGraph" height="270" width="600"></canvas></td>'+
+						'<td><canvas id="trendGraph" height="300" width="600"></canvas></td>'+
 						'</tr>'+
 						'<tr>'+
 						'<td>'+trendArray[i][6]+'</td>'+
@@ -274,11 +266,18 @@ $('#myCanvas').bind("touchstart click", function(event){
 			//draw x, y axis of the chart
 			var canvas = document.getElementById("trendGraph");
 			var context = canvas.getContext("2d");
+			
+			context.save();
+			context.font = "28pt Calibri";
+			context.fillStyle = "#0000ff"; // text color
+			context.fillText(trendArray[i][0], 170, 30);
+			context.restore();
+			
 			context.save();
 			context.beginPath();
-			context.moveTo(120,0);
-			context.lineTo(120,220);
-			context.lineTo(600,220);
+			context.moveTo(120,40);
+			context.lineTo(120,260);
+			context.lineTo(600,260);
 			context.strokeStyle = "black";	
 			context.stroke();
 			context.restore();

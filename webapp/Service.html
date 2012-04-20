@@ -1,6 +1,11 @@
 <!DOCTYPE HTML>
 <html>
     <head>
+		<link rel="stylesheet" type="text/css" href="Styles/jquery.mobile-1.0.1.css" />
+		<link rel="stylesheet" type="text/css" href="Styles/header.css" />
+		<link rel="stylesheet" type="text/css" href="Styles/drill_down.css" />
+		<link rel="stylesheet" type="text/css" href="Styles/service_style.css" />
+		<title>Infographics Generator - Service</title>
 		<script type="text/javascript" src="Scripts/HandleDate.js"></script>
 		<script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
 		<script type="text/javascript" src="Scripts/elements.js"></script>
@@ -12,9 +17,6 @@
                 DrawService("myCanvas", initDate());
             };	
         </script>
-		<link rel="stylesheet" type="text/css" href="Styles/jquery.mobile-1.0.1.css" />
-		<link rel="stylesheet" type="text/css" href="Styles/header.css" />
-		<link rel="stylesheet" type="text/css" href="Styles/service.css" />
     </head>
     <body>
 		<div id="main">
@@ -29,6 +31,7 @@
 				<!-- Insert fallback content here -->
 				Sorry, your browser doesn't support canvas technology
 			</canvas>
+			<div id="dialog-overlay"></div>
 			<div id="dialog-box">
 				<div class="dialog-content">
 					<div id="dialog-message"></div>
