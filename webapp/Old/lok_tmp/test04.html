@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Prototype04</title>
+        <script type="text/javascript">
+			// * Prototype Infographic
+			// *         by
+			// *     Lok Cheung
+			var ctx;
+			var canvas;
+			function drawGraph(){
+				//outer rectangle
+				ctx.roundRect(10, 20, 150, 130, 5).stroke();
+				//inner rectangle
+				ctx.roundRect(15, 25, 140, 120, 5).stroke();
+				//fill the inner rectangle
+				ctx.fill();
+				ctx.font = "bold 20pt Calibri";
+				//color of the "FOR SALE" text
+				ctx.fillStyle="orange";
+				ctx.fillText("FOR SALE", 20, 50);
+				ctx.fillStyle="white";
+				//rectangle for date display
+				ctx.fillRect(20,60,130, 35);
+				//rectangle for data display
+				ctx.fillRect(20,100,130, 35);
+				ctx.fillStyle="black";
+				//date
+				ctx.fillText("Jan 12", 45, 90);
+				//data
+				ctx.fillText(64, 70, 130);
+				
+				
+			}
+			/*
+				This function draw the rectangle with round corner
+				parameter: x, y: position of the left top corner
+							w, h: width, height
+							r: radius of the corners
+			*/
+			CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
+			  if (w < 2 * r) r = w / 2;
+			  if (h < 2 * r) r = h / 2;
+			  this.beginPath();
+			  this.moveTo(x+r, y);
+			  this.arcTo(x+w, y,   x+w, y+h, r);
+			  this.arcTo(x+w, y+h, x,   y+h, r);
+			  this.arcTo(x,   y+h, x,   y,   r);
+			  this.arcTo(x,   y,   x+w, y,   r);
+			  this.closePath();
+			  return this;
+			}
+
+
+			
+			function init() {
+			  canvas = document.getElementById("myCanvas");
+			  ctx = canvas.getContext("2d");
+			  //drawImg();
+			  //call drawGraph every 20 millisecond
+			  drawGraph();
+			  //return setInterval(drawGraph, 20);
+			}
+
+		</script>
+	</head>
+
+	<body onload="init()">
+		<h1>Cost per Sale</h1>
+		<canvas id="myCanvas" width="500" height="500">
+			<!-- Insert fallback content here -->
+            Sorry, your browser doesn't support canvas technology
+		</canvas>
+	</body>
+</html>
