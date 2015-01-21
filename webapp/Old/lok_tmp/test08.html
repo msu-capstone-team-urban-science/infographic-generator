@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <script>
+
+      function NewPump(c, x, y, w, h, d)
+      {
+        
+        // BUG: bottom most text may extend over max defined width. if last
+        // piece of data is small, allow some extra room on the canvas for
+        // slightly overextended text.
+
+
+        var canvas = document.getElementById(c);
+        var context = canvas.getContext("2d");
+        var blX = x;
+        var blY = y + h;
+        var trX = x + w;
+        var trY = y;
+        var midX = x + (w / 2);
+        var midY = y + (h / 2);
+        var controlX = x;
+        var controlY = y;
+
+
+        // find sum of all data for spacing
+        var i = 0;
+        var sum = 0;
+        for (i = 0; i < d.length; i = i + 1)
+        {
+            sum = sum + parseInt(d[i][1]);
+        }
+
+
+
+        // draw first line of figure
+        context.beginPath();
+        context.moveTo(blX, blY);
+        midY = y;
+        context.quadraticCurveTo(controlX, midY, midX, midY);
+        context.quadraticCurveTo(trX, midY, trX, trY);
+        context.quadraticCurveTo(trX, blY, midX, h);
+        context.quadraticCurveTo(controlX, h, blX, blY);
+        context.strokeStyle = "#000000";
+        context.fillStyle = d[0][2];
+        context.fill();
+
+
+        // draw lines to finish figure
+        for (i = 0; i < d.length; i = i + 1)
+        {
+            context.beginPath();
+            context.moveTo(blX, blY);
+            var temp = ((d[i][1] / sum) * h)
+            midY = midY + temp;
+            context.quadraticCurveTo(controlX, midY, midX, midY);
+            context.quadraticCurveTo(trX, midY, trX, trY);
+            context.quadraticCurveTo(trX, blY, midX, h);
+            context.quadraticCurveTo(controlX, h, blX, blY);
+
+            if (i+1 == d.length)
+            {
+                context.fillStyle = d[i][2];
+            }else
+            {
+                context.fillStyle = d[i+1][2];
+            }
+            context.strokeStyle = "black";
+            context.fill();
+
+            // Draw text
+            var text_size = 10;
+            context.font = text_size + "pt Calibri";
+            context.fillStyle = "#ffffff";
+            context.fillText(d[i][0], (midX/3)*2, midY - temp/2 + text_size/2);
+        }
+      }
+
+		window.onload = function(){
+
+        var superdata = new Array();
+        superdata.push(["Anytown Automotive", "632", "#ff9b00"]);
+        superdata.push(["Alan Autosmart", "398", "#f54c08"]);
+        superdata.push(["Jefferson Automotive", "334", "#b4213f"]);
+        superdata.push(["Nestor Auto Center", "38", "#69039d"]);
+        superdata.push(["Diamond Automotive", "30", "#283577"]);
+        superdata.push(["Anthony Motors", "4", "#66a5c7"]);
+
+
+        NewPump("myCanvas", 0, 0, 633, 400, superdata);
+
+      };
+
+    </script>
+  </head>
+  <body>
+    <ul class="navbar">
+<li><a href="index.html">Home</a>
+</ul>
+    <div id="main">
+      <canvas id="myCanvas" width="633" height="410" />
+    </div>
+  </body>
+</html>

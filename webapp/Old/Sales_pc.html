@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+	<head id="Head1" runat="server">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<link href="Styles/sales_style.css" rel="stylesheet" type="text/css" />
+		<title>Infographics Generator</title>
+		<script type="text/javascript" src="Scripts/newsale_pc.js"></script>
+		<script type="text/javascript" src="Scripts/HandleDate.js"></script>
+		<script type="text/javascript" src="Scripts/jquery-1.7.1.min.js"  ></script>
+		<script type="text/javascript" src="Scripts/KPILocalStorage.js"></script>
+		<script type="text/javascript" src="Scripts/jquery.wipetouch.js"></script>
+		<script type="text/javascript">
+			function StartupSales() {
+				LoadJSON();
+				initDate();
+			}
+			
+			function navigator_Go(url) {
+                window.location.assign(url); // This technique is almost exactly the same as a full <a> page refresh, but it prevents Mobile Safari from jumping out of full-screen mode
+            }
+		</script>
+	</head>
+<body onload="StartupSales()">
+	<div id="main">
+		<div id="part01">
+			<div id="header">
+				<div id="homeButton"><a href="javascript:navigator_Go('index.html');"><img src="images/home_button.png"></a></div>
+				<img src="images/header2.jpg" alt="header.jpg"/> 
+                <p id="category">Sales</p>
+				<p id="month"></p>
+                <p id="month2"></p>
+			</div>
+			<div id="infographic">
+				<div>
+					<h2>Sales</h2>
+					<canvas id="myCanvas" width="1550" height="2500">
+						<!-- Insert fallback content here -->
+						Sorry, your browser doesn't support canvas technology
+					</canvas>
+				</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">		
+		$(document).wipetouch(
+		{
+			allowDiagonal:false,
+			tapToClick: false,
+			wipeLeft: function(result) { wipeStatus("Left",result); },
+			wipeRight: function(result) { wipeStatus("Right",result);},
+            wipeUp: false,
+            wipeDown: false,
+            preventDefault: false,
+            moveX: 200,
+		});	
+	</script>
+</body>
+</html>

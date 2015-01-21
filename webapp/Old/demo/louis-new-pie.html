@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link href="main.css" rel="stylesheet" type="text/css">
+    <script>
+
+      function RingChart(c, x, y, w, h, d)
+      {
+        var ringColor = "#000000";
+        var highlightColor = "#ff0000";
+        var textColor = "#ffffff";
+
+
+        var canvas = document.getElementById(c);
+        var context = canvas.getContext("2d");
+        var counterclockwise = false;
+        var centerX = (w / 2) + x;
+        var centerY = (h / 2) + y;
+        var i = 0;
+        var thickWidth = w/10;
+        var thinWidth = thickWidth/4;
+        var radius = (w / 2) - thickWidth;
+
+
+        // Draw thin ring
+        context.beginPath();
+        context.moveTo(centerX, centerY-radius);
+        context.arc(centerX, centerY, radius, (Math.PI/2)*3, (Math.PI/2)*7, counterclockwise);
+        context.lineWidth = thinWidth;
+        context.strokeStyle = ringColor;
+        context.shadowColor = ringColor;
+        context.shadowBlur = 2;
+        context.stroke();
+
+
+        // Draw thick ring
+        context.beginPath();
+        context.arc(centerX, centerY, radius, (Math.PI/2)*3, (d*2*Math.PI) + ((Math.PI/2)*3), counterclockwise);
+        context.lineWidth = thickWidth;
+        context.shadowColor = highlightColor;
+        context.shadowBlur = 2;
+        context.strokeStyle = highlightColor;
+        context.stroke();
+
+
+        // Draw text
+        var text_offset = centerX - radius + thickWidth;
+        var text_size = w/5;
+        context.font = text_size + "pt Calibri";
+        context.shadowColor = textColor;
+        context.shadowBlur = 2;
+        context.fillStyle = textColor;
+        context.fillText((d*100) + "%", text_offset, centerY + (text_size / 2));
+      }
+
+      window.onload = function(){
+
+        var percent = .5;
+        RingChart("myCanvas", 0, 0, 100, 100, percent);
+
+      };
+
+    </script>
+  </head>
+  <body>
+    <ul class="navbar">
+			<li><a href="index.html">Home</a>
+	</ul>
+    <div id="main">
+      <canvas id="myCanvas" width="400" height="400" />
+    </div>
+  </body>
+</html>
