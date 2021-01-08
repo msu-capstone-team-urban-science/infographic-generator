@@ -6,7 +6,7 @@ By: Louis Bodnar
     Peter Chen
     Kevin Shreve
 
-    of Michigan State University
+of Michigan State University
 
 Screenshot:
 
