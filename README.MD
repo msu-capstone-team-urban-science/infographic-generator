@@ -1,10 +1,11 @@
 Infographic Generator for Urban-Science
 Capstone of Spring 2012
 
-By: Louis Bodnar
-    Lok Cheung
-    Peter Chen
-    Kevin Shreve
+By: 
+    -Louis Bodnar
+    -Lok Cheung
+    -Peter Chen
+    -Kevin Shreve
 
 of Michigan State University
 
