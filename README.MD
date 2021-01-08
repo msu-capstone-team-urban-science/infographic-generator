@@ -10,4 +10,4 @@ By: Louis Bodnar
 
 Screenshot:
 
-[Home Page](documents/images/home-page-screenshot.png)
+![Home Page](documents/images/home-page-screenshot.png)
