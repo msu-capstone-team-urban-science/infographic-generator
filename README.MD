@@ -1,6 +1,10 @@
 Infographic Generator for Urban-Science
 Capstone of Spring 2012
 
+
+URL: 
+https://infographic-generator.netlify.app/
+
 By:
 * Louis Bodnar
 * Lok Cheung
